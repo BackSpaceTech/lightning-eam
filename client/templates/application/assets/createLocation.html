@@ -1,0 +1,31 @@
+<template name = "createLocationPage">
+    <div class="flow-text">
+      {{> insertLocationForm}}
+    </div>
+</template>
+
+<template name="insertLocationForm">
+  <div class="row">
+    <br>
+    {{#autoForm collection="Locations" id="insertLocationForm" type="insert"}}
+      <fieldset>
+        <legend>Create Location</legend>
+        <div>
+          {{> afQuickField name='text'}}
+        </div>
+        {{> afQuickField name='description' rows=4}}
+        <div class="col s12 m6 l3">
+          {{> afQuickField name='id'}}
+        </div>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name='locationType'}}
+        </div>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name='parent'}}
+        </div>
+      </fieldset>
+      <button type="submit" class="btn waves-effect waves-light">Insert</button>
+    {{/autoForm}}
+    <br>
+  </div>
+</template>

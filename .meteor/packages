@@ -16,8 +16,6 @@ standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-autopublish             # Publish all data to the clients (for prototyping)
-insecure                # Allow all DB writes from clients (for prototyping)
 kadira:flow-router
 accounts-password
 accounts-base
@@ -30,3 +28,7 @@ natestrauser:font-awesome
 kadira:blaze-layout
 useraccounts:flow-routing
 arillo:flow-router-helpers
+aldeed:autoform
+aldeed:collection2
+gildaspk:autoform-materialize
+sujith3g:jstree
