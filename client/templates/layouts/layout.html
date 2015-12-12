@@ -1,0 +1,81 @@
+<template name="layout">
+
+    <div id="wrapper">
+
+<!--**************************** Content Page **************************-->
+      <div id="main">
+        {{> Template.dynamic template=header}}
+      <!--<div id="page-wrapper">-->
+          <div class="container">
+            {{> Template.dynamic template=content}}
+            <!--{{> dashboardPage}}-->
+          </div>
+          <!-- /.container-fluid -->
+      </div>
+      <!-- /#page-wrapper -->
+      {{> Template.dynamic template=footer}}
+    </div>
+    <!-- /#wrapper -->
+</template>
+
+<!--**************************** Header Content **************************-->
+<template name="header1">
+  <!-- Navigation -->
+  <nav class="teal darken-3">
+    <div class="nav-wrapper flow-text">
+      <a href="{{pathFor '/'}}" class="brand-logo right"><i class="fa fa-flash"></i></a>
+      <ul class="left hide-on-med-and-down">
+        <li class="waves-effect waves-light"><a href="{{pathFor 'assets'}}">Assets</a></li>
+        <li class="waves-effect waves-light"><a href="{{pathFor 'work'}}">Work Mgt</a></li>
+        <li class="waves-effect waves-light"><a href="{{pathFor 'pm'}}">Planned Maint</a></li>
+        <li class="waves-effect waves-light"><a href="{{pathFor 'resources'}}">Resources</a></li>
+        <li class="waves-effect waves-light"><a href="{{pathFor 'contracts'}}">Contracts</a></li>
+        <li class="waves-effect waves-light"><a href="{{pathFor 'inventory'}}">Inventory</a></li>
+        <li class="waves-effect waves-light"><a href="{{pathFor 'purchasing'}}">Purchasing</a></li>
+        <li class="waves-effect waves-light"><a href="{{pathFor 'reports'}}">Reports</a></li>
+        <li class="waves-effect waves-light"><a href="{{pathFor 'help'}}">Help</a></li>
+      </ul>
+      <ul class="side-nav waves-effect waves-light" id="slide-out">
+        <li><a href="{{pathFor 'assets'}}">Assets</a></li>
+        <li><a href="{{pathFor 'work'}}">Work Mgt</a></li>
+        <li><a href="{{pathFor 'pm'}}">Planned Maint</a></li>
+        <li><a href="{{pathFor 'resources'}}">Resources</a></li>
+        <li><a href="{{pathFor 'contracts'}}">Contracts</a></li>
+        <li><a href="{{pathFor 'inventory'}}">Inventory</a></li>
+        <li><a href="{{pathFor 'purchasing'}}">Purchasing</a></li>
+        <li><a href="{{pathFor 'reports'}}">Reports</a></li>
+        <li><a href="{{pathFor 'help'}}">Help</a></li>
+      </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </div>
+  </nav>
+</template>
+
+<!--**************************** Footer Content **************************-->
+<template name="footer1">
+  <footer class="page-footer teal darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">The Lightning EAM Project</h5>
+          <p class="grey-text text-lighten-4">The World's fastest Enterprise Asset Management System.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">The Lightning EAM Project</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Asia Pacific Robotics Corporation</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">BackSpace Technology</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">BackSpace Academy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2014 Copyright Asia Pacific Robotics Corporation Pty Ltd
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
+</template>
