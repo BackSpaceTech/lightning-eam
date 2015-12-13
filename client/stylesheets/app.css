@@ -5,3 +5,8 @@
 .icon-page {
   color: #263238 !important;
 }
+
+.treeview {
+  margin-top:1em;
+  min-height:200px;
+}

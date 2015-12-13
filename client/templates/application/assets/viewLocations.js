@@ -11,6 +11,9 @@ Template.viewLocationsPage.onRendered(function () {
               $('#jstree_demo').jstree(true).search(v);
           }, 250);
       });
+      $('#jstree_demo').on("changed.jstree", function (e, data) {
+        Session.set("idTreeView",data.selected);
+      });
       $('#jstree_demo').jstree({
         "core": {
             "animation": 0,
@@ -79,4 +82,12 @@ Template.viewLocationsPage.events({
       }
       ref.delete_node(sel);
     }
+});
+
+Template.viewLocationsPage.helpers({
+  locationDetails: function() {
+    var temp = Session.get("idTreeView");
+    var temp2 = Locations.find({id:String(temp)}).fetch();
+    return (temp + " - " + temp2[0].text)
+  }
 });
