@@ -2,19 +2,19 @@
 Template.viewLocationsPage.onRendered(function () {
   $(function() {
       var to = false;
-      $('#demo_q').keyup(function() {
+      $('#view_q').keyup(function() {
           if (to) {
               clearTimeout(to);
           }
           to = setTimeout(function() {
-              var v = $('#demo_q').val();
-              $('#jstree_demo').jstree(true).search(v);
+              var v = $('#view_q').val();
+              $('#jstree_view').jstree(true).search(v);
           }, 250);
       });
-      $('#jstree_demo').on("changed.jstree", function (e, data) {
+      $('#jstree_view').on("changed.jstree", function (e, data) {
         Session.set("idTreeView",data.selected);
       });
-      $('#jstree_demo').jstree({
+      $('#jstree_view').jstree({
         "core": {
             "animation": 0,
             "multiple" : false,
@@ -51,37 +51,18 @@ Template.viewLocationsPage.onRendered(function () {
 });
 
 Template.viewLocationsPage.events({
-    'click #createLoc': function(e) {
-        var ref = $('#jstree_demo').jstree(true),
-            sel = ref.get_selected();
-        if (!sel.length) {
-            return false;
-        }
-        sel = sel[0];
-        sel = ref.create_node(sel, {
-            "type": "file"
-        });
-        if (sel) {
-            ref.edit(sel);
-        }
-    },
-    'click #editLoc': function(e) {
-        var ref = $('#jstree_demo').jstree(true),
-            sel = ref.get_selected();
-        if (!sel.length) {
-            return false;
-        }
-        sel = sel[0];
-        ref.edit(sel);
-    },
-    'click #deleteLoc': function(e) {
-      var ref = $('#jstree_demo').jstree(true),
-          sel = ref.get_selected();
-      if (!sel.length) {
-          return false;
-      }
-      ref.delete_node(sel);
-    }
+  'click #newLoc': function(e) {
+    Session.set("formContext","newLoc");
+  },
+  'click #newAsset': function(e) {
+    Session.set("formContext","newAsset");
+  },
+  'click #editLoc': function(e) {
+    Session.set("formContext","editLoc");
+  },
+  'click #deleteLoc': function(e) {
+    Session.set("formContext","deleteLoc");
+  }
 });
 
 Template.viewLocationsPage.helpers({
