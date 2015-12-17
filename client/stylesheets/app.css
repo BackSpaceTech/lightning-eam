@@ -10,3 +10,10 @@
   margin-top:1em;
   min-height:200px;
 }
+// Change Toast to Materialize color scheme
+.toast-success {
+  background-color: #2BBBAD !important;
+}
+.toast-error {
+  background-color: #F44336 !important;
+}

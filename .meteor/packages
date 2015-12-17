@@ -24,7 +24,6 @@ useraccounts:core
 u2622:persistent-session
 materialize:materialize
 useraccounts:materialize
-natestrauser:font-awesome
 kadira:blaze-layout
 useraccounts:flow-routing
 arillo:flow-router-helpers
@@ -32,6 +31,11 @@ aldeed:autoform
 aldeed:collection2
 gildaspk:autoform-materialize
 sujith3g:jstree
-yuukan:streamy
 gildaspk:autoform-modals-materialize
 frozeman:persistent-minimongo
+fortawesome:fontawesome
+dburles:collection-helpers
+reywood:publish-composite
+chrismbeckett:toastr
+reactive-var
+meteorhacks:ssr

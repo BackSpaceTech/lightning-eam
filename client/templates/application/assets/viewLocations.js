@@ -45,7 +45,7 @@ Template.viewLocationsPage.onRendered(function () {
                 "valid_children": -1
             }
         },
-        "plugins": ["contextmenu", "dnd", "search", "state", "types", "wholerow"]
+        "plugins": ["search", "state", "types", "wholerow"]
     });
   });
 });
