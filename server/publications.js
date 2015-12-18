@@ -1,6 +1,12 @@
-Meteor.publish('locations', function() {
+// Data accessed server side.
+Meteor.publish('locationsx', function() {
   return Locations.find();
 });
-Meteor.publish('locationsx', function() {
-  return Locationsx.find();
-});
+// Data subset subscribed to on client
+Meteor.publish('locations', function(){
+  return Locations.find({}, {fields: {
+      text: 1,
+      id: 1,
+      parent:1
+    }});
+  });
