@@ -1,5 +1,7 @@
+// Subscribe to a subset of the Locations document
 Meteor.subscribe('locations');
 
+// Autoform hooks
 Meteor.startup(function () {
 
   var hooksObject = {
@@ -13,7 +15,6 @@ Meteor.startup(function () {
       toastr.error('Database operation failed.');
     }
   };
-
   // Pass `null` to run the hook for all autoforms (global hook)
   AutoForm.addHooks(null, hooksObject);
 

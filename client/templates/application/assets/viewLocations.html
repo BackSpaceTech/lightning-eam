@@ -1,29 +1,31 @@
 <template name = "viewLocationsPage">
-      <div class="row">
-          <div>
-              <h3>Locations and Assets</h3>
-              <div class="row">
-                <div class="col s12 m9 l10">
+    <div class="row">
+        <div>
+            <h3>Locations and Assets</h3>
+            <div class="row">
+              <div class="col s12 m9 l10">
+                {{#if serverConnected}}
                   <a href="{{pathFor '/assets/create-location'}}">
                     <button type="button" id="newLoc" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new location">
-                    <i class="fa fa-map-pin"></i> New</button>
+                      <i class="material-icons">location_on</i><i class="material-icons">settings_input_antenna</i> New</button>
                   </a>
                   <a href="{{pathFor '/assets/create-location'}}">
                     <button type="button" id="newAsset" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new asset">
-                    <i class="fa fa-industry"></i> New</button>
+                    <i class="fa fa-industry button-fa"></i><i class="material-icons">settings_input_antenna</i> New</button>
                   </a>
-                    <button type="button" class="btn waves-effect waves-light" id="editLoc"><i class="fa fa-edit"></i> Edit</button>
-                    <button type="button" class="btn waves-effect waves-light red" id="deleteLoc"><i class="fa fa-remove"></i> Delete</button>
-                    <button type="button" class="btn waves-effect waves-light" onclick="history.back(-1)"><i class="fa fa-arrow-left"></i> Back</button>
-                </div>
-                <div style="text-align:right;" class="col s12 m3 l2 z-depth-1">
-                    <input type="text" value="" id="view_q" placeholder="Search" />
-                </div>
+                  <button type="button" class="btn waves-effect waves-light" id="editLoc"><i class="fa fa-edit"></i><i class="material-icons">settings_input_antenna</i> Edit</button>
+                  <button type="button" class="btn waves-effect waves-light red" id="deleteLoc"><i class="material-icons">delete</i><i class="material-icons">settings_input_antenna</i> Delete</button>
+                {{/if}}
+                <a href="{{pathFor 'assets/view-locations'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back</button></a>
               </div>
-              <div class="row treeview">
-                <div class="row teal lighten-1 white-text z-depth-1">&nbsp;&nbsp;{{locationDetails}}</div>
-                    <div id="jstree_view" class="row treeview z-depth-1"></div>
+              <div style="text-align:right;" class="col s12 m3 l2 z-depth-1">
+                  <input type="text" value="" id="view_q" placeholder="Search" />
               </div>
-          </div>
-      </div>
-  </template>
+            </div>
+            <div class="row treeview">
+              <div class="row teal lighten-1 white-text z-depth-1">&nbsp;&nbsp;{{locationDetails}}</div>
+                  <div id="jstree_view" class="row treeview z-depth-1"></div>
+            </div>
+        </div>
+    </div>
+</template>
