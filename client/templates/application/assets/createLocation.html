@@ -5,27 +5,32 @@
 </template>
 
 <template name="insertLocationForm">
+  <br>
   <div class="row">
-    <br>
-    {{#autoForm collection="Locations" id="insertLocationForm" type="insert"}}
-      <fieldset>
-        <legend>Create Location</legend>
-        <div>
-          {{> afQuickField name='text'}}
-        </div>
-        <div class="col s12 m6 l3">
-          {{> afQuickField name='id'}}
-        </div>
-        <div class="col s12 m6 l3">
-          {{> afQuickField name='type'}}
-        </div>
-        <div class="col s12 m6 l3">
-          {{> afQuickField name='parent' value=parentID }}
-        </div>
-      </fieldset>
-      <button type="submit" class="btn waves-effect waves-light">Insert</button>
-      <button type="button" class="btn waves-effect waves-light red" onclick="history.back(-1)">Cancel</button>
-    {{/autoForm}}
-    <br>
+    {{#autoForm schema=locationFormSchema id="locationForm" type="method" meteormethod="createLoc"}}
+    <fieldset>
+      <legend>New Location</legend>
+      <div class="col s12 m6 l3">
+        {{> afQuickField name="id"}}
+      </div>
+      <div class="col s12 m6 l3">
+        {{> afQuickField name="type"}}
+      </div>
+      <div class="col s12 m6 l3">
+        {{> afQuickField name="parent" value=parentID}}
+      </div>
+      <div>
+        {{> afQuickField name="text"}}
+      </div>
+      <div>
+        {{> afQuickField name="description" rows=10}}
+      </div>
+      <div>
+        <button type="submit" class="btn waves-effect waves-light">Submit</button>
+        <button type="reset" class="btn waves-effect waves-light red">Reset</button>
+        <a href="{{pathFor '../assets/view-locations'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back</button></a>
+      </div>
+    </fieldset>
+  {{/autoForm}}
   </div>
 </template>

@@ -53,7 +53,14 @@ Template.viewLocationsPage.onRendered(function () {
 
 Template.viewLocationsPage.events({
   'click #newLoc': function(e) {
-    Session.set("formContext","newLoc");
+    if (Session.get("isAsset")===true){
+      alert("You cannot create a location with an asset as parent.")
+    }
+    else{
+      Session.set("formContext","newLoc");
+      FlowRouter.go('/assets/create-location')
+    }
+    return
   },
   'click #newAsset': function(e) {
     Session.set("formContext","newAsset");
@@ -70,7 +77,15 @@ Template.viewLocationsPage.helpers({
   locationDetails: function() {
     var temp = Session.get("idTreeView");
     var temp2 = Locations.find({id:String(temp)}).fetch();
-    return (temp + " - " + temp2[0].text)
+    if (temp2[0].type=='location'){
+      temp3 = 'Location '+ temp;
+      Session.set("isAsset",false);
+    }
+    else{
+      temp3 = 'Asset ' + temp;
+      Session.set("isAsset",true);
+    }
+    return (temp3 + " - " + temp2[0].text)
   },
   // Disable create/edit if not connected
   serverConnected: function() {
