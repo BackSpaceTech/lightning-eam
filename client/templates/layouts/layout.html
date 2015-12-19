@@ -41,7 +41,13 @@
   <div class="navbar-fixed">
     <nav class="teal darken-3">
       <div class="nav-wrapper flow-text">
-        <a href="{{pathFor '/'}}" class="brand-logo right"><i class="fa fa-flash"></i></a>
+        <a href="{{pathFor '/'}}" class="brand-logo right">
+          {{#if serverConnected}}
+            <i class="fa fa-flash light-green-text"></i>
+          {{else}}
+            <i class="fa fa-flash red-text"></i>
+          {{/if}}
+        </a>
         <ul class="left hide-on-med-and-down">
           <li class="waves-effect waves-light"><a href="{{pathFor '/assets'}}">Assets</a></li>
           <li class="waves-effect waves-light"><a href="{{pathFor '/work'}}">Work Mgt</a></li>
