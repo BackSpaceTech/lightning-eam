@@ -5,20 +5,34 @@
             <div class="row">
               <div class="col s12 m9 l10">
                 {{#if serverConnected}}
+                <div class=" hide-on-large-only">
+                  <a href="{{pathFor '../assets'}}"><button type="button" class="btn-floating waves-effect waves-light"><i class="material-icons">skip_previous</i></button></a>
+                  <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+                    <a class="btn-floating btn-large red">
+                      <i class="large mdi-navigation-menu"></i>
+                    </a>
+                    <ul>
+                      <li><a id="copyLoc2" class="btn-floating yellow darken-1"><i class="fa fa-copy"></i></a></li>
+                      <li><a id="editLoc2" class="btn-floating blue"><i class="fa fa-edit"></i></a></li>
+                      <li><a id="newAss2" class="btn-floating green"><i class="fa fa-industry"></i></a></li>
+                      <li><a id="newLoc2" class="btn-floating green"><i class="fa fa-map-marker"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="hide-on-med-and-down">
                   <a href="{{pathFor '/assets/view'}}">
-                    <button type="button" class="btn waves-effect waves-light"><i class="fa fa-binoculars"></i> View</button>
+                    <button type="button" class="btn waves-effect waves-light"><i class="fa fa-binoculars"></i></button>
                   </a>
                   <button type="button" id="newLoc" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new location">
-                      <i class=" fa fa-map-marker"></i> New</button>
-                  <a href="{{pathFor '/assets/create-asset'}}">
-                    <button type="button" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new asset">
-                    <i class="fa fa-industry button-fa"></i> New</button>
-                  </a>
-                  <button type="button" id="editLoc" class="btn waves-effect waves-light"><i class="fa fa-edit"></i> Edit</button>
-                  <button type="button" id="copyLoc" class="btn waves-effect waves-light"><i class="fa fa-copy"></i> Copy</button>
-                  <button type="button" id="deleteLoc" class="btn waves-effect waves-light red"><i class="material-icons">delete</i> Delete</button>
+                    <i class="fa fa-map-marker"></i></button>
+                  <button type="button" id="newAss2" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new asset">
+                    <i class="fa fa-industry"></i></button>
+                  <button type="button" id="editLoc" class="btn waves-effect waves-light"><i class="fa fa-edit"></i></button>
+                  <button type="button" id="copyLoc" class="btn waves-effect waves-light"><i class="fa fa-copy"></i></button>
+                  <button type="button" id="deleteLoc" class="btn waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                  <a href="{{pathFor '../assets'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i></button></a>
+                </div>
                 {{/if}}
-                <a href="{{pathFor '../assets'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back</button></a>
               </div>
               <div style="text-align:right;" class="col s12 m3 l2 z-depth-1">
                   <input type="text" value="" id="view_q" placeholder="Search" />

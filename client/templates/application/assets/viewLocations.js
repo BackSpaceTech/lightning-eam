@@ -69,13 +69,47 @@ Template.viewLocationsPage.events({
     }
     return
   },
+  'click #newLoc2': function(e) {
+    var temp = Locations.findOne({"id":Session.get("idTreeView").toString()});
+    if (!temp){ // No locations
+      FlowRouter.go('/assets/create-location')
+    }
+    else if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+      alert("You cannot create a location with an asset as parent.")
+    }
+    else{
+      FlowRouter.go('/assets/create-location')
+    }
+    return
+  },
+  'click #newAss': function(e) {
+    FlowRouter.go('/assets/create-asset')
+    return
+  },
+  'click #newAss2': function(e) {
+    FlowRouter.go('/assets/create-asset')
+    return
+  },
   'click #editLoc': function(e) {
     if (Session.get("idTreeView").toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
       if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
-        FlowRouter.go('/assets/edit-asset') 
+        FlowRouter.go('/assets/edit-asset')
+      }
+      else{
+        FlowRouter.go('/assets/edit-location')
+      }
+    }
+  },
+  'click #editLoc2': function(e) {
+    if (Session.get("idTreeView").toString()=== "#"){
+      alert("No location or asset selected!")
+    }
+    else{
+      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+        FlowRouter.go('/assets/edit-asset')
       }
       else{
         FlowRouter.go('/assets/edit-location')
@@ -90,6 +124,14 @@ Template.viewLocationsPage.events({
       FlowRouter.go('/assets/duplicate')
     }
   },
+  'click #copyLoc2': function(e) {
+    if (Session.get("idTreeView").toString()=== "#"){
+      alert("No location or asset selected!")
+    }
+    else{
+      FlowRouter.go('/assets/duplicate')
+    }
+  },  
   'click #deleteLoc': function(e) {
     if (Session.get("idTreeView").toString()=== "#"){
       alert("No location or asset selected!")
