@@ -1,0 +1,32 @@
+<template name = "duplicateLocationPage">
+  <div class="flow-text">
+    <br>
+    <div class="row">
+      {{#autoForm schema=locationFormSchema id="duplicateLocationPage" type="method" meteormethod="createLoc"}}
+      <fieldset>
+        <legend>Duplicate</legend>
+        {{#with duplicateDoc}}
+          <div class="col s12 m6 l3">
+            {{> afQuickField name="id"}}
+          </div>
+            {{> afQuickField name="type" value=type}}
+          <div class="col s12 m6 l3">
+            {{> afQuickField name="parent" value=parent}}
+          </div>
+          <div>
+            {{> afQuickField name="text" value=text}}
+          </div>
+          <div>
+            {{> afQuickField name="description" value=description rows=10}}
+          </div>
+        {{/with}}
+        <div>
+          <button type="submit" class="btn waves-effect waves-light">Submit</button>
+          <button type="reset" class="btn waves-effect waves-light red">Reset</button>
+          <a href="{{pathFor '../assets/view-locations'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back</button></a>
+        </div>
+      </fieldset>
+    {{/autoForm}}
+    </div>
+  </div>
+</template>

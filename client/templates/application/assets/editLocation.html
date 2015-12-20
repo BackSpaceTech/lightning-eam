@@ -6,9 +6,6 @@
         {{#autoForm schema=locationFormSchema id="editLocationPage" type="update" collection="Locations" doc=currentDoc}}
          <legend>Edit Location / Asset</legend>
          <div class="col s12 m6 l3">
-           {{> afQuickField name='id'}}
-         </div>
-         <div class="col s12 m6 l3">
            {{> afQuickField name='type'}}
          </div>
          <div class="col s12 m6 l3">
@@ -16,6 +13,7 @@
          </div>
          {{> afQuickField name='text'}}
          {{> afQuickField name='description' rows=3}}
+         {{> afQuickField name='id' type="hidden"}} 
          <div class="form-group">
            <button type="submit" class="btn waves-effect waves-light">Submit</button>
            <button type="reset" class="btn waves-effect waves-light red">Reset Form</button>

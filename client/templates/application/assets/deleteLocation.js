@@ -6,7 +6,15 @@ Template.deleteLocationPage.helpers({
 
 Template.deleteLocationPage.events({
   'click #btnDeleteLoc': function(e) {
-    var temp = Locations.findOne({"id":Session.get("idTreeView").toString()});
-    Meteor.call("deleteLoc", temp._id);
+    // Check for children
+    var temp = Locations.findOne({"parent":Session.get("idTreeView").toString()})
+    if (temp){
+      alert("You cannot delete an asset or location that has children!");
+    }
+    else{
+      temp = Locations.findOne({"id":Session.get("idTreeView").toString()});
+      Meteor.call("deleteLoc", temp._id);
+    }
+    return
   }
 });

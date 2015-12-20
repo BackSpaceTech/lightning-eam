@@ -52,7 +52,11 @@ Template.viewLocationsPage.onRendered(function () {
 
 Template.viewLocationsPage.events({
   'click #newLoc': function(e) {
-    if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+    var temp = Locations.findOne({"id":Session.get("idTreeView").toString()});
+    if (!temp){ // No locations
+      FlowRouter.go('/assets/create-location')
+    }
+    else if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
       alert("You cannot create a location with an asset as parent.")
     }
     else{
