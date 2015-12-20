@@ -73,17 +73,10 @@ Template.viewLocationsPage.events({
 });
 
 Template.viewLocationsPage.helpers({
-  locationDetails: function() {
+  locationID: function() {
     var temp = Session.get("idTreeView");
     var temp2 = Locations.find({id:String(temp)}).fetch();
-    if (temp2[0].type=='location'){
-      Session.set("isAsset",false);
-    }
-    else{
-      temp3 = 'Asset ' + temp;
-      Session.set("isAsset",true);
-    }
-    return (temp3 + " - " + temp2[0].text)
+    return (temp + " - " + temp2[0].text)
   },
   // Disable create/edit if not connected
   serverConnected: function() {

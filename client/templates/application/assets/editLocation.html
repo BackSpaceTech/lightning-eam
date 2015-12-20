@@ -1,18 +1,25 @@
 <template name = "editLocationPage">
     <div class="flow-text">
       {{#if Template.subscriptionsReady}}
-      <div>
-      <br>
-       {{#autoForm schema=locationFormSchema id="editLocationPage" type="update" collection="Locations" doc=currentDoc}}
+      <div class="row">
+        <br>
+        {{#autoForm schema=locationFormSchema id="editLocationPage" type="update" collection="Locations" doc=currentDoc}}
          <legend>Edit Location / Asset</legend>
-         {{> afQuickField name='id'}}
+         <div class="col s12 m6 l3">
+           {{> afQuickField name='id'}}
+         </div>
+         <div class="col s12 m6 l3">
+           {{> afQuickField name='type'}}
+         </div>
+         <div class="col s12 m6 l3">
+           {{> afQuickField name='parent'}}
+         </div>
          {{> afQuickField name='text'}}
          {{> afQuickField name='description' rows=3}}
-         {{> afQuickField name='type'}}
-         {{> afQuickField name='parent'}}
          <div class="form-group">
-           <button type="submit" class="btn btn-primary" disabled="{{disableButtons}}">Submit</button>
-           <button type="reset" class="btn btn-default" disabled="{{disableButtons}}">Reset Form</button>
+           <button type="submit" class="btn waves-effect waves-light">Submit</button>
+           <button type="reset" class="btn waves-effect waves-light red">Reset Form</button>
+           <a href="{{pathFor '../assets/view-locations'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back</button></a>
          </div>
        {{/autoForm}}
      </div>

@@ -14,7 +14,9 @@
                   <a href="{{pathFor '/assets/edit-location'}}">
                     <button type="button" class="btn waves-effect waves-light" id="editLoc"><i class="fa fa-edit"></i> Edit</button>
                   </a>
-                  <button type="button" class="btn waves-effect waves-light red" id="deleteLoc"><i class="material-icons">delete</i> Delete</button>
+                  <a href="{{pathFor '/assets/delete-location'}}">
+                    <button type="button" class="btn waves-effect waves-light red" id="deleteLoc"><i class="material-icons">delete</i> Delete</button>
+                  </a>
                 {{/if}}
                 <a href="{{pathFor '../assets'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back</button></a>
               </div>
@@ -23,7 +25,7 @@
               </div>
             </div>
             <div class="row treeview">
-              <div class="row teal lighten-1 white-text z-depth-1">&nbsp;&nbsp;{{locationDetails}}</div>
+              <div class="row teal lighten-1 white-text z-depth-1">&nbsp;&nbsp;{{locationID}}</div>
                   <div id="jstree_view" class="row treeview z-depth-1"></div>
             </div>
         </div>
