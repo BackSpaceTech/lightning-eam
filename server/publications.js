@@ -1,9 +1,13 @@
 // Data subset subscribed to on client
-Meteor.publish('locations', function(){
+Meteor.publish('locations', function() {
   return Locations.find({}, {fields: {
-    text: 1,
-    id: 1,
-    type:1,
-    parent:1
+    text: true,
+    id: true,
+    type:true,
+    parent:true
   }});
+});
+
+Meteor.publish('singleLocation', function(locationId) {
+  return Locations.find({id:locationId});
 });

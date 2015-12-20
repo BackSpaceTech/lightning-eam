@@ -25,7 +25,6 @@ Template.viewLocationsPage.onRendered(function () {
               "variant" : "large"
           },
           'data' : Locations.find().fetch()
-
       },
       "types": {
           "#": {
@@ -78,7 +77,6 @@ Template.viewLocationsPage.helpers({
     var temp = Session.get("idTreeView");
     var temp2 = Locations.find({id:String(temp)}).fetch();
     if (temp2[0].type=='location'){
-      temp3 = 'Location '+ temp;
       Session.set("isAsset",false);
     }
     else{

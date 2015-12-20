@@ -1,15 +1,15 @@
-<template name = "createLocationPage">
+<template name = "createAssetPage">
     <div class="flow-text">
-      {{> insertLocationForm}}
+      {{> insertAssetForm}}
     </div>
 </template>
 
-<template name="insertLocationForm">
+<template name="insertAssetForm">
   <br>
   <div class="row">
-    {{#autoForm schema=locationFormSchema id="locationForm" type="method" meteormethod="createLoc"}}
+    {{#autoForm schema=locationFormSchema id="assetForm" type="method" meteormethod="createLoc"}}
     <fieldset>
-      <legend>New Location</legend>
+      <legend>New Asset</legend>
       <div class="col s12 m6 l3">
         {{> afQuickField name="id"}}
       </div>

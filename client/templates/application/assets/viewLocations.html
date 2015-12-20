@@ -7,11 +7,13 @@
                 {{#if serverConnected}}
                     <button type="button" id="newLoc" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new location">
                       <i class="material-icons">location_on</i> New</button>
-                  <a href="{{pathFor '/assets/create-location'}}">
+                  <a href="{{pathFor '/assets/create-asset'}}">
                     <button type="button" id="newAsset" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new asset">
                     <i class="fa fa-industry button-fa"></i> New</button>
                   </a>
-                  <button type="button" class="btn waves-effect waves-light" id="editLoc"><i class="fa fa-edit"></i> Edit</button>
+                  <a href="{{pathFor '/assets/edit-location'}}">
+                    <button type="button" class="btn waves-effect waves-light" id="editLoc"><i class="fa fa-edit"></i> Edit</button>
+                  </a>
                   <button type="button" class="btn waves-effect waves-light red" id="deleteLoc"><i class="material-icons">delete</i> Delete</button>
                 {{/if}}
                 <a href="{{pathFor '../assets'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back</button></a>
