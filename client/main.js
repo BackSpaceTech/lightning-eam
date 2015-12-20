@@ -12,9 +12,10 @@ Meteor.startup(function () {
 
     // Called when any submit operation fails
     onError: function(formType, error) {
-      toastr.error('Database operation failed.'  + " error:", error);
+      toastr.error(error);
     }
   };
   // Pass `null` to run the hook for all autoforms (global hook)
   AutoForm.addHooks(null, hooksObject);
+
 });

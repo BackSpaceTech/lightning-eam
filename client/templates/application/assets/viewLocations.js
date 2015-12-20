@@ -12,7 +12,12 @@ Template.viewLocationsPage.onRendered(function () {
         }, 250);
     });
     $('#jstree_view').on("changed.jstree", function (e, data) {
-      Session.set("idTreeView",data.selected);
+      if (data.selected.length!==0) {
+        Session.set("idTreeView",data.selected);
+      }
+      else{
+        Session.set("idTreeView","#");
+      }
     });
     $('#jstree_view').jstree({
       "core": {
@@ -63,6 +68,35 @@ Template.viewLocationsPage.events({
       FlowRouter.go('/assets/create-location')
     }
     return
+  },
+  'click #editLoc': function(e) {
+    if (Session.get("idTreeView").toString()=== "#"){
+      alert("No location or asset selected!")
+    }
+    else{
+      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+        FlowRouter.go('/assets/edit-asset') 
+      }
+      else{
+        FlowRouter.go('/assets/edit-location')
+      }
+    }
+  },
+  'click #copyLoc': function(e) {
+    if (Session.get("idTreeView").toString()=== "#"){
+      alert("No location or asset selected!")
+    }
+    else{
+      FlowRouter.go('/assets/duplicate')
+    }
+  },
+  'click #deleteLoc': function(e) {
+    if (Session.get("idTreeView").toString()=== "#"){
+      alert("No location or asset selected!")
+    }
+    else{
+      FlowRouter.go('/assets/delete-location')
+    }
   }
 });
 

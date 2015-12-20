@@ -5,21 +5,18 @@
             <div class="row">
               <div class="col s12 m9 l10">
                 {{#if serverConnected}}
-                    <button type="button" id="newLoc" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new location">
-                      <i class="material-icons">location_on</i> New</button>
+                  <a href="{{pathFor '/assets/view'}}">
+                    <button type="button" class="btn waves-effect waves-light"><i class="fa fa-binoculars"></i> View</button>
+                  </a>
+                  <button type="button" id="newLoc" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new location">
+                      <i class=" fa fa-map-marker"></i> New</button>
                   <a href="{{pathFor '/assets/create-asset'}}">
                     <button type="button" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new asset">
                     <i class="fa fa-industry button-fa"></i> New</button>
                   </a>
-                  <a href="{{pathFor '/assets/edit-location'}}">
-                    <button type="button" class="btn waves-effect waves-light"><i class="fa fa-edit"></i> Edit</button>
-                  </a>
-                  <a href="{{pathFor '/assets/duplicate'}}">
-                    <button type="button" class="btn waves-effect waves-light"><i class="fa fa-edit"></i> Duplicate</button>
-                  </a>
-                  <a href="{{pathFor '/assets/delete-location'}}">
-                    <button type="button" class="btn waves-effect waves-light red"><i class="material-icons">delete</i> Delete</button>
-                  </a>
+                  <button type="button" id="editLoc" class="btn waves-effect waves-light"><i class="fa fa-edit"></i> Edit</button>
+                  <button type="button" id="copyLoc" class="btn waves-effect waves-light"><i class="fa fa-copy"></i> Copy</button>
+                  <button type="button" id="deleteLoc" class="btn waves-effect waves-light red"><i class="material-icons">delete</i> Delete</button>
                 {{/if}}
                 <a href="{{pathFor '../assets'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back</button></a>
               </div>

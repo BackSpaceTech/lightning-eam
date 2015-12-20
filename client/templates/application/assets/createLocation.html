@@ -6,29 +6,83 @@
 
 <template name="insertLocationForm">
   <br>
-  <div class="row">
-    {{#autoForm schema=locationFormSchema id="locationForm" type="method" meteormethod="createLoc"}}
-    <fieldset>
-      <legend>New Location</legend>
+  {{#autoForm schema=locationFormSchema id="insertLocationForm" type="method" meteormethod="createLoc"}}
+  <fieldset>
+    <legend>New Location</legend>
+    <div class="row">
       <div class="col s12 m6 l3">
         {{> afQuickField name="id"}}
       </div>
-        {{> afQuickField name="type" value=locType type="hidden"}}
+        {{> afQuickField name="type" value="location" type="hidden"}}
       <div class="col s12 m6 l3">
-        {{> afQuickField name="parent" value=parentID}}
+        {{> afQuickField name="parent" value=parentID defaultValue="#"}}
+      </div>
+      <div class="col s12 m6 l3">
+        {{> afQuickField name="criticality"}}
       </div>
       <div>
         {{> afQuickField name="text"}}
       </div>
       <div>
-        {{> afQuickField name="description" rows=10}}
+        {{> afQuickField name="description"}}
       </div>
       <div>
+        {{> afQuickField name="safety"}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="divider teal"></div>
+      <div class="section">
+        <h6 class="teal-text">Geolocation Information</h6>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name="lat1"}}
+        </div>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name="long1"}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="divider teal"></div>
+      <div class="section">
+        <h6 class="teal-text">Address Information</h6>
+        <div>
+          {{> afQuickField name="address"}}
+        </div>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name="state"}}
+        </div>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name="zip"}}
+        </div>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name="country"}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="divider teal"></div>
+      <div class="section">
+        <h6 class="teal-text">Additional Information</h6>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name="urlTechData"}}
+        </div>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name="urlOpData"}}
+        </div>
+        <div class="col s12 m6 l3">
+          {{> afQuickField name="urlPhoto"}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="divider teal"></div>
+      <div class="section"><br>
         <button type="submit" class="btn waves-effect waves-light">Submit</button>
         <button type="reset" class="btn waves-effect waves-light red">Reset</button>
         <a href="{{pathFor '../assets/view-locations'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back</button></a>
       </div>
+    </div>
     </fieldset>
   {{/autoForm}}
-  </div>
 </template>

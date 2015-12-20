@@ -1,13 +1,6 @@
 Template.insertLocationForm.helpers({
   parentID: function() {
-    var temp = Session.get("idTreeView");
-    if (temp == ""){
-      temp = "#";
-    }
-    return temp;
-  },
-  locType: function() {
-    return "location";
+    return Session.get("idTreeView");
   },
   locationFormSchema: function() {
     return Schema.locations;

@@ -1,10 +1,10 @@
-<template name = "editLocationPage">
+<template name = "editAssetPage">
     <div class="flow-text">
       {{#if Template.subscriptionsReady}}
       <br>
-      {{#autoForm schema=locationFormSchema id="editLocationPage" type="update" collection="Locations" doc=currentDoc}}
+      {{#autoForm schema=locationFormSchema id="editAssetPage" type="update" collection="Locations" doc=currentDoc}}
       <fieldset>
-       <legend>Edit Location</legend>
+       <legend>Edit Asset</legend>
          <div class="row">
            <div class="col s12 m6 l3">
              {{> afQuickField name="type"}}
@@ -24,34 +24,61 @@
            <div>
              {{> afQuickField name="safety"}}
            </div>
+           <div class="col s12 m6 l3">
+             {{> afQuickField name="classification"}}
+           </div>
+           <div class="col s12 m6 l3">
+             {{> afQuickField name="status"}}
+           </div>
+           <div class="col s12 m6 l3">
+             {{> afQuickField name="rotable"}}
+           </div>
          </div>
          <div class="row">
            <div class="divider teal"></div>
            <div class="section">
              <h6 class="teal-text">Geolocation Information</h6>
              <div class="col s12 m6 l3">
+               {{> afQuickField name="linear"}}
+             </div>
+             <div class="col s12 m6 l3">
                {{> afQuickField name="lat1"}}
              </div>
              <div class="col s12 m6 l3">
                {{> afQuickField name="long1"}}
+             </div>
+             <div class="col s12 m6 l3">
+               {{> afQuickField name="lat2"}}
+             </div>
+             <div class="col s12 m6 l3">
+               {{> afQuickField name="long2"}}
              </div>
            </div>
          </div>
          <div class="row">
            <div class="divider teal"></div>
            <div class="section">
-             <h6 class="teal-text">Address Information</h6>
+             <h6 class="teal-text">Manufacture Information</h6>
+             <div class="col s12 m6 l3">
+               {{> afQuickField name="serialNumber"}}
+             </div>
+             <div class="col s12 m6 l3">
+               {{> afQuickField name="modelNumber"}}
+             </div>
+             <div class="col s12 m6 l3">
+               {{> afQuickField name="manufacturer"}}
+             </div>
+             <div class="col s12 m6 l3">
+               {{> afQuickField name="manufPhone"}}
+             </div>
              <div>
-               {{> afQuickField name="address"}}
+               {{> afQuickField name="manufAddress"}}
              </div>
              <div class="col s12 m6 l3">
-               {{> afQuickField name="state"}}
+               {{> afQuickField name="manufState"}}
              </div>
              <div class="col s12 m6 l3">
-               {{> afQuickField name="zip"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="country"}}
+               {{> afQuickField name="manufZip"}}
              </div>
            </div>
          </div>
@@ -67,6 +94,17 @@
              </div>
              <div class="col s12 m6 l3">
                {{> afQuickField name="urlPhoto"}}
+             </div>
+             <div class="col s12 m6 l3">
+               {{> afQuickField name="referenceID"}}
+             </div>
+             <div class="col s12 m6 l3">
+               <h6 class="grey-text text-lighten-1">Manufacture Date</h6>
+               {{> afQuickField name="manufDate"}}
+             </div>
+             <div class="col s12 m6 l3">
+               <h6 class="grey-text text-lighten-1">Install Date</h6>
+               {{> afQuickField name="installDate"}}
              </div>
            </div>
          </div>
