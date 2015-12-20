@@ -1,0 +1,18 @@
+<template name = "deleteLocationPage">
+    <div class="flow-text">
+      {{#if Template.subscriptionsReady}}
+      <div class="row">
+        <br>
+        {{#with deleteDoc}}
+          <H1 class="red-text">Delete {{text}}?</h1>
+          <H2>Warning this will permanently delete {{text}}! This will also affect any other documents that refer to {{text}}.</h2>
+         {{/with}}
+         <br>
+         <div>
+           <button id="btnDeleteLoc" class="btn waves-effect waves-light red">Delete {{text}} permanently</button>
+           <a href="{{pathFor '../assets/view-locations'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i> Back to safety</button></a>
+         </div>
+     </div>
+     {{/if}}
+  </div>
+</template>

@@ -52,23 +52,13 @@ Template.viewLocationsPage.onRendered(function () {
 
 Template.viewLocationsPage.events({
   'click #newLoc': function(e) {
-    if (Session.get("isAsset")===true){
+    if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
       alert("You cannot create a location with an asset as parent.")
     }
     else{
-      Session.set("formContext","newLoc");
       FlowRouter.go('/assets/create-location')
     }
     return
-  },
-  'click #newAsset': function(e) {
-    Session.set("formContext","newAsset");
-  },
-  'click #editLoc': function(e) {
-    Session.set("formContext","editLoc");
-  },
-  'click #deleteLoc': function(e) {
-    Session.set("formContext","deleteLoc");
   }
 });
 
