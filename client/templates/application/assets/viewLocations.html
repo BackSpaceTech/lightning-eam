@@ -1,14 +1,16 @@
 <template name = "viewLocationsPage">
     <div class="row">
         <div>
-            <h3>Locations and Assets</h3>
+            <h3>Locations and Assets
+            <a href="{{pathFor '../assets'}}"><button type="button" class="btn-floating waves-effect waves-light hide-on-large-only">
+              <i class="material-icons">skip_previous</i></button></a>
+            </h3>
             <div class="row">
               <div class="col s12 m9 l10">
                 {{#if serverConnected}}
-                <div class=" hide-on-large-only">
-                  <a href="{{pathFor '../assets'}}"><button type="button" class="btn-floating waves-effect waves-light"><i class="material-icons">skip_previous</i></button></a>
+                <div class="hide-on-large-only">
                   <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
-                    <a class="btn-floating btn-large red">
+                    <a class="btn-floating btn-large purple">
                       <i class="large mdi-navigation-menu"></i>
                     </a>
                     <ul>

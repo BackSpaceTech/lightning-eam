@@ -121,7 +121,12 @@ Template.viewLocationsPage.events({
       alert("No location or asset selected!")
     }
     else{
-      FlowRouter.go('/assets/duplicate')
+      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+        FlowRouter.go('/assets/duplicate-asset')
+      }
+      else{
+        FlowRouter.go('/assets/duplicate-location')
+      }
     }
   },
   'click #copyLoc2': function(e) {
@@ -129,9 +134,14 @@ Template.viewLocationsPage.events({
       alert("No location or asset selected!")
     }
     else{
-      FlowRouter.go('/assets/duplicate')
+      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+        FlowRouter.go('/assets/duplicate-asset')
+      }
+      else{
+        FlowRouter.go('/assets/duplicate-location')
+      }
     }
-  },  
+  },
   'click #deleteLoc': function(e) {
     if (Session.get("idTreeView").toString()=== "#"){
       alert("No location or asset selected!")
