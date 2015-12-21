@@ -1,138 +1,123 @@
-<template name = "viewAsssetPage">
-    <div class="flow-text">
-      {{#if Template.subscriptionsReady}}
-      <br>
+<template name = "viewAssetPage">
+  <div class="flow-text">
+    {{#if Template.subscriptionsReady}}
+    <br>
+    <fieldset>
+        <legend>View Asset</legend>
+        {{#with viewDoc}}
+        <div class="row">
+          <div class="col s12 m6 l3">
+            <label>Location ID</label><p class="teal-text"><small>{{id}}</small></p>
+          </div>
+          <div class="col s12 m6 l3">
+            <label>Location Type</label><p class="teal-text"><small>{{type}}</small></p>
+          </div>
+          <div class="col s12 m6 l3">
+            <label>Parent ID</label><p class="teal-text"><small>{{parent}}</small></p>
+          </div>
+          <div class="col s12 m6 l3">
+            <label>Criticality</label><p class="teal-text"><small>{{criticality}}</small></p>
+          </div>
+          <div class="col s12 m6 l3">
+            <label>Classification</label><p class="teal-text"><small>{{classification}}</small></p>
+          </div>
+          <div class="col s12 m6 l3">
+            <label>Rotable Asset</label><p class="teal-text"><small>{{rotable}}</small></p>
+          </div>
+          <div class="col s12 m6 l3">
+            <label>Status</label><p class="teal-text"><small>{{status}}</small></p>
+          </div>
 
-
-
-
-
-
-
-
-
-
-
-      {{#autoForm schema=locationFormSchema id="viewAsssetPage" type="update" collection="Locations" doc=currentDoc}}
-      <fieldset>
-       <legend>Edit Asset</legend>
-         <div class="row">
-           <div class="col s12 m6 l3">
-             {{> afQuickField name="type"}}
-           </div>
-           <div class="col s12 m6 l3">
-             {{> afQuickField name="parent"}}
-           </div>
-           <div class="col s12 m6 l3">
-             {{> afQuickField name="criticality"}}
-           </div>
-           <div>
-             {{> afQuickField name="text"}}
-           </div>
-           <div>
-             {{> afQuickField name="description"}}
-           </div>
-           <div>
-             {{> afQuickField name="safety"}}
-           </div>
-           <div class="col s12 m6 l3">
-             {{> afQuickField name="classification"}}
-           </div>
-           <div class="col s12 m6 l3">
-             {{> afQuickField name="status"}}
-           </div>
-           <div class="col s12 m6 l3">
-             {{> afQuickField name="rotable"}}
-           </div>
-         </div>
-         <div class="row">
-           <div class="divider teal"></div>
-           <div class="section">
-             <h6 class="teal-text">Geolocation Information</h6>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="linear"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="lat1"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="long1"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="lat2"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="long2"}}
-             </div>
-           </div>
-         </div>
-         <div class="row">
-           <div class="divider teal"></div>
-           <div class="section">
-             <h6 class="teal-text">Manufacture Information</h6>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="serialNumber"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="modelNumber"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="manufacturer"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="manufPhone"}}
-             </div>
-             <div>
-               {{> afQuickField name="manufAddress"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="manufState"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="manufZip"}}
-             </div>
-           </div>
-         </div>
-         <div class="row">
-           <div class="divider teal"></div>
-           <div class="section">
-             <h6 class="teal-text">Additional Information</h6>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="urlTechData"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="urlOpData"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="urlPhoto"}}
-             </div>
-             <div class="col s12 m6 l3">
-               {{> afQuickField name="referenceID"}}
-             </div>
-             <div class="col s12 m6 l3">
-               <h6 class="grey-text text-lighten-1">Manufacture Date</h6>
-               {{> afQuickField name="manufDate"}}
-             </div>
-             <div class="col s12 m6 l3">
-               <h6 class="grey-text text-lighten-1">Install Date</h6>
-               {{> afQuickField name="installDate"}}
-             </div>
-           </div>
-         </div>
-         <div class="form-group">
-           <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
-             <a class="btn-floating btn-large purple">
-               <i class="large mdi-navigation-menu"></i>
-             </a>
-             <ul>
-               <li><a href="{{pathFor '../assets/view-locations'}}" class="btn-floating yellow darken-1"><i class="material-icons">skip_previous</i></a></li>
-               <li><button class="btn-floating red" type="reset"><i class="fa fa-undo"></i></button></li>
-               <li><button class="btn-floating green" type="submit"><i class="fa fa-check"></i></button></li>
-             </ul>
-           </div>
-         </div>
-       </fieldset>
-       {{/autoForm}}
+          <div>
+            <label>Description</label><p class="teal-text"><small>{{description}}</small></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="divider teal"></div>
+          <div class="section">
+            <h6 class="teal-text">Geolocation Information</h6>
+            <div class="col s12 m6 l3">
+              <label>Linear Asset</label><p class="teal-text"><small>{{linear}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Lat1</label><p class="teal-text"><small>{{lat1}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Long1</label><p class="teal-text"><small>{{long1}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Lat2</label><p class="teal-text"><small>{{lat2}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Long2</label><p class="teal-text"><small>{{long2}}</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="divider teal"></div>
+          <div class="section">
+            <h6 class="teal-text">Manufacture Information</h6>
+            <div class="col s12 m6 l3">
+              <label>Serial Number</label><p class="teal-text"><small>{{serialNumber}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Model Number</label><p class="teal-text"><small>{{modelNumber}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Manufacturer</label><p class="teal-text"><small>{{manufacturer}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Manufacturer Phone</label><p class="teal-text"><small>{{manufPhone}}</small></p>
+            </div>
+            <div>
+              <label>Manufacturer Address</label><p class="teal-text"><small>{{manufAddress}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Manufacturer State</label><p class="teal-text"><small>{{manufState}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Manufacturer Zip</label><p class="teal-text"><small>{{manufZip}}</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="divider teal"></div>
+          <div class="section">
+            <h6 class="teal-text">Additional Information</h6>
+            <div class="col s12 m6 l3">
+              <label>Technical Data URL</label><p class="teal-text"><small>{{urlTechData}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Operational Data URL</label><p class="teal-text"><small>{{urlOpData}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Photo URL</label><p class="teal-text"><small>{{urlPhoto}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Reference ID</label><p class="teal-text"><small>{{referenceID}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Manufacture Date</label><p class="teal-text"><small>{{manufDate}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Install Date</label><p class="teal-text"><small>{{installDate}}</small></p>
+            </div>
+          </div>
+        </div>
+        {{/with}}
+        <div class="form-group">
+          <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-large purple">
+              <i class="large mdi-navigation-menu"></i>
+            </a>
+            <ul>
+              <li><a href="{{pathFor '../assets/view-locations'}}" class="btn-floating yellow darken-1"><i class="material-icons">skip_previous</i></a></li>
+              <li><a id="btnViewAssetPageCopy" class="btn-floating green"><i class="fa fa-copy"></i></a></li>
+              <li><a id="btnViewAssetPageEdit" class="btn-floating blue"><i class="fa fa-edit"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </fieldset>
       {{else}}
         {{>spinner}}
      {{/if}}
