@@ -5,7 +5,7 @@ Template.deleteLocationPage.helpers({
 });
 
 Template.deleteLocationPage.events({
-  'click #btnDeleteLoc': function(e) {
+  'click #btnDeleteLocationPage': function(e) {
     // Check for children
     var temp = Locations.findOne({"parent":Session.get("idTreeView").toString()})
     if (temp){

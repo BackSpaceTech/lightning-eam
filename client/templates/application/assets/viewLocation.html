@@ -1,0 +1,94 @@
+<template name = "viewLocationPage">
+    <div class="flow-text">
+      {{#if Template.subscriptionsReady}}
+      <br>
+      <fieldset>
+          <legend>View Location</legend>
+          {{#with viewDoc}}
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <label>Location ID</label><p><small>{{id}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Location Type</label><p><small>{{type}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Parent ID</label><p><small>{{parent}}</small></p>
+            </div>
+            <div class="col s12 m6 l3">
+              <label>Criticality</label><p><small>{{criticality}}</small></p>
+            </div>
+            <div>
+              <label>Title</label><p><small>{{text}}</small></p>
+            </div>
+            <div>
+              <label>Description</label><p><small>{{description}}</small></p>
+            </div>
+            <div>
+              <label>Safety</label><p><small>{{safety}}</small></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="divider teal"></div>
+            <div class="section">
+              <h6 class="teal-text">Geolocation Information</h6>
+              <div class="col s12 m6 l3">
+                <label>Lat1</label><p><small>{{lat1}}</small></p>
+              </div>
+              <div class="col s12 m6 l3">
+                <label>Long1</label><p><small>{{long1}}</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="divider teal"></div>
+            <div class="section">
+              <h6 class="teal-text">Address Information</h6>
+              <div class="col s12 m6 l3">
+                <label>Address</label><p><small>{{address}}</small></p>
+              </div>
+              <div class="col s12 m6 l3">
+                <label>State</label><p><small>{{state}}</small></p>
+              </div>
+              <div class="col s12 m6 l3">
+                <label>Zip</label><p><small>{{zip}}</small></p>
+              </div>
+              <div class="col s12 m6 l3">
+                <label>Country</label><p><small>{{country}}</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="divider teal"></div>
+            <div class="section">
+              <h6 class="teal-text">Additional Information</h6>
+              <div class="col s12 m6 l3">
+                <label>Technical Data URL</label><p><small>{{urlTechData}}</small></p>
+              </div>
+              <div class="col s12 m6 l3">
+                <label>Operational Data URL</label><p><small>{{urlOpData}}</small></p>
+              </div>
+              <div class="col s12 m6 l3">
+                <label>Photo URL</label><p><small>{{urlPhoto}}</small></p>
+              </div>
+            </div>
+          </div>
+        {{/with}}
+        <div class="form-group">
+          <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-large purple">
+              <i class="large mdi-navigation-menu"></i>
+            </a>
+            <ul>
+              <li><a href="{{pathFor '../assets/view-locations'}}" class="btn-floating yellow darken-1"><i class="material-icons">skip_previous</i></a></li>
+              <li><a id="btnViewLocationPageCopy" class="btn-floating green"><i class="fa fa-copy"></i></a></li>
+              <li><a id="btnViewLocationPageEdit" class="btn-floating blue"><i class="fa fa-edit"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </fieldset>
+      {{else}}
+        {{>spinner}}
+     {{/if}}
+    </div>
+</template>
