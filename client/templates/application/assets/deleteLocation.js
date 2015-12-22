@@ -15,6 +15,7 @@ Template.deleteLocationPage.events({
       temp = Locations.findOne({"id":Session.get("idTreeView").toString()});
       Meteor.call("deleteLoc", temp._id);
     }
+    FlowRouter.go('/assets/view-locations')    
     return
   }
 });

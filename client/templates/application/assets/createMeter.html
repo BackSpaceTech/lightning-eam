@@ -5,7 +5,7 @@
       <fieldset>
         {{#with currentDoc}}
           <legend>Create Meter for {{text}} (id: {{id}})</legend>
-            <form id="frmCreateMeterPage">
+            <form class="new-record">
               <br>
               <div class="row">
                 <div class="input-field col s12 m6 l3">
@@ -17,13 +17,17 @@
                   <label class="active" for="inpCreateMeterPageID">Meter ID</label>
                 </div>
                 <div class="input-field col s12 m6 l3">
+                  <input id="inpCreateMeterPageReading" placeholder="Current meter value" type="number" class="validate" value=0 required>
+                  <label class="active" for="inpCreateMeterPageReading">Meter Reading</label>
+                </div>
+                <div class="input-field col s12 m6 l3">
                   <input id="inpCreateMeterPageUnits" placeholder="Measurement units" type="text" class="validate" required>
                   <label class="active" for="inpCreateMeterPageUnits">Units</label>
                 </div>
               </div>
               <br>
               <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" formaction="{{pathFor '../assets/view-locations'}}">
+                <button id="btnCreateMeterPage" class="btn waves-effect waves-light" type="button">
                   <i class="fa fa-tachometer"></i> Create
                 </button>
                 <a href="{{pathFor '../assets/view-locations'}}"><button type="button" class="btn waves-effect waves-light tooltipped red"
