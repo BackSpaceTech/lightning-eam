@@ -1,10 +1,10 @@
-<template name = "createMeterPage">
+<template name = "viewMeterPage">
     <div class="flow-text">
       {{#if Template.subscriptionsReady}}
       <br>
       <fieldset>
         {{#with currentDoc}}
-          <legend>Create Meter for {{text}} (id: {{id}})</legend>
+          <legend>Meters for {{text}} (id: {{id}})</legend>
             <form class="new-record">
               <br>
               <div class="row">
@@ -27,7 +27,7 @@
               </div>
               <br>
               <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" action="{{pathFor '../assets/view-locations'}}">
+                <button id="btnviewMeterPage" class="btn waves-effect waves-light" type="button">
                   <i class="fa fa-tachometer"></i> Create
                 </button>
                 <a href="{{pathFor '../assets/view-locations'}}"><button type="button" class="btn waves-effect waves-light tooltipped red"

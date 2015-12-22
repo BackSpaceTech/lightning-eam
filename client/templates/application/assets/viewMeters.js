@@ -15,7 +15,7 @@ Template.createMeterPage.helpers({
 });
 
 Template.createMeterPage.events({
-  'submit .new-record': function(e) {
+  'click #btnCreateMeterPage': function(e) {
     var meter;
     var doc = Locations.findOne({'id':Session.get('idTreeView').toString()});
     meter = {
