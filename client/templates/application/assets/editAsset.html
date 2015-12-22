@@ -1,16 +1,16 @@
 <template name = "editAssetPage">
     <div class="flow-text">
-      {{#if Template.subscriptionsReady}}
       <br>
       {{#autoForm schema=locationFormSchema id="editAssetPage" type="update" collection="Locations" doc=currentDoc}}
       <fieldset>
        <legend>Edit Asset</legend>
+       {{#if Template.subscriptionsReady}}
          <div class="row">
            <div class="col s12 m6 l3">
              {{> afQuickField name="type"}}
            </div>
            <div class="col s12 m6 l3">
-             {{> afQuickField name="parent"}}
+             {{> afQuickField name="parent" type="hidden"}}
            </div>
            <div class="col s12 m6 l3">
              {{> afQuickField name="criticality"}}
@@ -120,10 +120,10 @@
              </ul>
            </div>
          </div>
+         {{else}}
+           {{>spinner}}
+        {{/if}}
        </fieldset>
        {{/autoForm}}
-      {{else}}
-        {{>spinner}}
-     {{/if}}
     </div>
 </template>

@@ -175,6 +175,14 @@ Template.viewLocationsPage.events({
     else{
       FlowRouter.go('/assets/delete-location')
     }
+  },
+  'click #btnViewLocationsPageCreateMeter': function(e) {
+    if (Session.get("idTreeView").toString()=== "#"){
+      alert("No location or asset selected!")
+    }
+    else{
+      FlowRouter.go('/assets/create-meter')
+    }
   }
 });
 

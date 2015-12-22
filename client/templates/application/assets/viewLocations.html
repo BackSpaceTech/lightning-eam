@@ -1,10 +1,10 @@
 <template name = "viewLocationsPage">
     <div class="row">
         <div>
-            <h3>Locations and Assets
+          <h5>Assets and Locations
+          <br>
             <a href="{{pathFor '../assets'}}"><button type="button" class="btn-floating waves-effect waves-light hide-on-large-only">
-              <i class="material-icons">skip_previous</i></button></a>
-            </h3>
+              <i class="material-icons">skip_previous</i></button></a></h5>
             <div class="row">
               <div class="col s12 m9 l10">
                 {{#if serverConnected}}
@@ -22,20 +22,41 @@
                   </div>
                 </div>
                 <div class="hide-on-med-and-down">
-                  <button type="button" id="btnViewLocationsPageViewLoc" class="btn waves-effect waves-light"><i class="fa fa-binoculars"></i></button>
-                  <button type="button" id="btnViewLocationsPageNewLoc" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new location">
+                  <button type="button" id="btnViewLocationsPageNewLoc" class="btn-floating btn-large waves-effect waves-light tooltipped"
+                    data-position="bottom" data-delay="50" data-tooltip="Create new location">
                     <i class="fa fa-map-marker"></i></button>
-                  <button type="button" id="btnViewLocationsPageNewAss" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Create new asset">
+                  <button type="button" id="btnViewLocationsPageNewAss" class="btn-floating btn-large waves-effect waves-light tooltipped"
+                    data-position="bottom" data-delay="50" data-tooltip="Create new asset">
                     <i class="fa fa-industry"></i></button>
-                  <button type="button" id="btnViewLocationsPageEdit" class="btn waves-effect waves-light"><i class="fa fa-edit"></i></button>
-                  <button type="button" id="btnViewLocationsPageCopy" class="btn waves-effect waves-light"><i class="fa fa-copy"></i></button>
-                  <button type="button" id="btnViewLocationsPageDeleteLoc" class="btn waves-effect waves-light red"><i class="material-icons">delete</i></button>
-                  <a href="{{pathFor '../assets'}}"><button type="button" class="btn waves-effect waves-light"><i class="material-icons">skip_previous</i></button></a>
+                  <button type="button" id="btnViewLocationsPageEdit" class="btn-floating btn-large waves-effect waves-light tooltipped"
+                    data-position="bottom" data-delay="50" data-tooltip="Edit asset or location">
+                    <i class="fa fa-edit"></i></button>
+                  <button type="button" id="btnViewLocationsPageCopy" class="btn-floating btn-large waves-effect waves-light tooltipped"
+                    data-position="bottom" data-delay="50" data-tooltip="Copy asset or location">
+                    <i class="fa fa-copy"></i></button>
+                  <button type="button" id="btnViewLocationsPageViewLoc" class="btn-floating btn-large waves-effect waves-light tooltipped"
+                    data-position="bottom" data-delay="50" data-tooltip="View location or asset">
+                    <i class="fa fa-binoculars"></i></button>
+                  |
+                  <button type="button" id="btnViewLocationsPageDeleteLoc" class="btn-floating btn-large waves-effect waves-light red tooltipped"
+                    data-position="bottom" data-delay="50" data-tooltip="Delete location or asset">
+                    <i class="material-icons">delete</i></button>
+                  |
+                  <button type="button" id="btnViewLocationsPageCreateMeter" class="btn-floating btn-large waves-effect waves-light blue tooltipped"
+                    data-position="bottom" data-delay="50" data-tooltip="Create new meter">
+                    <i class="fa fa-tachometer"></i></button>
+                  <button type="button" id="" class="btn-floating btn-large waves-effect waves-light blue tooltipped"
+                    data-position="bottom" data-delay="50" data-tooltip="View meters">
+                    <i class="fa fa-binoculars"></i></button>
+                  |
+                  <a href="{{pathFor '../assets'}}"><button type="button" class="btn-floating btn-large waves-effect waves-light tooltipped"
+                    data-position="bottom" data-delay="50" data-tooltip="Go back">
+                    <i class="material-icons">skip_previous</i></button></a>
                 </div>
                 {{/if}}
               </div>
               <div style="text-align:right;" class="col s12 m3 l2 z-depth-1">
-                  <input type="text" value="" id="view_q" placeholder="Search" />
+                  <input type="text" value="" id="view_q" placeholder="Search"/>
               </div>
             </div>
             <div class="row treeview">
