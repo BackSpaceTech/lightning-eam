@@ -4,6 +4,7 @@ Meteor.publish('locations', function() {
     text: true,
     id: true,
     type:true,
+    meters:true,
     parent:true
   }});
 });

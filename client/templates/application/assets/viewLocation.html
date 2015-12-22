@@ -60,19 +60,36 @@
           </div>
           <div class="row">
             <div class="divider teal"></div>
-            <div class="section">
-              <h6 class="teal-text">Additional Information</h6>
-              <div class="col s12 m6 l3">
-                <label>Technical Data URL</label><p class="teal-text"><small>{{urlTechData}}</small></p>
-              </div>
-              <div class="col s12 m6 l3">
-                <label>Operational Data URL</label><p class="teal-text"><small>{{urlOpData}}</small></p>
-              </div>
-              <div class="col s12 m6 l3">
-                <label>Photo URL</label><p class="teal-text"><small>{{urlPhoto}}</small></p>
-              </div>
+              <div class="section">
+                <h6 class="teal-text">Additional Information</h6>
+                <div class="col s12 m6 l3">
+                  <label>Technical Data URL</label><p class="teal-text"><small>{{urlTechData}}</small></p>
+                </div>
+                <div class="col s12 m6 l3">
+                  <label>Operational Data URL</label><p class="teal-text"><small>{{urlOpData}}</small></p>
+                </div>
+                <div class="col s12 m6 l3">
+                  <label>Photo URL</label><p class="teal-text"><small>{{urlPhoto}}</small></p>
+                </div>
             </div>
           </div>
+          <div class="row">
+            <div class="divider teal"></div>
+              <div class="section">
+                <h6 class="teal-text">Meters</h6>
+                {{#each meters}}
+                  <div class="col s12 m6 l3">
+                    <label>Title</label><p class="teal-text"><small>{{text}}</small></p>
+                  </div>
+                  <div class="col s12 m6 l3">
+                    <label>Meter ID</label><p class="teal-text"><small>{{id}}</small></p>
+                  </div>
+                  <div class="col s12 m6 l3">
+                    <label>Meter Reading</label><p class="teal-text"><small>{{reading}}  {{units}}</small></p>
+                  </div>
+                {{/each}}
+              </div>
+            </div>
         {{/with}}
         <div class="form-group">
           <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">

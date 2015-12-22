@@ -13,10 +13,10 @@ Template.viewLocationsPage.onRendered(function () {
     });
     $('#jstree_view').on("changed.jstree", function (e, data) {
       if (data.selected.length!==0) {
-        Session.set("idTreeView",data.selected);
+        Collections.Locations.Current.id = data.selected;
       }
       else{
-        Session.set("idTreeView","#");
+        Collections.Locations.Current.id = "#";
       }
     });
     $('#jstree_view').jstree({
@@ -57,11 +57,11 @@ Template.viewLocationsPage.onRendered(function () {
 
 Template.viewLocationsPage.events({
   'click #btnViewLocationsPageNewLoc': function(e) {
-    var temp = Locations.findOne({"id":Session.get("idTreeView").toString()});
+    var temp = Locations.findOne({"id":Collections.Locations.Current.id.toString()});
     if (!temp){ // No locations
       FlowRouter.go('/assets/create-location')
     }
-    else if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+    else if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
       alert("You cannot create a location with an asset as parent.")
     }
     else{
@@ -70,11 +70,11 @@ Template.viewLocationsPage.events({
     return
   },
   'click #btnViewLocationsPageNewLoc2': function(e) {
-    var temp = Locations.findOne({"id":Session.get("idTreeView").toString()});
+    var temp = Locations.findOne({"id":Collections.Locations.Current.id.toString()});
     if (!temp){ // No locations
       FlowRouter.go('/assets/create-location')
     }
-    else if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+    else if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
       alert("You cannot create a location with an asset as parent.")
     }
     else{
@@ -91,11 +91,11 @@ Template.viewLocationsPage.events({
     return
   },
   'click #btnViewLocationsPageEdit': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
         FlowRouter.go('/assets/edit-asset')
       }
       else{
@@ -104,11 +104,11 @@ Template.viewLocationsPage.events({
     }
   },
   'click #btnViewLocationsPageEdit2': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
         FlowRouter.go('/assets/edit-asset')
       }
       else{
@@ -117,11 +117,11 @@ Template.viewLocationsPage.events({
     }
   },
   'click #btnViewLocationsPageCopy': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
         FlowRouter.go('/assets/duplicate-asset')
       }
       else{
@@ -130,11 +130,11 @@ Template.viewLocationsPage.events({
     }
   },
   'click #btnViewLocationsPageCopy2': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
         FlowRouter.go('/assets/duplicate-asset')
       }
       else{
@@ -143,11 +143,11 @@ Template.viewLocationsPage.events({
     }
   },
   'click #btnViewLocationsPageViewLoc': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
         FlowRouter.go('/assets/view-asset')
       }
       else{
@@ -156,11 +156,11 @@ Template.viewLocationsPage.events({
     }
   },
   'click #btnViewLocationsPageViewLoc2': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
         FlowRouter.go('/assets/view-asset')
       }
       else{
@@ -169,7 +169,7 @@ Template.viewLocationsPage.events({
     }
   },
   'click #btnViewLocationsPageDeleteLoc': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
@@ -177,7 +177,7 @@ Template.viewLocationsPage.events({
     }
   },
   'click #btnViewLocationsPageCreateMeter': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
@@ -188,7 +188,7 @@ Template.viewLocationsPage.events({
 
 Template.viewLocationsPage.helpers({
   locationID: function() {
-    var temp = Session.get("idTreeView");
+    var temp = Collections.Locations.Current.id;
     var temp2 = Locations.find({id:String(temp)}).fetch();
     return (temp + " - " + temp2[0].text)
   },

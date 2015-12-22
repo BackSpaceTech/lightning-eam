@@ -1,6 +1,6 @@
 Template.insertAssetForm.helpers({
   parentID: function() {
-    return Session.get("idTreeView");
+    return Collections.Locations.Current.id;
   },
   locationFormSchema: function() {
     return Schema.locations;

@@ -1,40 +1,61 @@
-<template name = "viewMeterPage">
+<template name = "viewMetersPage">
     <div class="flow-text">
       {{#if Template.subscriptionsReady}}
       <br>
       <fieldset>
         {{#with currentDoc}}
           <legend>Meters for {{text}} (id: {{id}})</legend>
-            <form class="new-record">
-              <br>
-              <div class="row">
-                <div class="input-field col s12 m6 l3">
-                  <input id="inpCreateMeterPageTitle" placeholder="Give your meter a name" type="text" class="validate" required>
-                  <label class="active" for="inpCreateMeterPageTitle">Title</label>
+          <div class="row">
+            <h6 class="teal-text">Meters</h6>
+            {{#each meters}}
+            <div class="row item">
+              <div class="col s12 m6 l3">
+                <label>Title</label><p class="teal-text"><small>{{text}}</small></p>
+              </div>
+              <div class="col s12 m6 l3">
+                <label>Meter ID</label><p class="teal-text"><small>{{id}}</small></p>
+              </div>
+              <div class="col s12 m6 l3">
+                <label>Meter Reading</label><p class="teal-text"><small>{{reading}}  {{units}}</small>
+                  <button type="button" class="btn-floating waves-effect waves-light tooltipped btnEach"
+                    data-position="bottom" data-delay="50" data-tooltip="Update meter reading">
+                    <i class="fa fa-tachometer"></i></button>
+                  <button type="button" class="btn-floating waves-effect waves-light tooltipped btnEach2 red"
+                    data-position="bottom" data-delay="50" data-tooltip="Permanently delete meter!">
+                    <i class="material-icons">delete</i></button>
+                </p>
+              </div>
+            </div>
+            {{/each}}
+            <!-- Meter Modals -->
+            <div id="viewMetersPageModal1" class="modal">
+              <div class="container">
+                <div class="modal-content">
+                  <h4>Meter Reading</h4>
+                  <p>Please enter the new meter reading.</p>
                 </div>
-                <div class="input-field col s12 m6 l3">
-                  <input id="inpCreateMeterPageID" placeholder="Give your meter an ID" type="text" class="validate" required>
-                  <label class="active" for="inpCreateMeterPageID">Meter ID</label>
-                </div>
-                <div class="input-field col s12 m6 l3">
-                  <input id="inpCreateMeterPageReading" placeholder="Current meter value" type="number" class="validate" value=0 required>
-                  <label class="active" for="inpCreateMeterPageReading">Meter Reading</label>
-                </div>
-                <div class="input-field col s12 m6 l3">
-                  <input id="inpCreateMeterPageUnits" placeholder="Measurement units" type="text" class="validate" required>
-                  <label class="active" for="inpCreateMeterPageUnits">Units</label>
+                <label class="active" for="inpCreateMeterPageReading">Meter Reading</label>
+                <input placeholder="Current meter value" type="number" class="validate" value=0 required>
+                <div class="modal-footer">
+                  <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+                  <button type="button" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</button>
                 </div>
               </div>
-              <br>
-              <div class="row">
-                <button id="btnviewMeterPage" class="btn waves-effect waves-light" type="button">
-                  <i class="fa fa-tachometer"></i> Create
-                </button>
-                <a href="{{pathFor '../assets/view-locations'}}"><button type="button" class="btn waves-effect waves-light tooltipped red"
-                  data-position="bottom" data-delay="50" data-tooltip="Go back">
-                  <i class="material-icons">skip_previous</i>Cancel</button></a>
+            </div>
+            <!-- Meter Modals -->
+            <div id="viewMetersPageModal2" class="modal">
+              <div class="container">
+                <div class="modal-content">
+                  <h4 class="red-text">Delete Meter</h4>
+                  <p>Warning! This will permanently delete the meter.</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+                  <button type="button" class=" modal-action modal-close waves-effect waves-green btn-flat">Delete</button>
+                </div>
               </div>
-            </form>
+            </div>
+          </div>
         {{/with}}
       </fieldset>
       {{else}}

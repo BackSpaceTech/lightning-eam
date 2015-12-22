@@ -1,23 +1,27 @@
 Template.viewAssetPage.onCreated(function() {
   var self = this;
    self.autorun(function() {
-     self.subscribe('singleLocation', Session.get("idTreeView").toString());
+     self.subscribe('singleLocation', Collections.Locations.Current.id.toString());
    });
 });
 
 Template.viewAssetPage.helpers({
   viewDoc: function() {
-    return Locations.findOne({"id":Session.get("idTreeView").toString()});
+    return Locations.findOne({"id": Collections.Locations.Current.id.toString()});
+  },
+  meterValue: function() {
+    console.log(JSON.stringify(this))
+    return this.reading;
   }
 });
 
 Template.viewAssetPage.events({
   'click #btnViewAssetPageEdit': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
         FlowRouter.go('/assets/edit-asset')
       }
       else{
@@ -26,11 +30,11 @@ Template.viewAssetPage.events({
     }
   },
   'click #btnViewAssetPageCopy': function(e) {
-    if (Session.get("idTreeView").toString()=== "#"){
+    if (Collections.Locations.Current.id.toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Session.get("idTreeView").toString()}).type === "asset"){
+      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
         FlowRouter.go('/assets/duplicate-asset')
       }
       else{
