@@ -1,20 +1,21 @@
 Template.createMeterPage.onCreated(function(){
   var self = this;
    self.autorun(function() {
-     self.subscribe('singleLocation', Collections.Locations.Current.id.toString());
+     self.subscribe('singleLocation', Session.get('currentID').toString());
    });
+   Collections.Locations.Current = Locations.findOne({'id':Session.get('currentID').toString()});
 });
 
 Template.createMeterPage.helpers({
   currentDoc: function() {
-    return Locations.findOne({'id':Collections.Locations.Current.id.toString()});
+    return Collections.Locations.Current;
   }
 });
 
 Template.createMeterPage.events({
   'submit .new-record': function(e) {
     var meter;
-    var doc = Locations.findOne({'id':Collections.Locations.Current.id.toString()});
+    var doc = Collections.Locations.Current;
     meter = {
       text: $('#inpCreateMeterPageTitle').val(),
       id: $('#inpCreateMeterPageID').val(),

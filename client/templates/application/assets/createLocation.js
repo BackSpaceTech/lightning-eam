@@ -1,6 +1,6 @@
 Template.insertLocationForm.helpers({
   parentID: function() {
-    return Collections.Locations.Current.id;
+    return Session.get('currentID');
   },
   locationFormSchema: function() {
     return Schema.locations;

@@ -1,13 +1,14 @@
 Template.viewAssetPage.onCreated(function() {
   var self = this;
    self.autorun(function() {
-     self.subscribe('singleLocation', Collections.Locations.Current.id.toString());
+     self.subscribe('singleLocation', Session.get('currentID').toString());
    });
+   Collections.Locations.Current = Locations.findOne({'id':Session.get('currentID').toString()})
 });
 
 Template.viewAssetPage.helpers({
   viewDoc: function() {
-    return Locations.findOne({"id": Collections.Locations.Current.id.toString()});
+    return Collections.Locations.Current;
   },
   meterValue: function() {
     console.log(JSON.stringify(this))
@@ -17,11 +18,11 @@ Template.viewAssetPage.helpers({
 
 Template.viewAssetPage.events({
   'click #btnViewAssetPageEdit': function(e) {
-    if (Collections.Locations.Current.id.toString()=== "#"){
+    if (Session.get('currentID').toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
+      if (Collections.Locations.Current.type === "asset"){
         FlowRouter.go('/assets/edit-asset')
       }
       else{
@@ -30,11 +31,11 @@ Template.viewAssetPage.events({
     }
   },
   'click #btnViewAssetPageCopy': function(e) {
-    if (Collections.Locations.Current.id.toString()=== "#"){
+    if (Session.get('currentID').toString()=== "#"){
       alert("No location or asset selected!")
     }
     else{
-      if (Locations.findOne({"id":Collections.Locations.Current.id.toString()}).type === "asset"){
+      if (Collections.Locations.Current.type === "asset"){
         FlowRouter.go('/assets/duplicate-asset')
       }
       else{

@@ -1,13 +1,14 @@
 Template.viewMetersPage.onCreated(function(){
   var self = this;
    self.autorun(function() {
-     self.subscribe('singleLocation', Collections.Locations.Current.id.toString());
+     self.subscribe('singleLocation', Session.get('currentID').toString());
    });
 });
 
 Template.viewMetersPage.helpers({
   currentDoc: function() {
-    return Locations.findOne({'id':Collections.Locations.Current.id.toString()});
+    Collections.Locations.Current = Locations.findOne({'id':Session.get('currentID').toString()})
+    return Collections.Locations.Current;
   }
 });
 
@@ -21,7 +22,7 @@ Template.viewMetersPage.events({
     $('#viewMetersPageModal2').openModal();
   },
   'click #viewMetersPageModal1 button': function(e) {
-    var doc = Locations.findOne({'id':Collections.Locations.Current.id.toString()});
+    var doc = Collections.Locations.Current;
     var temp = $("#viewMetersPageModal1 input").val();
     var TempArray = [];
     tempArray = doc.meters;
@@ -36,7 +37,7 @@ Template.viewMetersPage.events({
     Meteor.call("updateMeter", doc, tempArray);
   },
   'click #viewMetersPageModal2 button': function(e) {
-    var doc = Locations.findOne({'id':Collections.Locations.Current.id.toString()});
+    var doc = Collections.Locations.Current;
     var TempArray = [];
     tempArray = doc.meters;
     // find index of meter in array

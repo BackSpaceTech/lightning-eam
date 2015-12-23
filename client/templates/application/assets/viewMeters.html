@@ -5,6 +5,9 @@
       <fieldset>
         {{#with currentDoc}}
           <legend>Meters for {{text}} (id: {{id}})</legend>
+          <a href="{{pathFor '../assets/view-locations'}}"><button type="button" class="btn-floating btn-large waves-effect waves-light tooltipped right"
+            data-position="bottom" data-delay="50" data-tooltip="Go back">
+            <i class="material-icons">skip_previous</i></button></a>
           <div class="row">
             <h6 class="teal-text">Meters</h6>
             {{#each meters}}
