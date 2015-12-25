@@ -20,10 +20,8 @@ kadira:flow-router
 accounts-password
 accounts-base
 less
-useraccounts:core
 u2622:persistent-session
 materialize:materialize
-useraccounts:materialize
 kadira:blaze-layout
 useraccounts:flow-routing
 arillo:flow-router-helpers
@@ -38,6 +36,9 @@ dburles:collection-helpers
 reywood:publish-composite
 chrismbeckett:toastr
 reactive-var
-meteorhacks:ssr
 alanning:roles
 juliancwirko:s-alert
+email
+aslagle:reactive-table
+useraccounts:core
+useraccounts:materialize

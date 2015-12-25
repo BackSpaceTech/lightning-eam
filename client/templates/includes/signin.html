@@ -1,3 +1,8 @@
 <template name = "signInPage">
-  {{> atForm}}
+  <div class="{{atClass}}">
+   {{> atForm}}
+  </div>
+  {{#if atDisabled}}
+    {{>spinner}}
+  {{/if}}
 </template>

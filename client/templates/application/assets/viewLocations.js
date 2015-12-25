@@ -13,10 +13,10 @@ Template.viewLocationsPage.onRendered(function () {
     });
     $('#jstree_view').on("changed.jstree", function (e, data) {
       if (data.selected.length!==0) {
-        Session.setPersistent('currentID', data.selected);
+        Session.set('currentID', data.selected);
       }
       else{
-        Session.setPersistent('currentID', "#")
+        Session.set('currentID', "#")
       }
     });
     $('#jstree_view').jstree({

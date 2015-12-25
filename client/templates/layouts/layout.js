@@ -10,5 +10,20 @@ Template.layout.onRendered(function () {
 Template.header1.helpers({
   serverConnected: function() {
     return (Meteor.status().status === "connected");
+  },
+  userSignedIn: function() {
+    if (Meteor.userId()){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+});
+
+Template.header1.events({
+  'click #btnheader1Logout': function(e) {
+    AccountsTemplates.logout();
+    return
   }
 });

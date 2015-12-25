@@ -1,0 +1,18 @@
+<template name = "viewPeoplePage">
+    <div class="flow-text container2">
+      {{#if Template.subscriptionsReady}}
+      <br>
+      <fieldset>
+          <legend>People</legend>
+          {{> reactiveTable collection=userArray settings=settings}}          
+        </fieldset>
+      {{else}}
+        {{>spinner}}
+     {{/if}}
+    </div>
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+      <a href="{{pathFor '../resources'}}" class="btn-floating btn-large">
+        <i class="large material-icons">skip_previous</i>
+      </a>
+    </div>
+</template>

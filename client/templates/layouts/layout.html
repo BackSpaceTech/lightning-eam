@@ -3,7 +3,7 @@
     <div id="wrapper">
       <div id="main">
         {{> Template.dynamic template=header}}
-          <div class="container flow-text  blue-grey-text text-darken-3">
+          <div class="flow-text  blue-grey-text text-darken-3">
             {{> Template.dynamic template=content}}
           </div>
       </div>
@@ -43,9 +43,9 @@
       <div class="nav-wrapper flow-text">
         <a href="{{pathFor '/'}}" class="brand-logo right">
           {{#if serverConnected}}
-            <i class="fa fa-flash light-green-text accent-3"></i>
+            <i class="fa fa-flash light-green-text accent-3 navbar-icon"></i>
           {{else}}
-            <i class="fa fa-flash red-text"></i>
+            <i class="fa fa-flash red-text navbar-icon"></i>
           {{/if}}
         </a>
         <ul class="left hide-on-med-and-down" id="header1DesktopUL">
@@ -58,6 +58,11 @@
           <li class="waves-effect waves-light"><a href="{{pathFor '/reports'}}">Reports</a></li>
           <li class="waves-effect waves-light"><a href="{{pathFor '/help'}}">Help</a></li>
           <li class="waves-effect waves-light"><a href="{{pathFor '/about'}}">About</a></li>
+          {{#if userSignedIn}}
+            <li id="btnheader1Logout" class="waves-effect waves-light"><a>Logout</a></li>
+          {{else}}
+            <li class="waves-effect waves-light"><a href="{{pathFor '/sign-in'}}">Login</a></li>
+          {{/if}}
         </ul>
         <ul class="side-nav waves-effect waves-light" id="slide-out">
           <li><a href="{{pathFor '/assets'}}">Assets</a></li>
@@ -69,6 +74,11 @@
           <li><a href="{{pathFor '/reports'}}">Reports</a></li>
           <li><a href="{{pathFor '/help'}}">Help</a></li>
           <li><a href="{{pathFor '/about'}}">About</a></li>
+          {{#if userSignedIn}}
+            <li><a href="{{pathFor '/'}}">Logout</a></li>
+          {{else}}
+            <li><a href="{{pathFor '/'}}">Login</a></li>
+          {{/if}}
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       </div>

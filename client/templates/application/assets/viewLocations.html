@@ -1,4 +1,5 @@
 <template name = "viewLocationsPage">
+  <div class="container">
     <div class="row">
         <div>
           <h5>Assets and Locations
@@ -9,7 +10,7 @@
               <div class="col s12 m9 l10">
                 {{#if serverConnected}}
                 <div class="hide-on-large-only">
-                  <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+                  <div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
                     <a class="btn-floating btn-large purple">
                       <i class="large mdi-navigation-menu"></i>
                     </a>
@@ -17,7 +18,7 @@
                       <li><a id="btnViewLocationsPageEdit2" class="btn-floating blue"><i class="fa fa-edit"></i></a></li>
                       <li><a id="btnViewLocationsPageNewAss2" class="btn-floating green"><i class="fa fa-industry"></i></a></li>
                       <li><a id="btnViewLocationsPageNewLoc2" class="btn-floating green"><i class="fa fa-map-marker"></i></a></li>
-                      <li><a id="btnViewLocationsPageViewLoc2" class="btn-floating green"><i class="fa fa-map-binoculars"></i></a></li>
+                      <li><a id="btnViewLocationsPageViewLoc2" class="btn-floating green"><i class="fa fa-binoculars"></i></a></li>
                     </ul>
                   </div>
                 </div>
@@ -64,4 +65,5 @@
             </div>
         </div>
     </div>
+  </div>
 </template>

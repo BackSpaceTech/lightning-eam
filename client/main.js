@@ -1,7 +1,6 @@
 // Subscribe to a subset of the data on the client
 Meteor.subscribe('locations');
 
-// Autoform hooks
 Meteor.startup(function () {
 
   // Initialise Autoform

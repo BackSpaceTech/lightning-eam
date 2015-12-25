@@ -5,7 +5,9 @@ aldeed:autoform@5.8.0
 aldeed:collection2@2.3.1
 aldeed:simple-schema@1.1.0
 amplify@1.0.0
+anti:i18n@0.4.3
 arillo:flow-router-helpers@0.4.7
+aslagle:reactive-table@0.8.21
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
@@ -58,7 +60,6 @@ logging@1.0.8
 materialize:materialize@0.97.3
 meteor@1.1.10
 meteor-base@1.0.1
-meteorhacks:ssr@2.2.0
 minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
