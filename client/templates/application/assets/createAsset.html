@@ -5,131 +5,133 @@
 </template>
 
 <template name="insertAssetForm">
-  <br>
-    {{#autoForm schema=locationFormSchema id="insertAssetForm" type="method" meteormethod="createLoc"}}
-    <fieldset>
-      <legend>New Asset</legend>
-      <div class="row">
-        <div class="col s12 m6 l3">
-          {{> afQuickField name="id" label="*ID"}}
-        </div>
-          {{> afQuickField name="type" value="asset" type="hidden"}}
-        <div class="col s12 m6 l3">
-          {{> afQuickField name="parent" value=parentID defaultValue="#" type="hidden"}}
-        </div>
-        <div class="col s12 m6 l3">
-          {{> afQuickField name="criticality" label="*Criticality"}}
-        </div>
-        <div class="col s12 m6 l3">
-          {{> afQuickField name="classification"}}
-        </div>
-        <div class="col s12 m6 l3">
-          {{> afQuickField name="status"}}
-        </div>
-        <div class="col s12 m6 l3">
-          {{> afQuickField name="rotable"}}
-        </div>
-        <div>
-          {{> afQuickField name="text" label="*Title"}}
-        </div>
-        <div>
-          {{> afQuickField name="description"}}
-        </div>
-        <div>
-          {{> afQuickField name="safety"}}
-        </div>
-      </div>
-      <div class="row">
-        <div class="divider teal"></div>
-        <div class="section">
-          <h6 class="teal-text">Geolocation Information</h6>
+  <div class="container2">
+    <br>
+      {{#autoForm schema=locationFormSchema id="insertAssetForm" type="method" meteormethod="createLoc"}}
+      <fieldset>
+        <legend>New Asset</legend>
+        <div class="row">
           <div class="col s12 m6 l3">
-            {{> afQuickField name="linear"}}
+            {{> afQuickField name="id" label="*ID"}}
+          </div>
+            {{> afQuickField name="type" value="asset" type="hidden"}}
+          <div class="col s12 m6 l3">
+            {{> afQuickField name="parent" value=parentID defaultValue="#" type="hidden"}}
           </div>
           <div class="col s12 m6 l3">
-            {{> afQuickField name="lat1"}}
+            {{> afQuickField name="criticality" label="*Criticality"}}
           </div>
           <div class="col s12 m6 l3">
-            {{> afQuickField name="long1"}}
+            {{> afQuickField name="classification"}}
           </div>
           <div class="col s12 m6 l3">
-            {{> afQuickField name="lat2"}}
+            {{> afQuickField name="status"}}
           </div>
           <div class="col s12 m6 l3">
-            {{> afQuickField name="long2"}}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="divider teal"></div>
-        <div class="section">
-          <h6 class="teal-text">Manufacture Information</h6>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="serialNumber"}}
-          </div>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="modelNumber"}}
-          </div>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="manufacturer"}}
-          </div>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="manufPhone"}}
+            {{> afQuickField name="rotable"}}
           </div>
           <div>
-            {{> afQuickField name="manufAddress"}}
+            {{> afQuickField name="text" label="*Title"}}
           </div>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="manufState"}}
+          <div>
+            {{> afQuickField name="description"}}
           </div>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="manufZip"}}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="divider teal"></div>
-        <div class="section">
-          <h6 class="teal-text">Additional Information</h6>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="urlTechData"}}
-          </div>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="urlOpData"}}
-          </div>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="urlPhoto"}}
-          </div>
-          <div class="col s12 m6 l3">
-            {{> afQuickField name="referenceID"}}
-          </div>
-          <div class="col s12 m6 l3">
-            <h6 class="grey-text text-lighten-1">Manufacture Date</h6>
-            {{> afQuickField name="manufDate"}}
-          </div>
-          <div class="col s12 m6 l3">
-            <h6 class="grey-text text-lighten-1">Install Date</h6>
-            {{> afQuickField name="installDate"}}
+          <div>
+            {{> afQuickField name="safety"}}
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="divider teal"></div>
-        <div class="section">
-          <div class="form-group">
-            <div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
-              <a class="btn-floating btn-large purple">
-                <i class="large mdi-navigation-menu"></i>
-              </a>
-              <ul>
-                <li><a href="{{pathFor '../assets/view-locations'}}" class="btn-floating yellow darken-1"><i class="material-icons">skip_previous</i></a></li>
-                <li><button class="btn-floating red" type="reset"><i class="fa fa-undo"></i></button></li>
-                <li><button class="btn-floating green" type="submit"><i class="fa fa-check"></i></button></li>
-              </ul>
+        <div class="row">
+          <div class="divider teal"></div>
+          <div class="section">
+            <h6 class="teal-text">Geolocation Information</h6>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="linear"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="lat1"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="long1"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="lat2"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="long2"}}
             </div>
           </div>
         </div>
-      </div>
-    </fieldset>
-  {{/autoForm}}
+        <div class="row">
+          <div class="divider teal"></div>
+          <div class="section">
+            <h6 class="teal-text">Manufacture Information</h6>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="serialNumber"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="modelNumber"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="manufacturer"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="manufPhone"}}
+            </div>
+            <div>
+              {{> afQuickField name="manufAddress"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="manufState"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="manufZip"}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="divider teal"></div>
+          <div class="section">
+            <h6 class="teal-text">Additional Information</h6>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="urlTechData"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="urlOpData"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="urlPhoto"}}
+            </div>
+            <div class="col s12 m6 l3">
+              {{> afQuickField name="referenceID"}}
+            </div>
+            <div class="col s12 m6 l3">
+              <h6 class="grey-text text-lighten-1">Manufacture Date</h6>
+              {{> afQuickField name="manufDate"}}
+            </div>
+            <div class="col s12 m6 l3">
+              <h6 class="grey-text text-lighten-1">Install Date</h6>
+              {{> afQuickField name="installDate"}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="divider teal"></div>
+          <div class="section">
+            <div class="form-group">
+              <div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
+                <a class="btn-floating btn-large purple">
+                  <i class="large mdi-navigation-menu"></i>
+                </a>
+                <ul>
+                  <li><a href="{{pathFor '../assets/view-locations'}}" class="btn-floating yellow darken-1"><i class="material-icons">skip_previous</i></a></li>
+                  <li><button class="btn-floating red" type="reset"><i class="fa fa-undo"></i></button></li>
+                  <li><button class="btn-floating green" type="submit"><i class="fa fa-check"></i></button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    {{/autoForm}}
+  </div>
 </template>

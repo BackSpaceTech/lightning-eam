@@ -5,14 +5,6 @@ Template.viewPeoplePage.onCreated(function(){
    });
 });
 
-Template.viewPeoplePage.onRendered(function(){
-  var self = this;
-   self.autorun(function() {
-     self.subscribe('directory');
-   });
-});
-
-
 Template.viewPeoplePage.helpers({
   userProfiles: function() {
     return Meteor.users.find();
@@ -27,30 +19,17 @@ Template.viewPeoplePage.helpers({
     return this.roles[0];
   },
   userArray: function () {
-    var tempProfile =[];
-    var tempArray = Meteor.users.find().fetch();
-    // create array
-    for (var a=0;a<tempArray.length;a++){
-      tempProfile[a] = {
-        firstName : tempArray[a].profile.firstName,
-        lastName : tempArray[a].profile.lastName,
-        email : tempArray[a].emails[0].address,
-        cpyName : tempArray[a].profile.cpyName,
-        cpyDiv : tempArray[a].profile.cpyDiv,
-      }
-    }
-    return tempProfile;
+    return Meteor.users.find();
   },
   settings: function () {
     return {
       rowsPerPage: 10,
       showFilter: true,
       fields:  [
-        { key: 'firstName', label: ' First Name' },
-        { key: 'lastName', label: 'Last Name' },
-        { key: 'email', label: 'Email' },
-        { key: 'cpyName', label: 'Company' },
-        { key: 'cpyDiv', label: 'Division' }
+        { key: 'profile.firstName', label: ' First Name' },
+        { key: 'profile.lastName', label: 'Last Name' },
+        { key: 'profile.cpyName', label: 'Company' },
+        { key: 'profile.cpyDiv', label: 'Division' }
       ]
     }
   }
