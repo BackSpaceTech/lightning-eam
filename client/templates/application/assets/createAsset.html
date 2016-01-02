@@ -1,13 +1,7 @@
-<template name = 'createAssetPage'>
-    <div class='flow-text'>
-      {{> insertAssetForm}}
-    </div>
-</template>
-
-<template name='insertAssetForm'>
+<template name='createAssetPage'>
   <div class='container2'>
     <br>
-      {{#autoForm schema=locationFormSchema id='insertAssetForm' type='method' meteormethod='createLoc'}}
+      {{#autoForm schema=locationFormSchema id='createAssetPage' type='method' meteormethod='createLoc'}}
       <fieldset>
         <legend>New Asset</legend>
         <div class='row'>

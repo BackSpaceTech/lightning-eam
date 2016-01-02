@@ -29,5 +29,6 @@ Template.viewPeoplePage.events
     Collections.Users.Current = this
     FlowRouter.go '/resources/edit-people'
   'click .btnEach2': (e)  ->
-
+    Collections.Users.Current = this
+    FlowRouter.go '/resources/credentials'
   'click .btnEach3': (e) ->

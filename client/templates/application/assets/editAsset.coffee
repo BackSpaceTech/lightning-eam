@@ -6,4 +6,5 @@ Template.editAssetPage.onCreated ->
 
 Template.editAssetPage.helpers
   currentDoc: -> Collections.Locations.Current
-  locationFormSchema: -> Schema.locationFormSchema
+  asset: -> (Collections.Locations.Current.type == 'asset')  
+  locationFormSchema: -> Schema.locations
