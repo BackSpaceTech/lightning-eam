@@ -29,7 +29,6 @@ aldeed:autoform
 aldeed:collection2
 gildaspk:autoform-materialize
 sujith3g:jstree
-gildaspk:autoform-modals-materialize
 frozeman:persistent-minimongo
 fortawesome:fontawesome
 dburles:collection-helpers
@@ -42,3 +41,6 @@ email
 aslagle:reactive-table
 useraccounts:core
 useraccounts:materialize
+aldeed:delete-button
+meteorstuff:materialize-modal
+coffeescript

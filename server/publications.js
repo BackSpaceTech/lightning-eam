@@ -15,7 +15,13 @@ Meteor.publish('singleLocation', function(locationId) {
 
 Meteor.publish("directory", function () {
   return Meteor.users.find({}, {fields: {
-    emails: 1,
-    profile: 1
+    emails: true,
+    profile: true,
+    roles: true,
+    trades: true
   }});
+});
+
+Meteor.publish('singleUser', function(userId) {
+  return Meteor.users.find({_id:userId});
 });

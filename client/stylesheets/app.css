@@ -45,3 +45,9 @@
 .navbar-icon{
   padding: 0 12px 0 12px;
 }
+.collection{
+  overflow-y: scroll !important;
+}
+select{
+  height: auto !important;
+}

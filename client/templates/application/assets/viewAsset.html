@@ -1,72 +1,72 @@
-<template name = "viewAssetPage">
-  <div class="flow-text">
+<template name = 'viewAssetPage'>
+  <div class='flow-text'>
     {{#if Template.subscriptionsReady}}
     <br>
     <fieldset>
         <legend>View Asset</legend>
         {{#with viewDoc}}
-        <div class="row">
-          <div class="col s12 m6 l3">
-            <label>Location ID</label><p class="teal-text"><small>{{id}}</small></p>
+        <div class='row'>
+          <div class='col s12 m6 l3'>
+            <label>Location ID</label><p class='teal-text'><small>{{id}}</small></p>
           </div>
-          <div class="col s12 m6 l3">
-            <label>Title</label><p class="teal-text"><small>{{text}}</small></p>
+          <div class='col s12 m6 l3'>
+            <label>Title</label><p class='teal-text'><small>{{text}}</small></p>
           </div>
-          <div class="col s12 m6 l3">
-            <label>Parent ID</label><p class="teal-text"><small>{{parent}}</small></p>
+          <div class='col s12 m6 l3'>
+            <label>Parent ID</label><p class='teal-text'><small>{{parent}}</small></p>
           </div>
-          <div class="col s12 m6 l3">
-            <label>Criticality</label><p class="teal-text"><small>{{criticality}}</small></p>
+          <div class='col s12 m6 l3'>
+            <label>Criticality</label><p class='teal-text'><small>{{criticality}}</small></p>
           </div>
-          <div class="col s12 m6 l3">
-            <label>Classification</label><p class="teal-text"><small>{{classification}}</small></p>
+          <div class='col s12 m6 l3'>
+            <label>Classification</label><p class='teal-text'><small>{{classification}}</small></p>
           </div>
-          <div class="col s12 m6 l3">
-            <label>Rotable Asset</label><p class="teal-text"><small>{{rotable}}</small></p>
+          <div class='col s12 m6 l3'>
+            <label>Rotable Asset</label><p class='teal-text'><small>{{rotable}}</small></p>
           </div>
-          <div class="col s12 m6 l3">
-            <label>Status</label><p class="teal-text"><small>{{status}}</small></p>
+          <div class='col s12 m6 l3'>
+            <label>Status</label><p class='teal-text'><small>{{status}}</small></p>
           </div>
 
           <div>
-            <label>Description</label><p class="teal-text"><small>{{description}}</small></p>
+            <label>Description</label><p class='teal-text'><small>{{description}}</small></p>
           </div>
         </div>
-        <div class="row">
-          <div class="divider teal"></div>
-          <div class="section">
-            <h6 class="teal-text">Geolocation Information</h6>
-            <div class="col s12 m6 l3">
-              <label>Linear Asset</label><p class="teal-text"><small>{{linear}}</small></p>
+        <div class='row'>
+          <div class='divider teal'></div>
+          <div class='section'>
+            <h6 class='teal-text'>Geolocation Information</h6>
+            <div class='col s12 m6 l3'>
+              <label>Linear Asset</label><p class='teal-text'><small>{{linear}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Lat1</label><p class="teal-text"><small>{{lat1}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Lat1</label><p class='teal-text'><small>{{lat1}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Long1</label><p class="teal-text"><small>{{long1}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Long1</label><p class='teal-text'><small>{{long1}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Lat2</label><p class="teal-text"><small>{{lat2}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Lat2</label><p class='teal-text'><small>{{lat2}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Long2</label><p class="teal-text"><small>{{long2}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Long2</label><p class='teal-text'><small>{{long2}}</small></p>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="divider teal"></div>
-            <div class="section">
-              <h6 class="teal-text">Meters</h6>
+        <div class='row'>
+          <div class='divider teal'></div>
+            <div class='section'>
+              <h6 class='teal-text'>Meters</h6>
               {{#each meters}}
-              <div class="row">
-                <div class="col s12 m6 l3">
-                  <label>Title</label><p class="teal-text"><small>{{text}}</small></p>
+              <div class='row'>
+                <div class='col s12 m6 l3'>
+                  <label>Title</label><p class='teal-text'><small>{{text}}</small></p>
                 </div>
-                <div class="col s12 m6 l3">
-                  <label>Meter ID</label><p class="teal-text"><small>{{id}}</small></p>
+                <div class='col s12 m6 l3'>
+                  <label>Meter ID</label><p class='teal-text'><small>{{id}}</small></p>
                 </div>
-                <div class="col s12 m6 l3">
-                  <label>Meter Reading</label><p class="teal-text"><small>{{reading}}  {{units}}</small>
+                <div class='col s12 m6 l3'>
+                  <label>Meter Reading</label><p class='teal-text'><small>{{reading}}  {{units}}</small>
                   </p>
                 </div>
               </div>
@@ -74,67 +74,67 @@
             </div>
           </div>
         <!-- Other info -->
-        <div class="row">
-          <div class="divider teal"></div>
-          <div class="section">
-            <h6 class="teal-text">Manufacture Information</h6>
-            <div class="col s12 m6 l3">
-              <label>Serial Number</label><p class="teal-text"><small>{{serialNumber}}</small></p>
+        <div class='row'>
+          <div class='divider teal'></div>
+          <div class='section'>
+            <h6 class='teal-text'>Manufacture Information</h6>
+            <div class='col s12 m6 l3'>
+              <label>Serial Number</label><p class='teal-text'><small>{{serialNumber}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Model Number</label><p class="teal-text"><small>{{modelNumber}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Model Number</label><p class='teal-text'><small>{{modelNumber}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Manufacturer</label><p class="teal-text"><small>{{manufacturer}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Manufacturer</label><p class='teal-text'><small>{{manufacturer}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Manufacturer Phone</label><p class="teal-text"><small>{{manufPhone}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Manufacturer Phone</label><p class='teal-text'><small>{{manufPhone}}</small></p>
             </div>
             <div>
-              <label>Manufacturer Address</label><p class="teal-text"><small>{{manufAddress}}</small></p>
+              <label>Manufacturer Address</label><p class='teal-text'><small>{{manufAddress}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Manufacturer State</label><p class="teal-text"><small>{{manufState}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Manufacturer State</label><p class='teal-text'><small>{{manufState}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Manufacturer Zip</label><p class="teal-text"><small>{{manufZip}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Manufacturer Zip</label><p class='teal-text'><small>{{manufZip}}</small></p>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="divider teal"></div>
-          <div class="section">
-            <h6 class="teal-text">Additional Information</h6>
-            <div class="col s12 m6 l3">
-              <label>Technical Data URL</label><p class="teal-text"><small>{{urlTechData}}</small></p>
+        <div class='row'>
+          <div class='divider teal'></div>
+          <div class='section'>
+            <h6 class='teal-text'>Additional Information</h6>
+            <div class='col s12 m6 l3'>
+              <label>Technical Data URL</label><p class='teal-text'><small>{{urlTechData}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Operational Data URL</label><p class="teal-text"><small>{{urlOpData}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Operational Data URL</label><p class='teal-text'><small>{{urlOpData}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Photo URL</label><p class="teal-text"><small>{{urlPhoto}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Photo URL</label><p class='teal-text'><small>{{urlPhoto}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Reference ID</label><p class="teal-text"><small>{{referenceID}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Reference ID</label><p class='teal-text'><small>{{referenceID}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Manufacture Date</label><p class="teal-text"><small>{{manufDate}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Manufacture Date</label><p class='teal-text'><small>{{manufDate}}</small></p>
             </div>
-            <div class="col s12 m6 l3">
-              <label>Install Date</label><p class="teal-text"><small>{{installDate}}</small></p>
+            <div class='col s12 m6 l3'>
+              <label>Install Date</label><p class='teal-text'><small>{{installDate}}</small></p>
             </div>
           </div>
         </div>
         {{/with}}
-        <div class="form-group">
-          <div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
-            <a class="btn-floating btn-large purple">
-              <i class="large mdi-navigation-menu"></i>
+        <div class='form-group'>
+          <div class='fixed-action-btn click-to-toggle' style='bottom: 45px; right: 24px;'>
+            <a class='btn-floating btn-large purple'>
+              <i class='large mdi-navigation-menu'></i>
             </a>
             <ul>
-              <li><a href="{{pathFor '../assets/view-locations'}}" class="btn-floating yellow darken-1"><i class="material-icons">skip_previous</i></a></li>
-              <li><a id="btnViewAssetPageCopy" class="btn-floating green"><i class="fa fa-copy"></i></a></li>
-              <li><a id="btnViewAssetPageEdit" class="btn-floating blue"><i class="fa fa-edit"></i></a></li>
+              <li><button type='button' onclick='history.back(-1)' class='btn-floating yellow darken-1'><i class='material-icons'>skip_previous</i></button></li>
+              <li><a id='btnViewAssetPageCopy' class='btn-floating green'><i class='fa fa-copy'></i></a></li>
+              <li><a id='btnViewAssetPageEdit' class='btn-floating blue'><i class='fa fa-edit'></i></a></li>
             </ul>
           </div>
         </div>

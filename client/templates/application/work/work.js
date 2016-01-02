@@ -1,5 +1,0 @@
-Template.workPage.onCreated(function(){
-  // Set Navbar so Work highlighted
-  $("#header1DesktopUL li").removeClass("active");
-  $("#header1DesktopUL li").eq(1).addClass("active");
-});
