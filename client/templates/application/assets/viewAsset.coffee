@@ -2,7 +2,7 @@ Template.viewAssetPage.onCreated ->
   self = this
   self.autorun ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
-  Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
+    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
 
 Template.viewAssetPage.helpers
   viewDoc: -> Collections.Locations.Current;

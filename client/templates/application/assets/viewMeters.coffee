@@ -2,7 +2,7 @@ Template.viewMetersPage.onCreated ->
   self = this;
   self.autorun ->
      self.subscribe 'singleLocation', (Session.get('currentID').toString())
-
+     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
 
 Template.viewMetersPage.helpers
   currentDoc: ->

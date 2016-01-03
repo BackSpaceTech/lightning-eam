@@ -2,7 +2,7 @@ Template.deleteLocationPage.onCreated ->
   self = this
   self.autorun ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
-  Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
+    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
 
 Template.deleteLocationPage.helpers
   deleteDoc: -> Collections.Locations.Current
