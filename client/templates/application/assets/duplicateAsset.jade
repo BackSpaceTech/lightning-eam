@@ -1,0 +1,93 @@
+template(name='duplicateAssetPage')
+  .container2
+    if Template.subscriptionsReady
+      br
+      +autoForm schema=locationFormSchema id='duplicateAssetPage' type='method' meteormethod='createLoc'
+        fieldset
+          legend Duplicate Asset
+          .row
+            .col.s12.m6.l3
+              +afQuickField name='id' label='*ID'
+            +afQuickField name='type' value='asset' type='hidden'
+            .col.s12.m6.l3
+              +afQuickField name='parent' value=duplicateDoc.parent type='hidden'
+            .col.s12.m6.l3
+              +afQuickField name='criticality' value=duplicateDoc.criticality label='*Criticality'
+            div
+              +afQuickField name='text' value=duplicateDoc.text
+            div
+              +afQuickField name='description' value=duplicateDoc.description
+            div
+              +afQuickField name='safety' value=duplicateDoc.safety
+            .col.s12.m6.l3
+              +afQuickField name='classification' value=duplicateDoc.classification
+            .col.s12.m6.l3
+              +afQuickField name='status' value=duplicateDoc.status
+            .col.s12.m6.l3
+              +afQuickField name='rotable' value=duplicateDoc.rotable
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Geolocation Information
+              .col.s12.m6.l3
+                +afQuickField name='linear' value=duplicateDoc.linear
+              .col.s12.m6.l3
+                +afQuickField name='lat1' value=duplicateDoc.lat1
+              .col.s12.m6.l3
+                +afQuickField name='long1' value=duplicateDoc.long1
+              .col.s12.m6.l3
+                +afQuickField name='lat2' value=duplicateDoc.lat2
+              .col.s12.m6.l3
+                +afQuickField name='long2' value=duplicateDoc.long2
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Manufacture Information
+              .col.s12.m6.l3
+                +afQuickField name='serialNumber' value=duplicateDoc.serialNumber
+              .col.s12.m6.l3
+                +afQuickField name='modelNumber' value=duplicateDoc.modelNumber
+              .col.s12.m6.l3
+                +afQuickField name='manufacturer' value=duplicateDoc.manufacturer
+              .col.s12.m6.l3
+                +afQuickField name='manufPhone' value=duplicateDoc.manufPhone
+              div
+                +afQuickField name='manufAddress' value=duplicateDoc.manufAddress
+              .col.s12.m6.l3
+                +afQuickField name='manufState' value=duplicateDoc.manufState
+              .col.s12.m6.l3
+                +afQuickField name='manufZip' value=duplicateDoc.manufZip
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Additional Information
+              .col.s12.m6.l3
+                +afQuickField name='urlTechData' value=duplicateDoc.urlTechData
+              .col.s12.m6.l3
+                +afQuickField name='urlOpData' value=duplicateDoc.urlOpData
+              .col.s12.m6.l3
+                +afQuickField name='urlPhoto' value=duplicateDoc.urlPhoto
+              .col.s12.m6.l3
+                +afQuickField name='referenceID' value=duplicateDoc.referenceID
+              .col.s12.m6.l3
+                h6.grey-text.text-lighten-1 Manufacture Date
+                +afQuickField name='manufDate' value=duplicateDoc.manufDate
+              .col.s12.m6.l3
+                h6.grey-text.text-lighten-1 Install Date
+                +afQuickField name='installDate' value=duplicateDoc.installDate
+          .form-group
+            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+              a.btn-floating.btn-large.purple
+                i.large.mdi-navigation-menu
+              ul
+                li
+                  button.btn-floating.yellow.darken-1(type='button', onclick='history.back(-1)')
+                    i.material-icons skip_previous
+                li
+                  button.btn-floating.red(type='reset')
+                    i.fa.fa-undo
+                li
+                  button.btn-floating.green(type='submit')
+                    i.fa.fa-check          
+    else
+      +spinner

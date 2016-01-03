@@ -1,6 +1,6 @@
 if (Meteor.isServer)
   Meteor.methods {
-    createLoc: ->
+    createLoc: (doc) ->
       # Check if id already exists
       exists = Locations.findOne {"id": doc.id}
       if(exists)
@@ -9,9 +9,13 @@ if (Meteor.isServer)
          # Insert a location / asset into the collection
          Locations.insert doc
          this.unblock()
-    deleteLoc: ->
+    deleteLoc: (doc) ->
       # Delete a location / asset from the collection
       Locations.remove doc
+      this.unblock()
+    deleteUser: (doc) ->
+      # Delete a location / asset from the collection
+      Meteor.users.remove doc
       this.unblock()
     createMeter: (doc, meter) ->
       # Check if meter array already exists

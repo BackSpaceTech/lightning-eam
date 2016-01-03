@@ -6,9 +6,10 @@ Template.deleteLocationPage.onCreated ->
 
 Template.deleteLocationPage.helpers
   deleteDoc: -> Collections.Locations.Current
+  textDoc: -> Collections.Locations.Current.text
 
 Template.deleteLocationPage.events
-  'click button': (e) ->
+  'click .btnDelete': (e) ->
     temp = Locations.findOne {'parent':Session.get('currentID').toString()}
     if temp
       alert 'You cannot delete an asset or location that has children!'

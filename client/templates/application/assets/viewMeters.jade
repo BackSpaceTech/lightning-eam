@@ -1,0 +1,59 @@
+template(name='viewMetersPage')
+  .container
+    if Template.subscriptionsReady
+      br
+      fieldset
+        legend 
+          |Meters for 
+          =currentDoc.text
+          |id: 
+          =currentDoc.id
+        a(href="{{pathFor '../assets/view-locations'}}")
+          button.btn-floating.btn-large.waves-effect.waves-light.tooltipped.right(type='button', data-position='bottom', data-delay='50', data-tooltip='Go back')
+            i.material-icons skip_previous
+        .row
+          h6.teal-text Meters
+          each currentDoc.meters
+            .row.item
+              .col.s12.m6.l3
+                label Title
+                p.teal-text
+                  small 
+                    =text
+              .col.s12.m6.l3
+                label Meter ID
+                p.teal-text
+                  small 
+                    =id
+              .col.s12.m6.l3
+                label Meter Reading
+                p.teal-text 
+                  small 
+                    =reading
+                    =units
+                  button.btn-floating.waves-effect.waves-light.tooltipped.btnEach(type='button', data-position='bottom', data-delay='50', data-tooltip='Update meter reading')
+                    i.fa.fa-tachometer
+                  button.btn-floating.waves-effect.waves-light.tooltipped.btnEach2.red(type='button', data-position='bottom', data-delay='50', data-tooltip='Permanently delete meter!')
+                    i.fa.fa-trash-o
+          // Meter Modals
+          #viewMetersPageModal1.modal
+            .container
+              .modal-content
+                h4 Meter Reading
+                p Please enter the new meter reading.
+              label.active(for='inpCreateMeterPageReading') Meter Reading
+              input.validate(placeholder='Current meter value', type='number', value='0', required='')
+              .modal-footer
+                a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
+                button.modal-action.modal-close.waves-effect.waves-green.btn-flat(type='button') OK
+          // Meter Modals
+          #viewMetersPageModal2.modal
+            .container
+              .modal-content
+                h4.red-text Delete Meter
+                p Warning! This will permanently delete the meter.
+              .modal-footer
+                a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
+                button.modal-action.modal-close.waves-effect.waves-green.btn-flat(type='button') Delete
+    else
+      +spinner

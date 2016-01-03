@@ -1,0 +1,121 @@
+// **************************** Layout **************************
+template(name='layout')
+  #wrapper
+    #main
+      +Template.dynamic(template=header)
+      .flow-text.blue-grey-text.text-darken-3
+        +Template.dynamic template=content
+    +Template.dynamic(template=footer)
+
+// **************************** Sign In Layout **************************
+template(name='layout2')
+  #wrapper
+    #main
+      +Template.dynamic(template=header)
+      .container.flow-text
+        br
+        .row
+          .col.s12.m6
+            .card.blue-grey.lighten-5
+              .card-content
+                span.card-title Please Sign In or Register
+                +Template.dynamic(template=content)
+        br
+    +Template.dynamic(template=footer)
+
+// **************************** Header Content **************************
+template(name='header1')
+  // Navigation
+  .navbar-fixed
+    nav.teal.darken-3
+      .nav-wrapper.flow-text
+        a.brand-logo.right(href="{{pathFor '/'}}")
+          if serverConnected
+            i.fa.fa-flash.light-green-text.accent-3.navbar-icon
+          else
+            i.fa.fa-flash.red-text.navbar-icon
+        ul#header1DesktopUL.left.hide-on-med-and-down
+          li.waves-effect.waves-light
+            a(href="{{pathFor '/assets'}}") Assets
+          li.waves-effect.waves-light
+            a(href="{{pathFor '/work'}}") Work Mgt
+          li.waves-effect.waves-light
+            a(href="{{pathFor '/pm'}}") Planned Maint
+          li.waves-effect.waves-light
+            a(href="{{pathFor '/resources'}}") Resources
+          li.waves-effect.waves-light
+            a(href="{{pathFor '/inventory'}}") Inventory
+          li.waves-effect.waves-light
+            a(href="{{pathFor '/procurement'}}") Procurement
+          li.waves-effect.waves-light
+            a(href="{{pathFor '/reports'}}") Reports
+          li.waves-effect.waves-light
+            a(href="{{pathFor '/help'}}") Help
+          li.waves-effect.waves-light
+            a(href="{{pathFor '/about'}}") About
+          if userSignedIn
+            li#btnheader1Logout.waves-effect.waves-light
+              a Logout
+          else
+            li.waves-effect.waves-light
+              a(href="{{pathFor '/sign-in'}}") Login
+        ul#slide-out.side-nav.waves-effect.waves-light
+          li
+            a(href="{{pathFor '/assets'}}") Assets
+          li
+            a(href="{{pathFor '/work'}}") Work Mgt
+          li
+            a(href="{{pathFor '/pm'}}") Planned Maint
+          li
+            a(href="{{pathFor '/resources'}}") Resources
+          li
+            a(href="{{pathFor '/inventory'}}") Inventory
+          li
+            a(href="{{pathFor '/procurement'}}") Procurement
+          li
+            a(href="{{pathFor '/reports'}}") Reports
+          li
+            a(href="{{pathFor '/help'}}") Help
+          li
+            a(href="{{pathFor '/about'}}") About
+          if userSignedIn}}
+            li
+              a(href="{{pathFor '/'}}") Logout
+          else
+            li
+              a(href="{{pathFor '/'}}") Login
+        a.button-collapse(href='#', data-activates='slide-out')
+          i.mdi-navigation-menu
+
+// **************************** Footer Content **************************
+template(name='footer1')
+  footer.page-footer.teal.darken-3
+    .container
+      .row
+        .col.l6.s12
+          h5.white-text The Lightning EAM Project
+          p.grey-text.text-lighten-4 Creating the World's fastest Enterprise Asset Management system.
+        .col.l4.offset-l2.s12
+          h5.white-text Links
+          ul
+            li
+              a.grey-text.text-lighten-3(href='#!') The Lightning EAM Project
+            li
+              a.grey-text.text-lighten-3(href='#!') Asia Pacific Robotics Corporation
+            li
+              a.grey-text.text-lighten-3(href='#!') BackSpace Technology
+            li
+              a.grey-text.text-lighten-3(href='#!') BackSpace Academy
+    .footer-copyright
+      .container
+        | © 2014 Copyright Asia Pacific Robotics Corporation Pty Ltd
+        a.grey-text.text-lighten-4.right(href='#!') More Links
+
+// **************************** Busy Spinner **************************
+template(name='spinner')
+  br
+  br
+  .text-center
+    i.fa.fa-spinner.fa-pulse.fa-5x
+  br
+  br

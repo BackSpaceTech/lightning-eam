@@ -1,0 +1,23 @@
+template(name='deleteLocationPage')
+  .flow-text
+    if Template.subscriptionsReady
+      .row
+        br
+        h1.red-text 
+          |Delete 
+          = textDoc
+          |?
+        h2
+          | Warning this will permanently delete 
+          = textDoc 
+          |!
+          | This will also affect any other documents that refer to 
+          = textDoc
+          |.
+        br
+        div
+          button.btn.waves-effect.waves-light.red.btnDelete Delete permanently
+          a(href="{{pathFor '../assets/view-locations'}}")
+            button.btn.waves-effect.waves-light(type='button')
+              i.material-icons skip_previous
+              |  Back to safety

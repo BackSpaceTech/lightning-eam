@@ -1,0 +1,68 @@
+template(name='duplicateLocationPage')
+  .flow-text
+    if Template.subscriptionsReady
+      br
+      +autoForm schema=locationFormSchema id='duplicateLocationPage' type='method' meteormethod='createLoc'
+        fieldset
+          legend Duplicate Location
+          .row
+            .col.s12.m6.l3
+              +afQuickField name='id' label='*ID'
+            +afQuickField name='type' value='location' type='hidden'
+            .col.s12.m6.l3
+              +afQuickField name='parent' value=parent type='hidden'
+            .col.s12.m6.l3
+              +afQuickField name='criticality' value=duplicateDoc.criticality label='*Criticality'
+            div
+              +afQuickField name='text' value=duplicateDoc.text
+            div
+              +afQuickField name='description' value=duplicateDoc.description
+            div
+              +afQuickField name='safety' value=duplicateDoc.safety
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Geolocation Information
+              .col.s12.m6.l3
+                +afQuickField name='lat1' value=duplicateDoc.lat1
+              .col.s12.m6.l3
+                +afQuickField name='long1' value=duplicateDoc.long1
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Address Information
+              div
+                +afQuickField name='address' value=duplicateDoc.address
+              .col.s12.m6.l3
+                +afQuickField name='state' value=duplicateDoc.state
+              .col.s12.m6.l3
+                +afQuickField name='zip' value=duplicateDoc.zip
+              .col.s12.m6.l3
+                +afQuickField name='country' value=duplicateDoc.country
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Additional Information
+              .col.s12.m6.l3
+                +afQuickField name='urlTechData' value=duplicateDoc.urlTechData
+              .col.s12.m6.l3
+                +afQuickField name='urlOpData' value=duplicateDoc.urlOpData
+              .col.s12.m6.l3
+                +afQuickField name='urlPhoto' value=duplicateDoc.urlPhoto
+          .form-group
+            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+              a.btn-floating.btn-large.purple
+                i.large.mdi-navigation-menu
+              ul
+                li
+                  button.btn-floating.yellow.darken-1(type='button', onclick='history.back(-1)')
+                    i.material-icons skip_previous
+                li
+                  button.btn-floating.red(type='reset')
+                    i.fa.fa-undo
+                li
+                  button.btn-floating.green(type='submit')
+                    i.fa.fa-check          
+    else
+      +spinner
+    br

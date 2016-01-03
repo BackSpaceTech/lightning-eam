@@ -32,3 +32,11 @@ Template.viewPeoplePage.events
     Collections.Users.Current = this
     FlowRouter.go '/resources/credentials'
   'click .btnEach3': (e) ->
+    deleteUser
+  'click .btnDelete': (e) ->
+    Collections.Users.Current = this
+    $('#viewPeoplePageModal').openModal()
+  'click .btnConfirm': (e) ->
+    temp = Collections.Users.Current
+    Meteor.call 'deleteUser', temp._id
+    FlowRouter.go '/resources'

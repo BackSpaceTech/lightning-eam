@@ -17,9 +17,6 @@ es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 kadira:flow-router
-accounts-password
-accounts-base
-less
 u2622:persistent-session
 materialize:materialize
 kadira:blaze-layout
@@ -38,8 +35,13 @@ reactive-var
 juliancwirko:s-alert
 email
 aslagle:reactive-table
-useraccounts:core
-useraccounts:materialize
 aldeed:delete-button
 meteorstuff:materialize-modal
 coffeescript
+mquandalle:jade
+stylus
+accounts-base
+accounts-password
+useraccounts:core
+useraccounts:materialize
+less

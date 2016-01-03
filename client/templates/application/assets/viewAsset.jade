@@ -1,0 +1,167 @@
+template(name='viewAssetPage')
+  .flow-text.container2
+    if Template.subscriptionsReady
+      br
+      fieldset
+        legend View Asset
+        .row
+          .col.s12.m6.l3
+            label Asset ID
+            p.teal-text
+              small 
+                = viewDoc.id
+          .col.s12.m6.l3
+            label Title
+            p.teal-text
+              small 
+                = viewDoc.text
+          .col.s12.m6.l3
+            label Parent ID
+            p.teal-text
+              small 
+                = viewDoc.parent
+          .col.s12.m6.l3
+            label Criticality
+            p.teal-text
+              small 
+                = viewDoc.criticality
+          .col.s12.m6.l3
+            label Classification
+            p.teal-text
+              small 
+                = viewDoc.classification
+          .col.s12.m6.l3
+            label Rotable Asset
+            p.teal-text
+              small 
+                = viewDoc.rotable
+          .col.s12.m6.l3
+            label Status
+            p.teal-text
+              small 
+                = viewDoc.status
+          div
+            label Description
+            p.teal-text
+              small 
+                = viewDoc.description
+        .row
+          .divider.teal
+          .section
+            h6.teal-text Geolocation Information
+            .col.s12.m6.l3
+              label Linear Asset
+              p.teal-text
+                small 
+                  = viewDoc.linear
+            .col.s12.m6.l3
+              label Lat1
+              p.teal-text
+                small 
+                  = viewDoc.lat1
+            .col.s12.m6.l3
+              label Long1
+              p.teal-text
+                small 
+                  = viewDoc.long1
+            .col.s12.m6.l3
+              label Lat2
+              p.teal-text
+                small 
+                  = viewDoc.lat2
+            .col.s12.m6.l3
+              label Long2
+              p.teal-text
+                small 
+                  = viewDoc.long2
+        // Other info
+        .row
+          .divider.teal
+          .section
+            h6.teal-text Manufacture Information
+            .col.s12.m6.l3
+              label Serial Number
+              p.teal-text
+                small 
+                  = viewDoc.serialNumber
+            .col.s12.m6.l3
+              label Model Number
+              p.teal-text
+                small 
+                  = viewDoc.modelNumber
+            .col.s12.m6.l3
+              label Manufacturer
+              p.teal-text
+                small 
+                  = viewDoc.manufacturer
+            .col.s12.m6.l3
+              label Manufacturer Phone
+              p.teal-text
+                small 
+                  = viewDoc.manufPhone
+            div
+              label Manufacturer Address
+              p.teal-text
+                small 
+                  = viewDoc.manufAddress
+            .col.s12.m6.l3
+              label Manufacturer State
+              p.teal-text
+                small 
+                  = viewDoc.manufState
+            .col.s12.m6.l3
+              label Manufacturer Zip
+              p.teal-text
+                small 
+                  = viewDoc.manufZip
+        .row
+          .divider.teal
+          .section
+            h6.teal-text Additional Information
+            .col.s12.m6.l3
+              label Technical Data URL
+              p.teal-text
+                small 
+                  = viewDoc.urlTechData
+            .col.s12.m6.l3
+              label Operational Data URL
+              p.teal-text
+                small 
+                  = viewDoc.urlOpData
+            .col.s12.m6.l3
+              label Photo URL
+              p.teal-text
+                small 
+                  = viewDoc.urlPhoto
+            .col.s12.m6.l3
+              label Reference ID
+              p.teal-text
+                small 
+                  = viewDoc.referenceID
+            .col.s12.m6.l3
+              label Manufacture Date
+              p.teal-text
+                small 
+                  = viewDoc.manufDate
+            .col.s12.m6.l3
+              label Install Date
+              p.teal-text
+                small 
+                  = viewDoc.installDate
+        .form-group
+          .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+            a.btn-floating.btn-large.purple
+              i.large.mdi-navigation-menu
+            ul
+              li
+                button.btn-floating.yellow.darken-1(type='button', onclick='history.back(-1)')
+                  i.material-icons skip_previous
+              li
+                a#btnViewAssetPageCopy.btn-floating.green
+                  i.fa.fa-copy
+              li
+                a#btnViewAssetPageEdit.btn-floating.blue
+                  i.fa.fa-edit
+
+    else
+      +spinner

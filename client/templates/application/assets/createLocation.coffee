@@ -1,4 +1,4 @@
-Template.insertLocationForm.helpers
+Template.createLocationPage.helpers
   parentID: -> Session.get 'currentID'
   locationFormSchema: -> Schema.locations
   locationType: ->

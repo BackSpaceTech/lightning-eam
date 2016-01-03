@@ -1,0 +1,29 @@
+template(name='viewPeoplePage')
+  .flow-text.container2
+    if Template.subscriptionsReady
+      br
+      fieldset
+        legend People
+        +reactiveTable collection=userArray settings=settings class='table striped'
+    else
+      +spinner
+  .fixed-action-btn(style='bottom: 45px; right: 24px;')
+    a.btn-floating.btn-large(href="{{pathFor '../resources'}}")
+      i.large.material-icons skip_previous
+  // Delete Modal
+  #viewPeoplePageModal.modal
+    .container
+      .modal-content
+        h4.red-text Delete User
+        p Warning! This will permanently delete the user.
+      .modal-footer
+        a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
+        button.modal-action.modal-close.waves-effect.waves-green.btn-flat.btnConfirm(type='button') Delete
+            
+template(name='editPerson')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEach(type='button', data-position='bottom', data-delay='50', data-tooltip='edit user')
+    i.fa.fa-edit
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEach2(type='button', data-position='bottom', data-delay='50', data-tooltip='edit permissions')
+    i.fa.fa-shield
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-position='bottom', data-delay='50', data-tooltip='Permanently delete user!')
+    i.fa.fa-trash-o

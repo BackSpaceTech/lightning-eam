@@ -6,7 +6,6 @@ Template.viewAssetPage.onCreated ->
 
 Template.viewAssetPage.helpers
   viewDoc: -> Collections.Locations.Current;
-  meterValue: -> this.reading
 
 Template.viewAssetPage.events
   'click #btnViewAssetPageEdit': ->
