@@ -54,8 +54,8 @@ template(name='viewLocationsPage')
                   button.btn-floating.btn-large.waves-effect.waves-light.blue.tooltipped(type='button', id='', data-position='bottom', data-delay='50', data-tooltip='View meters')
                     i.fa.fa-binoculars             
           .col.s12.m3.l2.z-depth-1(style='text-align:right;')
-            input#view_q(type='text', value='', placeholder='Search')
+            input.view_q(type='text', value='', placeholder='Search')
         .row.treeview
           .row.teal.lighten-1.white-text.z-depth-1   
             = locationID
-          #jstree_view.row.treeview.z-depth-1
+          .tree_view.row.treeview.z-depth-1            

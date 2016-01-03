@@ -27,4 +27,6 @@ if (Meteor.isServer)
     updateMeter: (doc, meter) ->
       Locations.update(doc._id, { $set: { meters: meter} })
       this.unblock()
+    setRole: (userID, role) ->
+      Roles.setUserRoles userID, role
     }

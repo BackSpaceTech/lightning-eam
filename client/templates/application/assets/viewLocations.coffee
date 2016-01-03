@@ -1,3 +1,6 @@
+Template.viewLocationsPage.onRendered ->
+  assetTree()
+
 Template.viewLocationsPage.events
   'click #btnViewLocationsPageNewDB': (e) ->
     Session.set 'currentID', '#'

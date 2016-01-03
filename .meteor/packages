@@ -26,7 +26,6 @@ aldeed:autoform
 aldeed:collection2
 gildaspk:autoform-materialize
 sujith3g:jstree
-frozeman:persistent-minimongo
 fortawesome:fontawesome
 dburles:collection-helpers
 reywood:publish-composite
@@ -45,3 +44,5 @@ accounts-password
 useraccounts:core
 useraccounts:materialize
 less
+hitchcott:qr-scanner
+ground:db
