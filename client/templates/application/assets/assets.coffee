@@ -4,4 +4,4 @@ Template.assetsPage.onCreated ->
   $('#header1DesktopUL li').eq(0).addClass 'active'
 
 Template.assetsPage.helpers
-  customTemplate: -> Customisations.Index.assets
+  customTemplate: -> Customisations.assets

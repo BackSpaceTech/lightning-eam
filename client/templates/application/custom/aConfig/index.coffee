@@ -1,4 +1,4 @@
-Customisations.Index = {
+Customisations = {
   # Assets
   assets: false
   createAsset: false

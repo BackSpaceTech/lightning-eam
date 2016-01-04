@@ -4,4 +4,4 @@ Template.workPage.onCreated ->
   $('#header1DesktopUL li').eq(1).addClass 'active'
 
 Template.workPage.helpers
-  customTemplate: -> Customisations.Index.work
+  customTemplate: -> Customisations.work

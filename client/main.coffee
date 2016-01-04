@@ -16,7 +16,7 @@ Meteor.startup ->
   AutoForm.addHooks(null, hooksObject);
 
   # Initialise Navbar dropdown
-  $(".dropdown-button").dropdown {hover:false}
+  $('.dropdown-button').dropdown {hover:false}
 
   # Initialise sAlert
   sAlert.config {

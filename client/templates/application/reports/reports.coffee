@@ -4,4 +4,4 @@ Template.reportsPage.onCreated ->
   $('#header1DesktopUL li').eq(6).addClass 'active'
 
 Template.reportsPage.helpers
-  customTemplate: -> Customisations.Index.reports
+  customTemplate: -> Customisations.reports

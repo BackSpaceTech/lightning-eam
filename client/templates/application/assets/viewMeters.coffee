@@ -4,7 +4,7 @@ Template.viewMetersPage.onCreated ->
      self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.viewMetersPage.helpers
-  customTemplate: -> Customisations.Index.viewMeters
+  customTemplate: -> Customisations.viewMeters
   currentDoc: ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     return Collections.Locations.Current

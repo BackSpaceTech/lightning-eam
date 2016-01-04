@@ -83,9 +83,57 @@ Schema.tasks = new SimpleSchema(
 )
 
 Schema.workorders = new SimpleSchema(
-  id:
+  reqBy_id:
     type: String
-    label: 'ID'
+  reqByFirstName:
+    type: String
+  reqByLastName:
+    type: String
+  reqDate:
+    type: Date
+  reqApprovedBy_id:
+    type: String
+    optional: true
+  reqApprovedByFirstName:
+    type: String
+    optional: true
+  reqApprovedByLastName:
+    type: String
+    optional: true
+  reqApprovedDate:
+    type: Date
+    optional: true
+  woApprovedBy_id:
+    type: String
+    optional: true
+  woApprovedByFirstName:
+    type: String
+    optional: true
+  woApprovedByLastName:
+    type: String
+    optional: true
+  woApprovedDate:
+    type: Date
+    optional: true
+  woInProgDate:
+    type: Date
+    optional: true
+  woCompletedDate:
+    type: Date
+    optional: true
+  woFinancialsDate:
+    type: Date
+    optional: true
+  woReviewedDate:
+    type: Date
+    optional: true
+  woClosedDate:
+    type: Date
+    optional: true           
+  refID:
+    type: String
+    label: 'Reference ID'
+    optional: true
   text:
     type: String
     label: 'Title'
@@ -120,7 +168,6 @@ Schema.workorders = new SimpleSchema(
   reqDescription:
     type: String
     label: 'Description'
-    optional: true
   description:
     type: String
     label: 'Description'
@@ -132,111 +179,4 @@ Schema.workorders = new SimpleSchema(
   workPlan:
     type: [Schema.tasks]
     label: 'Work Plan'
-
-
-
-
-
-  criticality:
-    type: Number
-    label: 'Criticality'
-    autoform:
-      type: 'select'
-      options: ->
-        Lists.Locations.Criticality
-  classification:
-    type: String
-    label: 'Classification'
-    optional: true
-    autoform:
-      type: 'select'
-      options: ->
-        Lists.Locations.Classification
-  status:
-    type: String
-    label: 'Status'
-    defaultValue: 'inservice'
-    autoform:
-      type: 'select'
-      options: ->
-        Lists.Locations.Status
-  rotable:
-    type: Boolean
-    label: 'Rotable Asset'
-    defaultValue: false
-  rotableID:
-    type: Boolean
-    label: 'Rotable ID'
-    optional: true
-  barcodeID:
-    type: String
-    label: 'Barcode ID'
-    optional: true
-  referenceID:
-    type: String
-    label: 'Reference ID'
-    optional: true
-  address:
-    type: String
-    label: 'Address'
-    optional: true
-  state:
-    type: String
-    label: 'State'
-    optional: true
-  zip:
-    type: String
-    label: 'Zip Code'
-    optional: true
-  country:
-    type: String
-    label: 'Country'
-    optional: true
-  urlTechData:
-    type: String
-    label: 'Tech Data URL'
-    optional: true
-  urlOpData:
-    type: String
-    label: 'Ops Data URL'
-    optional: true
-  urlPhoto:
-    type: String
-    label: 'Photo URL'
-    optional: true
-  serialNumber:
-    type: String
-    label: 'Serial Number'
-    optional: true
-  modelNumber:
-    type: String
-    label: 'Model Number'
-    optional: true
-  manufacturer:
-    type: String
-    label: 'Manufacturer'
-    optional: true
-  manufPhone:
-    type: String
-    label: 'Manuf. Phone'
-    optional: true
-  manufAddress:
-    type: String
-    label: 'Manuf. Address'
-    optional: true
-  manufState:
-    type: String
-    label: 'Manuf. State'
-    optional: true
-  manufZip:
-    type: String
-    label: 'Manuf. Zip'
-    optional: true
-  manufDate:
-    type: Date
-    label: ' '
-    optional: true
-  installDate:
-    type: Date
-    label: ' '
-    optional: true)
+)

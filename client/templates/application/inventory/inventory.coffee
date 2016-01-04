@@ -4,4 +4,4 @@ Template.inventoryPage.onCreated ->
   $('#header1DesktopUL li').eq(4).addClass 'active'
 
 Template.inventoryPage.helpers
-  customTemplate: -> Customisations.Index.inventory
+  customTemplate: -> Customisations.inventory

@@ -1,5 +1,5 @@
 Template.createLocationPage.helpers
-  customTemplate: -> Customisations.Index.createLocation
+  customTemplate: -> Customisations.createLocation
   parentID: -> Session.get 'currentID'
   locationFormSchema: -> Schema.locations
   locationType: ->

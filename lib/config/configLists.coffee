@@ -41,15 +41,55 @@ Lists.Workorders.Types = [
 ]
 Lists.Workorders.Status = [
   {
+    label: 'Request Cancelled'
+    value: '0'
+  }
+  {
     label: 'Request Started'
-    value: 'reqStarted'
+    value: '1'
   }
   {
     label: 'Request Accepted'
-    value: 'reqAccepted'
+    value: '2'
   }
   {
-    label: 'PM Work Order'
-    value: 'pm'
+    label: 'Request Returned'
+    value: '3'
+  }
+  {
+    label: 'Work Order Created'
+    value: '4'
+  }
+  {
+    label: 'Work Order Approved'
+    value: '5'
+  }
+  {
+    label: 'Work Order Planned'
+    value: '6'
+  }
+  {
+    label: 'Work Order Scheduled'
+    value: '7'
+  }
+  {
+    label: 'Work Order In Progress'
+    value: '8'
+  }
+  {
+    label: 'Work Order Completed'
+    value: '9'
+  }
+  {
+    label: 'Work Order Financials'
+    value: '10'
+  }
+  {
+    label: 'Work Order Reviewed'
+    value: '11'
+  }
+  {
+    label: 'Work Order Closed'
+    value: '12'
   }
 ]

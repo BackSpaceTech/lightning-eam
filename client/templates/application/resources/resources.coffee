@@ -4,4 +4,4 @@ Template.resourcesPage.onCreated ->
   $('#header1DesktopUL li').eq(3).addClass 'active'
 
 Template.resourcesPage.helpers
-  customTemplate: -> Customisations.Index.resources
+  customTemplate: -> Customisations.resources

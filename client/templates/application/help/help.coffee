@@ -4,4 +4,4 @@ Template.helpPage.onCreated ->
   $('#header1DesktopUL li').eq(7).addClass 'active'
 
 Template.helpPage.helpers
-  customTemplate: -> Customisations.Index.help
+  customTemplate: -> Customisations.help

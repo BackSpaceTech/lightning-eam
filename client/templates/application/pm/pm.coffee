@@ -4,4 +4,4 @@ Template.pmPage.onCreated ->
   $('#header1DesktopUL li').eq(2).addClass 'active'
 
 Template.pmPage.helpers
-  customTemplate: -> Customisations.Index.pm
+  customTemplate: -> Customisations.pm

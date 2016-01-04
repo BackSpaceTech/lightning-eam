@@ -4,7 +4,7 @@ Template.viewPeoplePage.onCreated ->
     self.subscribe 'directory'
 
 Template.viewPeoplePage.helpers
-customTemplate: -> Customisations.Index.viewPeople
+customTemplate: -> Customisations.viewPeople
   userProfiles: -> Meteor.users.find()
   userEmail: -> this.emails[0].address
   userID: -> this._id

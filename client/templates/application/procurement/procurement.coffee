@@ -4,4 +4,4 @@ Template.procurementPage.onCreated ->
   $('#header1DesktopUL li').eq(5).addClass 'active'
 
 Template.procurementPage.helpers
-  customTemplate: -> Customisations.Index.procurement
+  customTemplate: -> Customisations.procurement

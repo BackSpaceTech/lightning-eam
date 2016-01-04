@@ -1,8 +1,12 @@
 Template.viewLocationsPage.onRendered ->
+  $('.tooltipped').tooltip {delay: 50}
   assetTree()
 
+Template.viewLocationsPage.onDestroyed ->
+  $('.tooltipped').tooltip 'remove'
+
 Template.viewLocationsPage.helpers
-  customTemplate: -> Customisations.Index.viewLocations
+  customTemplate: -> Customisations.viewLocations
   locationID: ->
     temp = Session.get 'currentID'
     temp2 = Locations.find({id:String(temp)}).fetch();
