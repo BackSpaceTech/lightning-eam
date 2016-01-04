@@ -4,6 +4,7 @@ Template.editAssetPage.onCreated ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.editAssetPage.helpers
+  customTemplate: -> Customisations.Index.editAsset
   currentDoc: ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     return Collections.Locations.Current

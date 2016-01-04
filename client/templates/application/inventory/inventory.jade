@@ -1,100 +1,103 @@
 template(name='inventoryPage')
-  .container
-    h1.icon-page Inventory
-    .row.flow-text.center-align
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-cube
-          br
-          br
-          |  Create Item
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-cubes
-          br
-          br
-          |  View Items
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-wrench
-          br
-          br
-          |  Create Equipment
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-binoculars
-          br
-          br
-          |  View Equipment
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-file-o
-          br
-          br
-          |  Create Item Classification
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-files-o
-          br
-          br
-          |  View Item Classifications
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-list-ul
-          br
-          br
-          |  Create Bill of Materials
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-list-alt
-          br
-          br
-          |  View Bill of Materials
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-map-pin
-          br
-          br
-          |  Create Inventory Location
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-map-o
-          br
-          br
-          |  View Inventory Locations
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-calculator
-          br
-          br
-          |  Change Settings
-          br
-          br
-      .col.s12.m6.l3
-        a.waves-effect.waves-dark.icon-page(href='#')
-          i.fa-5x.fa.fa-binoculars
-          br
-          br
-          |  View Settings
-          br
-          br
+  if customTemplate
+    +inventoryPageCustom  
+  else 
+    .container
+      h1.icon-page Inventory
+      .row.flow-text.center-align
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-cube
+            br
+            br
+            |  Create Item
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-cubes
+            br
+            br
+            |  View Items
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-wrench
+            br
+            br
+            |  Create Equipment
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-binoculars
+            br
+            br
+            |  View Equipment
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-file-o
+            br
+            br
+            |  Create Item Classification
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-files-o
+            br
+            br
+            |  View Item Classifications
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-list-ul
+            br
+            br
+            |  Create Bill of Materials
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-list-alt
+            br
+            br
+            |  View Bill of Materials
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-map-pin
+            br
+            br
+            |  Create Inventory Location
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-map-o
+            br
+            br
+            |  View Inventory Locations
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-calculator
+            br
+            br
+            |  Change Settings
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-binoculars
+            br
+            br
+            |  View Settings
+            br
+            br

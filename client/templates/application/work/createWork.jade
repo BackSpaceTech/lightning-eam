@@ -1,0 +1,27 @@
+template(name='createWorkPage')
+  if customTemplate
+    +createWorkPageCustom  
+  else 
+    .container2
+      .row
+        div
+          h5
+            | Create Work Request
+            br
+          .row
+            .col.s12.m9.l10
+           
+           
+           
+           
+           
+           
+           
+           
+           
+            .col.s12.m3.l2.z-depth-1(style='text-align:right;')
+              input.view_q(type='text', value='', placeholder='Search')
+          .row.treeview
+            .row.teal.lighten-1.white-text.z-depth-1   
+              = locationID
+            .tree_view.row.treeview.z-depth-1

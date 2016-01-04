@@ -1,6 +1,15 @@
 Template.viewLocationsPage.onRendered ->
   assetTree()
 
+Template.viewLocationsPage.helpers
+  customTemplate: -> Customisations.Index.viewLocations
+  locationID: ->
+    temp = Session.get 'currentID'
+    temp2 = Locations.find({id:String(temp)}).fetch();
+    return (temp + ' - ' + temp2[0].text)
+  # Disable create/edit if not connected
+  serverConnected: -> (Meteor.status().status == 'connected');
+
 Template.viewLocationsPage.events
   'click #btnViewLocationsPageNewDB': (e) ->
     Session.set 'currentID', '#'
@@ -107,13 +116,3 @@ Template.viewLocationsPage.events
       alert 'No location or asset selected!'
     else
       FlowRouter.go '/assets/create-meter'
-
-
-Template.viewLocationsPage.helpers
-  locationID: ->
-    temp = Session.get 'currentID'
-    temp2 = Locations.find({id:String(temp)}).fetch();
-    return (temp + ' - ' + temp2[0].text)
-
-  # Disable create/edit if not connected
-  serverConnected: -> (Meteor.status().status == 'connected');

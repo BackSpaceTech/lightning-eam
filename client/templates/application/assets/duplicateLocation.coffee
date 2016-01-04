@@ -4,6 +4,7 @@ Template.duplicateLocationPage.onCreated ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.duplicateLocationPage.helpers
+  customTemplate: -> Customisations.Index.duplicateLocation
   duplicateDoc: ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     return Collections.Locations.Current

@@ -4,6 +4,7 @@ Template.viewLocationPage.onCreated ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.viewLocationPage.helpers
+  customTemplate: -> Customisations.Index.viewLocation
   viewDoc: ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     return Collections.Locations.Current

@@ -1,5 +1,8 @@
 template(name='helpPage')
-  .container
-    h1 Help
-    br
-    br
+  if customTemplate
+    +helpPageCustom  
+  else 
+    .container
+      h1 Help
+      br
+      br

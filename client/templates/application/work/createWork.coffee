@@ -7,6 +7,7 @@ Template.createWorkPage.events
 
 
 Template.createWorkPage.helpers
+  customTemplate: -> Customisations.Index.createWork
   locationID: ->
     temp = Session.get 'currentID'
     temp2 = Locations.find({id:String(temp)}).fetch();

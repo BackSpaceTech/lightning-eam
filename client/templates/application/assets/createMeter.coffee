@@ -4,6 +4,7 @@ Template.createMeterPage.onCreated ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.createMeterPage.helpers
+  customTemplate: -> Customisations.Index.createMeter
   currentDoc: ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     return Collections.Locations.Current

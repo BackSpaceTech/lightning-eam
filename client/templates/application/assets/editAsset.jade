@@ -1,92 +1,95 @@
 template(name='editAssetPage')
-  .flow-text
-    br
-    if Template.subscriptionsReady
-      +autoForm schema=locationFormSchema id="editAssetPage" type="update" collection="Locations" doc=currentDoc
-        fieldset
-          legend Edit Asset 
-          .row
-            .col.s12.m6.l3
-              +afQuickField name="type"
-            .col.s12.m6.l3
-              +afQuickField name="parent" type="hidden"
-            .col.s12.m6.l3
-              +afQuickField name="criticality"
-            div
-              +afQuickField name="text"
-            div
-              +afQuickField name="description"
-            div
-              +afQuickField name="safety"
-            .col.s12.m6.l3
-              +afQuickField name="classification"
-            .col.s12.m6.l3
-              +afQuickField name="status"
-            .col.s12.m6.l3
-              +afQuickField name="rotable"
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Geolocation Information
+  if customTemplate
+    +editAssetPageCustom  
+  else    
+    .flow-text
+      br
+      if Template.subscriptionsReady
+        +autoForm schema=locationFormSchema id="editAssetPage" type="update" collection="Locations" doc=currentDoc
+          fieldset
+            legend Edit Asset 
+            .row
               .col.s12.m6.l3
-                +afQuickField name="linear"
+                +afQuickField name="type"
               .col.s12.m6.l3
-                +afQuickField name="lat1"
+                +afQuickField name="parent" type="hidden"
               .col.s12.m6.l3
-                +afQuickField name="long1"
-              .col.s12.m6.l3
-                +afQuickField name="lat2"
-              .col.s12.m6.l3
-                +afQuickField name="long2"
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Manufacture Information
-              .col.s12.m6.l3
-                +afQuickField name="serialNumber"
-              .col.s12.m6.l3
-                +afQuickField name="modelNumber"
-              .col.s12.m6.l3
-                +afQuickField name="manufacturer"
-              .col.s12.m6.l3
-                +afQuickField name="manufPhone"
+                +afQuickField name="criticality"
               div
-                +afQuickField name="manufAddress"
+                +afQuickField name="text"
+              div
+                +afQuickField name="description"
+              div
+                +afQuickField name="safety"
               .col.s12.m6.l3
-                +afQuickField name="manufState"
+                +afQuickField name="classification"
               .col.s12.m6.l3
-                +afQuickField name="manufZip"
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Additional Information
+                +afQuickField name="status"
               .col.s12.m6.l3
-                +afQuickField name="urlTechData"
-              .col.s12.m6.l3
-                +afQuickField name="urlOpData"
-              .col.s12.m6.l3
-                +afQuickField name="urlPhoto"
-              .col.s12.m6.l3
-                +afQuickField name="referenceID"
-              .col.s12.m6.l3
-                h6.grey-text.text-lighten-1 Manufacture Date
-                +afQuickField name="manufDate"
-              .col.s12.m6.l3
-                h6.grey-text.text-lighten-1 Install Date
-                +afQuickField name="installDate"
-          .form-group
-            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-              a.btn-floating.btn-large.purple
-                i.large.mdi-navigation-menu
-              ul
-                li
-                  a.btn-floating.yellow.darken-1(href="{{pathFor '../assets/view-locations'}}")
-                    i.material-icons skip_previous
-                li
-                  button.btn-floating.red(type='reset')
-                    i.fa.fa-undo
-                li
-                  button.btn-floating.green(type='submit')
-                    i.fa.fa-check
-    else
-      +spinner
+                +afQuickField name="rotable"
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Geolocation Information
+                .col.s12.m6.l3
+                  +afQuickField name="linear"
+                .col.s12.m6.l3
+                  +afQuickField name="lat1"
+                .col.s12.m6.l3
+                  +afQuickField name="long1"
+                .col.s12.m6.l3
+                  +afQuickField name="lat2"
+                .col.s12.m6.l3
+                  +afQuickField name="long2"
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Manufacture Information
+                .col.s12.m6.l3
+                  +afQuickField name="serialNumber"
+                .col.s12.m6.l3
+                  +afQuickField name="modelNumber"
+                .col.s12.m6.l3
+                  +afQuickField name="manufacturer"
+                .col.s12.m6.l3
+                  +afQuickField name="manufPhone"
+                div
+                  +afQuickField name="manufAddress"
+                .col.s12.m6.l3
+                  +afQuickField name="manufState"
+                .col.s12.m6.l3
+                  +afQuickField name="manufZip"
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Additional Information
+                .col.s12.m6.l3
+                  +afQuickField name="urlTechData"
+                .col.s12.m6.l3
+                  +afQuickField name="urlOpData"
+                .col.s12.m6.l3
+                  +afQuickField name="urlPhoto"
+                .col.s12.m6.l3
+                  +afQuickField name="referenceID"
+                .col.s12.m6.l3
+                  h6.grey-text.text-lighten-1 Manufacture Date
+                  +afQuickField name="manufDate"
+                .col.s12.m6.l3
+                  h6.grey-text.text-lighten-1 Install Date
+                  +afQuickField name="installDate"
+            .form-group
+              .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+                a.btn-floating.btn-large.purple
+                  i.large.mdi-navigation-menu
+                ul
+                  li
+                    a.btn-floating.yellow.darken-1(href="{{pathFor '../assets/view-locations'}}")
+                      i.material-icons skip_previous
+                  li
+                    button.btn-floating.red(type='reset')
+                      i.fa.fa-undo
+                  li
+                    button.btn-floating.green(type='submit')
+                      i.fa.fa-check
+      else
+        +spinner

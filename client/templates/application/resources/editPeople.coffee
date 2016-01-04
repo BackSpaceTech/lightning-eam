@@ -6,3 +6,4 @@ Template.editPeoplePage.helpers
   currentUser: -> Collections.Users.Current
   professionsValue: -> Collections.Users.Current.professions
   tradesValue: -> Collections.Users.Current.trades
+  customTemplate: -> Customisations.Index.editPeople
