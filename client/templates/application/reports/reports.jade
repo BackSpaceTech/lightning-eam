@@ -1,0 +1,17 @@
+template(name='reportsPage')
+  if customTemplate
+    +reportsPageCustom  
+  else   
+    .container
+      h1 Welcome to Lightning Reports!
+        br
+        br
+      .row.valign-wrapper
+        .col.s12.m6.l3.valign
+          a(href='#')
+              img(src='Logo_D3.png')   
+        .col.s12.m6.l3.valign
+          a(href='#')
+              img(src='Birt-logo.png')              
+      br
+      br

@@ -1,0 +1,31 @@
+template(name='workPage')
+  if customTemplate
+    +workPageCustom  
+  else 
+    .container
+      h1.icon-page Work Management
+      .row.flow-text.center-align
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='{{pathFor "work/create"}}')
+            i.fa-5x.fa.fa-commenting-o
+            br
+            br
+            |  Create Request
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='{{pathFor "work/view-requests"}}')
+            i.fa-5x.fa.fa-search
+            br
+            br
+            |  View Requests
+            br
+            br                
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='work/view-workorders')
+            i.fa-5x.fa.fa-wrench
+            br
+            br
+            |  Work Orders
+            br
+            br

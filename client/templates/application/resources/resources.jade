@@ -1,0 +1,15 @@
+template(name='resourcesPage')
+  if customTemplate
+    +resourcesPageCustom  
+  else 
+    .container
+      h1.icon-page Resources
+      .row.flow-text.center-align
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='/resources/view-people')
+            i.fa-5x.fa.fa-user
+            br
+            br
+            |  People
+            br
+            br

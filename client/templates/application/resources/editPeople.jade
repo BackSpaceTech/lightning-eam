@@ -1,0 +1,46 @@
+template(name='editPeoplePage')
+  if customTemplate
+    +editPeoplePageCustom  
+  else 
+    .flow-text.container2
+      .form-group
+        .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+          a.btn-floating.btn-large.purple
+            i.large.mdi-navigation-menu
+          ul
+            li
+              button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                i.material-icons skip_previous
+            li
+              button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
+                i.fa.fa-undo
+            li
+              button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
+                i.fa.fa-check
+      br
+      if Template.subscriptionsReady
+        +autoForm id='editPeoplePage' collection='Meteor.users'  doc=currentUser type='update'
+          fieldset
+            legend Edit User Profile
+            .row.z-depth-1
+              .col.s12.m6.l3
+                +afQuickField name='profile.firstName'
+              .col.s12.m6.l3
+                +afQuickField name='profile.lastName'
+              .col.s12.m6.l3
+                +afQuickField name='profile.cpyPosition'
+              .col.s12.m6.l3
+                +afQuickField name='profile.cpyName'
+              .col.s12.m6.l3
+                +afQuickField name='profile.cpyDiv'
+              .col.s12.m6.l3
+                +afQuickField name='profile.website'
+              .col.s12.m6.l3
+                +afQuickField name='profile.phone'
+              .col.s12.m6.l3
+                +afQuickField name='profile.mobile'
+            .row.z-depth-1
+              .col.s12.m6.l3
+                +afQuickField name='emails'
+      else
+        +spinner

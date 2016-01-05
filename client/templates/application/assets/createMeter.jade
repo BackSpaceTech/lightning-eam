@@ -1,0 +1,36 @@
+template(name='createMeterPage')
+  if customTemplate
+    +createMeterPageCustom  
+  else    
+    .flow-text
+      if Template.subscriptionsReady
+        br
+        fieldset
+          legend Create Meter for currentDoc.text (id: currentDoc.id)
+          form.new-record
+            br
+            .row
+              .input-field.col.s12.m6.l3
+                input#inpCreateMeterPageTitle.validate(placeholder='Give your meter a name', type='text', required='')
+                label.active(for='inpCreateMeterPageTitle') Title
+              .input-field.col.s12.m6.l3
+                input#inpCreateMeterPageID.validate(placeholder='Give your meter an ID', type='text', required='')
+                label.active(for='inpCreateMeterPageID') Meter ID
+              .input-field.col.s12.m6.l3
+                input#inpCreateMeterPageReading.validate(placeholder='Current meter value', type='number', value='0', required='')
+                label.active(for='inpCreateMeterPageReading') Meter Reading
+              .input-field.col.s12.m6.l3
+                input#inpCreateMeterPageUnits.validate(placeholder='Measurement units', type='text', required='')
+                label.active(for='inpCreateMeterPageUnits') Units
+            br
+            .row
+              button.btn.waves-effect.waves-light(type='submit')
+                i.fa.fa-tachometer
+                |  Create
+              a(href="{{pathFor '../assets/view-locations'}}")
+                button.btn.waves-effect.waves-light.tooltipped.red(type='button', data-delay='50', data-position='left', data-tooltip='Go back')
+                  i.material-icons skip_previous
+                  | Cancel
+      else
+        +spinner
+      br
