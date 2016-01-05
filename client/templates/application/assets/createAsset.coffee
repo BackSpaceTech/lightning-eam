@@ -1,5 +1,6 @@
 Template.createAssetPage.helpers
-  parentID: -> Session.get 'currentID'
+  parentID: -> Session.get('currentID').toString()
+  children: -> []
   locationFormSchema: -> Schema.locations
   customTemplate: -> Customisations.createAsset
 

@@ -1,6 +1,7 @@
 Template.createLocationPage.helpers
   customTemplate: -> Customisations.createLocation
-  parentID: -> Session.get 'currentID'
+  parentID: -> Session.get('currentID').toString()
+  children: -> []
   locationFormSchema: -> Schema.locations
   locationType: ->
     if (Session.get 'currentID') == '#'

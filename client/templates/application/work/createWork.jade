@@ -10,11 +10,14 @@ template(name='createWorkPage')
             legend New Work Request
             .row
               +afQuickField name='type' value='workorder' type='hidden'
-              +afQuickField name='reqBy_id' value=reqBy_id type='hidden'
-              +afQuickField name='reqByFirstName' value=reqByFirstName type='hidden'
-              +afQuickField name='reqByLastName' value=reqByLastName type='hidden'
+              +afQuickField name='reqBy_id' value=requestor.reqBy_id type='hidden'
+              +afQuickField name='reqByFirstName' value=requestor.reqByFirstName type='hidden'
+              +afQuickField name='reqByLastName' value=requestor.reqByLastName type='hidden'
               +afQuickField name='reqDate' value=reqDate type='hidden'
               +afQuickField name='status' value='1' type='hidden'
+              +afQuickField name='asset_ID' value=assetDetails._id type='hidden'
+              +afQuickField name='assetID' value=assetDetails.id type='hidden'
+              +afQuickField name='assetText' value=assetDetails.text type='hidden'
               .col.s12.m6.l3
                 +afQuickField name='refID'
               .col.s12.m6.l3
@@ -29,7 +32,9 @@ template(name='createWorkPage')
                 input.view_q(type='text', value='', placeholder='Search')
             .row.treeview
               .row.teal.lighten-1.white-text.z-depth-1   
-                = locationID
+                = assetDetails.id
+                | - 
+                = assetDetails.text 
               .tree_view.row.treeview.z-depth-1
             .form-group
               .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')

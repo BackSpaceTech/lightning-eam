@@ -17,22 +17,22 @@ template(name='viewLocationsPage')
                       i.large.mdi-navigation-menu
                     ul
                       li
-                        button.btn-floating.teal(type='button', onclick='history.back(-1)')
+                        button.btn-floating.teal.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-delay='50' , data-tooltip='Go Back')
                           i.material-icons skip_previous
                       li
-                        a#btnViewLocationsPageEdit2.btn-floating.blue
+                        a#btnViewLocationsPageEdit2.btn-floating.blue.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Edit asset or location')
                           i.fa.fa-edit
                       li
-                        a#btnViewLocationsPageNewAss2.btn-floating.green
+                        a#btnViewLocationsPageNewAss2.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Create new asset')
                           i.fa.fa-industry
                       li
-                        a#btnViewLocationsPageNewLoc2.btn-floating.green
+                        a#btnViewLocationsPageNewLoc2.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Create new location')
                           i.fa.fa-map-marker
                       li
-                        a#btnViewLocationsPageNewDB2.btn-floating.green
+                        a#btnViewLocationsPageNewDB2.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50', data-tooltip='Create new database')
                           i.fa.fa-database
                       li
-                        a#btnViewLocationsPageViewLoc2.btn-floating.teal
+                        a#btnViewLocationsPageViewLoc2.btn-floating.teal.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='View location or asset')
                           i.fa.fa-binoculars
                 .hide-on-med-and-down
                   button#btnViewLocationsPageNewDB.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new database')

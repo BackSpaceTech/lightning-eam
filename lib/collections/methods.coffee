@@ -4,12 +4,23 @@ if (Meteor.isServer)
       # Check if id already exists
       exists = Locations.findOne {"id": doc.id}
       if(exists)
-         throw new Meteor.Error "id-already-used", "The ID is already used, please select a new ID."
-       else
+        console.log("id-already-used", "The ID is already used, please select a new ID.")
+        throw new Meteor.Error "id-already-used", "The ID is already used, please select a new ID."
+      else
+         # Update the parent asset's children list
+         if (doc.parent!='#')
+           temp = Locations.findOne {'id':doc.parent}
+           if (temp)
+             Locations.update(temp._id, { $push: { children: doc.id }})
          # Insert a location / asset into the collection
          Locations.insert doc
          this.unblock()
     deleteLoc: (doc) ->
+      # Update the parent asset's children list
+      if (doc.parent!='#')
+        temp = Locations.findOne {'id':doc.parent}
+        if (temp)
+          Locations.update(temp._id, { $pull: { children: doc.id }})
       # Delete a location / asset from the collection
       Locations.remove doc
       this.unblock()
