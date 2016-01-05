@@ -3,15 +3,12 @@ Template.createMeterPage.onCreated ->
   self.autorun ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
-<<<<<<< HEAD
 Template.createMeterPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
 Template.createMeterPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-=======
->>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
 Template.createMeterPage.helpers
   customTemplate: -> Customisations.createMeter
   currentDoc: ->

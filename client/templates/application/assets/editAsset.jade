@@ -1,7 +1,6 @@
 template(name='editAssetPage')
   if customTemplate
     +editAssetPageCustom  
-<<<<<<< HEAD
   else 
     .form-group
       .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
@@ -17,9 +16,6 @@ template(name='editAssetPage')
           li
             button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
               i.fa.fa-check   
-=======
-  else    
->>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
     .flow-text
       br
       if Template.subscriptionsReady
@@ -95,22 +91,5 @@ template(name='editAssetPage')
                 .col.s12.m6.l3
                   h6.grey-text.text-lighten-1 Install Date
                   +afQuickField name="installDate"
-<<<<<<< HEAD
-=======
-            .form-group
-              .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-                a.btn-floating.btn-large.purple
-                  i.large.mdi-navigation-menu
-                ul
-                  li
-                    a.btn-floating.yellow.darken-1(href="{{pathFor '../assets/view-locations'}}")
-                      i.material-icons skip_previous
-                  li
-                    button.btn-floating.red(type='reset')
-                      i.fa.fa-undo
-                  li
-                    button.btn-floating.green(type='submit')
-                      i.fa.fa-check
->>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
       else
         +spinner

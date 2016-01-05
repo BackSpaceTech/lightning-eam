@@ -3,7 +3,6 @@ template(name='viewLocationPage')
     +viewLocationPageCustom  
   else  
     .flow-text.container2
-<<<<<<< HEAD
       .form-group
         .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
           a.btn-floating.btn-large.purple
@@ -13,13 +12,11 @@ template(name='viewLocationPage')
               button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
                 i.material-icons skip_previous
             li
-              a#btnViewLocationPageCopy.btn-floating.green.tooltipped(data-position='left', data-tooltip='Go Back')
+              a#btnViewLocationPageCopy.btn-floating.green.tooltipped(data-position='left', data-tooltip='Copy')
                 i.fa.fa-copy
             li
-              a#btnViewLocationPageEdit.btn-floating.blue.tooltipped(data-position='left', data-tooltip='Go Back')
+              a#btnViewLocationPageEdit.btn-floating.blue.tooltipped(data-position='left', data-tooltip='Edit')
                 i.fa.fa-edit
-=======
->>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
       if Template.subscriptionsReady
         br
         fieldset
@@ -112,23 +109,6 @@ template(name='viewLocationPage')
                 p.teal-text
                   small 
                     = viewDoc.urlPhoto
-<<<<<<< HEAD
-=======
-          .form-group
-            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-              a.btn-floating.btn-large.purple
-                i.large.mdi-navigation-menu
-              ul
-                li
-                  button.btn-floating.yellow.darken-1(type='button', onclick='history.back(-1)')
-                    i.material-icons skip_previous
-                li
-                  a#btnViewLocationPageCopy.btn-floating.green
-                    i.fa.fa-copy
-                li
-                  a#btnViewLocationPageEdit.btn-floating.blue
-                    i.fa.fa-edit
->>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
       else
         +spinner
       br

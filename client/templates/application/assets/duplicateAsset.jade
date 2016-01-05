@@ -3,7 +3,6 @@ template(name='duplicateAssetPage')
     +duplicateAssetPageCustom  
   else    
     .container2
-<<<<<<< HEAD
       .form-group
         .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
           a.btn-floating.btn-large.purple
@@ -18,8 +17,6 @@ template(name='duplicateAssetPage')
             li
               button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
                 i.fa.fa-check    
-=======
->>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
       if Template.subscriptionsReady
         br
         +autoForm schema=locationFormSchema id='duplicateAssetPage' type='method' meteormethod='createLoc'
@@ -94,24 +91,6 @@ template(name='duplicateAssetPage')
                   +afQuickField name='manufDate' value=duplicateDoc.manufDate
                 .col.s12.m6.l3
                   h6.grey-text.text-lighten-1 Install Date
-<<<<<<< HEAD
                   +afQuickField name='installDate' value=duplicateDoc.installDate      
-=======
-                  +afQuickField name='installDate' value=duplicateDoc.installDate
-            .form-group
-              .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-                a.btn-floating.btn-large.purple
-                  i.large.mdi-navigation-menu
-                ul
-                  li
-                    button.btn-floating.yellow.darken-1(type='button', onclick='history.back(-1)')
-                      i.material-icons skip_previous
-                  li
-                    button.btn-floating.red(type='reset')
-                      i.fa.fa-undo
-                  li
-                    button.btn-floating.green(type='submit')
-                      i.fa.fa-check          
->>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
       else
         +spinner

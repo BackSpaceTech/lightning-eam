@@ -1,12 +1,9 @@
-<<<<<<< HEAD
 Template.editAssetPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
 Template.editAssetPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
   
-=======
->>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
 Template.editAssetPage.onCreated ->
   self = this
   self.autorun ->
