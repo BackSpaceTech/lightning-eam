@@ -129,7 +129,11 @@ Schema.workorders = new SimpleSchema(
     optional: true
   woClosedDate:
     type: Date
+<<<<<<< HEAD
     optional: true
+=======
+    optional: true           
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
   refID:
     type: String
     label: 'Reference ID'

@@ -3,6 +3,7 @@ Template.viewPeoplePage.onCreated ->
   self.autorun ->
     self.subscribe 'directory'
 
+<<<<<<< HEAD
 Template.viewPeoplePage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
@@ -11,6 +12,10 @@ Template.viewPeoplePage.onDestroyed ->
 
 Template.viewPeoplePage.helpers
   customTemplate: -> Customisations.viewPeople
+=======
+Template.viewPeoplePage.helpers
+customTemplate: -> Customisations.viewPeople
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
   userProfiles: -> Meteor.users.find()
   userEmail: -> this.emails[0].address
   userID: -> this._id
@@ -27,7 +32,11 @@ Template.viewPeoplePage.helpers
         { key: 'profile.cpyDiv', label: 'Division' }
         { key: 'emails.0.address', label: 'Email' }
         { key: 'roles.0', label: 'Role' }
+<<<<<<< HEAD
         { key: 'location', label: 'Edit/Secure/Delete', tmpl: Template.editPerson }
+=======
+        { key: 'location', label: 'Edit/Delete', tmpl: Template.editPerson }
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
       ]
     }
 

@@ -3,12 +3,15 @@ Template.viewLocationPage.onCreated ->
   self.autorun ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
+<<<<<<< HEAD
 Template.viewLocationPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewLocationPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
+=======
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
 Template.viewLocationPage.helpers
   customTemplate: -> Customisations.viewLocation
   viewDoc: ->

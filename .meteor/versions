@@ -1,5 +1,6 @@
 accounts-base@1.2.2
 accounts-password@1.1.4
+<<<<<<< HEAD
 aldeed:autoform@5.8.1
 aldeed:collection2@2.8.0
 aldeed:collection2-core@1.0.0
@@ -11,6 +12,16 @@ amplify@1.0.0
 anti:i18n@0.4.3
 arillo:flow-router-helpers@0.4.7
 aslagle:reactive-table@0.8.22
+=======
+aldeed:autoform@5.8.0
+aldeed:collection2@2.3.1
+aldeed:delete-button@2.0.0
+aldeed:simple-schema@1.1.0
+amplify@1.0.0
+anti:i18n@0.4.3
+arillo:flow-router-helpers@0.4.7
+aslagle:reactive-table@0.8.21
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
@@ -26,7 +37,11 @@ callback-hook@1.0.4
 check@1.1.0
 chrismbeckett:toastr@2.1.2_1
 coffeescript@1.0.11
+<<<<<<< HEAD
 cosmos:browserify@0.9.3
+=======
+cosmos:browserify@0.9.2
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
 dburles:collection-helpers@1.0.4
 ddp@1.2.2
 ddp-client@1.2.1
@@ -45,7 +60,11 @@ es5-shim@4.1.14
 fastclick@1.0.7
 fortawesome:fontawesome@4.5.0
 geojson-utils@1.0.4
+<<<<<<< HEAD
 gildaspk:autoform-materialize@0.0.26
+=======
+gildaspk:autoform-materialize@0.0.25
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
 ground:db@0.3.14
 ground:dictionary@0.2.1
 ground:localstorage@0.1.9
@@ -68,8 +87,12 @@ less@2.5.1
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
+<<<<<<< HEAD
 materialize:materialize@0.97.5
 mdg:validation-error@0.2.0
+=======
+materialize:materialize@0.97.3
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
 meteor@1.1.10
 meteor-base@1.0.1
 meteorstuff:materialize-modal@1.0.4
@@ -115,9 +138,15 @@ u2622:persistent-session@0.4.4
 ui@1.0.8
 underscore@1.0.4
 url@1.0.5
+<<<<<<< HEAD
 useraccounts:core@1.13.1
 useraccounts:flow-routing@1.13.1
 useraccounts:materialize@1.13.1
+=======
+useraccounts:core@1.13.0
+useraccounts:flow-routing@1.13.0
+useraccounts:materialize@1.13.0
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
 webapp@1.2.3
 webapp-hashing@1.0.5
 zimme:active-route@2.3.2

@@ -12,7 +12,11 @@ template(name='viewMetersPage')
             |id: 
             =currentDoc.id
           a(href="{{pathFor '../assets/view-locations'}}")
+<<<<<<< HEAD
             button.btn-floating.btn-large.waves-effect.waves-light.tooltipped.right(type='button', data-delay='50', data-position='left', data-tooltip='Go back')
+=======
+            button.btn-floating.btn-large.waves-effect.waves-light.tooltipped.right(type='button', data-position='bottom', data-delay='50', data-tooltip='Go back')
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
               i.material-icons skip_previous
           .row
             h6.teal-text Meters
@@ -34,9 +38,15 @@ template(name='viewMetersPage')
                     small 
                       =reading
                       =units
+<<<<<<< HEAD
                     button.btn-floating.waves-effect.waves-light.tooltipped.btnEach(type='button', data-delay='50', data-position='left', data-tooltip='Update meter reading')
                       i.fa.fa-tachometer
                     button.btn-floating.waves-effect.waves-light.tooltipped.btnEach2.red(type='button', data-delay='50', data-position='left', data-tooltip='Permanently delete meter!')
+=======
+                    button.btn-floating.waves-effect.waves-light.tooltipped.btnEach(type='button', data-position='bottom', data-delay='50', data-tooltip='Update meter reading')
+                      i.fa.fa-tachometer
+                    button.btn-floating.waves-effect.waves-light.tooltipped.btnEach2.red(type='button', data-position='bottom', data-delay='50', data-tooltip='Permanently delete meter!')
+>>>>>>> f29d492fcbbde9cd0cf1b67eda297da492857da3
                       i.fa.fa-trash-o
             // Meter Modals
             #viewMetersPageModal1.modal
