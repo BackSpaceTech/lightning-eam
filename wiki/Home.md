@@ -1,4 +1,4 @@
-Welcome to the Lightning EAM Project!
+The Lightning EAM Project Wiki
 ===================
 
 
