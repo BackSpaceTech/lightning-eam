@@ -10,24 +10,17 @@ template(name='createWorkPage')
             legend New Work Request
             .row
               +afQuickField name='type' value='workorder' type='hidden'
+              +afQuickField name='reqBy_id' value=reqBy_id type='hidden'
+              +afQuickField name='reqByFirstName' value=reqByFirstName type='hidden'
+              +afQuickField name='reqByLastName' value=reqByLastName type='hidden'
+              +afQuickField name='reqDate' value=reqDate type='hidden'
               +afQuickField name='status' value='1' type='hidden'
               .col.s12.m6.l3
                 +afQuickField name='refID'
               .col.s12.m6.l3
-                +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
-              .col.s12.m6.l3
-                +afQuickField name='criticality' label='*Criticality'
-              .col.s12.m6.l3
-                +afQuickField name='classification'
-
-              .col.s12.m6.l3
-                +afQuickField name='rotable'
+                +afQuickField name='reqPriority'
               div
-                +afQuickField name='text' label='*Title'
-              div
-                +afQuickField name='description'
-              div
-                +afQuickField name='safety'
+                +afQuickField name='reqDescription'               
             .row
               .divider.teal
               .section

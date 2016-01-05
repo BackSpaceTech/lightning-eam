@@ -29,4 +29,8 @@ if (Meteor.isServer)
       this.unblock()
     setRole: (userID, role) ->
       Roles.setUserRoles userID, role
+    createWO: (doc) ->
+       # Insert a work order into the collection
+       Workorders.insert doc
+       this.unblock()
     }
