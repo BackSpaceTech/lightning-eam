@@ -23,20 +23,15 @@ template(name='viewAssetPage')
           legend View Asset
           .row
             .col.s12.m6.l3
+              label System ID
+              p.teal-text
+                small 
+                  = viewDoc._id            
+            .col.s12.m6.l3
               label Asset ID
               p.teal-text
                 small 
-                  = viewDoc.id
-            .col.s12.m6.l3
-              label Title
-              p.teal-text
-                small 
-                  = viewDoc.text
-            .col.s12.m6.l3
-              label Parent ID
-              p.teal-text
-                small 
-                  = viewDoc.parent
+                  = viewDoc.assetID
             .col.s12.m6.l3
               label Criticality
               p.teal-text
@@ -52,11 +47,16 @@ template(name='viewAssetPage')
               p.teal-text
                 small 
                   = viewDoc.rotable
-            .col.s12.m6.l3
+            div
               label Status
               p.teal-text
                 small 
                   = viewDoc.status
+            div
+              label Title
+              p.teal-text
+                small 
+                  = viewDoc.text                  
             div
               label Description
               p.teal-text

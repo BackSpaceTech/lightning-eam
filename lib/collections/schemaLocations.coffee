@@ -6,11 +6,20 @@ Locations.allow
     true
   remove: ->
     true
-    
+
 Schema.locations = new SimpleSchema(
-  id:
+  id: #Copy of _id used by treeView
     type: String
     label: 'ID'
+    optional: true    
+  assetID:
+    type: String
+    label: 'ID'
+    optional: true
+  referenceID:
+    type: String
+    label: 'Reference ID'
+    optional: true
   text:
     type: String
     label: 'Title'
@@ -18,6 +27,10 @@ Schema.locations = new SimpleSchema(
     type: String
     label: 'Parent ID'
     defaultValue: '#'
+  treePath:
+    type: [String]
+    label: 'Tree Path'
+    optional: true
   type:
     type: String
     label: 'Type'
@@ -96,10 +109,6 @@ Schema.locations = new SimpleSchema(
   barcodeID:
     type: String
     label: 'Barcode ID'
-    optional: true
-  referenceID:
-    type: String
-    label: 'Reference ID'
     optional: true
   address:
     type: String

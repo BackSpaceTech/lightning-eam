@@ -2,32 +2,17 @@ template(name='duplicateLocationPage')
   if customTemplate
     +duplicateLocationPageCustom  
   else    
-    .flow-text
-      .form-group
-        .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-          a.btn-floating.btn-large.purple
-            i.large.mdi-navigation-menu
-          ul
-            li
-              button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                i.material-icons skip_previous
-            li
-              button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
-                i.fa.fa-undo
-            li
-              button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
-                i.fa.fa-check  
-      if Template.subscriptionsReady
-        br
+    .container2
+      br
+      fieldset     
+        legend Duplicate Location  
         +autoForm schema=locationFormSchema id='duplicateLocationPage' type='method' meteormethod='createLoc'
-          fieldset
-            legend Duplicate Location
+          if Template.subscriptionsReady
             .row
+              +afQuickField name='type' value=duplicateDoc.type type='hidden'
+              +afQuickField name='parent' value=duplicateDoc.parent type='hidden'              
               .col.s12.m6.l3
-                +afQuickField name='id' label='*ID'
-              +afQuickField name='type' value='location' type='hidden'
-              .col.s12.m6.l3
-                +afQuickField name='parent' value=parent type='hidden'
+                +afQuickField name='assetID' label='*ID'
               .col.s12.m6.l3
                 +afQuickField name='criticality' value=duplicateDoc.criticality label='*Criticality'
               div
@@ -66,6 +51,20 @@ template(name='duplicateLocationPage')
                   +afQuickField name='urlOpData' value=duplicateDoc.urlOpData
                 .col.s12.m6.l3
                   +afQuickField name='urlPhoto' value=duplicateDoc.urlPhoto        
-      else
-        +spinner
+          else
+            +spinner
+          .form-group
+            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+              a.btn-floating.btn-large.purple
+                i.large.mdi-navigation-menu
+              ul
+                li
+                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                    i.material-icons skip_previous
+                li
+                  button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
+                    i.fa.fa-undo
+                li
+                  button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
+                    i.fa.fa-check        
       br

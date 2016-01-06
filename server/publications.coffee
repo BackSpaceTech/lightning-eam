@@ -6,8 +6,10 @@ Meteor.publish 'locations', ->
     type: true
     meters: true
     parent: true
+    path:true
+    assetID:true
 Meteor.publish 'singleLocation', (locationId) ->
-  Locations.find id: locationId
+  Locations.find _id: locationId
 Meteor.publish 'directory', ->
   Meteor.users.find {}, fields:
     emails: true

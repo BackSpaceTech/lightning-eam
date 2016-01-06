@@ -9,13 +9,11 @@ template(name='createLocationPage')
           fieldset
             legend New Location
             .row
+              +afQuickField name='id' type='hidden'
+              +afQuickField name='type' value=locationType type='hidden'
+              +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
               .col.s12.m6.l3
-                +afQuickField name='id' label='*ID'
-                +afQuickField name='type' value=locationType type='hidden'
-              .col.s12.m6.l3
-                +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
-              .col.s12.m6.l3
-                +afQuickField name='children' value=children type='hidden'                  
+                +afQuickField name='assetID'                                 
               .col.s12.m6.l3
                 +afQuickField name='criticality' label='*Criticality'
               div

@@ -12,6 +12,6 @@ Template.duplicateAssetPage.onDestroyed ->
 Template.duplicateAssetPage.helpers
   customTemplate: -> Customisations.duplicateAsset
   duplicateDoc: ->
-    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
+    Collections.Locations.Current = Locations.findOne {'_id':Session.get('currentID').toString()}
     return Collections.Locations.Current
   locationFormSchema: -> Schema.locations

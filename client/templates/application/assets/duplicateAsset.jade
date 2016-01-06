@@ -3,31 +3,16 @@ template(name='duplicateAssetPage')
     +duplicateAssetPageCustom  
   else    
     .container2
-      .form-group
-        .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-          a.btn-floating.btn-large.purple
-            i.large.mdi-navigation-menu
-          ul
-            li
-              button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                i.material-icons skip_previous
-            li
-              button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
-                i.fa.fa-undo
-            li
-              button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
-                i.fa.fa-check    
-      if Template.subscriptionsReady
-        br
-        +autoForm schema=locationFormSchema id='duplicateAssetPage' type='method' meteormethod='createLoc'
-          fieldset
-            legend Duplicate Asset
+      br
+      fieldset              
+        legend Duplicate Asset
+        +autoForm schema=locationFormSchema id='duplicateAssetPage' type='method' meteormethod='createLoc' 
+          if Template.subscriptionsReady                       
             .row
+              +afQuickField name='type' value=duplicateDoc.type type='hidden'
+              +afQuickField name='parent' value=duplicateDoc.parent type='hidden'              
               .col.s12.m6.l3
-                +afQuickField name='id' label='*ID'
-              +afQuickField name='type' value='asset' type='hidden'
-              .col.s12.m6.l3
-                +afQuickField name='parent' value=duplicateDoc.parent type='hidden'
+                +afQuickField name='assetID' label='*ID'
               .col.s12.m6.l3
                 +afQuickField name='criticality' value=duplicateDoc.criticality label='*Criticality'
               div
@@ -91,6 +76,21 @@ template(name='duplicateAssetPage')
                   +afQuickField name='manufDate' value=duplicateDoc.manufDate
                 .col.s12.m6.l3
                   h6.grey-text.text-lighten-1 Install Date
-                  +afQuickField name='installDate' value=duplicateDoc.installDate      
-      else
-        +spinner
+                  +afQuickField name='installDate' value=duplicateDoc.installDate  
+          else
+            +spinner 
+          .form-group
+            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+              a.btn-floating.btn-large.purple
+                i.large.mdi-navigation-menu
+              ul
+                li
+                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                    i.material-icons skip_previous
+                li
+                  button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
+                    i.fa.fa-undo
+                li
+                  button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
+                    i.fa.fa-check                                                     
+   

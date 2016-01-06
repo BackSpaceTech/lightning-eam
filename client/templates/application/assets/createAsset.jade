@@ -9,15 +9,13 @@ template(name='createAssetPage')
           fieldset
             legend New Asset
             .row
+              +afQuickField name='id' type='hidden'
+              +afQuickField name='type' value='asset' type='hidden'
+              +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
               .col.s12.m6.l3
-                +afQuickField name='id' label='*ID'
-                +afQuickField name='type' value='asset' type='hidden'
+                +afQuickField name='assetID'              
               .col.s12.m6.l3
-                +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
-              .col.s12.m6.l3
-                +afQuickField name='children' value=children type='hidden'                
-              .col.s12.m6.l3
-                +afQuickField name='criticality' label='*Criticality'
+                +afQuickField name='criticality'
               .col.s12.m6.l3
                 +afQuickField name='classification'
               .col.s12.m6.l3
@@ -25,7 +23,7 @@ template(name='createAssetPage')
               .col.s12.m6.l3
                 +afQuickField name='rotable'
               div
-                +afQuickField name='text' label='*Title'
+                +afQuickField name='text'
               div
                 +afQuickField name='description'
               div

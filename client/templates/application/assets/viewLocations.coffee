@@ -8,9 +8,11 @@ Template.viewLocationsPage.onDestroyed ->
 Template.viewLocationsPage.helpers
   customTemplate: -> Customisations.viewLocations
   locationID: ->
-    temp = Session.get 'currentID'
-    temp2 = Locations.find({id:String(temp)}).fetch();
-    return (temp + ' - ' + temp2[0].text)
+    temp = Locations.findOne {'id':Session.get('currentID').toString()}
+    #return (temp2[0].id + ' - ' + temp2[0].text)
+    if (temp.assetID)
+      return temp.assetID + " - " + temp.text
+    return temp.text
   # Disable create/edit if not connected
   serverConnected: -> (Meteor.status().status == 'connected');
 
