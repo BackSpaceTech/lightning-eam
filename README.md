@@ -2,7 +2,7 @@ The Lightning EAM Project
 ===================
 
 
-A project to create the fastest Enterprise Asset Management System capable of handling big data while at the same time accessible from mobile devices.
+A project to create the fastest Enterprise Asset Management System capable of handling big data while at the same time using a modern user interface accessible from mobile devices.
 
 ----------
 
