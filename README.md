@@ -2,7 +2,7 @@ The Lightning EAM Project
 ===================
 
 
-Hey! I'm your first Markdown document in **StackEdit**[^stackedit]. Don't delete me, I'm very helpful! I can be recovered anyway in the **Utils** tab of the <i class="icon-cog"></i> **Settings** dialog.
+A project to create the fastest Enterprise Asset Management System capable of handling big data while at the same time accessible from mobile devices.
 
 ----------
 
