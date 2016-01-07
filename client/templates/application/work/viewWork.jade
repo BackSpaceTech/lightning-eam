@@ -1,0 +1,119 @@
+template(name='viewWorkPage')
+  if customTemplate
+    +viewWorkPageCustom
+  else 
+    .container2
+      br
+      fieldset
+        legend View Work          
+        if Template.subscriptionsReady
+          .row
+            .switch
+              label
+                | Quick Search
+                input#swtViewWork1(type='checkbox')
+                span.lever
+                | Advanced Search
+          if quickSearch
+            +viewWorkQuick
+          else
+            +viewWorkAdvanced            
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Asset           
+            .col.s12.m3.l2.z-depth-1(style='text-align:right;')
+              input.view_q(type='text', value='', placeholder='Search')
+          .row.treeview
+            .row.teal.lighten-1.white-text.z-depth-1   
+              = locationID
+            .tree_view.row.treeview.z-depth-1
+          .form-group
+            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+              a.btn-floating.btn-large.purple
+                i.large.mdi-navigation-menu
+              ul
+                li
+                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                    i.material-icons skip_previous
+                li
+                  button.btn-floating.green.tooltipped(type='button', data-position='left', data-tooltip='Search')
+                    i.fa.fa-check                                 
+        else
+          +spinner
+        br          
+
+template(name='viewWorkQuick')
+  .row.input-field
+    h6 Quick Search  
+    .col.s12.m6.l3
+      input#radioViewWork0(name='group1', type='radio', checked='checked')
+      label(for='lblViewWork0') My Requests
+    .col.s12.m6.l3
+      input#radioViewWork1(name='group1', type='radio')
+      label(for='lblViewWork1') Open Requests
+    .col.s12.m6.l3
+      input#radioViewWork2(name='group1', type='radio')
+      label(for='lblViewWork2') Approved Work Orders
+
+template(name='viewWorkAdvanced')
+  .row
+    h6 Advanced Search      
+    .row.input-field   
+      h6.teal-text Status                        
+      .col.s12.m6.l3
+        input#chkViewWork0(type='checkbox')
+        label(for='chkViewWork0') 0 Request Cancelled
+      .col.s12.m6.l3
+        input#chkViewWork1(type='checkbox')
+        label(for='chkViewWork1') 1 Request Started
+      .col.s12.m6.l3
+        input#chkViewWork2(type='checkbox')
+        label(for='chkViewWork2') 2 Request Accepted
+      .col.s12.m6.l3                
+        input#chkViewWork3(type='checkbox')
+        label(for='chkViewWork3') 3 Request Returned 
+      .col.s12.m6.l3
+        input#chkViewWork4(type='checkbox')
+        label(for='chkViewWork4') 4 Work Order Created
+      .col.s12.m6.l3
+        input#chkViewWork5(type='checkbox')
+        label(for='chkViewWork5') 5 Work Order Approved
+      .col.s12.m6.l3                
+        input#chkViewWork6(type='checkbox')
+        label(for='chkViewWork6') 6 Work Order Planned
+      .col.s12.m6.l3
+        input#chkViewWork7(type='checkbox')
+        label(for='chkViewWork7') 7 Work Order Scheduled
+      .col.s12.m6.l3
+        input#chkViewWork8(type='checkbox')
+        label(for='chkViewWork8') 8 Work Order In Progress
+      .col.s12.m6.l3
+        input#chkViewWork9(type='checkbox')
+        label(for='chkViewWork9') 9 Work Order Completed
+      .col.s12.m6.l3
+        input#chkViewWork10(type='checkbox')
+        label(for='chkViewWork10') 10 Financially Completed
+      .col.s12.m6.l3
+        input#chkViewWork11(type='checkbox')
+        label(for='chkViewWork11') 11 Reviewed   
+      .col.s12.m6.l3
+        input#chkViewWork12(type='checkbox')                                                                                                          
+        label(for='chkViewWork12') 12 Closed    
+    .row.input-field  
+      .divider.teal
+      .section  
+        h6.teal-text Dates      
+        .col.s12.m6.l3
+          input#lblViewWork0(name='group1', type='radio')
+          label(for='lblViewWork0') Requested
+          input#lblViewWork1(name='group1', type='radio')
+          label(for='lblViewWork1') WO Approved
+          input#lblViewWork2(name='group1', type='radio')
+          label(for='lblViewWork2') WO Completed  
+        .col.s8.m4.l2.input-field           
+          input#chkViewWorkFrom.datepicker(type='date')   
+          label(for='chkViewWorkFrom') From
+        .col.s8.m4.l2.input-field             
+          input#chkViewWorkTo.datepicker(type='date')   
+          label(for='chkViewWorkTo') To         

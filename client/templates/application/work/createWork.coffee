@@ -5,10 +5,6 @@ Template.createWorkPage.onRendered ->
 Template.createWorkPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.createWorkPage.events
-
-
-
 Template.createWorkPage.helpers
   customTemplate: -> Customisations.createWork
   createWorkFormSchema: -> Schema.workorders
@@ -20,11 +16,8 @@ Template.createWorkPage.helpers
       reqByLastName: temp.profile.lastName
     }
   reqDate: -> new Date()
-  assetDetails: ->
-    temp = Session.get 'currentID'
-    temp2 = Locations.findOne({id:String(temp)});
-    return {
-      _id: temp2._id
-      id: temp2.id
-      text: temp2.text
-    }
+  locationID: ->
+    temp = Locations.findOne {'id':Session.get('currentID').toString()}
+    if (temp.assetID)
+      return temp.assetID + " - " + temp.text
+    return temp.text

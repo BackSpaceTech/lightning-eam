@@ -9,7 +9,6 @@ Template.viewLocationsPage.helpers
   customTemplate: -> Customisations.viewLocations
   locationID: ->
     temp = Locations.findOne {'id':Session.get('currentID').toString()}
-    #return (temp2[0].id + ' - ' + temp2[0].text)
     if (temp.assetID)
       return temp.assetID + " - " + temp.text
     return temp.text
