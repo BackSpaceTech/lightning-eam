@@ -3,5 +3,4 @@
 .meteor/.gitignore
 .meteor/.id
 .meteor/platforms
-.meteor/release
 .meteor/versions

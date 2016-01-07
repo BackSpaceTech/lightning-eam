@@ -133,6 +133,8 @@ Schema.workorders = new SimpleSchema(
   asset_ID:
     type: String
     label: 'Asset SysID'
+  asset_treePath:
+    type: [String]
   assetID:
     type: String
     label: 'Asset ID'

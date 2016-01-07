@@ -24,10 +24,12 @@ template(name='viewWorkPage')
               h6.teal-text Asset           
             .col.s12.m3.l2.z-depth-1(style='text-align:right;')
               input.view_q(type='text', value='', placeholder='Search')
+          // Treeview
           .row.treeview
             .row.teal.lighten-1.white-text.z-depth-1   
               = locationID
-            .tree_view.row.treeview.z-depth-1
+            .tree_view.row.treeview.z-depth-1   
+          // FAB button           
           .form-group
             .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
               a.btn-floating.btn-large.purple
@@ -37,24 +39,21 @@ template(name='viewWorkPage')
                   button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
                     i.material-icons skip_previous
                 li
-                  button.btn-floating.green.tooltipped(type='button', data-position='left', data-tooltip='Search')
-                    i.fa.fa-check                                 
+                  button.btnSearch.btn-floating.green.tooltipped(type='button', data-position='left', data-tooltip='Search')
+                    i.fa.fa-check                                           
         else
           +spinner
         br          
 
 template(name='viewWorkQuick')
   .row.input-field
-    h6 Quick Search  
-    .col.s12.m6.l3
-      input#radioViewWork0(name='group1', type='radio', checked='checked')
-      label(for='lblViewWork0') My Requests
-    .col.s12.m6.l3
-      input#radioViewWork1(name='group1', type='radio')
-      label(for='lblViewWork1') Open Requests
-    .col.s12.m6.l3
-      input#radioViewWork2(name='group1', type='radio')
-      label(for='lblViewWork2') Approved Work Orders
+    h6 Quick Search      
+    input#radioViewWork0(name='group1', type='radio', checked='checked')
+    label(for='radioViewWork0') My Requests
+    input#radioViewWork1(name='group1', type='radio')
+    label(for='radioViewWork1') Open Requests
+    input#radioViewWork2(name='group1', type='radio')
+    label(for='radioViewWork2') Approved Work Orders
 
 template(name='viewWorkAdvanced')
   .row
@@ -103,17 +102,18 @@ template(name='viewWorkAdvanced')
     .row.input-field  
       .divider.teal
       .section  
-        h6.teal-text Dates      
-        .col.s12.m6.l3
-          input#lblViewWork0(name='group1', type='radio')
-          label(for='lblViewWork0') Requested
-          input#lblViewWork1(name='group1', type='radio')
-          label(for='lblViewWork1') WO Approved
-          input#lblViewWork2(name='group1', type='radio')
-          label(for='lblViewWork2') WO Completed  
-        .col.s8.m4.l2.input-field           
-          input#chkViewWorkFrom.datepicker(type='date')   
-          label(for='chkViewWorkFrom') From
-        .col.s8.m4.l2.input-field             
-          input#chkViewWorkTo.datepicker(type='date')   
-          label(for='chkViewWorkTo') To         
+        h6.teal-text Dates    
+        .row  
+          input#radioViewWorkDates0(name='group1', type='radio', checked='checked')
+          label(for='radioViewWorkDates0') Requested
+          input#radioViewWorkDates1(name='group1', type='radio')
+          label(for='radioViewWorkDates1') WO Approved
+          input#radioViewWorkDates2(name='group1', type='radio')
+          label(for='radioViewWorkDates2') WO Completed  
+        .row
+          .col.s8.m4.l2.input-field           
+            input#dateViewWorkFrom.datepicker(type='date')   
+            label(for='dateViewWorkFrom') From
+          .col.s8.m4.l2.input-field             
+            input#dateViewWorkTo.datepicker(type='date')   
+            label(for='dateViewWorkFrom') To         

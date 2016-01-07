@@ -8,6 +8,7 @@ Template.createWorkPage.onDestroyed ->
 Template.createWorkPage.helpers
   customTemplate: -> Customisations.createWork
   createWorkFormSchema: -> Schema.workorders
+  assetDetails: ->
   requestor: ->
     temp=Meteor.user()
     return {
@@ -21,3 +22,6 @@ Template.createWorkPage.helpers
     if (temp.assetID)
       return temp.assetID + " - " + temp.text
     return temp.text
+  assetDetails: ->
+    temp = Session.get 'currentID'
+    return Locations.findOne {id:String(temp)}
