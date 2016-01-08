@@ -11,10 +11,7 @@ Template.deleteLocationPage.onDestroyed ->
 
 Template.deleteLocationPage.helpers
   customTemplate: -> Customisations.deleteLocation
-  deleteDoc: ->
-    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
-    return Collections.Locations.Current
-  textDoc: -> Collections.Locations.Current.text
+  textDoc: -> (Locations.findOne {'id':Session.get('currentID').toString()}).text
 
 Template.deleteLocationPage.events
   'click .btnDelete': (e) ->
@@ -22,6 +19,5 @@ Template.deleteLocationPage.events
     if temp
       alert 'You cannot delete an asset or location that has children!'
     else
-      temp = Collections.Locations.Current
-      Meteor.call 'deleteLoc', temp._id
+      Meteor.call 'deleteLoc', Session.get('currentID').toString()
     FlowRouter.go '/assets'

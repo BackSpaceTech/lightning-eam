@@ -6,7 +6,6 @@ if (Meteor.isServer)
       # Insert a location / asset into the collection
       Locations.insert doc , (error,id) ->
         if(id)
-          console.log "Doc: ", JSON.stringify doc
           tempPath = []
           # Get the parent asset's tree path
           if (doc.parent!='#')
@@ -15,7 +14,6 @@ if (Meteor.isServer)
               tempPath = temp.treePath
           # Add current doc _id
           tempPath.push(id)
-          console.log "Updating Tree path: ", JSON.stringify tempPath
           Locations.update id, { $set: { treePath: tempPath }}
           Locations.update id, { $set: { id: id }}
         else
