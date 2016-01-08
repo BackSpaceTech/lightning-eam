@@ -3,13 +3,16 @@ template(name='workQueryPage')
     +workQueryPageCustom  
   else 
     .flow-text.container2
-      if Template.subscriptionsReady
-        br
-        fieldset
-          legend People
+      br
+      fieldset
+        legend Work
+        h6
+          | Number of records: 
+          =numDocs      
+        if Template.subscriptionsReady
           +reactiveTable collection=workArray settings=settings class='table striped'
-      else
-        +spinner
+        else
+          +spinner
     .fixed-action-btn(style='bottom: 45px; right: 24px;')
       a.btn-floating.btn-large(href="{{pathFor '../work'}}")
         i.large.material-icons skip_previous

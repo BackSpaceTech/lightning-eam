@@ -12,11 +12,10 @@ template(name='createWorkPage')
             +afQuickField name='reqBy_id' value=requestor.reqBy_id type='hidden'
             +afQuickField name='reqByFirstName' value=requestor.reqByFirstName type='hidden'
             +afQuickField name='reqByLastName' value=requestor.reqByLastName type='hidden'
-            +afQuickField name='reqDate' value=reqDate type='hidden'
             +afQuickField name='status' value='1' type='hidden'
             +afQuickField name='asset_ID' value=assetDetails._id type='hidden'
             +afQuickField name='asset_treePath' value=assetDetails.treePath type='hidden'
-            +afQuickField name='assetID' value=assetDetails.id type='hidden'
+            +afQuickField name='assetID' value=assetDetails.assetID type='hidden'
             +afQuickField name='assetText' value=assetDetails.text type='hidden'
             .col.s12.m6.l3
               +afQuickField name='refID'

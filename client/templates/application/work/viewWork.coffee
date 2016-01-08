@@ -19,7 +19,7 @@ Template.viewWorkPage.events
   'click #swtViewWork1': -> Session.set 'quickSearch', !$('#swtViewWork1').prop('checked')
   'click .btnSearch': ->
     Collections.Workorders.workQuery = {
-      asset_treePath: {$all:["aWy5v43QWpDFF997d","u7iqLKGG8XSvEbXWh"]}
+      asset_treePath: { $all: Collections.Locations.Current.treePath }
     }
     if (Session.get 'quickSearch')
       if ($('#radioViewWork0').prop('checked')) # My Requests
@@ -33,21 +33,31 @@ Template.viewWorkPage.events
       a = 0
       while a < 13 # Status checkboxes 0 to 12
         if $('#chkViewWork' + a).prop('checked')
-          tempArray.push a
+          tempArray.push a.toString()
         a++
       if tempArray.length > 0
         Collections.Workorders.workQuery.status = { $in: tempArray }
       if $('#dateViewWorkFrom').val() and $('#dateViewWorkTo').val() # Get dates if not empty
+        dateFrom = $('#dateViewWorkFrom').val()
+        dateTo = $('#dateViewWorkTo').val()
+        console.log 'Date From: '+dateFrom
+        console.log 'Date To: '+dateTo
+        dateFrom = new Date dateFrom
+        dateTo =  new Date dateTo
+        # Add 24 hrs to have whole day included
+        dateTo.setHours((dateTo.getHours() + 24))
         dateRange = {
-          $gt: $('#dateViewWorkFrom').val()
-          $lt: $('#dateViewWorkTo').val()
-        }
+          $gte: dateFrom
+          $lte: dateTo
+          }
+        console.log 'Date Range: '+JSON.stringify dateRange
         if $('#radioViewWorkDates0').prop('checked') # Requested date
           Collections.Workorders.workQuery.reqDate = dateRange
         if $('#radioViewWorkDates1').prop('checked') # WO approved date
           Collections.Workorders.workQuery.woApprovedDate = dateRange
         if $('#radioViewWorkDates2').prop('checked') # WO completed date
           Collections.Workorders.workQuery.woCompletedDate = dateRange
+    console.log JSON.stringify Collections.Workorders.workQuery
     FlowRouter.go '/work/query'
 
 Template.viewWorkAdvanced.onRendered ->

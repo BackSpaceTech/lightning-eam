@@ -11,7 +11,11 @@ Schema.locations = new SimpleSchema(
   id: #Copy of _id used by treeView
     type: String
     label: 'ID'
-    optional: true    
+    optional: true
+  createdDate:
+    type: Date
+    label: 'Created Date'
+    optional: true  
   assetID:
     type: String
     label: 'ID'

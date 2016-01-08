@@ -23,4 +23,7 @@ Meteor.publish 'singleUser', (userId) ->
   Meteor.users.find _id: userId
 
 Meteor.publish 'workorders', (query) ->
+  Counts.publish this, 'workorders-count', Workorders.find query,
+    noReady: true
+    nonReactive: true
   Workorders.find query

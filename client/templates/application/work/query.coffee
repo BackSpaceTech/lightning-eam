@@ -10,6 +10,13 @@ Template.workQueryPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.workQueryPage.helpers
+  numDocs: ->
+    temp = Counts.get 'workorders-count'
+    if temp > 1000
+      FlowRouter.go '/work'
+      toastr.error 'Your query exceeds 1000 docs. ('+temp+')'
+    else
+      return temp
   workArray: -> Workorders.find()
   customTemplate: -> Customisations.viewPeople
   userProfiles: -> Meteor.users.find()
@@ -22,12 +29,14 @@ Template.workQueryPage.helpers
       rowsPerPage: 10
       showFilter: true
       fields:  [
+        { key: 'refID', label: 'Reference ID' }
         { key: 'reqByFirstName', label: ' First Name' }
         { key: 'reqByLastName', label: 'Last Name' }
         { key: 'reqDate', label: 'Date Requested' }
         { key: 'assetID', label: 'Asset ID' }
         { key: 'assetText', label: 'Asset' }
-        { key: 'reqDescription', label: 'Description' }
+        { key: 'reqDescription', label: 'Request' }
+        { key: 'description', label: 'Description' }
         { key: 'reqPriority', label: 'Priority', tmpl: Template.editWO }
         { key: 'status', label: 'Status' }
       ]
@@ -35,17 +44,11 @@ Template.workQueryPage.helpers
 
 Template.workQueryPage.events
   'click .btnEach': (e) ->
-    Collections.Users.Current = this
-    FlowRouter.go '/resources/edit-people'
+
   'click .btnEach2': (e)  ->
-    Collections.Users.Current = this
-    FlowRouter.go '/resources/credentials'
+
   'click .btnEach3': (e) ->
-    deleteUser
+
   'click .btnDelete': (e) ->
-    Collections.Users.Current = this
-    $('#viewPeoplePageModal').openModal()
+
   'click .btnConfirm': (e) ->
-    temp = Collections.Users.Current
-    Meteor.call 'deleteUser', temp._id
-    FlowRouter.go '/resources'

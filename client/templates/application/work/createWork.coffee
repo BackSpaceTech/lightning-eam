@@ -16,7 +16,7 @@ Template.createWorkPage.helpers
       reqByFirstName: temp.profile.firstName
       reqByLastName: temp.profile.lastName
     }
-  reqDate: -> new Date()
+  reqDate: -> (new Date()).toISOString()
   locationID: ->
     temp = Locations.findOne {'id':Session.get('currentID').toString()}
     if (temp.assetID)

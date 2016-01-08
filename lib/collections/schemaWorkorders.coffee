@@ -157,6 +157,7 @@ Schema.workorders = new SimpleSchema(
     type: String
   reqDate:
     type: Date
+    optional: true
   reqApprovedBy_id:
     type: String
     optional: true

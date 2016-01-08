@@ -1,6 +1,8 @@
 if (Meteor.isServer)
   Meteor.methods {
     createLoc: (doc) ->
+      # Add date stamp
+      doc.createdDate = new Date()
       # Insert a location / asset into the collection
       Locations.insert doc , (error,id) ->
         if(id)
@@ -45,6 +47,8 @@ if (Meteor.isServer)
     setRole: (userID, role) ->
       Roles.setUserRoles userID, role
     createWO: (doc) ->
+      # Add date stamp to request
+      doc.reqDate = new Date()
       # Insert a work order into the collection
       Workorders.insert doc
       this.unblock()
