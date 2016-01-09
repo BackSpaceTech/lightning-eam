@@ -32,7 +32,7 @@ Template.workQueryPage.helpers
         { key: 'assetText', label: 'Asset' }
         { key: 'reqDescription', label: 'Request' }
         { key: 'description', label: 'Description' }
-        { key: 'reqPriority', label: 'Priority', tmpl: Template.editWO }
+        { key: 'location', label: 'View/Edit/Delete', tmpl: Template.editWO }
         { key: 'status', label: 'Status' }
       ]
     }
@@ -40,3 +40,9 @@ Template.workQueryPage.helpers
 Template.workQueryPage.events
   'click .btnView': (e) ->
     Collections.Workorders.Current = this
+
+Template.editWO.onRendered ->
+  $('.tooltipped').tooltip {delay: 50}
+
+Template.editWO.onDestroyed ->
+  $('.tooltipped').tooltip 'remove'

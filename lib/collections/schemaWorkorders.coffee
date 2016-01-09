@@ -114,7 +114,7 @@ Schema.workorders = new SimpleSchema(
     optional: true
   reqPriority:
     type: String
-    label: 'Priority'
+    label: 'Requested Priority'
     autoform:
       type: 'select'
       options: ->

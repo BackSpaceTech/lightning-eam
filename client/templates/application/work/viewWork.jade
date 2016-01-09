@@ -6,6 +6,8 @@ template(name='viewWorkPage')
       br
       fieldset
         legend View Work          
+        button.btnSearch.btn-floating.teal.tooltipped.right(type='button', data-position='left', data-tooltip='Search')
+          i.fa.fa-search
         if Template.subscriptionsReady
           .row
             .switch

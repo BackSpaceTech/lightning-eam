@@ -47,3 +47,9 @@ Template.viewPeoplePage.events
     temp = Collections.Users.Current
     Meteor.call 'deleteUser', temp._id
     FlowRouter.go '/resources'
+
+Template.editPerson.onRendered ->
+  $('.tooltipped').tooltip {delay: 50}
+
+Template.editPerson.onDestroyed ->
+  $('.tooltipped').tooltip 'remove'
