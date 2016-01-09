@@ -1,6 +1,0 @@
-.meteor/local/**/*
-.meteor/.finished-upgraders
-.meteor/.gitignore
-.meteor/.id
-.meteor/platforms
-.meteor/versions
