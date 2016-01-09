@@ -1,4 +1,4 @@
-template(name='viewWorkorderPage')
+template(name='editWorkorderPage')
   if customTemplate
     +viewWorkorderPageCustom  
   else  
@@ -13,11 +13,11 @@ template(name='viewWorkorderPage')
               button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
                 i.material-icons skip_previous
             li
-              a.btnCopy.btn-floating.green.tooltipped(href='{{pathFor "copy-workorder"}}' data-position='left', data-tooltip='Copy')
-                i.fa.fa-copy
+              a.btnSave.btn-floating.green.tooltipped.red(href='{{pathFor "work/copy-work"}}' data-position='left', data-tooltip='Save')
+                i.fa.fa-delete
             li
-              a.btnEdit.btn-floating.blue.tooltipped(href='{{pathFor "edit-workorder"}}' data-position='left', data-tooltip='Edit')
-                i.fa.fa-edit
+              a.btnDelete.btn-floating.blue.tooltipped(href='{{pathFor "work/edit-work"}}' data-position='left', data-tooltip='Delete')
+                i.fa.fa-save
       fieldset
         legend View Work Request / Order 
         +autoForm schema=workorderFormSchema id="viewWorkorderPage" type="readonly" collection="Workorders" doc=viewDoc
