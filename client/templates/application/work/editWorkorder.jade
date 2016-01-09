@@ -3,66 +3,98 @@ template(name='editWorkorderPage')
     +viewWorkorderPageCustom  
   else  
     .flow-text.container2
-      br
-      .form-group
-        .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-          a.btn-floating.btn-large.purple
-            i.large.mdi-navigation-menu
-          ul
-            li
-              button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                i.material-icons skip_previous
-            li
-              a.btnSave.btn-floating.green.tooltipped.red(href='{{pathFor "work/copy-work"}}' data-position='left', data-tooltip='Save')
-                i.fa.fa-delete
-            li
-              a.btnDelete.btn-floating.blue.tooltipped(href='{{pathFor "work/edit-work"}}' data-position='left', data-tooltip='Delete')
-                i.fa.fa-save
-      fieldset
-        legend View Work Request / Order 
-        +autoForm schema=workorderFormSchema id="viewWorkorderPage" type="readonly" collection="Workorders" doc=viewDoc
-          if Template.subscriptionsReady
-            .row
-              +afQuickField name="parent" type="hidden"
-              +afQuickField name="treePath" type="hidden"
-              h6.teal-text Request Details 
-              .col.s12.m6.l3
-                +afQuickField name="reqByFirstName"  
-              .col.s12.m6.l3
-                +afQuickField name="reqByLastName"                                     
-              .col.s12.m6.l3
-                +afQuickField name="reqPriority"
-              .col.s12.m6.l3
-                +afQuickField name="assetID"
-              .col.s12.m6.l3
-                +afQuickField name="assetText"  
-              .col.s12.m6.l3
-                +afQuickField name="refID"                            
-              div
-                +afQuickField name="reqDescription"  
-            .row
-              .divider.teal
-              .section
-                h6.teal-text Work Order Details                                                    
-                .col.s12.m6.l3
-                  +afQuickField name="status"               
-                .col.s12.m6.l3
-                  +afQuickField name="priority"                
-                div
-                  +afQuickField name="text"
-                div
-                  +afQuickField name="description"
-            .row
-              .divider.teal
-              .section
-                h6.teal-text Safety Method                                                    
-                .col.s12.m6.l3
-                  +afQuickField name="safetyMethod"                   
-            .row
-              .divider.teal
-              .section
-                h6.teal-text Work Plan                                                    
-                .col.s12.m6.l3
-                  +afQuickField name="workPlan" 
+      br              
+      fieldset 
+        +autoForm schema=workorderFormSchema id='editWorkorderPage' type='method' meteormethod='createWO' doc=viewDoc
+          if workorder
+            +editWorkorderForm
           else
-            +spinner
+            +editRequestForm
+          .form-group
+            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+              a.btn-floating.btn-large.purple
+                i.large.mdi-navigation-menu
+              ul
+                li
+                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                    i.material-icons skip_previous
+                li
+                  button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
+                    i.fa.fa-undo
+                li
+                  button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
+                    i.fa.fa-check             
+
+template(name='editRequestForm')        
+  legend Edit Request
+  .row
+    +afQuickField name='type' type='hidden'
+    +afQuickField name='parent' type='hidden'
+    +afQuickField name='asset_ID' type='hidden'
+    +afQuickField name='asset_treePath' type='hidden'
+    +afQuickField name='reqBy_id' type='hidden'    
+    h6.teal-text Request Details 
+    .col.s12.m6.l3
+      +afQuickField name='reqByFirstName'  
+    .col.s12.m6.l3
+      +afQuickField name='reqByLastName'                                     
+    .col.s12.m6.l3
+      +afQuickField name='reqPriority'
+    .col.s12.m6.l3
+      +afQuickField name='assetID'
+    .col.s12.m6.l3
+      +afQuickField name='assetText'  
+    .col.s12.m6.l3
+      +afQuickField name='refID'                            
+    div
+      +afQuickField name='reqDescription'
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Accept, Return or Cancel?                                                    
+      .col.s12.m6.l3    
+        +afQuickField name='status' options=requestOptions
+      .col.s12.m6.l3
+        
+
+template(name='editWorkorderForm')
+  legend Edit Work Order 
+  .row
+    +afQuickField name='parent' type='hidden'
+    +afQuickField name='treePath' type='hidden'
+    h6.teal-text Request Details 
+    .col.s12.m6.l3
+      +afQuickField name='reqByFirstName'  
+    .col.s12.m6.l3
+      +afQuickField name='reqByLastName'                                     
+    .col.s12.m6.l3
+      +afQuickField name='reqPriority'
+    .col.s12.m6.l3
+      +afQuickField name='assetID'
+    .col.s12.m6.l3
+      +afQuickField name='assetText'  
+    .col.s12.m6.l3
+      +afQuickField name='refID'                            
+    div
+      +afQuickField name='reqDescription'
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Work Order Details                                                    
+      .col.s12.m6.l3
+        +afQuickField name='status'               
+      .col.s12.m6.l3
+        +afQuickField name='priority'                
+      div
+        +afQuickField name='text'
+      div
+        +afQuickField name='description'
+  .row
+    .divider.teal
+    .section
+      .col.s12.m6.l6                
+        h6.teal-text Safety Method                                                    
+        +afQuickField name='safetyMethod'                   
+      .col.s12.m6.l6                  
+        h6.teal-text Work Plan                                                    
+        +afQuickField name='workPlan'             

@@ -129,7 +129,11 @@ Schema.workorders = new SimpleSchema(
         Lists.Workorders.Priority
   reqDescription:
     type: String
-    label: 'Description'
+    label: 'Request Description'
+  reqComments:
+    type: String
+    label: 'Request Comments'
+    optional: true
   description:
     type: String
     label: 'Description'

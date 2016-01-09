@@ -6,5 +6,7 @@ Template.viewWorkorderPage.onDestroyed ->
 
 Template.viewWorkorderPage.helpers
   customTemplate: -> Customisations.viewAsset
-  viewDoc: -> Collections.Workorders.Current
+  viewDoc: ->
+    console.log "Collections.Workorders.Current: "+JSON.stringify(Collections.Workorders.Current)
+    return Collections.Workorders.Current
   workorderFormSchema: -> Schema.workorders

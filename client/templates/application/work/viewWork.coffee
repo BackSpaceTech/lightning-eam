@@ -51,7 +51,6 @@ Template.viewWorkPage.events
           Collections.Workorders.workQuery.woApprovedDate = dateRange
         if $('#radioViewWorkDates2').prop('checked') # WO completed date
           Collections.Workorders.workQuery.woCompletedDate = dateRange
-    console.log 'Query: '+JSON.stringify Collections.Workorders.workQuery
     FlowRouter.go '/work/query'
 
 Template.viewWorkAdvanced.onRendered ->

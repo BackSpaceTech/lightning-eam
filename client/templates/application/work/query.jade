@@ -18,12 +18,9 @@ template(name='workQueryPage')
         i.large.material-icons skip_previous
             
 template(name='editWO')
-  a(href='{{pathFor "view-workorder"}}')
-    button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
-      i.fa.fa-eye 
-  a(href='{{pathFor "view-editorder"}}')
-    button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
-      i.fa.fa-edit 
-  a(href='{{pathFor "view-deleteorder"}}')
-    button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
-      i.fa.fa-trash             
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+    i.fa.fa-eye
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+    i.fa.fa-edit 
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+    i.fa.fa-trash             

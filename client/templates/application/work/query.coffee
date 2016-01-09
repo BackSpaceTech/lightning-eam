@@ -40,6 +40,13 @@ Template.workQueryPage.helpers
 Template.workQueryPage.events
   'click .btnView': (e) ->
     Collections.Workorders.Current = this
+    FlowRouter.go '/work/view-workorder'
+  'click .btnEdit': (e) ->
+    Collections.Workorders.Current = this
+    FlowRouter.go '/work/edit-workorder'
+  'click .btnDelete': (e) ->
+    Collections.Workorders.Current = this
+    FlowRouter.go '/work/delete-workorder'
 
 Template.editWO.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
