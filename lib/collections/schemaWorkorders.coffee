@@ -146,6 +146,7 @@ Schema.workorders = new SimpleSchema(
   assetID:
     type: String
     label: 'Asset ID'
+    optional: true
   assetText:
     type: String
     label: 'Asset Name'
