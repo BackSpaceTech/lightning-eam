@@ -52,6 +52,17 @@ template(name='editWorkorderPage')
                   +afQuickField name="text"
                 div
                   +afQuickField name="description"
-
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Safety Method                                                    
+                .col.s12.m6.l3
+                  +afQuickField name="safetyMethod"                   
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Work Plan                                                    
+                .col.s12.m6.l3
+                  +afQuickField name="workPlan" 
           else
             +spinner
