@@ -12,103 +12,58 @@ template(name='viewLocationPage')
               button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
                 i.material-icons skip_previous
             li
-              a#btnViewLocationPageCopy.btn-floating.green.tooltipped(data-position='left', data-tooltip='Copy')
+              a.btnCopy.btn-floating.green.tooltipped(data-position='left', data-tooltip='Copy')
                 i.fa.fa-copy
             li
-              a#btnViewLocationPageEdit.btn-floating.blue.tooltipped(data-position='left', data-tooltip='Edit')
+              a.btnEdit.btn-floating.blue.tooltipped(data-position='left', data-tooltip='Edit')
                 i.fa.fa-edit
-      if Template.subscriptionsReady
-        br
-        fieldset
-          legend View Location
-          .row
-            .col.s12.m6.l3
-              label Location ID
-              p.teal-text
-                small 
-                  = viewDoc.id
-            .col.s12.m6.l3
-              label Title
-              p.teal-text
-                small 
-                  = viewDoc.text
-            .col.s12.m6.l3
-              label Parent ID
-              p.teal-text
-                small 
-                  = viewDoc.parent
-            .col.s12.m6.l3
-              label Criticality
-              p.teal-text
-                small 
-                  = viewDoc.criticality
-            div
-              label Description
-              p.teal-text
-                small 
-                  = viewDoc.description
-            div
-              label Safety
-              p.teal-text
-                small 
-                  = viewDoc.safety
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Geolocation Information
-              .col.s12.m6.l3
-                label Lat1
-                p.teal-text
-                  small 
-                    = viewDoc.lat1
-              .col.s12.m6.l3
-                label Long1
-                p.teal-text
-                  small 
-                    = viewDoc.long1
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Address Information
-              .col.s12.m6.l3
-                label Address
-                p.teal-text
-                  small 
-                    = viewDoc.address
-              .col.s12.m6.l3
-                label State
-                p.teal-text
-                  small 
-                    = viewDoc.state
-              .col.s12.m6.l3
-                label Zip
-                p.teal-text
-                  small 
-                    = viewDoc.zip
-              .col.s12.m6.l3
-                label Country
-                p.teal-text
-                  small 
-                    = viewDoc.country
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Additional Information
-              .col.s12.m6.l3
-                label Technical Data URL
-                p.teal-text
-                  small 
-                    = viewDoc.urlTechData
-              .col.s12.m6.l3
-                label Operational Data URL
-                p.teal-text
-                  small 
-                    = viewDoc.urlOpData
-              .col.s12.m6.l3
-                label Photo URL
-                p.teal-text
-                  small 
-                    = viewDoc.urlPhoto
-      else
-        +spinner
       br
+      fieldset
+        legend View Location 
+        +autoForm schema=locationsFormSchema id="viewLocationPage" type="readonly" collection="Locations" doc=viewDoc
+          if Template.subscriptionsReady
+            .row
+              h6.teal-text Asset Details 
+              .col.s12.m6.l3
+                +afQuickField name="id"                                                   
+              .col.s12.m6.l3
+                +afQuickField name="criticality"                          
+              div
+                +afQuickField name="text"                                     
+              div
+                +afQuickField name="description"  
+              div
+                +afQuickField name="safety"                                                            
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Geolocation Information 
+                .col.s12.m6.l3
+                  +afQuickField name="lat1"
+                .col.s12.m6.l3
+                  +afQuickField name="long1"                   
+            // Other info
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Address Information
+                .col.s12.m6.l3
+                  +afQuickField name="address"
+                .col.s12.m6.l3
+                  +afQuickField name="state"
+                .col.s12.m6.l3
+                  +afQuickField name="zip"  
+                .col.s12.m6.l3
+                  +afQuickField name="country"                                           
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Additional Information
+                .col.s12.m6.l3
+                  +afQuickField name="urlTechData"
+                .col.s12.m6.l3
+                  +afQuickField name="urlOpData"
+                .col.s12.m6.l3
+                  +afQuickField name="urlPhoto"                                           
+          else
+            +spinner

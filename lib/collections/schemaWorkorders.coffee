@@ -103,11 +103,15 @@ Schema.workorders = new SimpleSchema(
         Lists.Workorders.Types
   status:
     type: String
-    label: 'Type'
+    label: 'Status'
     autoform:
       type: 'select'
       options: ->
         Lists.Workorders.Status
+  cancelledReason:
+    type: String
+    label: 'Cancellation Reason'
+    optional: true
   reqPriority:
     type: String
     label: 'Priority'

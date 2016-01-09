@@ -11,12 +11,13 @@ Template.viewLocationPage.onDestroyed ->
 
 Template.viewLocationPage.helpers
   customTemplate: -> Customisations.viewLocation
+  locationsFormSchema: -> Schema.locations
   viewDoc: ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     return Collections.Locations.Current
 
 Template.viewLocationPage.events
-  'click #btnViewLocationPageEdit': ->
+  'click .btnEdit': ->
     if (Session.get('currentID').toString()== '#')
       alert 'No location or asset selected!'
     else
@@ -24,7 +25,7 @@ Template.viewLocationPage.events
         FlowRouter.go '/assets/edit-asset'
       else
         FlowRouter.go '/assets/edit-location'
-  'click #btnViewLocationPageCopy': ->
+  'click .btnCopy': ->
     if (Session.get('currentID').toString()== '#')
       alert 'No location or asset selected!'
     else

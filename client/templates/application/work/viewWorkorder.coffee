@@ -1,22 +1,15 @@
-Template.viewAssetPage.onRendered ->
+Template.viewWorkorderPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
-Template.viewAssetPage.onDestroyed ->
+Template.viewWorkorderPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.viewAssetPage.onCreated ->
-  self = this
-  self.autorun ->
-    self.subscribe 'singleLocation', (Session.get('currentID').toString())
-
-Template.viewAssetPage.helpers
+Template.viewWorkorderPage.helpers
   customTemplate: -> Customisations.viewAsset
-  viewDoc: ->
-    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
-    return Collections.Locations.Current
-  locationsFormSchema: -> Schema.locations
+  viewDoc: -> Collections.Workorders.Current
+  workorderFormSchema: -> Schema.workorders
 
-Template.viewAssetPage.events
+Template.viewWorkorderPage.events
   'click .btnEdit': ->
     if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'

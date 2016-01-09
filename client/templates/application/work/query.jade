@@ -14,22 +14,10 @@ template(name='workQueryPage')
         else
           +spinner
     .fixed-action-btn(style='bottom: 45px; right: 24px;')
-      a.btn-floating.btn-large(href="{{pathFor '../work'}}")
+      a.btn-floating.btn-large.purple(href="{{pathFor '../work'}}")
         i.large.material-icons skip_previous
-    // Delete Modal
-    #viewPeoplePageModal.modal
-      .container
-        .modal-content
-          h4.red-text Delete User
-          p Warning! This will permanently delete the user.
-        .modal-footer
-          a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Cancel
-          button.modal-action.modal-close.waves-effect.waves-green.btn-flat.btnConfirm(type='button') Delete
             
 template(name='editWO')
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnEach(type='button', data-delay='50', data-position='left', data-tooltip='edit user')
-    i.fa.fa-edit
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnEach2(type='button', data-delay='50', data-position='left', data-tooltip='edit permissions')
-    i.fa.fa-shield
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='left', data-tooltip='Permanently delete user!')
-    i.fa.fa-trash-o
+  a(href='{{pathFor "view-workorder"}}')
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='left', data-tooltip='View')
+      i.fa.fa-search 

@@ -10,12 +10,12 @@ Locations.allow
 Schema.locations = new SimpleSchema(
   id: #Copy of _id used by treeView
     type: String
-    label: 'ID'
+    label: 'Sys ID'
     optional: true
   createdDate:
     type: Date
     label: 'Created Date'
-    optional: true  
+    optional: true
   assetID:
     type: String
     label: 'ID'
@@ -29,7 +29,7 @@ Schema.locations = new SimpleSchema(
     label: 'Title'
   parent:
     type: String
-    label: 'Parent ID'
+    label: 'Parent Sys ID'
     defaultValue: '#'
   treePath:
     type: [String]
@@ -61,15 +61,19 @@ Schema.locations = new SimpleSchema(
     optional: true
   lat1:
     type: Number
+    label: 'Lat1'
     optional: true
   long1:
     type: Number
+    label: 'Long1'
     optional: true
   lat2:
     type: Number
+    label: 'Lat2'
     optional: true
   long2:
     type: Number
+    label: 'Long2'
     optional: true
   linear:
     type: Boolean

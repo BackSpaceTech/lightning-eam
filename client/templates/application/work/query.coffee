@@ -19,11 +19,6 @@ Template.workQueryPage.helpers
       return temp
   workArray: -> Workorders.find()
   customTemplate: -> Customisations.viewPeople
-  userProfiles: -> Meteor.users.find()
-  userEmail: -> this.emails[0].address
-  userID: -> this._id
-  userRole: -> this.roles[0]
-  userArray: -> Meteor.users.find()
   settings: ->
     return {
       rowsPerPage: 10
@@ -43,12 +38,5 @@ Template.workQueryPage.helpers
     }
 
 Template.workQueryPage.events
-  'click .btnEach': (e) ->
-
-  'click .btnEach2': (e)  ->
-
-  'click .btnEach3': (e) ->
-
-  'click .btnDelete': (e) ->
-
-  'click .btnConfirm': (e) ->
+  'click .btnView': (e) ->
+    Collections.Workorders.Current = this

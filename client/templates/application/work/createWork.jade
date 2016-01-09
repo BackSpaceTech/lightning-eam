@@ -31,7 +31,9 @@ template(name='createWorkPage')
               input.view_q(type='text', value='', placeholder='Search')
           .row.treeview
             .row.teal.lighten-1.white-text.z-depth-1   
-              = locationID
+              = assetDetails.assetID
+              | - 
+              = assetDetails.text
             .tree_view.row.treeview.z-depth-1
           .form-group
             .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
