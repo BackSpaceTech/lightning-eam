@@ -47,15 +47,18 @@ template(name='editRequestForm')
     .col.s12.m6.l3
       +afQuickField name='refID'                            
     div
-      +afQuickField name='reqDescription'
+      +afQuickField name='reqDescription'      
   .row
     .divider.teal
     .section
-      h6.teal-text Accept, Return or Cancel?                                                    
+      h6.teal-text Accept, Return or Cancel?  
+      div
+        +afQuickField name='reqComments'                                                        
       .col.s12.m6.l3    
-        +afQuickField name='status' options=requestOptions
-      .col.s12.m6.l3        
-
+        +afQuickField name='status' options=requestOptions      .col.s12.m6.l3
+        button.btn-floating.teal.tooltipped(type='submit', data-position='bottom', data-tooltip='Submit Form')
+          i.fa.fa-save 
+       
 template(name='editWorkorderForm')
   legend Edit Work Order 
   .row
