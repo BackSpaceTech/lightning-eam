@@ -127,17 +127,16 @@ Schema.users = new SimpleSchema(
       options: ->
         temp1 = Locations.find({ type: 'database' }, fields:
           _id: true
-          text: true
-          id: true).fetch()
+          text: true).fetch()
         temp2 = []
         if temp1.length != 0
           a = 0
           while a < temp1.length
             temp2[a] =
-              label: temp1[a].id + '-' + temp1[a].text
+              label: temp1[a].text
               value: temp1[a]._id
             a++
-        temp2
+        return temp2
     optional: true
   roles:
     type: [ String ]

@@ -1,8 +1,3 @@
-Template.workQueryPage.onCreated ->
-  self = this
-  self.autorun ->
-    self.subscribe 'workorders',Collections.Workorders.workQuery
-
 Template.workQueryPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
@@ -10,6 +5,10 @@ Template.workQueryPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.workQueryPage.helpers
+  spinner: ->
+    MaterializeModal.loading
+  nospinner: ->
+    MaterializeModal.close    
   numDocs: ->
     temp = Counts.get 'workorders-count'
     if temp > 1000
@@ -17,13 +16,13 @@ Template.workQueryPage.helpers
       toastr.error 'Your query exceeds 1000 docs. ('+temp+')'
     else
       return temp
-  workArray: -> Workorders.find()
   customTemplate: -> Customisations.viewPeople
   settings: ->
     return {
       rowsPerPage: 10
       showFilter: true
       fields:  [
+        { key: '_id', label: 'System ID' }
         { key: 'refID', label: 'Reference ID' }
         { key: 'reqByFirstName', label: ' First Name' }
         { key: 'reqByLastName', label: 'Last Name' }

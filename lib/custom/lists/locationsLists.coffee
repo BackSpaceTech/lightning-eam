@@ -1,10 +1,10 @@
 # User editable lists
 Lists.Locations.Criticality = {
-  '5': '5 - Highly Critical'
-  '4': '4 - Critical'
-  '3': '3 - Very Important'
-  '2': '2 - Important'
-  '1': '1 - Not Important'
+  5: '5 - Highly Critical'
+  4: '4 - Critical'
+  3: '3 - Very Important'
+  2: '2 - Important'
+  1: '1 - Not Important'
 }
 Lists.Locations.Classification = {
   'pump': 'Pump'

@@ -7,7 +7,7 @@ template(name='viewPeoplePage')
         br
         fieldset
           legend People
-          +reactiveTable collection=userArray settings=settings class='table striped'
+          +reactiveTable collection='resources-data' settings=settings class='table striped'
       else
         +spinner
     .fixed-action-btn(style='bottom: 45px; right: 24px;')

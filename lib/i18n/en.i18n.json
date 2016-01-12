@@ -1,0 +1,14 @@
+{
+  "layouts-welcome1": "Welcome to The Lightning EAM Project!",
+  "layouts-welcome2": "Creating the World's fastest Enterprise Asset Management (EAM) system",
+  "assets": "Assets",
+  "locations": "Locations",
+  "assets&locations1": "Assets & Locations",
+  "assets&locations2": "Assets and Locations",
+  "work": "Work Mgt",
+  "work-mgt": "Work Management",
+  "create-request": "Create Request",
+  "view-work": "View Work",
+  "work-orders": "Work Orders",
+  "my-work": "My Work"
+}

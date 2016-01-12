@@ -24,7 +24,6 @@ useraccounts:flow-routing
 arillo:flow-router-helpers
 aldeed:autoform
 aldeed:collection2
-gildaspk:autoform-materialize
 sujith3g:jstree
 fortawesome:fontawesome
 dburles:collection-helpers
@@ -49,3 +48,6 @@ ground:db
 tmeasday:publish-counts
 momentjs:moment
 mrt:moment-timezone
+gildaspk:autoform-materialize
+tap:i18n
+msavin:mongol

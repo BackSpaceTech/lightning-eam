@@ -4,11 +4,11 @@ template(name='welcomePage')
       br
       .hide-on-small-only.icon-page
         i.fa-5x.fa.fa-flash
-        h1 Welcome to The Lightning EAM Project!
-        h5 Creating the World's fastest Enterprise Asset Management (EAM) system
+        h1 {{_ 'layouts-welcome1'}}          
+        h5 {{_ 'layouts-welcome2'}}
         br
       .hide-on-med-and-up.icon-page
-        h5 Welcome to The Lightning EAM Project!
+        h5 {{_ 'layouts-welcome1'}}
         br
       .row
         .col.s6.m4.l3
@@ -16,7 +16,7 @@ template(name='welcomePage')
             i.fa-5x.fa.fa-industry
             br
             br
-            |  Assets
+            |  {{_ 'assets'}} 
             br
             br
         .col.s6.m4.l3
@@ -24,7 +24,7 @@ template(name='welcomePage')
             i.fa-5x.fa.fa-wrench
             br
             br
-            |  Work Mgt
+            |  {{_ 'work'}}
             br
             br
         .col.s6.m4.l3

@@ -5,14 +5,8 @@ template(name='workQueryPage')
     .flow-text.container2
       br
       fieldset
-        legend Work
-        h6
-          | Number of records: 
-          =numDocs      
-        if Template.subscriptionsReady
-          +reactiveTable collection=workArray settings=settings class='table striped'
-        else
-          +spinner
+        legend Work   
+        +reactiveTable collection='workorder-data' settings=settings class='table striped'
     .fixed-action-btn(style='bottom: 45px; right: 24px;')
       a.btn-floating.btn-large.purple(href="{{pathFor '../work'}}")
         i.large.material-icons skip_previous

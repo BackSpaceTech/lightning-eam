@@ -11,11 +11,9 @@ Template.viewPeoplePage.onDestroyed ->
 
 Template.viewPeoplePage.helpers
   customTemplate: -> Customisations.viewPeople
-  userProfiles: -> Meteor.users.find()
   userEmail: -> this.emails[0].address
   userID: -> this._id
   userRole: -> this.roles[0]
-  userArray: -> Meteor.users.find()
   settings: ->
     return {
       rowsPerPage: 10

@@ -19,50 +19,91 @@ template(name='viewWorkorderPage')
               a.btnEdit.btn-floating.blue.tooltipped(href='{{pathFor "edit-workorder"}}' data-position='left', data-tooltip='Edit')
                 i.fa.fa-edit
       fieldset
-        legend View Work Request / Order 
-        +autoForm schema=workorderFormSchema id="viewWorkorderPage" type="readonly" collection="Workorders" doc=viewDoc
+        +autoForm schema=workorderFormSchema id='viewWorkorderPage' type='readonly' collection='Workorders' doc=viewDoc
           if Template.subscriptionsReady
-            .row
-              +afQuickField name="parent" type="hidden"
-              +afQuickField name="treePath" type="hidden"
-              h6.teal-text Request Details 
-              .col.s12.m6.l3
-                +afQuickField name="reqByFirstName"  
-              .col.s12.m6.l3
-                +afQuickField name="reqByLastName"                                     
-              .col.s12.m6.l3
-                +afQuickField name="reqPriority"
-              .col.s12.m6.l3
-                +afQuickField name="assetID"
-              .col.s12.m6.l3
-                +afQuickField name="assetText"  
-              .col.s12.m6.l3
-                +afQuickField name="refID"                            
-              div
-                +afQuickField name="reqDescription"  
-            .row
-              .divider.teal
-              .section
-                h6.teal-text Work Order Details                                                    
-                .col.s12.m6.l3
-                  +afQuickField name="status"               
-                .col.s12.m6.l3
-                  +afQuickField name="priority"                
-                div
-                  +afQuickField name="text"
-                div
-                  +afQuickField name="description"
-            .row
-              .divider.teal
-              .section
-                h6.teal-text Safety Method                                                    
-                .col.s12.m6.l3
-                  +afQuickField name="safetyMethod"                   
-            .row
-              .divider.teal
-              .section
-                h6.teal-text Work Plan                                                    
-                .col.s12.m6.l3
-                  +afQuickField name="workPlan"               
+            if workorder
+              +viewWoForm  
+            else 
+              +viewRequestForm                 
           else
-            +spinner
+            +spinner              
+
+template(name='viewRequestForm')    
+  .row
+    legend View Work Request 
+    +afQuickField name='parent' type='hidden'
+    +afQuickField name='treePath' type='hidden'
+    h6.teal-text Request Details 
+    .col.s12.m6.l3
+      +afQuickField name='reqByFirstName'  
+    .col.s12.m6.l3
+      +afQuickField name='reqByLastName'                                     
+    .col.s12.m6.l3
+      +afQuickField name='reqPriority'
+    .col.s12.m6.l3
+      +afQuickField name='assetID'
+    .col.s12.m6.l3
+      +afQuickField name='assetText'  
+    .col.s12.m6.l3
+      +afQuickField name='refID'                            
+    div
+      +afQuickField name='reqDescription'  
+       
+template(name='viewWoForm')
+  .row
+    legend View Work Order 
+    +afQuickField name='parent' type='hidden'
+    +afQuickField name='treePath' type='hidden'
+    h6.teal-text Request Details 
+    .col.s12.m6.l3
+      +afQuickField name='reqByFirstName'  
+    .col.s12.m6.l3
+      +afQuickField name='reqByLastName'                                     
+    .col.s12.m6.l3
+      +afQuickField name='reqPriority'
+    .col.s12.m6.l3
+      +afQuickField name='assetID'
+    .col.s12.m6.l3
+      +afQuickField name='assetText'  
+    .col.s12.m6.l3
+      +afQuickField name='refID'                            
+    div
+      +afQuickField name='reqDescription'  
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Work Order Details                                                    
+      .col.s12.m6.l3
+        +afQuickField name='status'               
+      .col.s12.m6.l3
+        +afQuickField name='priority'                
+      div
+        +afQuickField name='text'
+      div
+        +afQuickField name='description'
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Safety Method
+      +reactiveTable collection=viewDoc.safetyMethod settings=settingsSafety class='table striped'
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Work Plan
+      +reactiveTable collection=viewDoc.workPlan settings=settingsWork class='table striped'      
+
+template(name=viewWorkorderSafety)
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+    i.fa.fa-eye
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+    i.fa.fa-edit 
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+    i.fa.fa-trash   
+  
+template(name=viewWorkorderWork)
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+    i.fa.fa-eye
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+    i.fa.fa-edit 
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+    i.fa.fa-trash   

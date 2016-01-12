@@ -12,6 +12,7 @@ Meteor.publish 'locations', ->
 Meteor.publish 'singleLocation', (locationId) ->
   Locations.find _id: locationId
 
+#************************ Resources *****************************#
 Meteor.publish 'directory', ->
   Meteor.users.find {}, fields:
     emails: true
@@ -22,8 +23,13 @@ Meteor.publish 'directory', ->
 Meteor.publish 'singleUser', (userId) ->
   Meteor.users.find _id: userId
 
+ReactiveTable.publish 'resources-data', Meteor.users
+
+#********************** Work Orders *****************************#
 Meteor.publish 'workorders', (query) ->
   Counts.publish this, 'workorders-count', Workorders.find query,
     noReady: true
     nonReactive: true
   Workorders.find query
+
+ReactiveTable.publish 'workorder-data', Workorders

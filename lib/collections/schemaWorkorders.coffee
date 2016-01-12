@@ -10,6 +10,7 @@ Workorders.allow
 Schema.safety = new SimpleSchema(
   createdBy:
     type: String
+    label: 'Created by'
   activity:
     type: String
     label: '*Activity'
@@ -22,6 +23,9 @@ Schema.safety = new SimpleSchema(
   responsible:
     type: String
     label: '*Who is responsible?'
+  completedTime:
+    type: Date
+    label: 'Completed Time'
 )
 
 Schema.tasks = new SimpleSchema(
@@ -34,12 +38,9 @@ Schema.tasks = new SimpleSchema(
   estimatedHrs:
     type: Number
     label: '*Est hrs'
-  finishTime:
-    type: Number
-    label: 'Finish Time'
-  actualHrs:
-    type: Number
-    label: 'Actual hrs'
+  completedTime:
+    type: Date
+    label: 'Completed Time'
   completedByID:
     type: [String]
     label: '*Completed By ID'
@@ -187,7 +188,13 @@ Schema.workorders = new SimpleSchema(
   woApprovedByLastName:
     type: String
     optional: true
+  woCreatedDate:
+    type: Date
+    optional: true
   woApprovedDate:
+    type: Date
+    optional: true
+  woPlannedDate:
     type: Date
     optional: true
   woInProgDate:

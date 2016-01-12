@@ -25,14 +25,14 @@ Lists.Resources.Trades = {
   'Welder': 'Welder'
 }
 Lists.Resources.TradeLevels = {
-  '0': 'Trades Assistant'
-  '1': 'Apprentice Stage 1'
-  '2': 'Apprentice Stage 2'
-  '3': 'Apprentice Stage 3'
-  '4': 'Apprentice Stage 4'
-  '5': 'Trade Qualified'
-  '6': 'Trade Licensed'
-  '7': 'Master Tradesman'
+  0: 'Trades Assistant'
+  1: 'Apprentice Stage 1'
+  2: 'Apprentice Stage 2'
+  3: 'Apprentice Stage 3'
+  4: 'Apprentice Stage 4'
+  5: 'Trade Qualified'
+  6: 'Trade Licensed'
+  7: 'Master Tradesman'
 }
 Lists.Resources.Professions = {
   'AeroEng': 'Engineering Aerospace'
@@ -43,13 +43,13 @@ Lists.Resources.Professions = {
   'MechatronicEng': 'Engineering Mechatronic'
 }
 Lists.Resources.ProfessionLevels = {
-  '0': 'Undergraduate'
-  '1': 'Associate Diploma'
-  '2': 'Diploma'
-  '3': 'Bachelor Degree'
-  '4': 'Postgraduate Diplmoma'
-  '5': 'Masters Degree'
-  '6': 'Doctorate-Phd'
+  0: 'Undergraduate'
+  1: 'Associate Diploma'
+  2: 'Diploma'
+  3: 'Bachelor Degree'
+  4: 'Postgraduate Diplmoma'
+  5: 'Masters Degree'
+  6: 'Doctorate-Phd'
 }
 Lists.Resources.Certifications = {
   'eleca': 'Electrician A Grade'
