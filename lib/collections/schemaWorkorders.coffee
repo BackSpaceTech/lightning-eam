@@ -7,45 +7,51 @@ Workorders.allow
   remove: ->
     true
 
+Schema.workTeam = new SimpleSchema(
+  userID:
+    type: String
+    label: 'User Sys ID'
+    autoform:
+      type: 'hidden'    
+  firstName:
+    type: String
+    label: 'First Name'
+  lastName:
+    type: String
+    label: 'Last Name'
+)
+
 Schema.safety = new SimpleSchema(
+  id:
+    type: String
+    label: 'Sequence ID'
   createdBy:
     type: String
     label: 'Created by'
   activity:
     type: String
-    label: '*Activity'
+    label: 'Activity'
   hazards:
     type: String
-    label: '*Hazards'
+    label: 'Hazards'
   controls:
     type: String
-    label: '*Risk control measures'
+    label: 'Risk control measures'
   responsible:
     type: String
-    label: '*Who is responsible?'
-  completedTime:
-    type: Date
-    label: 'Completed Time'
+    label: 'Who is responsible?'
 )
 
 Schema.tasks = new SimpleSchema(
   id:
     type: String
-    label: '*Sequence ID'
+    label: 'Sequence ID'
   text:
     type: String
-    label: '*Instructions'
+    label: 'Instructions'
   estimatedHrs:
     type: Number
-    label: '*Est hrs'
-  completedTime:
-    type: Date
-    label: 'Completed Time'
-  completedByID:
-    type: [String]
-    label: '*Completed By ID'
-    autoform:
-      type: 'select-multiple'
+    label: 'Est hrs'
   trade:
     type: String
     label: 'Trade'
@@ -158,6 +164,22 @@ Schema.workorders = new SimpleSchema(
   workPlan:
     type: [Schema.tasks]
     label: 'Work Plan'
+    optional: true
+  workTeam:
+    type: [Schema.workTeam]
+    label: 'Work Team'
+    optional: true
+  fault:
+    type: String
+    label: 'Fault'
+    optional: true
+  cause:
+    type: String
+    label: 'Cause'
+    optional: true
+  remedy:
+    type: String
+    label: 'Remedy'
     optional: true
   reqBy_id:
     type: String

@@ -28,7 +28,6 @@ template(name='editWorkorderPage')
 template(name='editRequestForm')        
   legend Edit Request
   .row
-    +afQuickField name='_id' type='hidden'
     +afQuickField name='type' type='hidden'
     +afQuickField name='asset_ID' type='hidden'
     +afQuickField name='asset_treePath' type='hidden'
@@ -55,14 +54,14 @@ template(name='editRequestForm')
       div
         +afQuickField name='reqComments'                                                        
       .col.s12.m6.l3    
-        +afQuickField name='status' options=requestOptions      .col.s12.m6.l3
+        +afQuickField name='status' options=requestOptions      
+      .col.s12.m6.l3
         button.btn-floating.teal.tooltipped(type='submit', data-position='bottom', data-tooltip='Submit Form')
           i.fa.fa-save 
        
 template(name='editWorkorderForm')
   legend Edit Work Order 
   .row
-    +afQuickField name='_id' type='hidden'
     +afQuickField name='type' type='hidden'
     +afQuickField name='asset_ID' type='hidden'
     +afQuickField name='asset_treePath' type='hidden'
@@ -97,9 +96,44 @@ template(name='editWorkorderForm')
   .row
     .divider.teal
     .section
-      .col.s12.m6.l6                
+      h6.teal-text Work Team   
+      each member in teamMembers
+        | 
+        = member.firstName
+        = member.lastName
+        |,
+      button.btn-floating.teal.tooltipped.btnAdd(type='button', data-position='bottom', data-tooltip='Quick Add Person')
+        i.fa.fa-plus
+      br                
+      +afEachArrayItem name='workTeam' value=teamMembers
+        .col.s12.m6.l3
+          +afQuickField name=this.name label=false
+          button.autoform-remove-item.waves-effect.waves-light.btn(type="button" , data-position='bottom', data-tooltip='Remove Person')
+            |Remove
+  .row
+    .divider.teal
+    .section
+      .row               
         h6.teal-text Safety Method  
-        +afArrayField name='safetyMethod'
-      .col.s12.m6.l6        
+        +afArrayField name='safetyMethod'        
+      .row      
         h6.teal-text Work Plan
         +afArrayField name='workPlan'
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Fault Details 
+      br                                                   
+      .col.s12.m6.l3
+        +afQuickField name='fault' options=faultOptions
+      .col.s12.m6.l3
+        +afQuickField name='cause' options=causeOptions         
+      .col.s12.m6.l3
+        +afQuickField name='remedy' options=remedyOptions 
+        
+template(name='editWorkorderFormAddUser')
+  +reactiveTable collection='resources-data' settings=settings class='table striped'
+
+template(name='editWorkorderModalAddUser')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEach(type='button', data-delay='50', data-position='bottom,', data-tooltip='edit user')
+    i.fa.fa-check 

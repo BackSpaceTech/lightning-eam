@@ -8,7 +8,7 @@ Template.workQueryPage.helpers
   spinner: ->
     MaterializeModal.loading
   nospinner: ->
-    MaterializeModal.close    
+    MaterializeModal.close
   numDocs: ->
     temp = Counts.get 'workorders-count'
     if temp > 1000

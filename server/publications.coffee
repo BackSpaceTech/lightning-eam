@@ -23,7 +23,7 @@ Meteor.publish 'directory', ->
 Meteor.publish 'singleUser', (userId) ->
   Meteor.users.find _id: userId
 
-ReactiveTable.publish 'resources-data', Meteor.users
+ReactiveTable.publish "resources-data", Meteor.users, {}, {fields: {password: 0}}
 
 #********************** Work Orders *****************************#
 Meteor.publish 'workorders', (query) ->
