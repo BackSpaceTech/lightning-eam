@@ -57,3 +57,19 @@ workRoutes.route '/copy-workorder',
       header: 'header1'
       footer: 'footer1'
     return
+workRoutes.route '/my-workorder',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'myWorkorderPage'
+      header: 'header1'
+      footer: 'footer1'
+    return
+workRoutes.route '/my-workorders',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'myWorkordersPage'
+      header: 'header1'
+      footer: 'footer1'
+    return

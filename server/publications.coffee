@@ -33,4 +33,5 @@ Meteor.publish 'workorders', (query) ->
     nonReactive: true
   Workorders.find query
 
-ReactiveTable.publish 'workorder-data', Workorders
+ReactiveTable.publish 'workorder-data', Workorders, ->
+  Collections.Workorders.workQuery

@@ -16,7 +16,9 @@ Template.editWorkorderPage.helpers
 
 Template.editWorkorderPage.events
   'click .btnSubmit': (e) ->
+    Session.set 'currentDoc', Collections.Workorders.Current
     FlowRouter.go '/work/query'
+
 Template.editRequestForm.helpers
   requestOptions: ->
     return {

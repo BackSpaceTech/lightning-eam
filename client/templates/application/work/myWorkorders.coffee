@@ -1,10 +1,10 @@
-Template.workQueryPage.onRendered ->
+Template.myWorkordersPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
-Template.workQueryPage.onDestroyed ->
+Template.myWorkordersPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.workQueryPage.helpers
+Template.myWorkordersPage.helpers
   spinner: ->
     MaterializeModal.loading
   nospinner: ->
@@ -36,7 +36,7 @@ Template.workQueryPage.helpers
       ]
     }
 
-Template.workQueryPage.events
+Template.myWorkordersPage.events
   'click .btnView': (e) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/view-workorder'
@@ -58,8 +58,8 @@ Template.workQueryPage.events
             Meteor.call 'deleteWO', Collections.Workorders.Current._id
         return
 
-Template.editWO.onRendered ->
+Template.doWO.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
-Template.editWO.onDestroyed ->
+Template.doWO.onDestroyed ->
   $('.tooltipped').tooltip 'remove'

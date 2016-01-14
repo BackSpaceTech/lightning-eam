@@ -25,8 +25,10 @@ Template.viewWorkPage.events
       if ($('#radioViewWork0').prop('checked')) # My Requests
         Collections.Workorders.workQuery.reqBy_id = Meteor.userId()
       else if ($('#radioViewWork1').prop('checked')) # Open Requests
-        Collections.Workorders.workQuery.status = { $in: [ '1', '2', '3' ] }
+        Collections.Workorders.workQuery.status = { $in: [ '1', '2' ] }
       else if ($('#radioViewWork2').prop('checked')) # Approved Work Orders
+        Collections.Workorders.workQuery.status = { $in: [ '3', '4' ] }
+      else if ($('#radioViewWork3').prop('checked')) # Approved Work Orders
         Collections.Workorders.workQuery.status = { $in: [ '5', '6', '7', '8' ] }
     else  # Advanced Search
       tempArray =[]
@@ -51,6 +53,7 @@ Template.viewWorkPage.events
           Collections.Workorders.workQuery.woApprovedDate = dateRange
         if $('#radioViewWorkDates2').prop('checked') # WO completed date
           Collections.Workorders.workQuery.woCompletedDate = dateRange
+    Meteor.call 'setWorkQuery', Collections.Workorders.workQuery
     FlowRouter.go '/work/query'
 
 Template.viewWorkAdvanced.onRendered ->

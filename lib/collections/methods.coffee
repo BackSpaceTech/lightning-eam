@@ -80,4 +80,6 @@ if (Meteor.isServer)
     deleteWO: (docID) ->
       Workorders.remove {'_id': docID}
       this.unblock()
+    setWorkQuery: (query) ->
+      Collections.Workorders.workQuery = query
     }

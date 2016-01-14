@@ -1,0 +1,102 @@
+template(name='myWorkorderPage')
+  if customTemplate
+    +myWorkorderPageCustom  
+  else  
+    .flow-text.container2
+      br
+      .form-group
+        .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+          a.btn-floating.btn-large.purple
+            i.large.mdi-navigation-menu
+          ul
+            li
+              button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                i.material-icons skip_previous
+            li
+              a.btnCopy.btn-floating.green.tooltipped(href='{{pathFor "copy-workorder"}}' data-position='left', data-tooltip='Copy')
+                i.fa.fa-copy
+            li
+              a.btnEdit.btn-floating.blue.tooltipped(href='{{pathFor "edit-workorder"}}' data-position='left', data-tooltip='Edit')
+                i.fa.fa-edit
+      fieldset
+        +autoForm schema=workorderFormSchema id='myWorkorderPage' type='readonly' collection='Workorders' doc=viewDoc
+          if Template.subscriptionsReady
+            if workorder
+              +viewWoForm  
+            else 
+              +viewRequestForm                 
+          else
+            +spinner              
+      
+template(name='myWoForm')
+  .row
+    legend View Work Order 
+    +afQuickField name='parent' type='hidden'
+    +afQuickField name='treePath' type='hidden'
+    h6.teal-text Request Details 
+    .col.s12.m6.l3
+      +afQuickField name='reqByFirstName'  
+    .col.s12.m6.l3
+      +afQuickField name='reqByLastName'                                     
+    .col.s12.m6.l3
+      +afQuickField name='reqPriority'
+    .col.s12.m6.l3
+      +afQuickField name='assetID'
+    .col.s12.m6.l3
+      +afQuickField name='assetText'  
+    .col.s12.m6.l3
+      +afQuickField name='refID'                            
+    div
+      +afQuickField name='reqDescription'  
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Work Order Details                                                    
+      .col.s12.m6.l3
+        +afQuickField name='status'               
+      .col.s12.m6.l3
+        +afQuickField name='priority'                
+      div
+        +afQuickField name='text'
+      div
+        +afQuickField name='description'
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Safety Method
+      +reactiveTable collection=safetyDoc settings=settingsSafety class='table striped'
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Work Plan
+      +reactiveTable collection=workDoc settings=settingsWork class='table striped'
+
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Fault Reporting                                                    
+      .col.s12.m6.l3
+        | Fault Code: 
+        =viewDoc.fault              
+      .col.s12.m6.l3
+        | Cause Code: 
+        =viewDoc.cause              
+      .col.s12.m6.l3
+        | Remedy Code: 
+        =viewDoc.remedy
+
+template(name=myWorkorderSafety)
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+    i.fa.fa-eye
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+    i.fa.fa-edit 
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+    i.fa.fa-trash   
+  
+template(name=myWorkorderWork)
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+    i.fa.fa-eye
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+    i.fa.fa-edit 
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+    i.fa.fa-trash   
