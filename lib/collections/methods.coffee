@@ -77,4 +77,7 @@ if (Meteor.isServer)
       # Insert a work order into the collection
       Workorders.update({ _id: ID }, doc)
       this.unblock()
+    deleteWO: (docID) ->
+      Workorders.remove {'_id': docID}
+      this.unblock()
     }

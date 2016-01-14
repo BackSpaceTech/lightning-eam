@@ -45,8 +45,19 @@ Template.workQueryPage.events
     FlowRouter.go '/work/edit-workorder'
   'click .btnDelete': (e) ->
     Collections.Workorders.Current = this
-    FlowRouter.go '/work/delete-workorder'
-
+    MaterializeModal.display
+      bodyTemplate: 'workQueryDelete'
+      title: 'Delete Work Record!'
+      submitLabel: 'Submit'
+      closeLabel: 'Cancel'
+      callback: (error, response) ->
+        if error
+          console.error error
+        else
+          if response.submit
+            Meteor.call 'deleteWO', Collections.Workorders.Current._id
+        return
+        
 Template.editWO.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
