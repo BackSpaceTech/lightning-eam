@@ -12,7 +12,7 @@ Schema.workTeam = new SimpleSchema(
     type: String
     label: 'User Sys ID'
     autoform:
-      type: 'hidden'    
+      type: 'hidden'
   firstName:
     type: String
     label: 'First Name'
@@ -31,12 +31,21 @@ Schema.safety = new SimpleSchema(
   activity:
     type: String
     label: 'Activity'
+    autoform: {
+      rows: 5
+    }
   hazards:
     type: String
     label: 'Hazards'
+    autoform: {
+      rows: 5
+    }
   controls:
     type: String
     label: 'Risk control measures'
+    autoform: {
+      rows: 5
+    }
   responsible:
     type: String
     label: 'Who is responsible?'
@@ -49,9 +58,12 @@ Schema.tasks = new SimpleSchema(
   text:
     type: String
     label: 'Instructions'
+    autoform: {
+      rows: 5
+    }
   estimatedHrs:
     type: Number
-    label: 'Est hrs'
+    label: 'Est mins'
   trade:
     type: String
     label: 'Trade'

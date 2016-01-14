@@ -2,8 +2,6 @@ Template.editWorkorderPage.onRendered ->
   if !Collections.Workorders.Current.workTeam
     Collections.Workorders.Current.workTeam = []
   Session.set 'currentDoc', Collections.Workorders.Current
-
-Template.editWorkorderPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
 Template.editWorkorderPage.onDestroyed ->
@@ -16,6 +14,9 @@ Template.editWorkorderPage.helpers
   workorderFormSchema: -> Schema.workorders
   statusRequest: -> Collections.Workorders.Current.status
 
+Template.editWorkorderPage.events
+  'click .btnSubmit': (e) ->
+    FlowRouter.go '/work/query'
 Template.editRequestForm.helpers
   requestOptions: ->
     return {
@@ -49,8 +50,8 @@ Template.editWorkorderForm.events
       bodyTemplate: 'editWorkorderFormAddUser'
       title: 'Add Team Member'
     }
-  'click .autoform-remove-item': (e) ->
-    temp = this.current.userID.substring(this.current.userID.indexOf('.') + 1, this.current.userID.lastIndexOf('.'))
+  'click .btnDelete': (e) ->
+    temp = this.index
     Collections.Workorders.Current.workTeam.splice(temp,1)
     Session.set 'currentDoc', Collections.Workorders.Current
 
@@ -81,11 +82,12 @@ Template.editWorkorderFormAddUser.events
     if added.length>0
       MaterializeModal.alert title: "Error", message: "User already in team."
       return
+    # Add user to team
     if Collections.Workorders.Current.workTeam&&Collections.Workorders.Current.workTeam.length!=0
       Collections.Workorders.Current.workTeam.push(temp)
     else
       Collections.Workorders.Current.workTeam = []
       Collections.Workorders.Current.workTeam[0] = temp
+    # Set session for reactivity
     Session.set 'currentDoc', Collections.Workorders.Current
-    console.log JSON.stringify Session.get('currentDoc')
     MaterializeModal.close()

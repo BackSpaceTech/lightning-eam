@@ -13,3 +13,7 @@ Template.editPeoplePage.helpers
   professionsValue: -> Collections.Users.Current.professions
   tradesValue: -> Collections.Users.Current.trades
   customTemplate: -> Customisations.editPeople
+
+Template.editPeoplePage.events
+  'click .btnSubmit': (e) ->
+    FlowRouter.go '/resources/view-people'

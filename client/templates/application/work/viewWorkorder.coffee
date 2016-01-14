@@ -6,16 +6,19 @@ Template.viewWorkorderPage.onDestroyed ->
 
 Template.viewWorkorderPage.helpers
   customTemplate: -> Customisations.viewAsset
-  viewDoc: ->
-    console.log "Collections.Workorders.Current: "+JSON.stringify(Collections.Workorders.Current)
-    return Collections.Workorders.Current
+  viewDoc: -> Collections.Workorders.Current
   workorderFormSchema: -> Schema.workorders
   workorder: -> Collections.Workorders.Current.status > 2
+
+Template.viewWoForm.helpers
+  viewDoc: -> Collections.Workorders.Current
+  safetyDoc: -> Collections.Workorders.Current.safetyMethod
   settingsSafety: ->
     return {
       rowsPerPage: 10
       showFilter: false
       fields:  [
+        { key: 'id', label: 'Sequence ID'}
         { key: 'createdBy', label: 'Created by' }
         { key: 'activity', label: ' Activity' }
         { key: 'hazards', label: ' Hazards' }
@@ -25,13 +28,13 @@ Template.viewWorkorderPage.helpers
         { key: '', label: 'Start/Complete', tmpl: Template.viewWorkorderSafety }
       ]
     }
-
+  workDoc: -> Collections.Workorders.Current.workPlan
   settingsWork: ->
     return {
       rowsPerPage: 10
       showFilter: false
       fields:  [
-        { key: 'id', label: 'Sequence ID' }
+        { key: 'id', label: 'Sequence ID'}
         { key: 'text', label: 'Instructions' }
         { key: 'estimatedHrs', label: 'Est hrs' }
         { key: 'finishTime', label: 'Finish Time' }

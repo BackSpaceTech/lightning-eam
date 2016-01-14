@@ -22,8 +22,8 @@ template(name='editWorkorderPage')
                   button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
                     i.fa.fa-undo
                 li
-                  button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
-                    i.fa.fa-check             
+                  button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
+                    i.fa.fa-check
 
 template(name='editRequestForm')        
   legend Edit Request
@@ -97,28 +97,37 @@ template(name='editWorkorderForm')
     .divider.teal
     .section
       h6.teal-text Work Team   
-      each member in teamMembers
-        | 
-        = member.firstName
-        = member.lastName
-        |,
-      button.btn-floating.teal.tooltipped.btnAdd(type='button', data-position='bottom', data-tooltip='Quick Add Person')
-        i.fa.fa-plus
-      br                
+        button.btn-floating.teal.tooltipped.btnAdd(type='button', data-position='bottom', data-tooltip='Quick Add Person')
+          i.fa.fa-plus                 
       +afEachArrayItem name='workTeam' value=teamMembers
         .col.s12.m6.l3
+          button.autoform-remove-item.btn-floating.waves-effect.waves-light.red.btnDelete(type="button", data-position='bottom', data-tooltip='Remove Person')
+            i.fa.fa-trash          
           +afQuickField name=this.name label=false
-          button.autoform-remove-item.waves-effect.waves-light.btn(type="button" , data-position='bottom', data-tooltip='Remove Person')
-            |Remove
   .row
     .divider.teal
     .section
       .row               
-        h6.teal-text Safety Method  
-        +afArrayField name='safetyMethod'        
+        h6.teal-text Safety Method 
+          button.autoform-add-item.btn-floating.waves-effect.waves-light.teal.btnAdd2(type='button', data-autoform-field='safetyMethod', data-position='bottom', data-tooltip='Add')
+            i.fa.fa-plus        
+        +afEachArrayItem name='safetyMethod'
+          .col.s12.m6.l3
+            button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
+              i.fa.fa-trash                            
+            +afQuickField name=this.name label=false
+  .row
+    .divider.teal
+    .section                
       .row      
         h6.teal-text Work Plan
-        +afArrayField name='workPlan'
+          button.autoform-add-item.btn-floating.waves-effect.waves-light.teal.btnAdd3(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add')
+            i.fa.fa-plus         
+        +afEachArrayItem name='workPlan'
+          .col.s12.m6.l3 
+            button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
+              i.fa.fa-trash                             
+            +afQuickField name=this.name label=false      
   .row
     .divider.teal
     .section

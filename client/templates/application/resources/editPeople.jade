@@ -3,23 +3,23 @@ template(name='editPeoplePage')
     +editPeoplePageCustom  
   else 
     .flow-text.container2
-      .form-group
-        .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-          a.btn-floating.btn-large.purple
-            i.large.mdi-navigation-menu
-          ul
-            li
-              button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                i.material-icons skip_previous
-            li
-              button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
-                i.fa.fa-undo
-            li
-              button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
-                i.fa.fa-check
-      br
-      if Template.subscriptionsReady
-        +autoForm id='editPeoplePage' collection='Meteor.users'  doc=currentUser type='update'
+      +autoForm id='editPeoplePage' collection='Meteor.users'  doc=currentUser type='update'      
+        .form-group
+          .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+            a.btn-floating.btn-large.purple
+              i.large.mdi-navigation-menu
+            ul
+              li
+                button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                  i.material-icons skip_previous
+              li
+                button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
+                  i.fa.fa-undo
+              li
+                button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
+                  i.fa.fa-check
+        br
+        if Template.subscriptionsReady
           fieldset
             legend Edit User Profile
             .row.z-depth-1
@@ -39,8 +39,17 @@ template(name='editPeoplePage')
                 +afQuickField name='profile.phone'
               .col.s12.m6.l3
                 +afQuickField name='profile.mobile'
-            .row.z-depth-1
-              .col.s12.m6.l3
-                +afQuickField name='emails'
-      else
-        +spinner
+            .row
+              .divider.teal
+              .section
+                .row               
+                  h6.teal-text Email 
+                    button.autoform-add-item.btn-floating.waves-effect.waves-light.teal(type='button', data-autoform-field='emails', data-position='bottom', data-tooltip='Add')
+                      i.fa.fa-plus        
+                  +afEachArrayItem name='emails'
+                    .col.s12.m6.l3
+                      button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
+                        i.fa.fa-trash                            
+                      +afQuickField name=this.name label=false                
+        else
+          +spinner

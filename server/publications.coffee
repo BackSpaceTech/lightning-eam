@@ -19,9 +19,10 @@ Meteor.publish 'directory', ->
     profile: true
     roles: true
     trades: true
+    certifications: true
 
 Meteor.publish 'singleUser', (userId) ->
-  Meteor.users.find _id: userId
+  Meteor.users.find {_id: userId}
 
 ReactiveTable.publish "resources-data", Meteor.users, {}, {fields: {password: 0}}
 

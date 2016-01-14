@@ -85,12 +85,26 @@ template(name='viewWoForm')
     .divider.teal
     .section
       h6.teal-text Safety Method
-      +reactiveTable collection=viewDoc.safetyMethod settings=settingsSafety class='table striped'
+      +reactiveTable collection=safetyDoc settings=settingsSafety class='table striped'
   .row
     .divider.teal
     .section
       h6.teal-text Work Plan
-      +reactiveTable collection=viewDoc.workPlan settings=settingsWork class='table striped'      
+      +reactiveTable collection=workDoc settings=settingsWork class='table striped'
+
+  .row
+    .divider.teal
+    .section
+      h6.teal-text Fault Reporting                                                    
+      .col.s12.m6.l3
+        | Fault Code: 
+        =viewDoc.fault              
+      .col.s12.m6.l3
+        | Cause Code: 
+        =viewDoc.cause              
+      .col.s12.m6.l3
+        | Remedy Code: 
+        =viewDoc.remedy
 
 template(name=viewWorkorderSafety)
   button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
