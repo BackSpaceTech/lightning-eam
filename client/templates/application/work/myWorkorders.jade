@@ -5,14 +5,17 @@ template(name='myWorkordersPage')
     .flow-text.container2
       br
       fieldset
-        legend Work   
-        +reactiveTable collection='workorder-data' settings=settings class='table striped'
+        legend My Work   
+        +reactiveTable collection=myWork settings=settings class='table striped'
+         
     .fixed-action-btn(style='bottom: 45px; right: 24px;')
       a.btn-floating.btn-large.purple(href="{{pathFor '../work'}}")
-        i.large.material-icons skip_previous
-            
-template(name='doWO')
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
-    i.fa.fa-wrench           
-
+        i.large.material-icons skip_previous     
   
+template(name='startWO')
+  button.btn-floating.waves-effect.waves-light.tooltipped.green.btnStart(type='button', data-delay='50', data-position='bottom', data-tooltip='Start')
+    i.fa.fa-wrench      
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+    i.fa.fa-eye
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+    i.fa.fa-edit 

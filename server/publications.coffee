@@ -1,4 +1,4 @@
-# Data subset subscribed to on client
+#**************** Assets / Locations ***********#
 Meteor.publish 'locations', ->
   Locations.find {}, fields:
     text: true
@@ -27,11 +27,11 @@ Meteor.publish 'singleUser', (userId) ->
 ReactiveTable.publish "resources-data", Meteor.users, {}, {fields: {password: 0}}
 
 #********************** Work Orders *****************************#
-Meteor.publish 'workorders', (query) ->
-  Counts.publish this, 'workorders-count', Workorders.find query,
-    noReady: true
-    nonReactive: true
-  Workorders.find query
+Meteor.publish 'workorders', ->
+  Workorders.find {}
 
 ReactiveTable.publish 'workorder-data', Workorders, ->
   Collections.Workorders.workQuery
+
+Meteor.publish 'my-work', (userId) ->
+  Workorders.find {'workTeam.userID': userId}, {limit: 100, sort: {priority: 1}}

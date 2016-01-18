@@ -57,8 +57,8 @@ workRoutes.route '/copy-workorder',
       header: 'header1'
       footer: 'footer1'
     return
+  # My workorders available offline through GroundDB
 workRoutes.route '/my-workorder',
-  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
     BlazeLayout.render 'layout',
       content: 'myWorkorderPage'
@@ -66,7 +66,6 @@ workRoutes.route '/my-workorder',
       footer: 'footer1'
     return
 workRoutes.route '/my-workorders',
-  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
     BlazeLayout.render 'layout',
       content: 'myWorkordersPage'

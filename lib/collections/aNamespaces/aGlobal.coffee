@@ -24,3 +24,4 @@
 @Collections.Workorders.Current = {}
 @Collections.Workorders.CurrentID = 0
 @Collections.Workorders.workQuery = {}
+@Collections.Workorders.Clock = {}

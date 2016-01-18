@@ -18,7 +18,6 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 kadira:flow-router
 u2622:persistent-session
-materialize:materialize
 kadira:blaze-layout
 useraccounts:flow-routing
 arillo:flow-router-helpers
@@ -51,3 +50,7 @@ mrt:moment-timezone
 gildaspk:autoform-materialize
 tap:i18n
 msavin:mongol
+fourseven:scss
+poetic:materialize-scss
+meteorhacks:aggregate
+modweb:flipclock

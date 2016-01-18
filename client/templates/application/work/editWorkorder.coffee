@@ -52,10 +52,6 @@ Template.editWorkorderForm.events
       bodyTemplate: 'editWorkorderFormAddUser'
       title: 'Add Team Member'
     }
-  'click .btnDelete': (e) ->
-    temp = this.index
-    Collections.Workorders.Current.workTeam.splice(temp,1)
-    Session.set 'currentDoc', Collections.Workorders.Current
 
 Template.editWorkorderFormAddUser.helpers
   settings: ->

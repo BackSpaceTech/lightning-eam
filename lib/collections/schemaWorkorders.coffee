@@ -49,6 +49,10 @@ Schema.safety = new SimpleSchema(
   responsible:
     type: String
     label: 'Who is responsible?'
+  completed:
+    type: String
+    label: 'Completed Time'
+    optional: true
 )
 
 Schema.tasks = new SimpleSchema(
@@ -101,6 +105,10 @@ Schema.tasks = new SimpleSchema(
       type: 'select'
       options: ->
         Lists.Resources.Certifications
+    optional: true
+  completed:
+    type: String
+    label: 'Completed Time'
     optional: true
 )
 
@@ -169,6 +177,9 @@ Schema.workorders = new SimpleSchema(
   assetText:
     type: String
     label: 'Asset Name'
+  startTime:
+    type: Date
+    optional: true
   safetyMethod:
     type: [Schema.safety]
     label: 'Safety Plan'

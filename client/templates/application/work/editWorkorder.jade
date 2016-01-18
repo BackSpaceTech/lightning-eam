@@ -31,7 +31,7 @@ template(name='editRequestForm')
     +afQuickField name='type' type='hidden'
     +afQuickField name='asset_ID' type='hidden'
     +afQuickField name='asset_treePath' type='hidden'
-    +afQuickField name='reqBy_id' type='hidden'    
+    +afQuickField name='reqBy_id' type='hidden'
     h6.teal-text Request Details 
     .col.s12.m6.l3
       +afQuickField name='reqByFirstName'  
@@ -99,7 +99,7 @@ template(name='editWorkorderForm')
       h6.teal-text Work Team   
         button.btn-floating.teal.tooltipped.btnAdd(type='button', data-position='bottom', data-tooltip='Quick Add Person')
           i.fa.fa-plus                 
-      +afEachArrayItem name='workTeam' value=teamMembers
+      +afEachArrayItem name='workTeam'
         .col.s12.m6.l3
           button.autoform-remove-item.btn-floating.waves-effect.waves-light.red.btnDelete(type="button", data-position='bottom', data-tooltip='Remove Person')
             i.fa.fa-trash          

@@ -4,62 +4,62 @@ template(name='myWorkorderPage')
   else  
     .flow-text.container2
       br
-      .form-group
-        .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-          a.btn-floating.btn-large.purple
-            i.large.mdi-navigation-menu
-          ul
-            li
-              button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                i.material-icons skip_previous
-            li
-              a.btnCopy.btn-floating.green.tooltipped(href='{{pathFor "copy-workorder"}}' data-position='left', data-tooltip='Copy')
-                i.fa.fa-copy
-            li
-              a.btnEdit.btn-floating.blue.tooltipped(href='{{pathFor "edit-workorder"}}' data-position='left', data-tooltip='Edit')
-                i.fa.fa-edit
       fieldset
-        +autoForm schema=workorderFormSchema id='myWorkorderPage' type='readonly' collection='Workorders' doc=viewDoc
+        +autoForm schema=workorderFormSchema id='myWorkorderPage' type='method-update' meteormethod='updateWO' doc=viewDoc
           if Template.subscriptionsReady
-            if workorder
-              +viewWoForm  
-            else 
-              +viewRequestForm                 
-          else
-            +spinner              
-      
+            +myWoForm           
+          .form-group
+            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+              a.btn-floating.btn-large.purple
+                i.large.mdi-navigation-menu
+              ul
+                li
+                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                    i.material-icons skip_previous
+                li
+                  button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
+                    i.fa.fa-undo
+                li
+                  button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
+                    i.fa.fa-check      
 template(name='myWoForm')
   .row
-    legend View Work Order 
-    +afQuickField name='parent' type='hidden'
-    +afQuickField name='treePath' type='hidden'
-    h6.teal-text Request Details 
+    legend Start Work Order 
+      button.btn-floating.waves-effect.waves-light.tooltipped.green.btnStart(type='button', data-delay='50', data-position='bottom', data-tooltip='Start Work Order')
+        i.fa.fa-play-circle-o      
+    div.flipClock 
+    +afQuickField name='asset_ID' type='hidden'    
+    +afQuickField name='asset_treePath' type='hidden'
+    h6.teal-text Work Order Details  
     .col.s12.m6.l3
-      +afQuickField name='reqByFirstName'  
+      h6.grey-text Asset ID
+      =viewDoc.assetID
     .col.s12.m6.l3
-      +afQuickField name='reqByLastName'                                     
+      h6.grey-text Asset Name
+      =viewDoc.assetText      
     .col.s12.m6.l3
-      +afQuickField name='reqPriority'
+      h6.grey-text Reference ID
+      =viewDoc.refID                                                                
     .col.s12.m6.l3
-      +afQuickField name='assetID'
+      h6.grey-text WO Status
+      =viewDoc.status                    
     .col.s12.m6.l3
-      +afQuickField name='assetText'  
-    .col.s12.m6.l3
-      +afQuickField name='refID'                            
+      h6.grey-text Priority
+      =viewDoc.priority
     div
-      +afQuickField name='reqDescription'  
-  .row
-    .divider.teal
-    .section
-      h6.teal-text Work Order Details                                                    
-      .col.s12.m6.l3
-        +afQuickField name='status'               
-      .col.s12.m6.l3
-        +afQuickField name='priority'                
-      div
-        +afQuickField name='text'
-      div
-        +afQuickField name='description'
+      h6.grey-text Work Team
+      each item in viewDoc.workTeam
+        =item.firstName
+        | 
+        =item.lastName
+        |, 
+  .row                     
+    div
+      h6.grey-text Title
+      =viewDoc.text       
+    div
+      h6.grey-text Description
+      =viewDoc.description       
   .row
     .divider.teal
     .section
@@ -70,33 +70,29 @@ template(name='myWoForm')
     .section
       h6.teal-text Work Plan
       +reactiveTable collection=workDoc settings=settingsWork class='table striped'
-
   .row
     .divider.teal
     .section
-      h6.teal-text Fault Reporting                                                    
+      h6.teal-text Fault Details 
+      br                                                   
       .col.s12.m6.l3
-        | Fault Code: 
-        =viewDoc.fault              
+        +afQuickField name='fault' options=faultOptions
       .col.s12.m6.l3
-        | Cause Code: 
-        =viewDoc.cause              
+        +afQuickField name='cause' options=causeOptions         
       .col.s12.m6.l3
-        | Remedy Code: 
-        =viewDoc.remedy
-
-template(name=myWorkorderSafety)
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
-    i.fa.fa-eye
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
-    i.fa.fa-edit 
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
-    i.fa.fa-trash   
+        +afQuickField name='remedy' options=remedyOptions 
+template(name='myWorkorderSafety')
+  button.btn-floating.waves-effect.waves-light.tooltipped.green.btnComplete(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
+    i.fa.fa-check   
+    
+template(name='myWorkorderSafetyCompleted')
+  if completed
+    i.fa.fa-check
   
-template(name=myWorkorderWork)
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
-    i.fa.fa-eye
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
-    i.fa.fa-edit 
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
-    i.fa.fa-trash   
+template(name='myWorkorderWork')
+  button.btn-floating.waves-effect.waves-light.tooltipped.green.btnComplete2(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
+    i.fa.fa-check  
+
+template(name='myWorkorderWorkCompleted')
+  if completed
+    i.fa.fa-check

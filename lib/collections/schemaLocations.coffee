@@ -177,8 +177,12 @@ Schema.locations = new SimpleSchema(
   manufDate:
     type: Date
     label: ' '
+    autoform:
+      type: 'pickadate'
     optional: true
   installDate:
     type: Date
     label: ' '
+    autoform:
+      type: 'pickadate'
     optional: true)

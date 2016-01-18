@@ -5,6 +5,7 @@ Template.myWorkordersPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.myWorkordersPage.helpers
+  myWork: -> Workorders.find {}
   spinner: ->
     MaterializeModal.loading
   nospinner: ->
@@ -24,39 +25,24 @@ Template.myWorkordersPage.helpers
       fields:  [
         { key: '_id', label: 'System ID' }
         { key: 'refID', label: 'Reference ID' }
-        { key: 'reqByFirstName', label: ' First Name' }
-        { key: 'reqByLastName', label: 'Last Name' }
-        { key: 'reqDate', label: 'Date Requested' }
         { key: 'assetID', label: 'Asset ID' }
         { key: 'assetText', label: 'Asset' }
-        { key: 'reqDescription', label: 'Request' }
-        { key: 'description', label: 'Description' }
-        { key: 'location', label: 'View/Edit/Delete', tmpl: Template.editWO }
+        { key: 'text', label: 'Title' }
+        { key: 'location', label: 'Start/View/Edit', tmpl: Template.startWO }
         { key: 'status', label: 'Status' }
       ]
     }
 
 Template.myWorkordersPage.events
+  'click .btnStart': (e) ->
+    Collections.Workorders.Current = this
+    FlowRouter.go '/work/my-workorder'
   'click .btnView': (e) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/view-workorder'
   'click .btnEdit': (e) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/edit-workorder'
-  'click .btnDelete': (e) ->
-    Collections.Workorders.Current = this
-    MaterializeModal.display
-      bodyTemplate: 'workQueryDelete'
-      title: 'Delete Work Record!'
-      submitLabel: 'Delete'
-      closeLabel: 'Cancel'
-      callback: (error, response) ->
-        if error
-          console.error error
-        else
-          if response.submit
-            Meteor.call 'deleteWO', Collections.Workorders.Current._id
-        return
 
 Template.doWO.onRendered ->
   $('.tooltipped').tooltip {delay: 50}

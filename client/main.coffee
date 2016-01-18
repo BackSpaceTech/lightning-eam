@@ -1,5 +1,8 @@
 # Subscribe to a subset of the data on the client
-Meteor.subscribe 'locations'
+Meteor.subscribe('locations')
+# Subscribe to subset persisted in GroundDB
+Meteor.subscribe('my-work', Meteor.userId())
+Ground.Collection(Workorders)
 
 Meteor.startup ->
   # Initialise Autoform
