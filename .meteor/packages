@@ -50,7 +50,6 @@ mrt:moment-timezone
 gildaspk:autoform-materialize
 tap:i18n
 msavin:mongol
-fourseven:scss
-poetic:materialize-scss
 meteorhacks:aggregate
 modweb:flipclock
+materialize:materialize

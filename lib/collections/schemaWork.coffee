@@ -59,13 +59,16 @@ Schema.tasks = new SimpleSchema(
   id:
     type: String
     label: 'Sequence ID'
+  activity:
+    type: String
+    label: 'Activity'
   text:
     type: String
     label: 'Instructions'
     autoform: {
       rows: 5
     }
-  estimatedHrs:
+  estimatedTime:
     type: Number
     label: 'Est mins'
   trade:
@@ -110,6 +113,28 @@ Schema.tasks = new SimpleSchema(
     type: String
     label: 'Completed Time'
     optional: true
+)
+
+Schema.workPlanTemplate = new SimpleSchema(
+  text:
+    type: String
+    label: 'Title'
+  createdByID:
+    type: String
+  workPlan:
+    type: [Schema.tasks]
+    label: 'Work Plan'
+)
+
+Schema.safetyMethodTemplate = new SimpleSchema(
+  text:
+    type: String
+    label: 'Title'
+  createdByID:
+    type: String    
+  safetyMethod:
+    type: [Schema.safety]
+    label: 'Safety Plan'
 )
 
 Schema.workorders = new SimpleSchema(
@@ -191,6 +216,9 @@ Schema.workorders = new SimpleSchema(
   workTeam:
     type: [Schema.workTeam]
     label: 'Work Team'
+    optional: true
+  feedback:
+    type: String
     optional: true
   fault:
     type: String

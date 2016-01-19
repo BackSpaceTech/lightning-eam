@@ -82,4 +82,12 @@ if (Meteor.isServer)
       this.unblock()
     setWorkQuery: (query) ->
       Collections.Workorders.workQuery = query
+    createWorkTemplate: (doc) ->
+      # Insert a work template into the collection
+      Workplans.insert doc
+      this.unblock()
+    createSafetyTemplate: (doc) ->
+      # Insert a safety method into the collection
+      Safetymethods.insert doc
+      this.unblock()
     }

@@ -72,3 +72,19 @@ workRoutes.route '/my-workorders',
       header: 'header1'
       footer: 'footer1'
     return
+
+workRoutes.route '/work-template',
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'createWorkTemplatePage'
+      header: 'header1'
+      footer: 'footer1'
+    return
+
+workRoutes.route '/safety-template',
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'createSafetyTemplatePage'
+      header: 'header1'
+      footer: 'footer1'
+    return

@@ -35,3 +35,17 @@ ReactiveTable.publish 'workorder-data', Workorders, ->
 
 Meteor.publish 'my-work', (userId) ->
   Workorders.find {'workTeam.userID': userId}, {limit: 100, sort: {priority: 1}}
+
+Meteor.publish 'workplans', ->
+  Workplans.find {}, fields:
+    text: true
+
+Meteor.publish 'singleWorkplan', (workplanId) ->
+  Workplans.find _id: workplanId
+
+Meteor.publish 'safetymethods', ->
+  Safetymethods.find {}, fields:
+    text: true
+
+Meteor.publish 'singleSafetymethod', (safetymethodId) ->
+  Safetymethods.find _id: safetymethodId

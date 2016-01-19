@@ -31,4 +31,5 @@ Customisations = {
   #work
   work: false
   createWork: false
+  createWorkTemplate: false
 }

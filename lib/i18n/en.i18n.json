@@ -10,5 +10,7 @@
   "create-request": "Create Request",
   "view-work": "View Work",
   "work-orders": "Work Orders",
-  "my-work": "My Work"
+  "my-work": "My Work",
+  "work-template": "Work Template",
+  "safety-template": "Safety Template"
 }

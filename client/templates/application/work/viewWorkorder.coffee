@@ -36,7 +36,7 @@ Template.viewWoForm.helpers
       fields:  [
         { key: 'id', label: 'Sequence ID'}
         { key: 'text', label: 'Instructions' }
-        { key: 'estimatedHrs', label: 'Est hrs' }
+        { key: 'estimatedTime', label: 'Est hrs' }
         { key: 'finishTime', label: 'Finish Time' }
         { key: 'completedTime', label: 'Completed Time' }
         { key: '', label: 'Start/Complete', tmpl: Template.viewWorkorderWork }

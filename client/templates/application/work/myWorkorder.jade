@@ -17,29 +17,27 @@ template(name='myWorkorderPage')
                   button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
                     i.material-icons skip_previous
                 li
-                  button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
-                    i.fa.fa-undo
-                li
-                  button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
-                    i.fa.fa-check      
+                  button.btn-floating.green.tooltipped.btnSubmit(type='button', data-position='left', data-tooltip='Save')
+                    i.fa.fa-save      
 template(name='myWoForm')
   .row
     legend Start Work Order 
       button.btn-floating.waves-effect.waves-light.tooltipped.green.btnStart(type='button', data-delay='50', data-position='bottom', data-tooltip='Start Work Order')
         i.fa.fa-play-circle-o      
     div.flipClock 
-    +afQuickField name='asset_ID' type='hidden'    
+    +afQuickField name='asset_ID' type='hidden'
     +afQuickField name='asset_treePath' type='hidden'
-    h6.teal-text Work Order Details  
+    +afQuickField name='status' value='9' type='hidden'
+    h6.teal-text Work Order Details
     .col.s12.m6.l3
       h6.grey-text Asset ID
       =viewDoc.assetID
     .col.s12.m6.l3
       h6.grey-text Asset Name
-      =viewDoc.assetText      
+      =viewDoc.assetText
     .col.s12.m6.l3
       h6.grey-text Reference ID
-      =viewDoc.refID                                                                
+      =viewDoc.refID
     .col.s12.m6.l3
       h6.grey-text WO Status
       =viewDoc.status                    
@@ -73,15 +71,22 @@ template(name='myWoForm')
   .row
     .divider.teal
     .section
+      h6.teal-text Feedback      
+      +afQuickField name='feedback'
+  .row
+    .divider.teal
+    .section
       h6.teal-text Fault Details 
       br                                                   
-      .col.s12.m6.l3
-        +afQuickField name='fault' options=faultOptions
-      .col.s12.m6.l3
-        +afQuickField name='cause' options=causeOptions         
-      .col.s12.m6.l3
-        +afQuickField name='remedy' options=remedyOptions 
+      .col.s12.m6.l3.fault
+        +afQuickField id='myWorkFault' name='fault' options=faultOptions
+      .col.s12.m6.l3.cause
+        +afQuickField id='myWorkCause' name='cause' options=causeOptions
+      .col.s12.m6.l3.remedy
+        +afQuickField id='myWorkRemedy' name='remedy' options=remedyOptions
 template(name='myWorkorderSafety')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
+    i.fa.fa-search   
   button.btn-floating.waves-effect.waves-light.tooltipped.green.btnComplete(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
     i.fa.fa-check   
     
@@ -90,6 +95,8 @@ template(name='myWorkorderSafetyCompleted')
     i.fa.fa-check
   
 template(name='myWorkorderWork')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView2(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
+    i.fa.fa-search    
   button.btn-floating.waves-effect.waves-light.tooltipped.green.btnComplete2(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
     i.fa.fa-check  
 
