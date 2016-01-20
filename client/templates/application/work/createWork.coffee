@@ -7,7 +7,7 @@ Template.createWorkPage.onDestroyed ->
 
 Template.createWorkPage.helpers
   customTemplate: -> Customisations.createWork
-  createWorkFormSchema: -> Schema.workorders
+  createWorkFormSchema: -> Schema.requests
   requestor: ->
     temp=Meteor.user()
     return {

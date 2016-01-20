@@ -109,8 +109,10 @@ template(name='editWorkorderForm')
     .section
       .row               
         h6.teal-text Safety Method 
-          button.autoform-add-item.btn-floating.waves-effect.waves-light.teal.btnAdd2(type='button', data-autoform-field='safetyMethod', data-position='bottom', data-tooltip='Add')
-            i.fa.fa-plus        
+          button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd2(type='button', data-autoform-field='safetyMethod', data-position='bottom', data-tooltip='Add')
+            i.fa.fa-plus
+          button.btn-floating.waves-effect.waves-light.tooltipped.btnTemplate1(type='button', data-position='bottom', data-tooltip='Create from Template')
+            i.fa.fa-file-o        
         +afEachArrayItem name='safetyMethod'
           .col.s12.m6.l3
             button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
@@ -122,7 +124,9 @@ template(name='editWorkorderForm')
       .row      
         h6.teal-text Work Plan
           button.autoform-add-item.btn-floating.waves-effect.waves-light.teal.btnAdd3(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add')
-            i.fa.fa-plus         
+            i.fa.fa-plus  
+          button.btn-floating.waves-effect.waves-light.tooltipped.btnTemplate2(type='button', data-position='bottom', data-tooltip='Create from Template')
+            i.fa.fa-file-o                    
         +afEachArrayItem name='workPlan'
           .col.s12.m6.l3 
             button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
@@ -144,5 +148,19 @@ template(name='editWorkorderFormAddUser')
   +reactiveTable collection='resources-data' settings=settings class='table striped'
 
 template(name='editWorkorderModalAddUser')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEach(type='button', data-delay='50', data-position='bottom,', data-tooltip='edit user')
+    i.fa.fa-check 
+
+template(name='editWorkorderFormSafetyTemplate')
+  +reactiveTable collection=safetyplanData settings=settingsSafety class='table striped'
+
+template(name='editWorkorderModalSafetyTemplate')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEach(type='button', data-delay='50', data-position='bottom,', data-tooltip='edit user')
+    i.fa.fa-check     
+
+template(name='editWorkorderFormWorkTemplate')
+  +reactiveTable collection=workplanData settings=settingsWork class='table striped'
+
+template(name='editWorkorderModalWorkTemplate')
   button.btn-floating.waves-effect.waves-light.tooltipped.btnEach(type='button', data-delay='50', data-position='bottom,', data-tooltip='edit user')
     i.fa.fa-check 

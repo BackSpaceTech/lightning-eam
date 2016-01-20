@@ -88,25 +88,6 @@ Template.myWorkorderPage.events
       title: this.activity
       message: modalBody
 
-  'click .btnSubmit': (e) ->
-    temp = Collections.Workorders.Current
-    # Check all fields completed before submi
-    if !$('#myWorkFault').val() && !$('#myWorkCause').val() && !$('#myWorkRemedy').val()
-      MaterializeModal.alert
-        title: 'Fault, cause and remedy'
-        message: 'Please select fault, cause and remedy at bottom of page.'
-    else if !temp.safetyMethod[(temp.safetyMethod.length)-1].completed
-      MaterializeModal.alert
-        title: 'Safety Method'
-        message: 'Please mark safety method activities as completed.'
-    else if !temp.workPlan[(temp.workPlan.length)-1].completed
-      MaterializeModal.alert
-        title: 'Work Plan'
-        message: 'Please mark work plan tasks as completed.'
-    else
-      #OK submit
-      $('#myWorkorderPage').submit()
-
 Template.myWoForm.helpers
   viewDoc: -> Collections.Workorders.Current
   safetyDoc: -> Session.get('currentDoc').safetyMethod

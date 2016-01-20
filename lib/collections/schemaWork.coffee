@@ -1,4 +1,4 @@
-###************************* Workorders *******************************###
+###************************* Permissions *******************************###
 Workorders.allow
   insert: ->
     true
@@ -23,6 +23,8 @@ Workplans.allow
   remove: ->
     true
 
+#****************************** Work Team ********************************
+
 Schema.workTeam = new SimpleSchema(
   userID:
     type: String
@@ -37,7 +39,9 @@ Schema.workTeam = new SimpleSchema(
     label: 'Last Name'
 )
 
-Schema.safety = new SimpleSchema(
+#****************************** Safety Methods ********************************
+
+schemaSafetyMethod = {
   id:
     type: String
     label: 'Sequence ID'
@@ -62,40 +66,32 @@ Schema.safety = new SimpleSchema(
   responsible:
     type: String
     label: 'Who is responsible?'
+}
+Schema.safetyMethod = new SimpleSchema schemaSafetyMethod
+
+schemaSafetyPlan = {
   completed:
     type: String
     label: 'Completed Time'
-    optional: true
+}
+
+schemaSafetyPlan = Object.assign schemaSafetyPlan, schemaSafetyMethod
+Schema.safetyPlan = new SimpleSchema schemaSafetyPlan
+
+Schema.safetyMethodTemplate = new SimpleSchema(
+  text:
+    type: String
+    label: 'Title'
+  createdByID:
+    type: String
+  safetyMethod:
+    type: [Schema.safetyMethod]
+    label: 'Safety Plan'
 )
 
-Schema.safetyPlan = new SimpleSchema(
-  id:
-    type: String
-    label: 'Sequence ID'
-  activity:
-    type: String
-    label: 'Activity'
-    autoform: {
-      rows: 5
-    }
-  hazards:
-    type: String
-    label: 'Hazards'
-    autoform: {
-      rows: 5
-    }
-  controls:
-    type: String
-    label: 'Risk control measures'
-    autoform: {
-      rows: 5
-    }
-  responsible:
-    type: String
-    label: 'Who is responsible?'
-)
+#****************************** Work Plans ********************************
 
-Schema.tasks = new SimpleSchema(
+schemaTasks = {
   id:
     type: String
     label: 'Sequence ID'
@@ -149,11 +145,18 @@ Schema.tasks = new SimpleSchema(
       options: ->
         Lists.Resources.Certifications
     optional: true
+}
+
+Schema.tasks = new SimpleSchema schemaTasks
+
+schemaWorkPlan = {
   completed:
     type: String
     label: 'Completed Time'
-    optional: true
-)
+}
+
+schemaWorkPlan = Object.assign schemaWorkPlan, schemaTasks
+Schema.workPlan = new SimpleSchema schemaWorkPlan
 
 Schema.workPlanTemplate = new SimpleSchema(
   text:
@@ -168,27 +171,13 @@ Schema.workPlanTemplate = new SimpleSchema(
 
 Workplans.attachSchema Schema.workPlanTemplate
 
-Schema.safetyMethodTemplate = new SimpleSchema(
-  text:
-    type: String
-    label: 'Title'
-  createdByID:
-    type: String
-  safetyMethod:
-    type: [Schema.safetyPlan]
-    label: 'Safety Plan'
-)
 
-Safetyplans.attachSchema Schema.safetyMethodTemplate
+#****************************** Work Requests / Orders ************************
 
-Schema.workorders = new SimpleSchema(
+schemaRequests = {
   refID:
     type: String
     label: 'Reference ID'
-    optional: true
-  text:
-    type: String
-    label: 'Title'
     optional: true
   type:
     type: String
@@ -204,10 +193,6 @@ Schema.workorders = new SimpleSchema(
       type: 'select'
       options: ->
         Lists.Workorders.Status
-  cancelledReason:
-    type: String
-    label: 'Cancellation Reason'
-    optional: true
   reqPriority:
     type: String
     label: 'Requested Priority'
@@ -215,25 +200,9 @@ Schema.workorders = new SimpleSchema(
       type: 'select'
       options: ->
         Lists.Workorders.Priority
-  priority:
-    type: String
-    label: 'Priority'
-    optional: true
-    autoform:
-      type: 'select'
-      options: ->
-        Lists.Workorders.Priority
   reqDescription:
     type: String
     label: 'Request Description'
-  reqComments:
-    type: String
-    label: 'Request Comments'
-    optional: true
-  description:
-    type: String
-    label: 'Description'
-    optional: true
   asset_ID:
     type: String
     label: 'Asset SysID'
@@ -246,35 +215,13 @@ Schema.workorders = new SimpleSchema(
   assetText:
     type: String
     label: 'Asset Name'
-  startTime:
-    type: Date
-    optional: true
-  safetyMethod:
-    type: [Schema.safety]
-    label: 'Safety Plan'
-    optional: true
-  workPlan:
-    type: [Schema.tasks]
-    label: 'Work Plan'
-    optional: true
-  workTeam:
-    type: [Schema.workTeam]
-    label: 'Work Team'
-    optional: true
-  feedback:
+  cancelledReason:
     type: String
+    label: 'Cancellation Reason'
     optional: true
-  fault:
+  reqComments:
     type: String
-    label: 'Fault'
-    optional: true
-  cause:
-    type: String
-    label: 'Cause'
-    optional: true
-  remedy:
-    type: String
-    label: 'Remedy'
+    label: 'Request Comments'
     optional: true
   reqBy_id:
     type: String
@@ -296,6 +243,36 @@ Schema.workorders = new SimpleSchema(
     optional: true
   reqApprovedDate:
     type: Date
+    optional: true
+}
+
+Schema.requests = new SimpleSchema schemaRequests
+
+schemaRequestsApproved = {
+  text:
+    type: String
+    label: 'Title'
+  priority:
+    type: String
+    label: 'Priority'
+    autoform:
+      type: 'select'
+      options: ->
+        Lists.Workorders.Priority
+  description:
+    type: String
+    label: 'Description'
+  safetyMethod:
+    type: [Schema.safetyMethod]
+    label: 'Safety Plan'
+    optional: true
+  workPlan:
+    type: [Schema.tasks]
+    label: 'Work Plan'
+    optional: true
+  workTeam:
+    type: [Schema.workTeam]
+    label: 'Work Team'
     optional: true
   woApprovedBy_id:
     type: String
@@ -330,6 +307,32 @@ Schema.workorders = new SimpleSchema(
   woClosedDate:
     type: Date
     optional: true
-)
+}
 
-Workorders.attachSchema Schema.workorders
+schemaRequestsApproved = Object.assign schemaRequestsApproved, schemaRequests
+Schema.requestsApproved = new SimpleSchema schemaRequestsApproved
+
+schemaWorkorders ={
+  startTime:
+    type: Date
+  safetyMethod:
+    type: [Schema.safetyPlan]
+    label: 'Safety Plan'
+  workPlan:
+    type: [Schema.workPlan]
+    label: 'Work Plan'
+  feedback:
+    type: String
+  fault:
+    type: String
+    label: 'Fault'
+  cause:
+    type: String
+    label: 'Cause'
+  remedy:
+    type: String
+    label: 'Remedy'
+}
+
+schemaWorkorders = Object.assign schemaWorkorders, schemaRequestsApproved
+Schema.workorders = new SimpleSchema schemaWorkorders

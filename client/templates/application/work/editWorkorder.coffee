@@ -12,7 +12,7 @@ Template.editWorkorderPage.helpers
   viewDoc: -> Session.get 'currentDoc'
   workorder: -> Collections.Workorders.Current.status > 2
   statusRequest: -> Collections.Workorders.Current.status
-  editWorkorderSchema: -> Schema.workorders
+  editWorkorderSchema: -> Schema.requestsApproved
 
 Template.editWorkorderPage.events
   'click .btnSubmit': (e) ->
@@ -52,6 +52,16 @@ Template.editWorkorderForm.events
       bodyTemplate: 'editWorkorderFormAddUser'
       title: 'Add Team Member'
     }
+  'click .btnTemplate1': (e) ->
+    MaterializeModal.display {
+      bodyTemplate: 'editWorkorderFormSafetyTemplate'
+      title: 'Create from Template'
+    }
+  'click .btnTemplate2': (e) ->
+    MaterializeModal.display {
+      bodyTemplate: 'editWorkorderFormWorkTemplate'
+      title: 'Create from Template'
+    }
 
 Template.editWorkorderFormAddUser.helpers
   settings: ->
@@ -89,3 +99,37 @@ Template.editWorkorderFormAddUser.events
     # Set session for reactivity
     Session.set 'currentDoc', Collections.Workorders.Current
     MaterializeModal.close()
+
+Template.editWorkorderFormSafetyTemplate.onCreated ->
+  self = this
+  self.autorun ->
+    self.subscribe 'safetyplans'
+
+Template.editWorkorderFormSafetyTemplate.helpers
+  safetyplanData: -> Safetyplans
+  settingsSafety: ->
+    return {
+      rowsPerPage: 10
+      showFilter: true
+      fields:  [
+        { key: 'text', label: ' Title' }
+        { key: '', label: 'Add Safety Method Template', tmpl: Template.editWorkorderModalSafetyTemplate }
+      ]
+    }
+
+Template.editWorkorderFormWorkTemplate.onCreated ->
+  self = this
+  self.autorun ->
+    self.subscribe 'workplans'
+
+Template.editWorkorderFormWorkTemplate.helpers
+  workplanData: -> Workplans
+  settingsWork: ->
+    return {
+      rowsPerPage: 10
+      showFilter: true
+      fields:  [
+        { key: 'text', label: ' Title' }
+        { key: '', label: 'Add Work Plan Template', tmpl: Template.editWorkorderModalWorkTemplate }
+      ]
+    }
