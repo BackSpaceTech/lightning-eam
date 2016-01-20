@@ -8,8 +8,8 @@ Template.myWorkorderPage.onDestroyed ->
 Template.myWorkorderPage.helpers
   customTemplate: -> Customisations.viewAsset
   viewDoc: -> Session.get('currentDoc')
-  workorderFormSchema: -> Schema.workorders
   workorder: -> Collections.Workorders.Current.status > 2
+  myWorkorderSchema: -> Schema.workorders
 
 Template.myWorkorderPage.events
   'click .btnStart': (e) ->

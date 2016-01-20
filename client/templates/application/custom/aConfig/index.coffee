@@ -32,4 +32,5 @@ Customisations = {
   work: false
   createWork: false
   createWorkTemplate: false
+  safetyTemplates: false
 }

@@ -6,5 +6,5 @@ Template.createWorkTemplatePage.onDestroyed ->
 
 Template.createWorkTemplatePage.helpers
   customTemplate: -> Customisations.createWorkTemplate
-  createWorkTemplateSchema: -> Schema.workPlanTemplate
   createdID: -> Meteor.userId()
+  createWorkTemplateSchema: -> Schema.workPlanTemplate

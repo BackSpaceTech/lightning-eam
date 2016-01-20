@@ -88,6 +88,12 @@ if (Meteor.isServer)
       this.unblock()
     createSafetyTemplate: (doc) ->
       # Insert a safety method into the collection
-      Safetymethods.insert doc
+      Safetyplans.insert doc
+      this.unblock()
+    deleteSafety: (docID) ->
+      Safetyplans.remove {'_id': docID}
+      this.unblock()
+    deleteWork: (docID) ->
+      Workplans.remove {'_id': docID}
       this.unblock()
     }

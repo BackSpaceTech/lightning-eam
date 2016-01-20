@@ -1,0 +1,42 @@
+template(name='editSafetyTemplatePage')
+  if customTemplate
+    +editSafetyTemplatePageCustom  
+  else  
+    .flow-text.container2
+      br
+      fieldset
+        legend Safety Method Template
+        if Template.subscriptionsReady
+          +autoForm id='editSafetyTemplatePage' type='update' collection='Safetyplans' doc=viewDoc
+            .row
+              +afQuickField name='text'
+            .row
+              .divider.teal
+              .section                
+                .row      
+                  h6.teal-text Safety Method
+                    button.autoform-add-item.btn-floating.waves-effect.waves-light.teal.btnAdd3(type='button', data-autoform-field='safetyMethod', data-position='bottom', data-tooltip='Add')
+                      i.fa.fa-plus         
+                  +afEachArrayItem name='safetyMethod'
+                    .col.s12.m6.l3 
+                      button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
+                        i.fa.fa-trash                             
+                      +afQuickField name=this.name label=false
+            .form-group
+              .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+                a.btn-floating.btn-large.purple
+                  i.large.mdi-navigation-menu
+                ul
+                  li
+                    button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                      i.material-icons skip_previous
+                  li
+                    button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
+                      i.fa.fa-undo
+                  li
+                    button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
+                      i.fa.fa-check                           
+        else
+          +spinner  
+                          
+       

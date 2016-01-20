@@ -25,3 +25,9 @@
 @Collections.Workorders.CurrentID = 0
 @Collections.Workorders.workQuery = {}
 @Collections.Workorders.Clock = {}
+
+@Collections.Safetyplans = {}
+@Collections.Safetyplans.Current = {}
+
+@Collections.Workplans = {}
+@Collections.Workplans.Current = {}

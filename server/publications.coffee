@@ -39,13 +39,15 @@ Meteor.publish 'my-work', (userId) ->
 Meteor.publish 'workplans', ->
   Workplans.find {}, fields:
     text: true
+    createdByID: true
 
 Meteor.publish 'singleWorkplan', (workplanId) ->
-  Workplans.find _id: workplanId
+  Workplans.find {_id: workplanId}
 
-Meteor.publish 'safetymethods', ->
-  Safetymethods.find {}, fields:
+Meteor.publish 'safetyplans', ->
+  Safetyplans.find {}, fields:
     text: true
+    createdByID: true
 
 Meteor.publish 'singleSafetymethod', (safetymethodId) ->
-  Safetymethods.find _id: safetymethodId
+  Safetyplans.find {_id: safetymethodId}

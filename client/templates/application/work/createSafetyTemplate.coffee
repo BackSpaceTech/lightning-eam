@@ -6,5 +6,5 @@ Template.createSafetyTemplatePage.onDestroyed ->
 
 Template.createSafetyTemplatePage.helpers
   customTemplate: -> Customisations.createSafetyTemplate
-  createSafetyTemplateSchema: -> Schema.safetyMethodTemplate
   createdID: -> Meteor.userId()
+  createSafetyTemplateSchema: -> Schema.safetyMethodTemplat

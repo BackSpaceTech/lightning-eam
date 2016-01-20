@@ -19,7 +19,7 @@ template(name='viewWorkorderPage')
               a.btnEdit.btn-floating.blue.tooltipped(href='{{pathFor "edit-workorder"}}' data-position='left', data-tooltip='Edit')
                 i.fa.fa-edit
       fieldset
-        +autoForm schema=workorderFormSchema id='viewWorkorderPage' type='readonly' collection='Workorders' doc=viewDoc
+        +autoForm id='viewWorkorderPage' type='readonly' collection='Workorders' doc=viewDoc
           if Template.subscriptionsReady
             if workorder
               +viewWoForm  

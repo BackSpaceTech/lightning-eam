@@ -11,8 +11,8 @@ Template.editWorkorderPage.helpers
   customTemplate: -> Customisations.viewAsset
   viewDoc: -> Session.get 'currentDoc'
   workorder: -> Collections.Workorders.Current.status > 2
-  workorderFormSchema: -> Schema.workorders
   statusRequest: -> Collections.Workorders.Current.status
+  editWorkorderSchema: -> Schema.workorders
 
 Template.editWorkorderPage.events
   'click .btnSubmit': (e) ->

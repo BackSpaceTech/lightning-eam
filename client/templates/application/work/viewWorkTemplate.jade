@@ -1,0 +1,34 @@
+template(name='viewWorkTemplatePage')
+  if customTemplate
+    +viewWorkTemplatePageCustom  
+  else  
+    .flow-text.container2
+      br
+      .form-group
+        .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+          a.btn-floating.btn-large.purple
+            i.large.mdi-navigation-menu
+          ul
+            li
+              button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                i.material-icons skip_previous
+            li
+              a.btnEdit.btn-floating.blue.tooltipped(href='{{pathFor "edit-work"}}' data-position='left', data-tooltip='Edit')
+                i.fa.fa-edit
+      fieldset
+        legend Work Plan Template
+        if Template.subscriptionsReady
+          +autoForm id='viewWorkTemplatePage' type='readonly' collection='Workplans' doc=viewDoc 
+            .row
+              +afQuickField name='text'
+            .row
+              .divider.teal
+              .section                
+                .row      
+                  h6.teal-text Work Plan       
+                  +afEachArrayItem name='workPlan'
+                    .col.s12.m6.l3 
+                      +afQuickField name=this.name label=false
+        else
+          +spinner
+       

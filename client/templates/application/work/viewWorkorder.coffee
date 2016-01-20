@@ -7,7 +7,6 @@ Template.viewWorkorderPage.onDestroyed ->
 Template.viewWorkorderPage.helpers
   customTemplate: -> Customisations.viewAsset
   viewDoc: -> Collections.Workorders.Current
-  workorderFormSchema: -> Schema.workorders
   workorder: -> Collections.Workorders.Current.status > 2
 
 Template.viewWoForm.helpers

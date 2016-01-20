@@ -5,7 +5,7 @@ template(name='myWorkorderPage')
     .flow-text.container2
       br
       fieldset
-        +autoForm schema=workorderFormSchema id='myWorkorderPage' type='method-update' meteormethod='updateWO' doc=viewDoc
+        +autoForm schema=myWorkorderSchema id='myWorkorderPage' type='method-update' meteormethod='updateWO' doc=viewDoc
           if Template.subscriptionsReady
             +myWoForm           
           .form-group

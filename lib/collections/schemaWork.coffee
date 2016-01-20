@@ -7,6 +7,22 @@ Workorders.allow
   remove: ->
     true
 
+Safetyplans.allow
+  insert: ->
+    true
+  update: ->
+    true
+  remove: ->
+    true
+
+Workplans.allow
+  insert: ->
+    true
+  update: ->
+    true
+  remove: ->
+    true
+
 Schema.workTeam = new SimpleSchema(
   userID:
     type: String
@@ -25,9 +41,6 @@ Schema.safety = new SimpleSchema(
   id:
     type: String
     label: 'Sequence ID'
-  createdBy:
-    type: String
-    label: 'Created by'
   activity:
     type: String
     label: 'Activity'
@@ -53,6 +66,33 @@ Schema.safety = new SimpleSchema(
     type: String
     label: 'Completed Time'
     optional: true
+)
+
+Schema.safetyPlan = new SimpleSchema(
+  id:
+    type: String
+    label: 'Sequence ID'
+  activity:
+    type: String
+    label: 'Activity'
+    autoform: {
+      rows: 5
+    }
+  hazards:
+    type: String
+    label: 'Hazards'
+    autoform: {
+      rows: 5
+    }
+  controls:
+    type: String
+    label: 'Risk control measures'
+    autoform: {
+      rows: 5
+    }
+  responsible:
+    type: String
+    label: 'Who is responsible?'
 )
 
 Schema.tasks = new SimpleSchema(
@@ -126,16 +166,20 @@ Schema.workPlanTemplate = new SimpleSchema(
     label: 'Work Plan'
 )
 
+Workplans.attachSchema Schema.workPlanTemplate
+
 Schema.safetyMethodTemplate = new SimpleSchema(
   text:
     type: String
     label: 'Title'
   createdByID:
-    type: String    
+    type: String
   safetyMethod:
-    type: [Schema.safety]
+    type: [Schema.safetyPlan]
     label: 'Safety Plan'
 )
+
+Safetyplans.attachSchema Schema.safetyMethodTemplate
 
 Schema.workorders = new SimpleSchema(
   refID:
@@ -287,3 +331,5 @@ Schema.workorders = new SimpleSchema(
     type: Date
     optional: true
 )
+
+Workorders.attachSchema Schema.workorders
