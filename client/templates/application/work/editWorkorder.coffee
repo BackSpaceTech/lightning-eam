@@ -8,6 +8,7 @@ Template.editWorkorderPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.editWorkorderPage.helpers
+  pageRendered: -> Session.get 'pageRendered'
   customTemplate: -> Customisations.viewAsset
   viewDoc: -> Session.get 'currentDoc'
   workorder: -> Collections.Workorders.Current.status > 2
@@ -45,6 +46,7 @@ Template.editWorkorderForm.helpers
   causeOptions: -> Lists.Workorders.Cause
   remedyOptions: -> Lists.Workorders.Remedy
   teamMembers: -> (Session.get 'currentDoc').workTeam
+  safetyText: -> Session.get 'temp1'
 
 Template.editWorkorderForm.events
   'click .btnAdd': (e) ->
@@ -88,7 +90,7 @@ Template.editWorkorderFormAddUser.events
     added = $.grep Collections.Workorders.Current.workTeam, (a) ->
       return a.userID == temp.userID
     if added.length>0
-      MaterializeModal.alert title: "Error", message: "User already in team."
+      MaterializeModal.alert title: "Error", message: "Person already in team."
       return
     # Add user to team
     if Collections.Workorders.Current.workTeam&&Collections.Workorders.Current.workTeam.length!=0
@@ -106,6 +108,7 @@ Template.editWorkorderFormSafetyTemplate.onCreated ->
     self.subscribe 'safetyplans'
 
 Template.editWorkorderFormSafetyTemplate.helpers
+  safetyVal: -> Session.get 'temp1'
   safetyplanData: -> Safetyplans
   settingsSafety: ->
     return {
@@ -116,6 +119,17 @@ Template.editWorkorderFormSafetyTemplate.helpers
         { key: '', label: 'Add Safety Method Template', tmpl: Template.editWorkorderModalSafetyTemplate }
       ]
     }
+
+Template.editWorkorderFormSafetyTemplate.events
+  'click .btnEach2': (e) ->
+    temp = this._id
+    Meteor.subscribe 'singleSafetymethod', this._id, {
+      onReady: ->
+        tempPlan = Safetyplans.findOne {_id: temp}
+        Collections.Workorders.Current.safetyMethod = tempPlan.safetyMethod
+        Session.set 'currentDoc', Collections.Workorders.Current
+    }
+    MaterializeModal.close()
 
 Template.editWorkorderFormWorkTemplate.onCreated ->
   self = this
@@ -133,3 +147,14 @@ Template.editWorkorderFormWorkTemplate.helpers
         { key: '', label: 'Add Work Plan Template', tmpl: Template.editWorkorderModalWorkTemplate }
       ]
     }
+
+Template.editWorkorderFormWorkTemplate.events
+  'click .btnEach3': (e) ->
+    temp = this._id
+    Meteor.subscribe 'singleWorkplan', this._id, {
+      onReady: ->
+        tempPlan = Workplans.findOne {_id: temp}
+        Collections.Workorders.Current.workPlan = tempPlan.workPlan
+        Session.set 'currentDoc', Collections.Workorders.Current
+    }
+    MaterializeModal.close()

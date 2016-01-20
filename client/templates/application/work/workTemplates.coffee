@@ -17,6 +17,7 @@ Template.workTemplatesPage.helpers
       rowsPerPage: 10
       showFilter: true
       fields:  [
+        { key: 'createdByID', label: ' Created by ID' }
         { key: 'text', label: ' Title' }
         { key: 'location', label: 'View/Edit/Delete', tmpl: Template.editWork }
       ]

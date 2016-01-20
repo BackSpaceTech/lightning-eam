@@ -5,11 +5,11 @@ template(name='workTemplatesPage')
     .flow-text.container2
       br
       fieldset
-        legend Work Templates  
+        legend Work Templates          
         a(href='{{pathFor "../work/create-work"}}')
           button.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new template')
             i.fa.fa-file-o
-        if Template.subscriptionsReady 
+        if Template.subscriptionsReady                              
           +reactiveTable collection=workCollection settings=settings class='table striped'
     .fixed-action-btn(style='bottom: 45px; right: 24px;')
       a.btn-floating.btn-large.purple(href="{{pathFor '../work'}}")
@@ -23,7 +23,7 @@ template(name='editWork')
   button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
     i.fa.fa-trash             
 
-template(name='safetyTemplatesDelete') 
+template(name='workTemplatesDelete') 
   h5.red-text Warning this will permanently delete the work Plan template!
   | This process cannot be undone.
   

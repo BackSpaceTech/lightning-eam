@@ -12,6 +12,7 @@ Template.header1.helpers
       return true
     else
       return false
+  currentUser: -> Meteor.userId()    
 
 Template.header1.events
   'click #btnheader1Logout': -> AccountsTemplates.logout()

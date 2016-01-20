@@ -104,7 +104,7 @@ workRoutes.route '/edit-safety',
       header: 'header1'
       footer: 'footer1'
     return
-    
+
 workRoutes.route '/work-template',
   action: ->
     BlazeLayout.render 'layout',
