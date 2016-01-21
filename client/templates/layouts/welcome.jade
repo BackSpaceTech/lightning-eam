@@ -1,77 +1,80 @@
 template(name='welcomePage')
-  #welcome
-    .container.center-align
-      br
-      .hide-on-small-only.icon-page
-        i.fa-5x.fa.fa-flash
-        h1 {{_ 'layouts-welcome1'}}          
-        h5 {{_ 'layouts-welcome2'}}
+  if customTemplate
+    +welcomePageCustom
+  else  
+    #welcome
+      .container.center-align
         br
-      .hide-on-med-and-up.icon-page
-        h5 {{_ 'layouts-welcome1'}}
-        br
-      .row
-        .col.s6.m4.l3
-          a.waves-effect.waves-dark.icon-page(href="{{pathFor '/assets'}}")
-            i.fa-5x.fa.fa-industry
-            br
-            br
-            |  {{_ 'assets'}} 
-            br
-            br
-        .col.s6.m4.l3
-          a.waves-effect.waves-dark.icon-page(href="{{pathFor '/work'}}")
-            i.fa-5x.fa.fa-wrench
-            br
-            br
-            |  {{_ 'work'}}
-            br
-            br
-        .col.s6.m4.l3
-          a.waves-effect.waves-dark.icon-page(href="{{pathFor '/pm'}}")
-            i.fa-5x.fa.fa-calendar
-            br
-            br
-            |  Planned Maint
-            br
-            br
-        .col.s6.m4.l3
-          a.waves-effect.waves-dark.icon-page(href="{{pathFor '/resources'}}")
-            i.fa-5x.fa.fa-users
-            br
-            br
-            |  Resources
-            br
-            br
-        .col.s6.m4.l3
-          a.waves-effect.waves-dark.icon-page(href="{{pathFor '/procurement'}}")
-            i.fa-5x.fa.fa-credit-card
-            br
-            br
-            |  Procurement
-            br
-            br
-        .col.s6.m4.l3
-          a.waves-effect.waves-dark.icon-page(href="{{pathFor '/inventory'}}")
-            i.fa-5x.fa.fa-cubes
-            br
-            br
-            |  Inventory
-            br
-            br
-        .col.s6.m4.l3
-          a.waves-effect.waves-dark.icon-page(href="{{pathFor '/reports'}}")
-            i.fa-5x.fa.fa-line-chart
-            br
-            br
-            |  Reports
-            br
-            br
-        .col.s6.m4.l3
-          a.waves-effect.waves-dark.icon-page(href="{{pathFor '/help'}}")
-            i.fa-5x.fa.fa-life-bouy
-            br
-            br
-            |  Help
-            br
-            br
+        .hide-on-small-only.icon-page
+          i.fa-5x.fa.fa-flash
+          h1 {{_ 'layouts-welcome1'}}          
+          h5 {{_ 'layouts-welcome2'}}
+          br
+        .hide-on-med-and-up.icon-page
+          h5 {{_ 'layouts-welcome1'}}
+          br
+        .row
+          .col.s6.m4.l3
+            a.waves-effect.waves-dark.icon-page(href='{{pathFor "assets/view-locations"}}')
+              i.fa-5x.fa.fa-industry
+              br
+              br
+              |  {{_ 'assets'}} 
+              br
+              br
+          .col.s6.m4.l3
+            a.waves-effect.waves-dark.icon-page(href="{{pathFor '/work'}}")
+              i.fa-5x.fa.fa-wrench
+              br
+              br
+              |  {{_ 'work'}}
+              br
+              br
+          .col.s6.m4.l3
+            a.waves-effect.waves-dark.icon-page(href="{{pathFor '/pm'}}")
+              i.fa-5x.fa.fa-calendar
+              br
+              br
+              |  Planned Maint
+              br
+              br
+          .col.s6.m4.l3
+            a.waves-effect.waves-dark.icon-page(href="{{pathFor '/resources/view-people'}}")
+              i.fa-5x.fa.fa-users
+              br
+              br
+              |  Resources
+              br
+              br
+          .col.s6.m4.l3
+            a.waves-effect.waves-dark.icon-page(href="{{pathFor '/procurement'}}")
+              i.fa-5x.fa.fa-credit-card
+              br
+              br
+              |  Procurement
+              br
+              br
+          .col.s6.m4.l3
+            a.waves-effect.waves-dark.icon-page(href="{{pathFor '/inventory'}}")
+              i.fa-5x.fa.fa-cubes
+              br
+              br
+              |  Inventory
+              br
+              br
+          .col.s6.m4.l3
+            a.waves-effect.waves-dark.icon-page(href="{{pathFor '/reports'}}")
+              i.fa-5x.fa.fa-line-chart
+              br
+              br
+              |  Reports
+              br
+              br
+          .col.s6.m4.l3
+            a.waves-effect.waves-dark.icon-page(href="{{pathFor '/help'}}")
+              i.fa-5x.fa.fa-life-bouy
+              br
+              br
+              |  Help
+              br
+              br

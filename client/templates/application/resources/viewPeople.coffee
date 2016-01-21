@@ -1,4 +1,7 @@
 Template.viewPeoplePage.onCreated ->
+  # Set Navbar so Resources highlighted
+  $('#header1DesktopUL li').removeClass 'active'
+  $('#header1DesktopUL li').eq(3).addClass 'active'
   self = this
   self.autorun ->
     self.subscribe 'directory'
