@@ -59,7 +59,7 @@ If you want to learn more about the AWS technology powering Lightning, head over
 
 If you would like to install Lightning EAM at you organisation and would like expert help in migration, integration and customisation [BackSpace Technology](http://backspace.technology/) can help though our consulting services.
 
-> **Tip:** Check out the [Getting Started](https://github.com/BackSpaceTech/lightning-eam/wiki) section to get up and running with a local installation of Lightning EAM.
+> **Tip:** Check out the [Getting Started](https://github.com/BackSpaceTech/lightning-eam/wiki/Getting-Started) section to get up and running with a local installation of Lightning EAM.
 
 How you can help
 -------------
@@ -99,35 +99,34 @@ Roadmap
 
 Lightning is a living ecosystem that will expand over time to create a broader set of enterprise capabilities. The current roadmap is:
 
-Milestone  |  Status  |  Release Date
---|--|--
-Core Assets  |  Complete  |  
-Core Resources  |  Complete  |  
-Core PM  |  Complete  |  
-Core Work Mgt  |  Complete  |  
-D3JS Reports  |  Complete  |  
-Google Material Design  |  Complete  |
-IOS App  |  Complete  |  
-Android App  |  Complete  |  
-REST Web Services  |  Complete  |  
-SOAP Web Services  |  Complete  |  
-Trello Kanban  |  Complete  |
-Core Inventory  |  In Progress  |  Early 2016
-Core Procurement  |  In Progress  |  Early 2016
-Geolocation  |  In Progress  |  Early 2016
-Linear Assets  |  In Progress  |  Early 2016
-ISO 55000  |  In Progress  |  Early 2016
-ElasticSearch Reporting  |  In Progress  |  Early 2016
-BIRT Support  |  TBA |  Mid 2016
-Reliability Centered Maintenance  |  TBA  |  Late 2016
-Energy Isolations  |  TBA  |  Late 2016
-Safety Management System  |  TBA  |  Late 2016
-Project Management  |  TBA  |  2017
-Project Management  |  TBA  |  2017
-CRM  |  TBA  |  2017
-ERP  |  TBA  |  2017
-
-
+|Milestone  |  Status  |  Release Date  |
+|---|---|---|
+|Core Assets  |  Complete  |    |
+|Core Resources  |  Complete  |  |
+|Core PM  |  Complete  |   |
+|Core Work Mgt  |  Complete  |    |
+|D3JS Reports  |  Complete  |    |
+|Google Material Design  |  Complete  |  |
+|IOS App  |  Complete  |    |
+|Android App  |  Complete  |    |
+|REST Web Services  |  Complete  |    |
+|SOAP Web Services  |  Complete  |    |
+|Trello Kanban  |  Complete  |  |
+|Core Inventory  |  In Progress  |  Early 2016  |
+|Core Procurement  |  In Progress  |  Early 2016  |
+|Geolocation  |  In Progress  |  Early 2016  |
+|Linear Assets  |  In Progress  |  Early 2016  |
+|ISO 55000  |  In Progress  |  Early 2016  |
+|ElasticSearch Reporting  |  In Progress  |  Early 2016  |
+|BIRT Support  |  TBA |  Mid 2016  |
+|Reliability Centered Maintenance  |  TBA  |  Late 2016  |
+|Energy Isolations  |  TBA  |  Late 2016  |
+|Safety Management System  |  TBA  |  Late 2016  |
+|Project Management  |  TBA  |  2017  |
+|Project Management  |  TBA  |  2017  |
+|CRM  |  TBA  |  2017  |
+|ERP  |  TBA  |  2017  |
+ 
 
 > **Note:**
 
