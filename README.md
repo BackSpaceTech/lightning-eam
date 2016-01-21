@@ -5,8 +5,7 @@ The Lightning EAM Project
 A project to create the World's fastest Enterprise Asset Management System capable of handling big data while at the same time using a modern user interface accessible from mobile devices.
 
 
-<iframe src="https://player.vimeo.com/video/145017253" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-<p><a href="https://vimeo.com/145017253">AWS-CD-A-ElastiCache-1</a> from <a href="https://vimeo.com/backspaceacademy">BackSpace Academy</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+[[vimeo-{145017253}-{500}x{281}]]
 
 ----------
 
