@@ -5,6 +5,8 @@ The Lightning EAM Project
 A project to create the World's fastest Enterprise Asset Management System capable of handling big data while at the same time using a modern user interface accessible from mobile devices.
 
 
+<iframe src="https://player.vimeo.com/video/145017253" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/145017253">AWS-CD-A-ElastiCache-1</a> from <a href="https://vimeo.com/backspaceacademy">BackSpace Academy</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 ----------
 
@@ -17,7 +19,7 @@ The Lightning EAM project is a revolutionary approach to managing asset data. Th
 
 > **Core Technologies behind Lightning EAM:**
 
-> - Amazon Web Services (AWS) the Worlds largest Cloud.
+> - Amazon Web Services (AWS), the Worlds largest Cloud.
 > - NoSQL MongoDB database capable of scaling to petabyte levels.
 > - Big data reporting through ElasticSearch.
 > - D3JS data visualisation.
@@ -71,10 +73,11 @@ Marketing is expensive, especially when your product is free! The best way you c
 - Write a public post on LinkedIn, Facebook and Google+.
 - Tweet on Twitter
 - Promote the benefits to industry organisations.
+- Start a blog at WordPress.com to help people with tutorials on Lightning.
 
 #### Software Development
 
-The amount of code behind Lightning is huge and any help from experienced developers will be encouraged. Contact us through GitHub if you would like to help with pull requests.
+The amount of code behind Lightning is huge and any help from experienced developers will be encouraged. Contact us at info@backspace.technology if you would like to help with pull requests.
 
 #### Testing and Bug Reporting
 
@@ -82,11 +85,11 @@ Testing will be welcomed. If you encounter any issues with the software please l
 
 #### Translations
 
-One of the aims of Lightning is to make EAM accessible to all organisations and countries. To this end we have set up a spreadsheet to translate all phrases used in the application. We currently have translations for Spanish and Brazilian Portuguese. Contact us through GitHub if you would like to help with pull requests.
+One of the aims of Lightning is to make EAM accessible to all organisations and countries. To this end we have set up a spreadsheet to translate all phrases used in the application. We currently have translations for Spanish and Brazilian Portuguese. Contact us info@backspace.technology if you would like to help with pull requests.
 
 #### Lists
 
-Within the application there are selection lists such as trade types, asset classifications etc. If you industry has something missing from the lists or you can provide input to the lists then you can help us. Contact us through GitHub if you would like to help with pull requests.
+Within the application there are selection lists such as trade types, asset classifications etc. If you industry has something missing from the lists or you can provide input to the lists then you can help us. Contact us info@backspace.technology if you would like to help with pull requests.
 
 
 ----------
@@ -126,7 +129,7 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 |Project Management  |  TBA  |  2017  |
 |CRM  |  TBA  |  2017  |
 |ERP  |  TBA  |  2017  |
- 
+
 
 > **Note:**
 
