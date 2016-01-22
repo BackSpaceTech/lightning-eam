@@ -132,3 +132,6 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 
 
 Lightning EAM is produced as free and open source software for private and commercial use under the GNU General Public License version 3.
+
+
+[![BackSpace Technology](https://avatars3.githubusercontent.com/u/16330741?v=3&s=460)](http://backspace.technology)
