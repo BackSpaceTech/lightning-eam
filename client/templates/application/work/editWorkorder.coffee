@@ -8,7 +8,6 @@ Template.editWorkorderPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.editWorkorderPage.helpers
-  pageRendered: -> Session.get 'pageRendered'
   customTemplate: -> Customisations.viewAsset
   viewDoc: -> Session.get 'currentDoc'
   workorder: -> Collections.Workorders.Current.status > 2

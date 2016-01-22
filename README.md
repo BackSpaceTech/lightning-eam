@@ -105,10 +105,10 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 |REST Web Services  |  Complete  |    |
 |SOAP Web Services  |  Complete  |    |
 |Trello Kanban  |  Complete  |  |
+|Linear Assets  |  Complete  |  |
 |Core Inventory  |  In Progress  |  Early 2016  |
 |Core Procurement  |  In Progress  |  Early 2016  |
 |Geolocation  |  In Progress  |  Early 2016  |
-|Linear Assets  |  In Progress  |  Early 2016  |
 |ISO 55000  |  In Progress  |  Early 2016  |
 |ElasticSearch Reporting  |  In Progress  |  Early 2016  |
 |BIRT Support  |  TBA |  Mid 2016  |

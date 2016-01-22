@@ -1,13 +1,15 @@
+Template.viewWorkPage.onCreated ->
+  this.quickSearch = new ReactiveVar(true)
+
 Template.viewWorkPage.onRendered ->
   assetTree()
   $('.tooltipped').tooltip {delay: 50}
-  Session.set 'quickSearch', true
 
 Template.viewWorkPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.viewWorkPage.helpers
-  quickSearch: -> Session.get 'quickSearch'
+  quickSearch: -> Template.instance().quickSearch.get()
   locationID: ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     temp = Collections.Locations.Current
@@ -16,12 +18,13 @@ Template.viewWorkPage.helpers
     return temp.text
 
 Template.viewWorkPage.events
-  'click #swtViewWork1': -> Session.set 'quickSearch', !$('#swtViewWork1').prop('checked')
-  'click .btnSearch': ->
+  'click #swtViewWork1': (event, template) ->
+    template.quickSearch.set(!$('#swtViewWork1').prop('checked'))
+  'click .btnSearch': (event, template) ->
     Collections.Workorders.workQuery = {
       asset_treePath: { $all: Collections.Locations.Current.treePath }
     }
-    if (Session.get 'quickSearch')
+    if (template.quickSearch.get())
       if ($('#radioViewWork0').prop('checked')) # My Requests
         Collections.Workorders.workQuery.reqBy_id = Meteor.userId()
       else if ($('#radioViewWork1').prop('checked')) # Open Requests
