@@ -135,3 +135,21 @@ Lightning EAM is produced as free and open source software for private and comme
 
 
 [![BackSpace Technology](https://avatars3.githubusercontent.com/u/16330741?v=3&s=460)](http://backspace.technology)
+
+
+###Lightning uses the following technology
+
+![Amazon Web Services](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/AmazonWebservices_Logo.svg/2000px-AmazonWebservices_Logo.svg.png)
+
+![MongoDB](https://www.mongodb.com/assets/MongoDB_Brand_Resources/MongoDB-Logo-7db53b4037f9953e9df4f694c758141fcfa022cee1d2ff50749d133d0b70b692.jpg)
+
+![MeteorJS](https://d14xs1qewsqjcd.cloudfront.net/assets/og-image-logo.png)
+
+![ElasticSearch](https://camo.githubusercontent.com/970d309f5d85621a6c0b9e6ce0e82d2eca049c23/687474703a2f2f692e696d6775722e636f6d2f786c3178676a6d2e706e67)
+
+![D3JS](https://blog.logentries.com/wp-content/uploads/2014/08/D3.js-Logo.png)
+
+![Google Materialize](http://pepa.holla.cz/wp-content/uploads/2015/09/Ian_Materilize.jpg)
+
+
+![Apache Cordova](https://cordova.apache.org/static/img/artwork/cordova_logo_dark_gray_large.png)
