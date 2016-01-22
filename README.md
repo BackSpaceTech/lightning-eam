@@ -1,17 +1,13 @@
-The Lightning EAM Project
-===================
+#The Lightning EAM Project
+
+
 
 
 A project to create the World's fastest Enterprise Asset Management System capable of handling big data while at the same time using a modern user interface accessible from mobile devices.
 
 
-[[vimeo-{145017253}-{500}x{281}]]
+##About
 
-----------
-
-
-About
--------------
 
 The Lightning EAM project is a revolutionary approach to managing asset data. The core ideal is to break down the myths surrounding Enterprise Asset Management created by corporations with a vested interest in maintaining the status quo. This enables us to start with a clean slate and select the best performing technologies that can handle modern asset information requirements such as big data and mobile.
 
@@ -27,9 +23,7 @@ The Lightning EAM project is a revolutionary approach to managing asset data. Th
 > - Google Material Design
 
 
-
-Features
--------------
+##Features
 
 
 Lightning has all features you expect from an Enterprise Asset Management System and is free for both commercial and private use.
@@ -49,8 +43,9 @@ Lightning has all features you expect from an Enterprise Asset Management System
 
 <kbd> ** Under development</kbd>
 
-Help
--------------
+
+##Help
+
 
 Check out the [GitHub wiki][8fe9c783] for full documentation for the project.
 
@@ -62,8 +57,9 @@ If you would like to install Lightning EAM at you organisation and would like ex
 
 > **Tip:** Check out the [Getting Started](https://github.com/BackSpaceTech/lightning-eam/wiki/Getting-Started) section to get up and running with a local installation of Lightning EAM.
 
-How you can help
--------------
+
+##How you can help
+
 
 #### Social Media
 
@@ -91,12 +87,7 @@ One of the aims of Lightning is to make EAM accessible to all organisations and 
 Within the application there are selection lists such as trade types, asset classifications etc. If you industry has something missing from the lists or you can provide input to the lists then you can help us. Contact us info@backspace.technology if you would like to help with pull requests.
 
 
-----------
-
-
-Roadmap
--------------------
-
+##Roadmap
 
 
 Lightning is a living ecosystem that will expand over time to create a broader set of enterprise capabilities. The current roadmap is:
@@ -125,7 +116,6 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 |Energy Isolations  |  TBA  |  Late 2016  |
 |Safety Management System  |  TBA  |  Late 2016  |
 |Project Management  |  TBA  |  2017  |
-|Project Management  |  TBA  |  2017  |
 |CRM  |  TBA  |  2017  |
 |ERP  |  TBA  |  2017  |
 
@@ -133,9 +123,12 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 > **Note:**
 
 > - This list will be updated regularly to ensure users have a clear indication of where we are and where we want to get to.
+> - Many completed features may be delayed due to user testing.
 > - This will be heavily influenced upon available resources. Community support will reduce the timelines.
 > - Community feedback will influence direction of development.
 
-#### License
+
+## License
+
 
 Lightning EAM is produced as free and open source software for private and commercial use under the GNU General Public License version 3.
