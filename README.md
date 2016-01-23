@@ -99,6 +99,7 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 |Core PM  |  Complete  |   |
 |Core Work Mgt  |  Complete  |    |
 |D3JS Reports  |  Complete  |    |
+|ElasticSearch Reporting  |  Complete  |   |
 |Google Material Design  |  Complete  |  |
 |IOS App  |  Complete  |    |
 |Android App  |  Complete  |    |
@@ -110,7 +111,6 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 |Core Procurement  |  In Progress  |  Early 2016  |
 |Geolocation  |  In Progress  |  Early 2016  |
 |ISO 55000  |  In Progress  |  Early 2016  |
-|ElasticSearch Reporting  |  In Progress  |  Early 2016  |
 |BIRT Support  |  TBA |  Mid 2016  |
 |Reliability Centered Maintenance  |  TBA  |  Late 2016  |
 |Energy Isolations  |  TBA  |  Late 2016  |
@@ -143,9 +143,9 @@ Lightning EAM is produced as free and open source software for private and comme
 
 ![MongoDB](https://www.mongodb.com/assets/MongoDB_Brand_Resources/MongoDB-Logo-7db53b4037f9953e9df4f694c758141fcfa022cee1d2ff50749d133d0b70b692.jpg)
 
-![MeteorJS](https://d14xs1qewsqjcd.cloudfront.net/assets/og-image-logo.png)
-
 ![ElasticSearch](http://assets.wildbit.com/postmark/blog/images/logo-elastic.png)
+
+![MeteorJS](https://d14xs1qewsqjcd.cloudfront.net/assets/og-image-logo.png)
 
 ![D3JS](https://blog.logentries.com/wp-content/uploads/2014/08/D3.js-Logo.png)
 
