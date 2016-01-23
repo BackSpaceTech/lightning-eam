@@ -9,6 +9,7 @@
 @Lists.Locations = {}
 @Lists.Resources = {}
 @Lists.Workorders = {}
+@Lists.PM = {}
 
 @Collections = {}
 

@@ -51,3 +51,13 @@ Meteor.publish 'safetyplans', ->
 
 Meteor.publish 'singleSafetymethod', (safetymethodId) ->
   Safetyplans.find {_id: safetymethodId}
+
+#********************** Work Orders *****************************#
+Meteor.publish 'pm', ->
+  PM.find {}, fields:
+    active: true
+    pmDescription: true
+    assetGroup: true
+
+Meteor.publish 'singlePM', (pmId) ->
+  PM.find {_id: pmId}

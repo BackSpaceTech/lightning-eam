@@ -145,7 +145,7 @@ Lightning EAM is produced as free and open source software for private and comme
 
 ![MeteorJS](https://d14xs1qewsqjcd.cloudfront.net/assets/og-image-logo.png)
 
-![ElasticSearch](https://camo.githubusercontent.com/970d309f5d85621a6c0b9e6ce0e82d2eca049c23/687474703a2f2f692e696d6775722e636f6d2f786c3178676a6d2e706e67)
+![ElasticSearch](http://assets.wildbit.com/postmark/blog/images/logo-elastic.png)
 
 ![D3JS](https://blog.logentries.com/wp-content/uploads/2014/08/D3.js-Logo.png)
 

@@ -27,3 +27,10 @@ Lists.Workorders.Status = {
   11: 'Work Order Reviewed'
   12: 'Work Order Closed'
 }
+
+Lists.PM.IntervalUnits = {
+  0: 'Days'
+  1: 'Weeks'
+  2: 'Months'
+  3: 'Years'
+}

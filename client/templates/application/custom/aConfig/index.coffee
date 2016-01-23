@@ -19,6 +19,7 @@ Customisations = {
   inventory: false
   #pm
   pm: false
+  createPM: false
   #procurement
   procurement: false
   #reports

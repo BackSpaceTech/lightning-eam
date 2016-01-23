@@ -8,3 +8,5 @@ if (Meteor.isServer)
 
 @Workplans = new Mongo.Collection('workplans')
 @Safetyplans = new Mongo.Collection('safetyplans')
+
+@PM = new Mongo.Collection('pm')
