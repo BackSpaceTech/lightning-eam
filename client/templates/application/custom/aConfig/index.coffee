@@ -20,6 +20,8 @@ Customisations = {
   #pm
   pm: false
   createPM: false
+  assetGroups: false
+  createAssetGroup: false
   #procurement
   procurement: false
   #reports

@@ -1,7 +1,6 @@
 Template.createMeterPage.onCreated ->
   self = this
-  self.autorun ->
-    self.subscribe 'singleLocation', (Session.get('currentID').toString())
+  self.autorun -> self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.createMeterPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
@@ -16,7 +15,7 @@ Template.createMeterPage.helpers
     return Collections.Locations.Current
 
 Template.createMeterPage.events
-  'submit .new-record': ->
+  'click .btnSubmit': ->
     doc = Collections.Locations.Current
     meter =
       text: $('#inpCreateMeterPageTitle').val()
@@ -24,4 +23,4 @@ Template.createMeterPage.events
       units: $('#inpCreateMeterPageUnits').val()
       reading: $('#inpCreateMeterPageReading').val()
     Meteor.call 'createMeter', doc, meter
-    FlowRouter.go '/assets/view-locations'
+    FlowRouter.go history.back()

@@ -7,6 +7,14 @@ PM.allow
   remove: ->
     true
 
+Assetgroups.allow
+  insert: ->
+    true
+  update: ->
+    true
+  remove: ->
+    true
+
 #********************************* PM *******************************
 
 Schema.workorderPM = new SimpleSchema (
@@ -32,7 +40,9 @@ Schema.assetGroup = new SimpleSchema (
   groupText:
     type: String
     label: 'Asset Group Name'
-  asset_ID:
+  groupCreatedBy:
+    type: String
+  asset_IDs:
     type: [String]
     label: 'Asset SysID'
 )
@@ -58,17 +68,12 @@ Schema.pm = new SimpleSchema (
   assetGroup_ID:
     type: String
     label: 'Asset Group ID'
-  assetGroupText:
+  safetyPlan_ID:
     type: String
-    label: 'Asset Group Name'
-  safetyMethod:
-    type: [Schema.safetyMethod]
     label: 'Safety Plan'
-    optional: true
-  workPlan:
-    type: [Schema.tasks]
+  workPlan_ID:
+    type: String
     label: 'Work Plan'
-    optional: true
   pmInterval:
     type: Number
     label: 'PM Interval'
@@ -78,7 +83,7 @@ Schema.pm = new SimpleSchema (
     autoform:
       type: 'select'
       options: ->
-        Lists.PM.IntervalUnits    
+        Lists.PM.IntervalUnits
   pmIntervalType:
     type: Boolean
     label: 'Fixed Date'

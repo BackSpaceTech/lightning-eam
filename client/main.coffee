@@ -1,8 +1,8 @@
 # Subscribe to a subset of the data on the client
-Meteor.subscribe('locations')
+Meteor.subscribe 'locations'
 # Subscribe to subset persisted in GroundDB
-Meteor.subscribe('my-work', Meteor.userId())
-Ground.Collection(Workorders)
+Meteor.subscribe 'my-work', Meteor.userId()
+Ground.Collection Workorders
 
 Meteor.startup ->
   # Initialise Autoform
@@ -20,16 +20,3 @@ Meteor.startup ->
 
   # Initialise Navbar dropdown
   $('.dropdown-button').dropdown {hover:false}
-
-  # Initialise sAlert
-  sAlert.config {
-          effect: ''
-          position: 'top-right'
-          timeout: 5000
-          html: false
-          onRouteClose: true
-          stack: true
-          offset: 0
-          beep: false
-          onClose: _.noop
-      }

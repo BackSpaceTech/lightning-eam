@@ -61,3 +61,9 @@ Meteor.publish 'pm', ->
 
 Meteor.publish 'singlePM', (pmId) ->
   PM.find {_id: pmId}
+
+Meteor.publish 'assetGroups', ->
+  Assetgroups.find {}
+
+Meteor.publish 'singleAssetGroup', (groupId) ->
+  Assetgroups.find {_id: groupId}

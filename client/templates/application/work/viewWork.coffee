@@ -1,5 +1,5 @@
 Template.viewWorkPage.onCreated ->
-  this.quickSearch = new ReactiveVar(true)
+  this.quickSearch = new ReactiveVar true
 
 Template.viewWorkPage.onRendered ->
   assetTree()

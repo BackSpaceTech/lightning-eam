@@ -1,0 +1,48 @@
+template(name='createAssetGroupPage')
+  if customTemplate
+    +createAssetGroupPageCustom  
+  else 
+    .container2
+      br
+      +autoForm schema=assetGroupSchema id='createAssetGroupPage' type='method' meteormethod='createAssetGroup'
+        fieldset
+          legend New Asset Group
+          .row
+            +afQuickField name='groupText'           
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Asset      
+              .row
+                +afQuickField name='asset_IDs' value=assetArray type='hidden'
+                +afQuickField name='groupCreatedBy' value=assetGroupCreatedBy type='hidden'
+                +reactiveTable collection=assetArrayDetails settings=settings class='table striped'
+          .row
+            .col.s12.m3.l2.z-depth-1(style='text-align:right;')
+              input.view_q(type='text', value='', placeholder='Search')
+          .row.treeview
+            .row.teal.lighten-1.white-text.z-depth-1   
+              = assetDetails.assetID
+              | - 
+              = assetDetails.text
+              button.autoform-add-item.btn-floating.waves-effect.waves-light.green.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add Asset')
+                i.fa.fa-plus
+            .tree_view.row.treeview.z-depth-1
+          .form-group
+            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+              a.btn-floating.btn-large.purple
+                i.large.mdi-navigation-menu
+              ul
+                li
+                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                    i.material-icons skip_previous
+                li
+                  button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
+                    i.fa.fa-undo
+                li
+                  button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
+                    i.fa.fa-check            
+
+template(name='editCreateAssetGroup')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+    i.fa.fa-trash

@@ -1,0 +1,28 @@
+template(name='assetGroupsPage')
+  if customTemplate
+    +assetGroupsPageCustom  
+  else 
+    .flow-text.container2
+      br
+      fieldset
+        legend Asset Groups          
+        a(href='{{pathFor "../pm/create-group"}}')
+          button.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new asset group')
+            i.fa.fa-file-o
+        if Template.subscriptionsReady                              
+          +reactiveTable collection=assetGroupsCollection settings=settings class='table striped'
+    .fixed-action-btn(style='bottom: 45px; right: 24px;')
+      a.btn-floating.btn-large.purple(href="{{pathFor '../pm'}}")
+        i.large.material-icons skip_previous
+            
+template(name='editAssetGroup')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+    i.fa.fa-eye
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+    i.fa.fa-edit 
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+    i.fa.fa-trash             
+
+template(name='assetGroupsDelete') 
+  h5.red-text Warning this will permanently delete the Asset Group!
+  | This process cannot be undone.

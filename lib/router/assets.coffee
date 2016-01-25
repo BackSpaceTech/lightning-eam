@@ -8,7 +8,7 @@ assetsRoutes.route '/', action: ->
     content: 'assetsPage'
     header: 'header1'
     footer: 'footer1'
-  return
+
 assetsRoutes.route '/create-location',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -16,7 +16,7 @@ assetsRoutes.route '/create-location',
       content: 'createLocationPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/create-asset',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -24,7 +24,7 @@ assetsRoutes.route '/create-asset',
       content: 'createAssetPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/edit-location',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -32,7 +32,7 @@ assetsRoutes.route '/edit-location',
       content: 'editLocationPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/edit-asset',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -40,7 +40,7 @@ assetsRoutes.route '/edit-asset',
       content: 'editAssetPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/duplicate-location',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -48,7 +48,7 @@ assetsRoutes.route '/duplicate-location',
       content: 'duplicateLocationPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/duplicate-asset',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -56,7 +56,7 @@ assetsRoutes.route '/duplicate-asset',
       content: 'duplicateAssetPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/delete-location',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -64,7 +64,7 @@ assetsRoutes.route '/delete-location',
       content: 'deleteLocationPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/view-locations',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -72,7 +72,7 @@ assetsRoutes.route '/view-locations',
       content: 'viewLocationsPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/view-location',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -80,7 +80,7 @@ assetsRoutes.route '/view-location',
       content: 'viewLocationPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/view-asset',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -88,7 +88,7 @@ assetsRoutes.route '/view-asset',
       content: 'viewAssetPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/create-meter',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -96,7 +96,7 @@ assetsRoutes.route '/create-meter',
       content: 'createMeterPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 assetsRoutes.route '/view-meters',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -104,4 +104,3 @@ assetsRoutes.route '/view-meters',
       content: 'viewMetersPage'
       header: 'header1'
       footer: 'footer1'
-    return

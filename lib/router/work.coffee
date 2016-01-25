@@ -8,7 +8,7 @@ workRoutes.route '/', action: ->
     content: 'workPage'
     header: 'header1'
     footer: 'footer1'
-  return
+
 workRoutes.route '/create',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -16,7 +16,7 @@ workRoutes.route '/create',
       content: 'createWorkPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 workRoutes.route '/view',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -24,7 +24,7 @@ workRoutes.route '/view',
       content: 'viewWorkPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 workRoutes.route '/query',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -32,7 +32,7 @@ workRoutes.route '/query',
       content: 'workQueryPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 workRoutes.route '/view-workorder',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -40,7 +40,7 @@ workRoutes.route '/view-workorder',
       content: 'viewWorkorderPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 workRoutes.route '/edit-workorder',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -48,7 +48,7 @@ workRoutes.route '/edit-workorder',
       content: 'editWorkorderPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 workRoutes.route '/copy-workorder',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -56,7 +56,7 @@ workRoutes.route '/copy-workorder',
       content: 'copyWorkorderPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
   # My workorders available offline through GroundDB
 workRoutes.route '/my-workorder',
   action: ->
@@ -64,14 +64,14 @@ workRoutes.route '/my-workorder',
       content: 'myWorkorderPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 workRoutes.route '/my-workorders',
   action: ->
     BlazeLayout.render 'layout',
       content: 'myWorkordersPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 
 workRoutes.route '/create-safety',
   action: ->
@@ -79,7 +79,7 @@ workRoutes.route '/create-safety',
       content: 'createSafetyTemplatePage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 
 workRoutes.route '/safety-template',
   action: ->
@@ -87,7 +87,7 @@ workRoutes.route '/safety-template',
       content: 'safetyTemplatesPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 
 workRoutes.route '/view-safety',
   action: ->
@@ -95,7 +95,7 @@ workRoutes.route '/view-safety',
       content: 'viewSafetyTemplatePage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 
 workRoutes.route '/edit-safety',
   action: ->
@@ -103,7 +103,7 @@ workRoutes.route '/edit-safety',
       content: 'editSafetyTemplatePage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 
 workRoutes.route '/work-template',
   action: ->
@@ -111,7 +111,7 @@ workRoutes.route '/work-template',
       content: 'workTemplatesPage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 
 workRoutes.route '/create-work',
   action: ->
@@ -119,7 +119,7 @@ workRoutes.route '/create-work',
       content: 'createWorkTemplatePage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 
 workRoutes.route '/view-work',
   action: ->
@@ -127,7 +127,7 @@ workRoutes.route '/view-work',
       content: 'viewWorkTemplatePage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 
 workRoutes.route '/edit-work',
   action: ->
@@ -135,4 +135,3 @@ workRoutes.route '/edit-work',
       content: 'editWorkTemplatePage'
       header: 'header1'
       footer: 'footer1'
-    return

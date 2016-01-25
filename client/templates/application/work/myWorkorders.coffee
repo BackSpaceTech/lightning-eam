@@ -44,8 +44,8 @@ Template.myWorkordersPage.events
     Collections.Workorders.Current = this
     FlowRouter.go '/work/edit-workorder'
 
-Template.doWO.onRendered ->
+Template.startWO.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
-Template.doWO.onDestroyed ->
+Template.startWO.onDestroyed ->
   $('.tooltipped').tooltip 'remove'

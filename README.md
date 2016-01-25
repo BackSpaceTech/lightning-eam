@@ -72,7 +72,7 @@ Marketing is expensive, especially when your product is free! The best way you c
 
 #### Software Development
 
-The amount of code behind Lightning is huge and any help from experienced developers will be encouraged. Contact us at info@backspace.technology if you would like to help with pull requests.
+The amount of code behind Lightning is significant and any help from experienced developers will be encouraged. Contact us at info@backspace.technology if you would like to help with pull requests.
 
 #### Testing and Bug Reporting
 

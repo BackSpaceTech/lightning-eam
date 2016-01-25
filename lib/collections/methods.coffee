@@ -83,11 +83,9 @@ if (Meteor.isServer)
     setWorkQuery: (query) ->
       Collections.Workorders.workQuery = query
     createWorkTemplate: (doc) ->
-      # Insert a work template into the collection
       Workplans.insert doc
       this.unblock()
     createSafetyTemplate: (doc) ->
-      # Insert a safety method into the collection
       Safetyplans.insert doc
       this.unblock()
     deleteSafety: (docID) ->
@@ -95,5 +93,12 @@ if (Meteor.isServer)
       this.unblock()
     deleteWork: (docID) ->
       Workplans.remove {'_id': docID}
+      this.unblock()
+    createAssetGroup: (doc) ->
+      console.log 'Created Asset Group: '+JSON.stringify doc
+      Assetgroups.insert doc
+      this.unblock()
+    deleteAssetGroup: (docID) ->
+      Assetgroups.remove {'_id': docID}
       this.unblock()
     }

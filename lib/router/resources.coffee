@@ -8,7 +8,7 @@ resourcesRoutes.route '/', action: ->
     content: 'resourcesPage'
     header: 'header1'
     footer: 'footer1'
-  return
+
 resourcesRoutes.route '/view-people',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -16,7 +16,7 @@ resourcesRoutes.route '/view-people',
       content: 'viewPeoplePage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 resourcesRoutes.route '/edit-people',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -24,7 +24,7 @@ resourcesRoutes.route '/edit-people',
       content: 'editPeoplePage'
       header: 'header1'
       footer: 'footer1'
-    return
+
 resourcesRoutes.route '/credentials',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
@@ -32,4 +32,3 @@ resourcesRoutes.route '/credentials',
       content: 'credentialsPage'
       header: 'header1'
       footer: 'footer1'
-    return

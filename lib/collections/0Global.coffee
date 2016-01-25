@@ -2,14 +2,14 @@
 
 @Schema = {}
 
-@Customisations = {}
-
 @Lists = {}
 
 @Lists.Locations = {}
 @Lists.Resources = {}
 @Lists.Workorders = {}
 @Lists.PM = {}
+
+@Customisations = {}
 
 @Collections = {}
 
@@ -32,3 +32,8 @@
 
 @Collections.Workplans = {}
 @Collections.Workplans.Current = {}
+
+@Collections.PM = {}
+@Collections.Assetgroups = {}
+@Collections.Assetgroups.Current = {}
+@Collections.Assetgroups.CurrentID = 0

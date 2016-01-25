@@ -17,7 +17,6 @@ es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 kadira:flow-router
-u2622:persistent-session
 kadira:blaze-layout
 useraccounts:flow-routing
 arillo:flow-router-helpers
@@ -26,10 +25,8 @@ aldeed:collection2
 sujith3g:jstree
 fortawesome:fontawesome
 dburles:collection-helpers
-reywood:publish-composite
 chrismbeckett:toastr
 reactive-var
-juliancwirko:s-alert
 email
 aslagle:reactive-table
 aldeed:delete-button
@@ -53,4 +50,3 @@ msavin:mongol
 meteorhacks:aggregate
 modweb:flipclock
 materialize:materialize
-aldeed:autoform-select2
