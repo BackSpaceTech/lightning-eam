@@ -1,40 +1,53 @@
 template(name='createPMPage')
   if customTemplate
     +createPMPageCustom  
-  else 
-    .container2
-      br
-      +autoForm schema=createWorkFormSchema id='createWorkPage' type='method' meteormethod='createWO'
-        fieldset
-          legend New Work Request
-          .row
-            +afQuickField name='type' value='workorder' type='hidden'
-            +afQuickField name='reqBy_id' value=requestor.reqBy_id type='hidden'
-            +afQuickField name='reqByFirstName' value=requestor.reqByFirstName type='hidden'
-            +afQuickField name='reqByLastName' value=requestor.reqByLastName type='hidden'
-            +afQuickField name='status' value='1' type='hidden'
-            +afQuickField name='asset_ID' value=assetDetails._id type='hidden'
-            +afQuickField name='asset_treePath' value=assetDetails.treePath type='hidden'
-            +afQuickField name='assetID' value=assetDetails.assetID type='hidden'
-            +afQuickField name='assetText' value=assetDetails.text type='hidden'
-            .col.s12.m6.l3
-              +afQuickField name='refID'
-            .col.s12.m6.l3
-              +afQuickField name='reqPriority'
-            div
-              +afQuickField name='reqDescription'               
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Asset           
-            .col.s12.m3.l2.z-depth-1(style='text-align:right;')
-              input.view_q(type='text', value='', placeholder='Search')
-          .row.treeview
-            .row.teal.lighten-1.white-text.z-depth-1   
-              = assetDetails.assetID
-              | - 
-              = assetDetails.text
-            .tree_view.row.treeview.z-depth-1
+  else  
+    .flow-text.container2
+      br              
+      fieldset 
+        +autoForm schema=pmSchema id='createPMPage' type='method' meteormethod='createPM'
+          legend Create PM
+          if Template.subscriptionsReady
+            .row
+              +afQuickField name='createdBy_id' type='hidden'
+              +afQuickField name='createdByFirstName' type='hidden'
+              +afQuickField name='createdByLastName' type='hidden'
+              +afQuickField name='createdDate' type='hidden'
+              .col.s12.m6.l3
+                +afQuickField name='refID'
+              .col.s12.m6.l3
+                +afQuickField name='pmPriority'
+            .row
+              +afQuickField name='pmDescription'
+            .row
+              .col.s12.m6.l3
+                +afQuickField name='pmInterval'  
+              .col.s12.m6.l3
+                +afQuickField name='pmIntervalUnits'                                     
+              .col.s12.m6.l3
+                +afQuickField name='pmIntervalType'
+              .col.s12.m6.l3
+                +afQuickField name='active'              
+            .row
+              .divider.teal
+              .section
+                .col.s12.m6.l3
+                  h6 Asset Group
+                    button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add Asset Group')
+                      i.fa.fa-plus
+                  +afQuickField name='assetGroup_ID'
+                .col.s12.m6.l3
+                  h6 Safety Method
+                    button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd2(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add Safety Method')
+                      i.fa.fa-plus                
+                  +afQuickField name='safetyPlan_ID'
+                .col.s12.m6.l3
+                  h6 Work Plan
+                    button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd3(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add Work Plan')
+                      i.fa.fa-plus                
+                  +afQuickField name='workPlan_ID'   
+          else
+            +spinner                                                    
           .form-group
             .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
               a.btn-floating.btn-large.purple
@@ -47,5 +60,35 @@ template(name='createPMPage')
                   button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
                     i.fa.fa-undo
                 li
-                  button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
-                    i.fa.fa-check            
+                  button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
+                    i.fa.fa-check
+
+template(name='createPMPageAddAssetGroup')
+  if Template.subscriptionsReady
+    +reactiveTable collection=assetGrpCollection settings=agSettings class='table striped'
+  else
+    +spinner
+    
+template(name='selectAssetGroupCreatePM')
+  button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Asset Group')
+    i.fa.fa-plus  
+  
+template(name='createPMPageAddSafetyMethod')
+  if Template.subscriptionsReady
+    +reactiveTable collection=safetyMthdCollection settings=smSettings class='table striped'
+  else
+    +spinner  
+    
+template(name='selectSafetyMethodCreatePM')
+  button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Safety Method')
+    i.fa.fa-plus    
+  
+template(name='createPMPageAddWorkPlan') 
+  if Template.subscriptionsReady 
+    +reactiveTable collection=workPlCollection settings=wpSettings class='table striped'
+  else
+    +spinner    
+  
+template(name='selectWorkPlanCreatePM')
+  button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Work Plan')
+    i.fa.fa-plus 

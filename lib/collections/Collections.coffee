@@ -11,7 +11,11 @@ if (Meteor.isServer)
 
 
 @Assetgroups = new Mongo.Collection 'assetgroups', transform: (doc) ->
-  doc.assetList = Locations.find {'_id': {'$in': doc.asset_IDs} }
+  doc.assetList = Locations.find {'_id': {'$in': doc.asset_IDs} }, fields:
+    text: true
+    assetID: true
+    parent: true
+    treePath: true
   doc
 
 @PM = new Mongo.Collection 'pm'

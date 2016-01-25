@@ -29,9 +29,11 @@
 
 @Collections.Safetyplans = {}
 @Collections.Safetyplans.Current = {}
+@Collections.Safetyplans.CurrentID = 0
 
 @Collections.Workplans = {}
 @Collections.Workplans.Current = {}
+@Collections.Workplans.CurrentID = 0
 
 @Collections.PM = {}
 @Collections.Assetgroups = {}

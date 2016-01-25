@@ -38,3 +38,11 @@ pmRoutes.route '/edit-group',
       content: 'editAssetGroupPage'
       header: 'header1'
       footer: 'footer1'
+
+pmRoutes.route '/create-pm',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'createPMPage'
+      header: 'header1'
+      footer: 'footer1'
