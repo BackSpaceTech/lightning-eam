@@ -4,7 +4,7 @@ template(name='editAssetGroupPage')
   else 
     .container2
       br
-      +autoForm schema=assetGroupSchema id='editAssetGroupPage' type='method-update' meteormethod='updateAssetGroup' doc=viewDoc
+      +autoForm schema=assetGroupSchema collection='Assetgroups' id='editAssetGroupPage' type='update' doc=viewDoc
         fieldset
           legend Edit Asset Group  
           if Template.subscriptionsReady 
