@@ -18,3 +18,11 @@ template(name='frmSection')
     .section
       h6.teal-text 
         =label
+
+template(name='rtViewEditDelete')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+    i.fa.fa-eye
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+    i.fa.fa-edit 
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+    i.fa.fa-trash 

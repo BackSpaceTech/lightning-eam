@@ -12,8 +12,7 @@ Template.viewWorkorderPage.helpers
 Template.viewWoForm.helpers
   viewDoc: -> Collections.Workorders.Current
   safetyDoc: -> Collections.Workorders.Current.safetyMethod
-  settingsSafety: ->
-    return {
+  settingsSafety: -> {
       rowsPerPage: 10
       showFilter: false
       fields:  [
@@ -24,12 +23,11 @@ Template.viewWoForm.helpers
         { key: 'controls', label: ' Risk control measures' }
         { key: 'responsible', label: 'Responsible' }
         { key: 'completedTime', label: 'Completed Time' }
-        { key: '', label: 'Start/Complete', tmpl: Template.viewWorkorderSafety }
+        { key: '', label: 'Start/Complete', tmpl: Template.rtViewEditDelete }
       ]
     }
   workDoc: -> Collections.Workorders.Current.workPlan
-  settingsWork: ->
-    return {
+  settingsWork: -> {
       rowsPerPage: 10
       showFilter: false
       fields:  [
@@ -38,6 +36,6 @@ Template.viewWoForm.helpers
         { key: 'estimatedTime', label: 'Est hrs' }
         { key: 'finishTime', label: 'Finish Time' }
         { key: 'completedTime', label: 'Completed Time' }
-        { key: '', label: 'Start/Complete', tmpl: Template.viewWorkorderWork }
+        { key: '', label: 'Start/Complete', tmpl: Template.rtViewEditDelete }
       ]
     }

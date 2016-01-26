@@ -16,7 +16,7 @@ Template.viewPMsPage.helpers
       { key: 'userDetails.profile.lastName', label: ' Last Name' }
       { key: 'assetGroupDetails.groupText', label: ' Asset Group' }
       { key: 'pmDescription', label: ' PM Description' }
-      { key: '', label: 'View/Edit/Delete', tmpl: Template.editViewPMs }
+      { key: '', label: 'View/Edit/Delete', tmpl: Template.rtViewEditDelete }
     ]
   }
 

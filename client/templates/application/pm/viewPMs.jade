@@ -18,14 +18,6 @@ template(name='viewPMsPage')
           .fixed-action-btn(style='bottom: 45px; right: 24px;')
             a.btn-floating.btn-large.purple(href="{{pathFor '../pm'}}")
               i.large.material-icons skip_previous       
-
-template(name='editViewPMs')
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
-    i.fa.fa-eye
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
-    i.fa.fa-edit 
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
-    i.fa.fa-trash
      
 template(name='viewPMsDelete') 
   h5.red-text Warning this will permanently delete the PM and all work history!
