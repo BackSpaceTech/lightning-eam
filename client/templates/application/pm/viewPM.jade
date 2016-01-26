@@ -1,0 +1,42 @@
+template(name='viewPMPage')
+  if customTemplate
+    +viewPMPageCustom  
+  else  
+    .flow-text.container2
+      br              
+      fieldset.viewPM 
+          legend View PM
+          if Template.subscriptionsReady
+            .row
+              .section
+                h6.teal-text PM Details 
+                =viewDoc.pmDescription                                
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Asset Group
+                =assetGrpDetails.groupText
+                +reactiveTable collection=assetGrpList settings=agSettings class='table striped'                                                 
+            .row
+              .divider.teal
+              .section                  
+                h6.teal-text Safety Method
+                =safetyMthdDetails.text
+                +reactiveTable collection=safetyMthdList settings=smSettings class='table striped'
+            .row
+              .divider.teal
+              .section                  
+                h6.teal-text Work Plan
+                =workPlanDetails.text
+                +reactiveTable collection=workPlanList settings=wpSettings class='table striped'  
+          else
+            +spinner                                                    
+          .form-group
+            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+              a.btn-floating.btn-large.purple
+                i.large.mdi-navigation-menu
+              ul
+                li
+                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+                    i.material-icons skip_previous
+                    

@@ -36,6 +36,8 @@
 @Collections.Workplans.CurrentID = 0
 
 @Collections.PM = {}
+@Collections.PM.Current = {}
+@Collections.PM.CurrentID = 0
 
 @Collections.Assetgroups = {}
 @Collections.Assetgroups.Current = {}

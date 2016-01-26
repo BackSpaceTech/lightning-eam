@@ -10,17 +10,17 @@ if (Meteor.isServer)
 @Safetyplans = new Mongo.Collection 'safetyplans'
 
 @Assetgroups = new Mongo.Collection 'assetgroups', transform: (doc) ->
-  doc.assetList = Locations.find {'_id': {'$in': doc.asset_IDs} }, fields:
+  doc.assetList = Locations.find( {'_id': {'$in': doc.asset_IDs} }, { fields:
     text: true
     assetID: true
     parent: true
-    treePath: true
+    treePath: true} ).fetch()
   doc
 
 @PM = new Mongo.Collection 'pm', transform: (doc) ->
-  doc.userDetails = Meteor.users.findOne {'_id': doc.createdBy_id }, fields:
-    profile: true
   doc.assetGroupDetails = Assetgroups.findOne {'_id': doc.assetGroup_ID }
   doc.workPlanDetails = Workplans.findOne {'_id': doc.workPlan_ID }
   doc.safetyPlanDetails = Safetyplans.findOne {'_id': doc.safetyPlan_ID }
+  doc.userDetails = Meteor.users.findOne {'_id': doc.createdBy_id }, fields:
+    profile: true
   doc

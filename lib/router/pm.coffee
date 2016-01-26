@@ -54,3 +54,19 @@ pmRoutes.route '/view-pms',
       content: 'viewPMsPage'
       header: 'header1'
       footer: 'footer1'
+
+pmRoutes.route '/view-pm',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'viewPMPage'
+      header: 'header1'
+      footer: 'footer1'
+
+pmRoutes.route '/edit-pm',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'editPMPage'
+      header: 'header1'
+      footer: 'footer1'

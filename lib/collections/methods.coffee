@@ -107,4 +107,11 @@ if (Meteor.isServer)
       # Insert a work order into the collection
       PM.insert doc
       this.unblock()
+    deletePM: (docID) ->
+      PM.remove {'_id': docID}
+      this.unblock()
+    updatePM: (doc, ID) ->
+      console.log 'Updated PM: '+JSON.stringify doc
+      PM.update {'_id': ID}, doc
+      this.unblock()
     }

@@ -37,17 +37,13 @@ Meteor.publish 'my-work', (userId) ->
   Workorders.find {'workTeam.userID': userId}, {limit: 100, sort: {priority: 1}}
 
 Meteor.publish 'workplans', ->
-  Workplans.find {}, fields:
-    text: true
-    createdByID: true
+  Workplans.find {}
 
 Meteor.publish 'singleWorkplan', (workplanId) ->
   Workplans.find {_id: workplanId}
 
 Meteor.publish 'safetyplans', ->
-  Safetyplans.find {}, fields:
-    text: true
-    createdByID: true
+  Safetyplans.find {}
 
 Meteor.publish 'singleSafetymethod', (safetymethodId) ->
   Safetyplans.find {_id: safetymethodId}

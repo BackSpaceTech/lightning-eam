@@ -20,3 +20,7 @@ Meteor.startup ->
 
   # Initialise Navbar dropdown
   $('.dropdown-button').dropdown {hover:false}
+
+  #Initialise sessions
+  Session.set 'currentDoc', {}
+  Session.set 'currentID', '#'

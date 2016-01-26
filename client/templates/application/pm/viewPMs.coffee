@@ -1,5 +1,8 @@
 Template.viewPMsPage.onCreated ->
-  this.subscribe 'pm'
+  self = this
+  self.autorun ->
+    self.subscribe 'pm'
+    self.subscribe 'assetGroups'
 
 Template.viewPMsPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
@@ -15,11 +18,40 @@ Template.viewPMsPage.helpers
     showFilter: true
     fields:  [
       { key: '_id', label: ' System ID' }
-      { key: 'assetGroupDetails', label: ' Asset Group' }
+      { key: 'userDetails.profile.firstName', label: ' First Name ' }
+      { key: 'userDetails.profile.lastName', label: ' Last Name' }
+      { key: 'assetGroupDetails.groupText', label: ' Asset Group' }
       { key: 'pmDescription', label: ' PM Description' }
+      { key: '', label: 'View/Edit/Delete', tmpl: Template.editViewPMs }
     ]
   }
 
 Template.viewPMsPage.events
-  'click .viewPMs .btnAdd': (e) ->
-    alert JSON.stringify PM.findOne()
+  'click .viewPMs .btnView': (e) ->
+    Session.set 'currentDoc', PM.findOne {_id: this._id}
+    FlowRouter.go '/pm/view-pm'
+
+  'click .viewPMs .btnEdit': (e) ->
+    Session.set 'currentDoc', PM.findOne {_id: this._id}
+    FlowRouter.go '/pm/edit-pm'
+
+  'click .viewPMs .btnDelete': (e) ->
+    Collections.PM.CurrentID = this._id
+    MaterializeModal.display
+      bodyTemplate: 'viewPMsDelete'
+      title: 'Delete PM!'
+      submitLabel: 'Delete'
+      closeLabel: 'Cancel'
+      callback: (error, response) ->
+        if error
+          console.error error
+        else
+          if response.submit
+            Meteor.call 'deletePM',  Collections.PM.CurrentID
+        return
+
+Template.editViewPMs.onRendered ->
+  $('.tooltipped').tooltip {delay: 50}
+
+Template.editViewPMs.onDestroyed ->
+  $('.tooltipped').tooltip 'remove'

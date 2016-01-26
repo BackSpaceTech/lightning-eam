@@ -1,12 +1,12 @@
-template(name='createPMPage')
+template(name='editPMPage')
   if customTemplate
-    +createPMPageCustom  
+    +editPMPageCustom  
   else  
     .flow-text.container2
       br              
-      fieldset.createPM 
-        +autoForm schema=pmSchema id='createPMPage' type='method' meteormethod='createPM'
-          legend Create PM
+      fieldset.editPM 
+        +autoForm schema=pmSchema id='editPMPage' type='method-update' meteormethod='updatePM' doc=viewDoc
+          legend Edit PM
           if Template.subscriptionsReady
             .row
               +afQuickField name='createdBy_id' value=createdID type='hidden'
@@ -63,35 +63,35 @@ template(name='createPMPage')
                   button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
                     i.fa.fa-check
 
-template(name='createPMPageAddAssetGroup')
+template(name='editPMPageAddAssetGroup')
   if Template.subscriptionsReady
-    .rtable
+    .rtable    
       +reactiveTable collection=assetGrpCollection settings=agSettings class='table striped'
   else
     +spinner
     
-template(name='selectAssetGroupCreatePM')
+template(name='selectAssetGroupEditPM')
   button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Asset Group')
-    i.fa.fa-plus  
+    i.fa.fa-plus 
   
-template(name='createPMPageAddSafetyMethod')
+template(name='editPMPageAddSafetyMethod')
   if Template.subscriptionsReady
-    .rtable
+    .rtable  
       +reactiveTable collection=safetyMthdCollection settings=smSettings class='table striped'
   else
     +spinner  
     
-template(name='selectSafetyMethodCreatePM')
+template(name='selectSafetyMethodEditPM')
   button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd1(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Safety Method')
     i.fa.fa-plus    
   
-template(name='createPMPageAddWorkPlan') 
+template(name='editPMPageAddWorkPlan') 
   if Template.subscriptionsReady 
-    .rtable
+    .rtable  
       +reactiveTable collection=workPlCollection settings=wpSettings class='table striped'
   else
     +spinner    
   
-template(name='selectWorkPlanCreatePM')
+template(name='selectWorkPlanEditPM')
   button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd2(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Work Plan')
     i.fa.fa-plus 

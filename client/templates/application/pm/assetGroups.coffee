@@ -20,7 +20,7 @@ Template.assetGroupsPage.helpers
         { key: '_id', label: ' System ID' }
         { key: 'groupCreatedBy', label: ' Created By' }
         { key: 'groupText', label: ' Title' }
-        { key: '', label: 'View/Edit/Delete', tmpl: Template.editWork }
+        { key: '', label: 'View/Edit/Delete', tmpl: Template.editAssetGroup }
       ]
     }
 
