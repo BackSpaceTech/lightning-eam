@@ -4,11 +4,6 @@ Template.workTemplatesPage.onRendered ->
 Template.workTemplatesPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.workTemplatesPage.onCreated ->
-  self = this
-  self.autorun ->
-    self.subscribe 'workplans'
-
 Template.workTemplatesPage.helpers
   customTemplate: -> Customisations.workTemplates
   workCollection: -> Workplans

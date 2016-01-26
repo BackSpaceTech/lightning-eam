@@ -5,7 +5,7 @@ FlowRouter.notFound = action: ->
     footer: 'footer1'
 
 FlowRouter.route '/signin', action: ->
-  BlazeLayout.render 'layout2',
+  BlazeLayout.render 'layoutSignIn',
     content: 'signInPage'
     header: 'header1'
     footer: 'footer1'

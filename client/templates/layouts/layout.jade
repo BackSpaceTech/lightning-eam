@@ -5,10 +5,47 @@ template(name='layout')
       +Template.dynamic(template=header)
       .flow-text.blue-grey-text.text-darken-3
         +Template.dynamic template=content
+    +Template.dynamic(template=footer)   
+
+// **************************** Layout Assets **************************
+template(name='layoutAssets')
+  #wrapper
+    #main
+      +Template.dynamic(template=header)
+      .flow-text.blue-grey-text.text-darken-3
+        +Template.dynamic template=content
     +Template.dynamic(template=footer)
+    
+// **************************** Layout PM **************************
+template(name='layoutPM')
+  #wrapper
+    #main
+      +Template.dynamic(template=header)
+      .flow-text.blue-grey-text.text-darken-3
+        +Template.dynamic template=content
+    +Template.dynamic(template=footer)    
+    
+// **************************** Layout Resources **************************
+template(name='layoutResources')
+  #wrapper
+    #main
+      +Template.dynamic(template=header)
+      .flow-text.blue-grey-text.text-darken-3
+        +Template.dynamic template=content
+    +Template.dynamic(template=footer)  
+    
+// **************************** Layout Work **************************
+template(name='layoutWork')
+  #wrapper
+    #main
+      +Template.dynamic(template=header)
+      .flow-text.blue-grey-text.text-darken-3
+        +Template.dynamic template=content
+    +Template.dynamic(template=footer)            
+             
 
 // **************************** Sign In Layout **************************
-template(name='layout2')
+template(name='layoutSignIn')
   #wrapper
     #main
       +Template.dynamic(template=header)

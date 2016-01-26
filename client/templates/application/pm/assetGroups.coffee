@@ -4,11 +4,6 @@ Template.assetGroupsPage.onRendered ->
 Template.assetGroupsPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.assetGroupsPage.onCreated ->
-  self = this
-  self.autorun ->
-    self.subscribe 'assetGroups'
-
 Template.assetGroupsPage.helpers
   customTemplate: -> Customisations.assetGroups
   assetGroupsCollection: -> Assetgroups

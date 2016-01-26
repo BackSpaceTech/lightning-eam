@@ -2,9 +2,6 @@ Template.viewPMPage.onCreated ->
   self = this
   self.autorun ->
     self.subscribe 'singlePM', Session.get('currentDoc')._id.toString()
-    self.subscribe 'assetGroups'
-    self.subscribe 'safetyplans'
-    self.subscribe 'workplans'
 
 Template.viewPMPage.onRendered ->
   Session.set 'temp', true
@@ -62,7 +59,7 @@ Template.viewPMPage.helpers
       { key: 'id', label: ' Sequence ID' }
       { key: 'activity', label: ' Activity' }
       { key: 'text', label: ' Title' }
-      { key: 'estimatedTime', label: ' Est Time' }            
+      { key: 'estimatedTime', label: ' Est Time' }
       { key: 'trade', label: ' Trade' }
       { key: 'tradeLevel', label: ' Trade Level' }
     ]

@@ -4,11 +4,6 @@ Template.safetyTemplatesPage.onRendered ->
 Template.safetyTemplatesPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.safetyTemplatesPage.onCreated ->
-  self = this
-  self.autorun ->
-    self.subscribe 'safetyplans'
-
 Template.safetyTemplatesPage.helpers
   customTemplate: -> Customisations.safetyTemplates
   safetyCollection: -> Safetyplans

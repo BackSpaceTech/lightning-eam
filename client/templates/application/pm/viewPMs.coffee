@@ -1,9 +1,3 @@
-Template.viewPMsPage.onCreated ->
-  self = this
-  self.autorun ->
-    self.subscribe 'pm'
-    self.subscribe 'assetGroups'
-
 Template.viewPMsPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 
