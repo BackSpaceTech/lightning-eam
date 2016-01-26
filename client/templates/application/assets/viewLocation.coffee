@@ -17,7 +17,7 @@ Template.viewLocationPage.helpers
     return Collections.Locations.Current
 
 Template.viewLocationPage.events
-  'click .btnEdit': ->
+  'click .viewLocation .btnEdit': ->
     if (Session.get('currentID').toString()== '#')
       alert 'No location or asset selected!'
     else
@@ -25,7 +25,7 @@ Template.viewLocationPage.events
         FlowRouter.go '/assets/edit-asset'
       else
         FlowRouter.go '/assets/edit-location'
-  'click .btnCopy': ->
+  'click .viewLocation .btnCopy': ->
     if (Session.get('currentID').toString()== '#')
       alert 'No location or asset selected!'
     else

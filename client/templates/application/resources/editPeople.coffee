@@ -15,5 +15,5 @@ Template.editPeoplePage.helpers
   customTemplate: -> Customisations.editPeople
 
 Template.editPeoplePage.events
-  'click .btnSubmit': (e) ->
+  'click .editPeople .btnSubmit': (e) ->
     FlowRouter.go '/resources/view-people'

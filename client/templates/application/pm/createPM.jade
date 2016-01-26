@@ -4,30 +4,29 @@ template(name='createPMPage')
   else  
     .flow-text.container2
       br              
-      fieldset 
+      fieldset.createPM 
         +autoForm schema=pmSchema id='createPMPage' type='method' meteormethod='createPM'
           legend Create PM
           if Template.subscriptionsReady
             .row
-              +afQuickField name='createdBy_id' type='hidden'
-              +afQuickField name='createdByFirstName' type='hidden'
-              +afQuickField name='createdByLastName' type='hidden'
-              +afQuickField name='createdDate' type='hidden'
+              +afQuickField name='createdBy_id' value=createdID type='hidden'
               .col.s12.m6.l3
                 +afQuickField name='refID'
               .col.s12.m6.l3
                 +afQuickField name='pmPriority'
             .row
               +afQuickField name='pmDescription'
-            .row
+            .row                         
+              .col.s12.m6.l3.parentInput
+                +afFieldInput name='pmIntervalType' id='afIntervalType' type='select-radio-inline'
               .col.s12.m6.l3
                 +afQuickField name='pmInterval'  
+              if showIntervalUnits                  
+                .col.s12.m6.l3
+                  +afQuickField name='pmIntervalUnits' type='select-radio-inline' value=intervalUnits                                  
               .col.s12.m6.l3
-                +afQuickField name='pmIntervalUnits'                                     
-              .col.s12.m6.l3
-                +afQuickField name='pmIntervalType'
-              .col.s12.m6.l3
-                +afQuickField name='active'              
+                +afQuickField name='active'      
+            br                        
             .row
               .divider.teal
               .section
@@ -70,7 +69,7 @@ template(name='createPMPageAddAssetGroup')
     +spinner
     
 template(name='selectAssetGroupCreatePM')
-  button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Asset Group')
+  button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd4(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Asset Group')
     i.fa.fa-plus  
   
 template(name='createPMPageAddSafetyMethod')
@@ -80,7 +79,7 @@ template(name='createPMPageAddSafetyMethod')
     +spinner  
     
 template(name='selectSafetyMethodCreatePM')
-  button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Safety Method')
+  button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd5(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Safety Method')
     i.fa.fa-plus    
   
 template(name='createPMPageAddWorkPlan') 
@@ -90,5 +89,5 @@ template(name='createPMPageAddWorkPlan')
     +spinner    
   
 template(name='selectWorkPlanCreatePM')
-  button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Work Plan')
+  button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd6(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Select Work Plan')
     i.fa.fa-plus 

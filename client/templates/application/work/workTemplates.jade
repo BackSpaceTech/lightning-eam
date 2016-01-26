@@ -4,7 +4,7 @@ template(name='workTemplatesPage')
   else 
     .flow-text.container2
       br
-      fieldset
+      fieldset.workTemplates
         legend Work Templates          
         a(href='{{pathFor "../work/create-work"}}')
           button.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new template')

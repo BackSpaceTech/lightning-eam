@@ -12,7 +12,7 @@ Template.myWorkorderPage.helpers
   myWorkorderSchema: -> Schema.workorders
 
 Template.myWorkorderPage.events
-  'click .btnStart': (e) ->
+  'click .myWorkorder .btnStart': (e) ->
     if Collections.Workorders.Current.startTime
       MaterializeModal.confirm
         title: 'Reset work Order?',
@@ -46,7 +46,7 @@ Template.myWorkorderPage.events
       Session.set 'currentDoc', Collections.Workorders.Current
       Collections.Workorders.Clock = $('.flipClock').FlipClock()
       $('.flipClock').show()
-  'click .btnComplete': (e) ->
+  'click .myWorkorder .btnComplete': (e) ->
     if (!jQuery.isEmptyObject Collections.Workorders.Clock) && (Collections.Workorders.Clock.getTime().time>0)
       # Get the array index of the task
       for a in [0...Collections.Workorders.Current.safetyMethod.length]
@@ -61,7 +61,7 @@ Template.myWorkorderPage.events
       MaterializeModal.message
         title: 'Start Work Order',
         message: 'Please click on start work order at top of page.'
-  'click .btnComplete2': (e) ->
+  'click .myWorkorder .btnComplete2': (e) ->
     if (!jQuery.isEmptyObject Collections.Workorders.Clock) && (Collections.Workorders.Clock.getTime().time>0)
       # Get the array index of the task
       for a in [0...Collections.Workorders.Current.workPlan.length]
@@ -76,13 +76,13 @@ Template.myWorkorderPage.events
       MaterializeModal.message
         title: 'Start Work Order',
         message: 'Please click on start work order at top of page.'
-  'click .btnView': (e) ->
+  'click .myWorkorder .btnView': (e) ->
     modalBody = Spacebars.SafeString('Hazards: '+this.hazards+'<br>Controls: '+this.controls+'<br>Responsible: '+this.responsible)
     MaterializeModal.message
       title: this.activity
       message: modalBody
 
-  'click .btnView2': (e) ->
+  'click .myWorkorder .btnView2': (e) ->
     modalBody = Spacebars.SafeString('Instructions: '+this.text+'<br>Est mins: '+this.estimatedTime)
     MaterializeModal.message
       title: this.activity

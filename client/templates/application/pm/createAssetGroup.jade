@@ -5,7 +5,7 @@ template(name='createAssetGroupPage')
     .container2
       br
       +autoForm schema=assetGroupSchema id='createAssetGroupPage' type='method' meteormethod='createAssetGroup'
-        fieldset
+        fieldset.createAssetGroup
           legend New Asset Group
           .row
             +afQuickField name='groupText'           

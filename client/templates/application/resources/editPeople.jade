@@ -2,7 +2,7 @@ template(name='editPeoplePage')
   if customTemplate
     +editPeoplePageCustom  
   else 
-    .flow-text.container2
+    .flow-text.container2.editPeople
       +autoForm id='editPeoplePage' collection='Meteor.users'  doc=currentUser type='update'      
         .form-group
           .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')

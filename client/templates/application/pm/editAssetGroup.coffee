@@ -21,8 +21,8 @@ Template.editAssetGroupPage.helpers
     temp = Template.instance().assetArray.get()
     for a in [0...temp.length]
       tempArray[a] = Locations.findOne {'id':temp[a]}
-    return tempArray
-  assetDetails: -> Locations.findOne {'id':Session.get('currentID').toString()}
+    tempArray
+  assetDetails: -> Locations.findOne {'id':Session.get('currentID').toString()} # ID of current asset/location not the current Asset Group
   settings: ->
     return {
       rowsPerPage: 10
@@ -36,7 +36,7 @@ Template.editAssetGroupPage.helpers
     }
 
 Template.editAssetGroupPage.events
-  'click .btnAdd': (event, template) ->
+  'click .editAssetGroup .btnAdd': (event, template) ->
     temp = template.assetArray.get()
     if temp.indexOf(Session.get('currentID').toString()) == -1
       temp.push Session.get('currentID').toString()
@@ -45,7 +45,7 @@ Template.editAssetGroupPage.events
     else
       toastr.error("Asset already added")
 
-  'click .btnDelete': (event, template) ->
+  'click .editAssetGroup .btnDelete': (event, template) ->
     temp = template.assetArray.get()
     temp.splice(temp.indexOf(this._id), 1)
     template.assetArray.set temp

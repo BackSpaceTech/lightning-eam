@@ -34,13 +34,13 @@ Template.myWorkordersPage.helpers
     }
 
 Template.myWorkordersPage.events
-  'click .btnStart': (e) ->
+  'click .myWorkorders .btnStart': (e) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/my-workorder'
-  'click .btnView': (e) ->
+  'click .myWorkorders .btnView': (e) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/view-workorder'
-  'click .btnEdit': (e) ->
+  'click .myWorkorders .btnEdit': (e) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/edit-workorder'
 

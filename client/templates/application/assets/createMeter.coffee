@@ -15,7 +15,7 @@ Template.createMeterPage.helpers
     return Collections.Locations.Current
 
 Template.createMeterPage.events
-  'click .btnSubmit': ->
+  'click .createMeter .btnSubmit': ->
     doc = Collections.Locations.Current
     meter =
       text: $('#inpCreateMeterPageTitle').val()

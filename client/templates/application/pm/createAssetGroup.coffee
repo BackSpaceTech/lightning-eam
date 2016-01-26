@@ -32,7 +32,7 @@ Template.createAssetGroupPage.helpers
         }
 
 Template.createAssetGroupPage.events
-  'click .btnAdd': (event, template) ->
+  'click .createAssetGroup .btnAdd': (event, template) ->
     temp = template.assetArray.get()
     if temp.indexOf(Session.get('currentID').toString()) == -1
       temp.push Session.get('currentID').toString()
@@ -41,7 +41,7 @@ Template.createAssetGroupPage.events
     else
       toastr.error("Asset already added")
 
-  'click .btnDelete': (event, template) ->
+  'click .createAssetGroup .btnDelete': (event, template) ->
     temp = template.assetArray.get()
     temp.splice(temp.indexOf(this._id), 1)
     template.assetArray.set temp

@@ -46,3 +46,11 @@ pmRoutes.route '/create-pm',
       content: 'createPMPage'
       header: 'header1'
       footer: 'footer1'
+
+pmRoutes.route '/view-pms',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'viewPMsPage'
+      header: 'header1'
+      footer: 'footer1'

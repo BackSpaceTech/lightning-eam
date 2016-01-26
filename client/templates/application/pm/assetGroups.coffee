@@ -25,15 +25,15 @@ Template.assetGroupsPage.helpers
     }
 
 Template.assetGroupsPage.events
-  'click .btnView': (e) ->
+  'click .assetGroups .btnView': (e) ->
     Collections.Assetgroups.Current = this
     Session.set 'currentDoc', this
     FlowRouter.go '/pm/view-group'
-  'click .btnEdit': (e) ->
+  'click .assetGroups .btnEdit': (e) ->
     Collections.Assetgroups.Current = this
     Session.set 'currentDoc', this
     FlowRouter.go '/pm/edit-group'
-  'click .btnDelete': (e) ->
+  'click .assetGroups .btnDelete': (e) ->
     Collections.Assetgroups.Current = this
     MaterializeModal.display
       bodyTemplate: 'assetGroupsDelete'

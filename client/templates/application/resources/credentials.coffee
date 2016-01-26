@@ -16,5 +16,5 @@ Template.credentialsPage.helpers
   customTemplate: -> Customisations.credentials
 
 Template.credentialsPage.events
-  'click .btnSubmit': (e) ->
+  'click .credentials .btnSubmit': (e) ->
     FlowRouter.go '/resources/view-people'

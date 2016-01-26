@@ -33,18 +33,18 @@ Template.viewPeoplePage.helpers
     }
 
 Template.viewPeoplePage.events
-  'click .btnEach': (e) ->
+  'click .viewPeople .btnEach': (e) ->
     Collections.Users.Current = this
     FlowRouter.go '/resources/edit-people'
-  'click .btnEach2': (e)  ->
+  'click .viewPeople .btnEach2': (e)  ->
     Collections.Users.Current = this
     FlowRouter.go '/resources/credentials'
-  'click .btnEach3': (e) ->
+  'click .viewPeople .btnEach3': (e) ->
     deleteUser
-  'click .btnDelete': (e) ->
+  'click .viewPeople .btnDelete': (e) ->
     Collections.Users.Current = this
     $('#viewPeoplePageModal').openModal()
-  'click .btnConfirm': (e) ->
+  'click .viewPeople .btnConfirm': (e) ->
     temp = Collections.Users.Current
     Meteor.call 'deleteUser', temp._id
     FlowRouter.go '/resources'

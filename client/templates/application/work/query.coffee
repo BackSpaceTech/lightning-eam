@@ -37,13 +37,13 @@ Template.workQueryPage.helpers
     }
 
 Template.workQueryPage.events
-  'click .btnView': (e) ->
+  'click .workQuery .btnView': (e) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/view-workorder'
-  'click .btnEdit': (e) ->
+  'click .workQuery .btnEdit': (e) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/edit-workorder'
-  'click .btnDelete': (e) ->
+  'click .workQuery .btnDelete': (e) ->
     Collections.Workorders.Current = this
     MaterializeModal.display
       bodyTemplate: 'workQueryDelete'

@@ -101,4 +101,10 @@ if (Meteor.isServer)
     deleteAssetGroup: (docID) ->
       Assetgroups.remove {'_id': docID}
       this.unblock()
+    createPM: (doc) ->
+      # Add date stamp to request
+      doc.createdDate = new Date()
+      # Insert a work order into the collection
+      PM.insert doc
+      this.unblock()
     }

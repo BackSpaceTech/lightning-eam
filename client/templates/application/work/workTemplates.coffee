@@ -24,13 +24,13 @@ Template.workTemplatesPage.helpers
     }
 
 Template.workTemplatesPage.events
-  'click .btnView': (e) ->
+  'click .workTemplates .btnView': (e) ->
     Collections.Workplans.Current = this
     FlowRouter.go '/work/view-work'
-  'click .btnEdit': (e) ->
+  'click .workTemplates .btnEdit': (e) ->
     Collections.Workplans.Current = this
     FlowRouter.go '/work/edit-work'
-  'click .btnDelete': (e) ->
+  'click .workTemplates .btnDelete': (e) ->
     Collections.Workplans.Current = this
     MaterializeModal.display
       bodyTemplate: 'workTemplatesDelete'

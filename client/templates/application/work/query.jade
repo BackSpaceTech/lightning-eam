@@ -4,7 +4,7 @@ template(name='workQueryPage')
   else 
     .flow-text.container2
       br
-      fieldset
+      fieldset.workQuery
         legend Work   
         +reactiveTable collection='workorder-data' settings=settings class='table striped'
     .fixed-action-btn(style='bottom: 45px; right: 24px;')

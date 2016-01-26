@@ -1,0 +1,20 @@
+template(name='viewPMsPage')
+  if customTemplate
+    +viewPMsPageCustom  
+  else 
+    .container2
+      br
+      fieldset.viewPMs
+        legend View PM
+          a(href='{{pathFor "edit-group"}}')
+              button.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-delay='50', data-position='bottom', data-tooltip='Create PM')
+                i.fa.fa-plus  
+        if Template.subscriptionsReady       
+          .row
+            +reactiveTable collection=collectionPM settings=settings class='table striped'
+        else
+          +spinner
+        .form-group
+          .fixed-action-btn(style='bottom: 45px; right: 24px;')
+            a.btn-floating.btn-large.purple(href="{{pathFor '../pm'}}")
+              i.large.material-icons skip_previous       

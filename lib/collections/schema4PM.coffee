@@ -77,35 +77,32 @@ Schema.pm = new SimpleSchema (
   pmInterval:
     type: Number
     label: 'PM Interval'
+    min: 1
   pmIntervalUnits:
     type: String
     label: 'Interval Units'
+    defaultValue: '0'
     autoform:
       type: 'select'
       options: ->
         Lists.PM.IntervalUnits
   pmIntervalType:
-    type: Boolean
-    label: 'Fixed Date'
+    type: Number
+    label: 'Interval Type'
+    autoform:
+      type: 'select'
+      options: ->
+        Lists.PM.IntervalTypes
   workorder:
     type: [Schema.workorderPM]
     label: 'Work Order'
     optional: true
   createdBy_id:
     type: String
-  createdByFirstName:
-    type: String
-  createdByLastName:
-    type: String
   createdDate:
     type: Date
+    optional: true
   approvedBy_id:
-    type: String
-    optional: true
-  approvedByFirstName:
-    type: String
-    optional: true
-  approvedByLastName:
     type: String
     optional: true
   approvedDate:

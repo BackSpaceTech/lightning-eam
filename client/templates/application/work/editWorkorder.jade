@@ -4,7 +4,7 @@ template(name='editWorkorderPage')
   else  
     .flow-text.container2
       br              
-      fieldset 
+      fieldset.editWorkorder
         +autoForm schema=editWorkorderSchema id='editWorkorderPage' type='method-update' meteormethod='updateWO' doc=viewDoc
           if workorder
             +editWorkorderForm
@@ -25,113 +25,111 @@ template(name='editWorkorderPage')
                   button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
                     i.fa.fa-check
 
-template(name='editRequestForm')        
-  legend Edit Request
-  .row
-    +afQuickField name='type' type='hidden'
-    +afQuickField name='asset_ID' type='hidden'
-    +afQuickField name='asset_treePath' type='hidden'
-    +afQuickField name='reqBy_id' type='hidden'
-    h6.teal-text Request Details 
-    .col.s12.m6.l3
-      +afQuickField name='reqByFirstName'  
-    .col.s12.m6.l3
-      +afQuickField name='reqByLastName'                                     
-    .col.s12.m6.l3
-      +afQuickField name='reqPriority'
-    .col.s12.m6.l3
-      +afQuickField name='assetID'
-    .col.s12.m6.l3
-      +afQuickField name='assetText'  
-    .col.s12.m6.l3
-      +afQuickField name='refID'                            
-    div
-      +afQuickField name='reqDescription'      
-  .row
-    .divider.teal
-    .section
-      h6.teal-text Accept, Return or Cancel?  
-      div
-        +afQuickField name='reqComments'                                                        
-      .col.s12.m6.l3    
-        +afQuickField name='status' options=requestOptions      
+template(name='editRequestForm') 
+    legend Edit Request
+    .row
+      +afQuickField name='type' type='hidden'
+      +afQuickField name='asset_ID' type='hidden'
+      +afQuickField name='asset_treePath' type='hidden'
+      +afQuickField name='reqBy_id' type='hidden'
+      h6.teal-text Request Details 
       .col.s12.m6.l3
-        button.btn-floating.teal.tooltipped(type='submit', data-position='bottom', data-tooltip='Submit Form')
-          i.fa.fa-save 
+        +afQuickField name='reqByFirstName'  
+      .col.s12.m6.l3
+        +afQuickField name='reqByLastName'                                     
+      .col.s12.m6.l3
+        +afQuickField name='reqPriority'
+      .col.s12.m6.l3
+        +afQuickField name='assetID'
+      .col.s12.m6.l3
+        +afQuickField name='assetText'  
+      .col.s12.m6.l3
+        +afQuickField name='refID'                            
+      div
+        +afQuickField name='reqDescription'      
+    .row
+      .divider.teal
+      .section
+        h6.teal-text Accept, Return or Cancel?  
+        div
+          +afQuickField name='reqComments'                                                        
+        .col.s12.m6.l3    
+          +afQuickField name='status' options=requestOptions      
        
 template(name='editWorkorderForm')
-  legend Edit Work Order 
-  .row
-    +afQuickField name='type' type='hidden'
-    +afQuickField name='asset_ID' type='hidden'
-    +afQuickField name='asset_treePath' type='hidden'
-    +afQuickField name='reqBy_id' type='hidden'  
-    h6.teal-text Request Details 
-    .col.s12.m6.l3
-      +afQuickField name='reqByFirstName'  
-    .col.s12.m6.l3
-      +afQuickField name='reqByLastName'                                     
-    .col.s12.m6.l3
-      +afQuickField name='reqPriority'
-    .col.s12.m6.l3
-      +afQuickField name='assetID'
-    .col.s12.m6.l3
-      +afQuickField name='assetText'
-    .col.s12.m6.l3
-      +afQuickField name='refID'                            
-    div
-      +afQuickField name='reqDescription'
-  .row
-    .divider.teal
-    .section
-      h6.teal-text Work Order Details                                                    
+  .editWorkorderForm
+    legend Edit Work Order 
+    .row
+      +afQuickField name='type' type='hidden'
+      +afQuickField name='asset_ID' type='hidden'
+      +afQuickField name='asset_treePath' type='hidden'
+      +afQuickField name='reqBy_id' type='hidden'  
+      h6.teal-text Request Details 
       .col.s12.m6.l3
-        +afQuickField name='status' options=workOptions          
+        +afQuickField name='reqByFirstName'  
       .col.s12.m6.l3
-        +afQuickField name='priority'                
+        +afQuickField name='reqByLastName'                                     
+      .col.s12.m6.l3
+        +afQuickField name='reqPriority'
+      .col.s12.m6.l3
+        +afQuickField name='assetID'
+      .col.s12.m6.l3
+        +afQuickField name='assetText'
+      .col.s12.m6.l3
+        +afQuickField name='refID'                            
       div
-        +afQuickField name='text'
-      div
-        +afQuickField name='description'
-  .row
-    .divider.teal
-    .section
-      h6.teal-text Work Team   
-        button.btn-floating.teal.tooltipped.btnAdd(type='button', data-position='bottom', data-tooltip='Quick Add Person')
-          i.fa.fa-plus                 
-      +afEachArrayItem name='workTeam'
+        +afQuickField name='reqDescription'
+    .row
+      .divider.teal
+      .section
+        h6.teal-text Work Order Details                                                    
         .col.s12.m6.l3
-          button.autoform-remove-item.btn-floating.waves-effect.waves-light.red.btnDelete(type="button", data-position='bottom', data-tooltip='Remove Person')
-            i.fa.fa-trash          
-          +afQuickField name=this.name label=false
-  .row
-    .divider.teal
-    .section
-      .row               
-        h6.teal-text Safety Method
-          button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd2(type='button', data-autoform-field='safetyMethod', data-position='bottom', data-tooltip='Add')
-            i.fa.fa-plus
-          button.btn-floating.waves-effect.waves-light.tooltipped.btnTemplate1(type='button', data-position='bottom', data-tooltip='Create from Template')
-            i.fa.fa-file-o  
-        +afEachArrayItem name='safetyMethod'
+          +afQuickField name='status' options=workOptions          
+        .col.s12.m6.l3
+          +afQuickField name='priority'                
+        div
+          +afQuickField name='text'
+        div
+          +afQuickField name='description'
+    .row
+      .divider.teal
+      .section
+        h6.teal-text Work Team   
+          button.btn-floating.teal.tooltipped.btnAdd(type='button', data-position='bottom', data-tooltip='Quick Add Person')
+            i.fa.fa-plus                 
+        +afEachArrayItem name='workTeam'
           .col.s12.m6.l3
-            button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
-              i.fa.fa-trash                            
+            button.autoform-remove-item.btn-floating.waves-effect.waves-light.red.btnDelete(type="button", data-position='bottom', data-tooltip='Remove Person')
+              i.fa.fa-trash          
             +afQuickField name=this.name label=false
-  .row
-    .divider.teal
-    .section                
-      .row      
-        h6.teal-text Work Plan
-          button.autoform-add-item.btn-floating.waves-effect.waves-light.btnAdd3(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add')
-            i.fa.fa-plus  
-          button.btn-floating.waves-effect.waves-light.tooltipped.btnTemplate2(type='button', data-position='bottom', data-tooltip='Create from Template')
-            i.fa.fa-file-o                    
-        +afEachArrayItem name='workPlan'
-          .col.s12.m6.l3 
-            button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
-              i.fa.fa-trash                             
-            +afQuickField name=this.name label=false      
+    .row
+      .divider.teal
+      .section
+        .row               
+          h6.teal-text Safety Method
+            button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd2(type='button', data-autoform-field='safetyMethod', data-position='bottom', data-tooltip='Add')
+              i.fa.fa-plus
+            button.btn-floating.waves-effect.waves-light.tooltipped.btnTemplate1(type='button', data-position='bottom', data-tooltip='Create from Template')
+              i.fa.fa-file-o  
+          +afEachArrayItem name='safetyMethod'
+            .col.s12.m6.l3
+              button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
+                i.fa.fa-trash                            
+              +afQuickField name=this.name label=false
+    .row
+      .divider.teal
+      .section                
+        .row      
+          h6.teal-text Work Plan
+            button.autoform-add-item.btn-floating.waves-effect.waves-light.btnAdd3(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add')
+              i.fa.fa-plus  
+            button.btn-floating.waves-effect.waves-light.tooltipped.btnTemplate2(type='button', data-position='bottom', data-tooltip='Create from Template')
+              i.fa.fa-file-o                    
+          +afEachArrayItem name='workPlan'
+            .col.s12.m6.l3 
+              button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
+                i.fa.fa-trash                             
+              +afQuickField name=this.name label=false      
         
 template(name='editWorkorderFormAddUser')
   +reactiveTable collection='resources-data' settings=settings class='table striped'

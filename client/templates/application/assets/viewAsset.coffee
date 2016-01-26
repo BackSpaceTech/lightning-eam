@@ -17,7 +17,7 @@ Template.viewAssetPage.helpers
   locationsFormSchema: -> Schema.locations
 
 Template.viewAssetPage.events
-  'click .btnEdit': ->
+  'click .viewAsset .btnEdit': ->
     if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'
     else
@@ -25,7 +25,7 @@ Template.viewAssetPage.events
         FlowRouter.go '/assets/edit-asset'
       else
         FlowRouter.go '/assets/edit-location'
-  'click .btnCopy': ->
+  'click .viewAsset .btnCopy': ->
     if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'
     else

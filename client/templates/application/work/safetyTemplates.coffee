@@ -24,13 +24,13 @@ Template.safetyTemplatesPage.helpers
     }
 
 Template.safetyTemplatesPage.events
-  'click .btnView': (e) ->
+  'click .safetyTemplates .btnView': (e) ->
     Collections.Safetyplans.Current = this
     FlowRouter.go '/work/view-safety'
-  'click .btnEdit': (e) ->
+  'click .safetyTemplates .btnEdit': (e) ->
     Collections.Safetyplans.Current = this
     FlowRouter.go '/work/edit-safety'
-  'click .btnDelete': (e) ->
+  'click .safetyTemplates .btnDelete': (e) ->
     Collections.Safetyplans.Current = this
     MaterializeModal.display
       bodyTemplate: 'safetyTemplatesDelete'

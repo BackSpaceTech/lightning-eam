@@ -2,7 +2,7 @@ template(name='myWorkorderPage')
   if customTemplate
     +myWorkorderPageCustom  
   else  
-    .flow-text.container2
+    .flow-text.container2.myWorkorder
       br
       fieldset
         +autoForm schema=myWorkorderSchema id='myWorkorderPage' type='method-update' meteormethod='updateWO' doc=viewDoc

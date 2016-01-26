@@ -33,4 +33,11 @@ Lists.PM.IntervalUnits = {
   1: 'Weeks'
   2: 'Months'
   3: 'Years'
+  4: 'Meter Units'
+}
+
+Lists.PM.IntervalTypes = {
+  0: 'Calendar'
+  1: 'Last Completed'
+  2: 'Meter Reading'
 }

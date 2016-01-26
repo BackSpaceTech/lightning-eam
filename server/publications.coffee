@@ -57,7 +57,8 @@ Meteor.publish 'pm', ->
   PM.find {}, fields:
     active: true
     pmDescription: true
-    assetGroup: true
+    createdBy_id: true
+    assetGroup_ID: true
 
 Meteor.publish 'singlePM', (pmId) ->
   PM.find {_id: pmId}
