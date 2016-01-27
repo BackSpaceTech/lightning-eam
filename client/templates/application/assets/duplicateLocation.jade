@@ -53,18 +53,5 @@ template(name='duplicateLocationPage')
                   +afQuickField name='urlPhoto' value=duplicateDoc.urlPhoto        
           else
             +spinner
-          .form-group
-            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-              a.btn-floating.btn-large.purple
-                i.large.mdi-navigation-menu
-              ul
-                li
-                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                    i.material-icons skip_previous
-                li
-                  button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
-                    i.fa.fa-undo
-                li
-                  button.btn-floating.green.tooltipped(type='submit', data-position='left', data-tooltip='Submit Form')
-                    i.fa.fa-check        
+          +fabBackResetSubmit       
       br

@@ -10,12 +10,9 @@ Template.viewWorkPage.onDestroyed ->
 
 Template.viewWorkPage.helpers
   quickSearch: -> Template.instance().quickSearch.get()
-  locationID: ->
+  assetDetails: -> 
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
-    temp = Collections.Locations.Current
-    if (temp.assetID)
-      return temp.assetID + ' - ' + temp.text
-    return temp.text
+    Collections.Locations.Current
 
 Template.viewWorkPage.events
   'click #swtViewWork1': (event, template) ->

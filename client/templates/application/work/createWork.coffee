@@ -18,4 +18,4 @@ Template.createWorkPage.helpers
   reqDate: -> (new Date()).toISOString()
   assetDetails: ->
     temp = Session.get 'currentID'
-    return Locations.findOne {id:String(temp)}
+    Locations.findOne {id:String(temp)}

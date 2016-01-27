@@ -23,26 +23,10 @@ template(name='viewWorkPage')
           .row
             .divider.teal
             .section
-              h6.teal-text Asset           
-            .col.s12.m3.l2.z-depth-1(style='text-align:right;')
-              input.view_q(type='text', value='', placeholder='Search')
-          // Treeview
-          .row.treeview
-            .row.teal.lighten-1.white-text.z-depth-1   
-              = locationID
-            .tree_view.row.treeview.z-depth-1   
-          // FAB button           
-          .form-group
-            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-              a.btn-floating.btn-large.purple
-                i.large.mdi-navigation-menu
-              ul
-                li
-                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                    i.material-icons skip_previous
-                li
-                  button.btnSearch.btn-floating.green.tooltipped(type='button', data-position='left', data-tooltip='Search')
-                    i.fa.fa-check                                           
+              h6.teal-text Asset
+              +treeAssets assets=assetDetails
+          // FAB button  
+          +fabBackSearch                                                  
         else
           +spinner
         br          

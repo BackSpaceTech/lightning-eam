@@ -1,0 +1,24 @@
+
+template(name='treeAssetsAdd')
+  .row
+    .col.s12.m3.l2.z-depth-1(style='text-align:right;')
+      input.view_q(type='text', value='', placeholder='Search')
+  .row.treeview
+    .row.teal.lighten-1.white-text.z-depth-1   
+      = assets.assetID
+      | - 
+      = assets.text
+      button.autoform-add-item.btn-floating.waves-effect.waves-light.green.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add Asset')
+        i.fa.fa-plus
+    .tree_view.row.treeview.z-depth-1
+
+template(name='treeAssets')
+  .row
+    .col.s12.m3.l2.z-depth-1(style='text-align:right;')
+      input.view_q(type='text', value='', placeholder='Search')
+  .row.treeview
+    .row.teal.lighten-1.white-text.z-depth-1   
+      = assets.assetID
+      | - 
+      = assets.text
+    .tree_view.row.treeview.z-depth-1

@@ -1,23 +1,3 @@
-template(name='smlField')
-  .col.s12.m6.l3
-    h6.grey-text
-      =label
-    =item
-
-template(name='lgeField')
-  .row
-  .row
-    h6.grey-text 
-      =label
-    =item
-
-template(name='frmSection')
-  .row   
-  .row
-    .divider.teal
-    .section
-      h6.teal-text 
-        =label
 
 template(name='rtViewEditDelete')
   button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
@@ -26,3 +6,7 @@ template(name='rtViewEditDelete')
     i.fa.fa-edit 
   button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
     i.fa.fa-trash 
+
+template(name='rtDelete')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+    i.fa.fa-trash

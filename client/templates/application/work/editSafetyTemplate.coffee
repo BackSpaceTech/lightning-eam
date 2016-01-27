@@ -12,3 +12,4 @@ Template.editSafetyTemplatePage.onDestroyed ->
 Template.editSafetyTemplatePage.helpers
   customTemplate: -> Customisations.viewSafetyTemplate
   viewDoc: -> Safetyplans.findOne '_id': Collections.Safetyplans.Current._id
+  schemaSafetyplans: -> Schema.safetyMethodTemplate

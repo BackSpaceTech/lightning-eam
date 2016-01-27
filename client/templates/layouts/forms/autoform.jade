@@ -1,0 +1,33 @@
+template(name='afxSmlQuickFieldAdd')      
+  .col.s12.m6.l3
+    h6
+      =title
+      button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field=field, data-position='bottom', data-tooltip=tip)
+        i.fa.fa-plus
+    +afQuickField name=item        
+
+template(name='afxArrayAdd')
+  .row               
+    h6.teal-text 
+      =title
+      button.autoform-add-item.btn-floating.waves-effect.waves-light.teal(type='button', data-autoform-field=field, data-position='bottom', data-tooltip=tip)
+        i.fa.fa-plus        
+    +afEachArrayItem name=item
+      .col.s12.m6.l3
+        button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
+          i.fa.fa-trash                            
+        +afQuickField name=this.name label=false
+
+template(name='afxArrayAddCreate')
+  .row               
+    h6.teal-text
+      =title
+      button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped(type='button', data-autoform-field=field, data-position='bottom', data-tooltip=tip)
+        i.fa.fa-plus
+      button.btn-floating.waves-effect.waves-light.tooltipped.btnTemplate(type='button', data-position='bottom', data-tooltip=tip2)
+        i.fa.fa-file-o  
+    +afEachArrayItem name=item
+      .col.s12.m6.l3
+        button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
+          i.fa.fa-trash                            
+        +afQuickField name=this.name label=false

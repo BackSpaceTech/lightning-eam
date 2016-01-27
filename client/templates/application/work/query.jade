@@ -7,9 +7,7 @@ template(name='workQueryPage')
       fieldset.workQuery
         legend Work   
         +reactiveTable collection='workorder-data' settings=settings class='table striped'
-    .fixed-action-btn(style='bottom: 45px; right: 24px;')
-      a.btn-floating.btn-large.purple(href="{{pathFor '../work'}}")
-        i.large.material-icons skip_previous
+    +fabBack
             
 template(name='editWO')
   button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')

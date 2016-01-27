@@ -5,15 +5,13 @@ template(name='assetGroupsPage')
     .flow-text.container2
       br
       fieldset.assetGroups
-        legend Asset Groups          
+        legend Asset Groups
         a(href='{{pathFor "../pm/create-group"}}')
           button.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new asset group')
             i.fa.fa-file-o
         if Template.subscriptionsReady                              
           +reactiveTable collection=assetGroupsCollection settings=settings class='table striped'
-    .fixed-action-btn(style='bottom: 45px; right: 24px;')
-      a.btn-floating.btn-large.purple(href="{{pathFor '../pm'}}")
-        i.large.material-icons skip_previous                       
+    +fabBack
 
 template(name='assetGroupsDelete') 
   h5.red-text Warning this will permanently delete the Asset Group!

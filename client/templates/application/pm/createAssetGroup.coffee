@@ -27,7 +27,7 @@ Template.createAssetGroupPage.helpers
           fields:  [
             { key: 'assetID', label: ' Asset ID' }
             { key: 'text', label: ' Asset Name' }
-            { key: '', label: 'Delete', tmpl: Template.editCreateAssetGroup }
+            { key: '', label: 'Delete', tmpl: Template.rtDelete }
           ]
         }
 

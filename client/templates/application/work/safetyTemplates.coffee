@@ -14,7 +14,7 @@ Template.safetyTemplatesPage.helpers
       fields:  [
         { key: 'createdByID', label: ' Created by ID' }
         { key: 'text', label: ' Title' }
-        { key: 'location', label: 'View/Edit/Delete', tmpl: Template.editSafety }
+        { key: 'location', label: 'View/Edit/Delete', tmpl: Template.rtViewEditDelete }
       ]
     }
 
@@ -39,9 +39,3 @@ Template.safetyTemplatesPage.events
           if response.submit
             Meteor.call 'deleteSafety', Collections.Safetyplans.Current._id
         return
-
-Template.editSafety.onRendered ->
-  $('.tooltipped').tooltip {delay: 50}
-
-Template.editSafety.onDestroyed ->
-  $('.tooltipped').tooltip 'remove'

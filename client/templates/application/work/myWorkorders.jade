@@ -8,9 +8,7 @@ template(name='myWorkordersPage')
         legend My Work   
         +reactiveTable collection=myWork settings=settings class='table striped'
          
-    .fixed-action-btn(style='bottom: 45px; right: 24px;')
-      a.btn-floating.btn-large.purple(href="{{pathFor '../work'}}")
-        i.large.material-icons skip_previous     
+    +fabBack    
   
 template(name='startWO')
   button.btn-floating.waves-effect.waves-light.tooltipped.green.btnStart(type='button', data-delay='50', data-position='bottom', data-tooltip='Start')

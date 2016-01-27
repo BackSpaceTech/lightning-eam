@@ -11,9 +11,7 @@ template(name='workTemplatesPage')
             i.fa.fa-file-o
         if Template.subscriptionsReady                              
           +reactiveTable collection=workCollection settings=settings class='table striped'
-    .fixed-action-btn(style='bottom: 45px; right: 24px;')
-      a.btn-floating.btn-large.purple(href="{{pathFor '../work'}}")
-        i.large.material-icons skip_previous
+    +fabBack
             
 template(name='editWork')
   button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')

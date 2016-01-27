@@ -14,10 +14,7 @@ template(name='viewPMsPage')
             +reactiveTable collection=collectionPM settings=settings class='table striped'
           else
             +spinner
-        .form-group
-          .fixed-action-btn(style='bottom: 45px; right: 24px;')
-            a.btn-floating.btn-large.purple(href="{{pathFor '../pm'}}")
-              i.large.material-icons skip_previous       
+        +fabBack     
      
 template(name='viewPMsDelete') 
   h5.red-text Warning this will permanently delete the PM and all work history!

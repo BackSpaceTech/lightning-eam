@@ -31,11 +31,12 @@ Template.editAssetGroupPage.helpers
         { key: 'id', label: ' System ID' }
         { key: 'assetID', label: ' Asset ID' }
         { key: 'text', label: ' Asset Name' }
-        { key: '', label: 'Delete', tmpl: Template.editEditAssetGroup }
+        { key: '', label: 'Delete', tmpl: Template.rtDelete }
       ]
     }
 
 Template.editAssetGroupPage.events
+  # Click event from asset tree
   'click .editAssetGroup .btnAdd': (event, template) ->
     temp = template.assetArray.get()
     if temp.indexOf(Session.get('currentID').toString()) == -1
@@ -44,7 +45,7 @@ Template.editAssetGroupPage.events
       toastr.success("Asset added")
     else
       toastr.error("Asset already added")
-
+  # Click event from reactive table
   'click .editAssetGroup .btnDelete': (event, template) ->
     temp = template.assetArray.get()
     temp.splice(temp.indexOf(this._id), 1)

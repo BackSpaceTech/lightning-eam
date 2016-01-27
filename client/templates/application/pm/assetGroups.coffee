@@ -32,7 +32,7 @@ Template.assetGroupsPage.events
     Collections.Assetgroups.Current = this
     MaterializeModal.display
       bodyTemplate: 'assetGroupsDelete'
-      title: 'Delete Work Template!'
+      title: 'Delete Asset Group!'
       submitLabel: 'Delete'
       closeLabel: 'Cancel'
       callback: (error, response) ->
@@ -42,9 +42,3 @@ Template.assetGroupsPage.events
           if response.submit
             Meteor.call 'deleteAssetGroup', Collections.Assetgroups.Current._id
         return
-
-Template.editAssetGroup.onRendered ->
-  $('.tooltipped').tooltip {delay: 50}
-
-Template.editAssetGroup.onDestroyed ->
-  $('.tooltipped').tooltip 'remove'

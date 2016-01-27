@@ -3,20 +3,7 @@ template(name='viewLocationPage')
     +viewLocationPageCustom  
   else  
     .flow-text.container2.viewLocation
-      .form-group
-        .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-          a.btn-floating.btn-large.purple
-            i.large.mdi-navigation-menu
-          ul
-            li
-              button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                i.material-icons skip_previous
-            li
-              a.btnCopy.btn-floating.green.tooltipped(data-position='left', data-tooltip='Copy')
-                i.fa.fa-copy
-            li
-              a.btnEdit.btn-floating.blue.tooltipped(data-position='left', data-tooltip='Edit')
-                i.fa.fa-edit
+      +fabBackCopyEdit
       br
       fieldset
         legend View Location 

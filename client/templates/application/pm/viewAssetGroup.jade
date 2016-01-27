@@ -8,12 +8,9 @@ template(name='viewAssetGroupPage')
         legend View Asset Group
           a(href='{{pathFor "edit-group"}}')
               button.btn-floating.waves-effect.waves-light.tooltipped(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit Group')
-                i.fa.fa-edit         
+                i.fa.fa-edit
         .row
           =groupText 
         .row
           +reactiveTable collection=assetArray settings=settings class='table striped'
-        .form-group
-          .fixed-action-btn(style='bottom: 45px; right: 24px;')
-            a.btn-floating.btn-large.purple(href="{{pathFor '../pm'}}")
-              i.large.material-icons skip_previous       
+        +fabBack     

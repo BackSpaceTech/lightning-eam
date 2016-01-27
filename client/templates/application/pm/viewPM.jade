@@ -30,13 +30,5 @@ template(name='viewPMPage')
                 =workPlanDetails.text
                 +reactiveTable collection=workPlanList settings=wpSettings class='table striped'  
           else
-            +spinner                                                    
-          .form-group
-            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-              a.btn-floating.btn-large.purple
-                i.large.mdi-navigation-menu
-              ul
-                li
-                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                    i.material-icons skip_previous
-                    
+            +spinner  
+          +fabBack                                                                      

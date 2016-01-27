@@ -43,9 +43,3 @@ Template.viewPMsPage.events
           if response.submit
             Meteor.call 'deletePM',  Collections.PM.CurrentID
         return
-
-Template.editViewPMs.onRendered ->
-  $('.tooltipped').tooltip {delay: 50}
-
-Template.editViewPMs.onDestroyed ->
-  $('.tooltipped').tooltip 'remove'

@@ -7,18 +7,9 @@ template(name='myWorkorderPage')
       fieldset
         +autoForm schema=myWorkorderSchema id='myWorkorderPage' type='method-update' meteormethod='updateWO' doc=viewDoc
           if Template.subscriptionsReady
-            +myWoForm           
-          .form-group
-            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-              a.btn-floating.btn-large.purple
-                i.large.mdi-navigation-menu
-              ul
-                li
-                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                    i.material-icons skip_previous
-                li
-                  button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Save')
-                    i.fa.fa-save      
+            +myWoForm 
+            +fabBackSubmit          
+          
 template(name='myWoForm')
   .row
     legend Start Work Order 
@@ -29,21 +20,11 @@ template(name='myWoForm')
     +afQuickField name='asset_treePath' type='hidden'
     +afQuickField name='status' value='9' type='hidden'
     h6.teal-text Work Order Details
-    .col.s12.m6.l3
-      h6.grey-text Asset ID
-      =viewDoc.assetID
-    .col.s12.m6.l3
-      h6.grey-text Asset Name
-      =viewDoc.assetText
-    .col.s12.m6.l3
-      h6.grey-text Reference ID
-      =viewDoc.refID
-    .col.s12.m6.l3
-      h6.grey-text WO Status
-      =viewDoc.status                    
-    .col.s12.m6.l3
-      h6.grey-text Priority
-      =viewDoc.priority
+    +smlField item=viewDoc.assetID label='Asset ID'
+    +smlField item=viewDoc.assetText label='Asset Name'
+    +smlField item=viewDoc.refID label='Reference ID'
+    +smlField item=viewDoc.status label='WO Status'
+    +smlField item=viewDoc.priority label='Priority'
     div
       h6.grey-text Work Team
       each item in viewDoc.workTeam
@@ -51,13 +32,9 @@ template(name='myWoForm')
         | 
         =item.lastName
         |, 
-  .row                     
-    div
-      h6.grey-text Title
-      =viewDoc.text       
-    div
-      h6.grey-text Description
-      =viewDoc.description       
+  .row  
+    +lgeField item=viewDoc.text label='Title'
+    +lgeField item=viewDoc.description label='Description'    
   .row
     .divider.teal
     .section
@@ -84,8 +61,9 @@ template(name='myWoForm')
         +afQuickField id='myWorkCause' name='cause' options=causeOptions
       .col.s12.m6.l3.remedy
         +afQuickField id='myWorkRemedy' name='remedy' options=remedyOptions
+        
 template(name='myWorkorderSafety')
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
     i.fa.fa-search   
   button.btn-floating.waves-effect.waves-light.tooltipped.green.btnComplete(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
     i.fa.fa-check   
@@ -95,7 +73,7 @@ template(name='myWorkorderSafetyCompleted')
     i.fa.fa-check
   
 template(name='myWorkorderWork')
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnView2(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
+  button.btn-floating.waves-effect.waves-light.tooltipped.btnView2(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
     i.fa.fa-search    
   button.btn-floating.waves-effect.waves-light.tooltipped.green.btnComplete2(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
     i.fa.fa-check  

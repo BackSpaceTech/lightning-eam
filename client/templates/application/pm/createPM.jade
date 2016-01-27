@@ -27,41 +27,16 @@ template(name='createPMPage')
                   +afQuickField name='pmIntervalUnits' type='select-radio-inline' value=intervalUnits                                  
               .col.s12.m6.l3
                 +afQuickField name='active'      
-            br                        
+            br  
             .row
               .divider.teal
               .section
-                .col.s12.m6.l3
-                  h6 Asset Group
-                    button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add Asset Group')
-                      i.fa.fa-plus
-                  +afQuickField name='assetGroup_ID'
-                .col.s12.m6.l3
-                  h6 Safety Method
-                    button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd2(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add Safety Method')
-                      i.fa.fa-plus                
-                  +afQuickField name='safetyPlan_ID'
-                .col.s12.m6.l3
-                  h6 Work Plan
-                    button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd3(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add Work Plan')
-                      i.fa.fa-plus                
-                  +afQuickField name='workPlan_ID'   
+                +afxSmlQuickFieldAdd title='Asset Group' field='workPlan' item='assetGroup_ID' tip='Add Asset Group'
+                +afxSmlQuickFieldAdd title='Safety Method' field='workPlan' item='safetyPlan_ID' tip='Add Safety Method'
+                +afxSmlQuickFieldAdd title='Work Plan' field='workPlan' item='workPlan_ID' tip='Add Work Plan'
           else
-            +spinner                                                    
-          .form-group
-            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-              a.btn-floating.btn-large.purple
-                i.large.mdi-navigation-menu
-              ul
-                li
-                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                    i.material-icons skip_previous
-                li
-                  button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
-                    i.fa.fa-undo
-                li
-                  button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
-                    i.fa.fa-check
+            +spinner 
+          +fabBackResetSubmit                                                   
 
 template(name='createPMPageAddAssetGroup')
   if Template.subscriptionsReady

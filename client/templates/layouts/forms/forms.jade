@@ -1,0 +1,99 @@
+template(name='smlField')
+  .col.s12.m6.l3
+    h6.grey-text
+      =label
+    =item
+
+template(name='lgeField')
+  .row
+  .row
+    h6.grey-text 
+      =label
+    =item
+
+template(name='frmSection')
+  .row   
+  .row
+    .divider.teal
+    .section
+      h6.teal-text 
+        =label
+
+// ************************ Fixed Action Button  *******************************
+
+template(name='fabBackResetSubmit')
+  .form-group
+    .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+      a.btn-floating.btn-large.purple
+        i.large.mdi-navigation-menu
+      ul
+        li
+          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+            i.material-icons skip_previous
+        li
+          button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
+            i.fa.fa-undo
+        li
+          button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
+            i.fa.fa-check   
+
+template(name='fabBack')
+  .form-group
+    .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+      a.btn-floating.btn-large.purple.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+        i.material-icons skip_previous 
+        
+template(name='fabBackSubmit')
+  .form-group
+    .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+      a.btn-floating.btn-large.purple
+        i.large.mdi-navigation-menu
+      ul
+        li
+          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+            i.material-icons skip_previous
+        li
+          button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
+            i.fa.fa-check                       
+
+template(name='fabBackCopyEdit')
+  .form-group
+    .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+      a.btn-floating.btn-large.purple
+        i.large.mdi-navigation-menu
+      ul
+        li
+          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+            i.material-icons skip_previous
+        li
+          a.btn-floating.green.tooltipped.btnCopy(data-position='left', data-tooltip='Copy')
+            i.fa.fa-copy
+        li
+          a.btn-floating.blue.tooltipped.btnEdit(data-position='left', data-tooltip='Edit')
+            i.fa.fa-edit
+
+template(name='fabBackEdit')
+  .form-group
+    .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+      a.btn-floating.btn-large.purple
+        i.large.mdi-navigation-menu
+      ul
+        li
+          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+            i.material-icons skip_previous
+        li
+          a.btn-floating.blue.tooltipped.btnEdit(data-position='left', data-tooltip='Edit')
+            i.fa.fa-edit      
+
+template(name='fabBackSearch')
+  .form-group
+    .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+      a.btn-floating.btn-large.purple
+        i.large.mdi-navigation-menu
+      ul
+        li
+          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+            i.material-icons skip_previous
+        li
+          button.btn-floating.green.tooltipped.btnSearch(type='button', data-position='left', data-tooltip='Search')
+            i.fa.fa-search

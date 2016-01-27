@@ -48,17 +48,17 @@ Template.editWorkorderForm.helpers
   safetyText: -> Session.get 'temp1'
 
 Template.editWorkorderForm.events
-  'click .editWorkorderForm .btnAdd': (e) ->
+  'click .team .btnAdd': (e) ->
     MaterializeModal.display {
       bodyTemplate: 'editWorkorderFormAddUser'
       title: 'Add Team Member'
     }
-  'click .editWorkorderForm .btnTemplate1': (e) ->
+  'click .safety .btnTemplate': (e) ->
     MaterializeModal.display {
       bodyTemplate: 'editWorkorderFormSafetyTemplate'
       title: 'Create from Template'
     }
-  'click .editWorkorderForm .btnTemplate2': (e) ->
+  'click .work .btnTemplate': (e) ->
     MaterializeModal.display {
       bodyTemplate: 'editWorkorderFormWorkTemplate'
       title: 'Create from Template'

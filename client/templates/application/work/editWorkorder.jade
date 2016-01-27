@@ -10,20 +10,7 @@ template(name='editWorkorderPage')
             +editWorkorderForm
           else
             +editRequestForm
-          .form-group
-            .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-              a.btn-floating.btn-large.purple
-                i.large.mdi-navigation-menu
-              ul
-                li
-                  button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
-                    i.material-icons skip_previous
-                li
-                  button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
-                    i.fa.fa-undo
-                li
-                  button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
-                    i.fa.fa-check
+          +fabBackResetSubmit
 
 template(name='editRequestForm') 
     legend Edit Request
@@ -93,7 +80,7 @@ template(name='editWorkorderForm')
           +afQuickField name='description'
     .row
       .divider.teal
-      .section
+      .section.team
         h6.teal-text Work Team   
           button.btn-floating.teal.tooltipped.btnAdd(type='button', data-position='bottom', data-tooltip='Quick Add Person')
             i.fa.fa-plus                 
@@ -104,32 +91,12 @@ template(name='editWorkorderForm')
             +afQuickField name=this.name label=false
     .row
       .divider.teal
-      .section
-        .row               
-          h6.teal-text Safety Method
-            button.autoform-add-item.btn-floating.waves-effect.waves-light.tooltipped.btnAdd2(type='button', data-autoform-field='safetyMethod', data-position='bottom', data-tooltip='Add')
-              i.fa.fa-plus
-            button.btn-floating.waves-effect.waves-light.tooltipped.btnTemplate1(type='button', data-position='bottom', data-tooltip='Create from Template')
-              i.fa.fa-file-o  
-          +afEachArrayItem name='safetyMethod'
-            .col.s12.m6.l3
-              button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
-                i.fa.fa-trash                            
-              +afQuickField name=this.name label=false
+      .section.safety
+        +afxArrayAddCreate title='Safety Method' field='safetyMethod' item='safetyMethod' tip='Add Safety Method Task' tip2='Create from Template'
     .row
       .divider.teal
-      .section                
-        .row      
-          h6.teal-text Work Plan
-            button.autoform-add-item.btn-floating.waves-effect.waves-light.btnAdd3(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add')
-              i.fa.fa-plus  
-            button.btn-floating.waves-effect.waves-light.tooltipped.btnTemplate2(type='button', data-position='bottom', data-tooltip='Create from Template')
-              i.fa.fa-file-o                    
-          +afEachArrayItem name='workPlan'
-            .col.s12.m6.l3 
-              button.autoform-remove-item.btn-floating.waves-effect.waves-light.red(type='button', data-position='bottom', data-tooltip='Remove')
-                i.fa.fa-trash                             
-              +afQuickField name=this.name label=false      
+      .section.work
+        +afxArrayAddCreate title='Work Plan' field='workPlan' item='workPlan' tip='Add Work Task' tip2='Create from Template'                    
         
 template(name='editWorkorderFormAddUser')
   +reactiveTable collection='resources-data' settings=settings class='table striped'
