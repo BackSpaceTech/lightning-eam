@@ -88,7 +88,7 @@ Template.activatePMPage.events
           Collections.PM.Current.workorderPM = temp
           Session.set 'currentDoc', Collections.PM.Current
         else
-          Materialize.toast("Cancelled", 3000, "red")
+          toast 'error', 'Cancelled'
   'click .rtEdit .btnEdit': (event) ->
     temp = Collections.PM.Current.workorderPM
     for a in [0...temp.length]
@@ -112,13 +112,13 @@ Template.activatePMPage.events
           Collections.PM.Current.workorderPM = temp
           Session.set 'currentDoc', Collections.PM.Current
         else
-          Materialize.toast("Cancelled", 3000, "red")
+          toast 'error', 'Cancelled'
   'submit form': (event, template) ->
     event.preventDefault()
     temp = {$set: {workorderPM: Collections.PM.Current.workorderPM}}
     Meteor.call 'updatePM', temp, Collections.PM.Current._id, (error, result) ->
       if error
-        Materialize.toast("Error", 3000, "red")
+        toast 'error', error
       else
-        Materialize.toast("Updated PM", 3000, "green")
+        toast 'success', result
       return

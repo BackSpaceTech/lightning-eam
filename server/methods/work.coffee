@@ -5,6 +5,7 @@ Meteor.methods
     # Insert a work order into the collection
     Workorders.insert doc
     this.unblock()
+    return 'Created'
   updateWO:(doc, ID) ->
     tempWO = Workorders.findOne('_id':ID)
     if doc.$set.status > tempWO.status # Status has been progressed
@@ -32,20 +33,27 @@ Meteor.methods
     # Insert a work order into the collection
     Workorders.update({ _id: ID }, doc)
     this.unblock()
+    return 'Updated'
   deleteWO: (docID) ->
     Workorders.remove {'_id': docID}
     this.unblock()
+    return 'Deleted'
   setWorkQuery: (query) ->
     Collections.Workorders.workQuery = query
+    return 'Querying database...'
   createWorkTemplate: (doc) ->
     Workplans.insert doc
     this.unblock()
+    return 'Created Work Template'
   createSafetyTemplate: (doc) ->
     Safetyplans.insert doc
     this.unblock()
+    return 'Created Safety Method'
   deleteSafety: (docID) ->
     Safetyplans.remove {'_id': docID}
     this.unblock()
+    return 'Deleted Safety Method'
   deleteWork: (docID) ->
     Workplans.remove {'_id': docID}
     this.unblock()
+    return 'Deleted Work Template'

@@ -7,13 +7,13 @@ Meteor.startup ->
   # Initialise Autoform
   hooksObject = {
     # Called when any submit operation succeeds
-    onSuccess: (formType, result) -> toastr.success 'Database operation completed.'
+    onSuccess: (formType, result) -> toast 'success', 'Database operation completed.'
     # Called when any submit operation fails
     onError: (formType, error) ->
       if (formType == "method")
-        toastr.error(error.details)
+        toast 'error', error.details
       else
-        toastr.error(error)
+        toast 'error' error
     }
   AutoForm.addHooks(null, hooksObject);
 

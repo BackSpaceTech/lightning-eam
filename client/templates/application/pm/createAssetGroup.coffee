@@ -4,7 +4,7 @@ Template.createAssetGroupPage.onCreated ->
 Template.createAssetGroupPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
-  assetTree()  
+  assetTree()
 
 Template.createAssetGroupPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
@@ -38,12 +38,12 @@ Template.createAssetGroupPage.events
     if temp.indexOf(Session.get('currentID').toString()) == -1
       temp.push Session.get('currentID').toString()
       template.assetArray.set temp
-      toastr.success("Asset added")
+      toast 'success', 'Asset added'
     else
-      toastr.error("Asset already added")
+      toast 'error', 'Asset already added'
 
   'click .createAssetGroup .btnDelete': (event, template) ->
     temp = template.assetArray.get()
     temp.splice(temp.indexOf(this._id), 1)
     template.assetArray.set temp
-    toastr.success("Asset removed")
+    toast 'success', 'Asset removed'

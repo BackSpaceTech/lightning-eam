@@ -22,8 +22,8 @@ Template.deleteLocationPage.events
     else
       Meteor.call 'deleteLoc', Session.get('currentID').toString(), (error, result) ->
         if error
-          Materialize.toast("Error", 3000, "red")
+          toast 'error', error
         else
-          Materialize.toast("Deleted Location", 3000, "green")
+          toast 'success', result
         return
     FlowRouter.go '/assets'

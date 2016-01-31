@@ -40,8 +40,8 @@ Template.safetyTemplatesPage.events
           if response.submit
             Meteor.call 'deleteSafety', Collections.Safetyplans.Current._id, (error, result) ->
               if error
-                Materialize.toast("Error", 3000, "red")
+                toast 'error', error
               else
-                Materialize.toast("Deleted Safety Method", 3000, "green")
+                toast 'success', result
               return
         return

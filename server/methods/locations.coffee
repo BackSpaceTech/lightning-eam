@@ -15,6 +15,7 @@ Meteor.methods
         tempPath.push(id)
         Locations.update id, { $set: { treePath: tempPath }}
         Locations.update id, { $set: { id: id }}
+        return 'Created'
       else
         console.log(error)
         return error
@@ -27,6 +28,7 @@ Meteor.methods
     # Delete a location / asset from the collection
     Locations.remove doc
     this.unblock()
+    return 'Deleted'
   createMeter: (doc, meter) ->
     # Check if meter array already exists
     if (doc.meters)
@@ -34,6 +36,8 @@ Meteor.methods
     else
       Locations.update(doc._id, { $set: { meters: [meter]} })
     this.unblock()
+    return 'Created Meter'
   updateMeter: (doc, meter) ->
     Locations.update(doc._id, { $set: { meters: meter} })
     this.unblock()
+    return 'Updated Meter'

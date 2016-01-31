@@ -14,7 +14,7 @@ Template.workQueryPage.helpers
     temp = Counts.get 'workorders-count'
     if temp > 1000
       FlowRouter.go '/work'
-      toastr.error 'Your query exceeds 1000 docs. ('+temp+')'
+      Materialize.toast('Your query exceeds 1000 docs. ('+temp+')', 3000, 'red')
     else
       return temp
   customTemplate: -> Customisations.viewPeople
@@ -60,7 +60,7 @@ Template.workQueryPage.events
               if error
                 Materialize.toast("Error", 3000, "red")
               else
-                Materialize.toast("Deleted", 3000, "green")
+                Materialize.toast("Deleted", 3000, "teal")
               return
         return
 

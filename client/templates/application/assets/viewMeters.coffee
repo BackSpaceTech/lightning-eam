@@ -38,9 +38,9 @@ Template.viewMetersPage.events
         break
     Meteor.call 'updateMeter', doc, tempArray, (error, result) ->
       if error
-        Materialize.toast("Error", 3000, "red")
+        toast 'error', error
       else
-        Materialize.toast("Updated Meter", 3000, "green")
+        toast 'success', result
       return
 
   'click #viewMetersPageModal2 button': (event) ->
@@ -54,7 +54,7 @@ Template.viewMetersPage.events
         break
     Meteor.call 'updateMeter', doc, tempArray, (error, result) ->
       if error
-        Materialize.toast("Error", 3000, "red")
+        toast 'error', error
       else
-        Materialize.toast("Updated Meter", 3000, "green")
+        toast 'success', result
       return

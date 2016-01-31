@@ -25,8 +25,8 @@ Template.createMeterPage.events
       reading: $('#inpCreateMeterPageReading').val()
     Meteor.call 'createMeter', doc, meter, (error, result) ->
       if error
-        Materialize.toast("Error", 3000, "red")
+        toast 'error', error
       else
-        Materialize.toast("Created Meter", 3000, "green")
+        toast 'success', result
       return
     FlowRouter.go history.back()

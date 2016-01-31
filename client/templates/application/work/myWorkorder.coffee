@@ -1,6 +1,6 @@
 Template.myWorkorderPage.onRendered ->
   Session.set 'currentDoc', Collections.Workorders.Current
-  $(".dropdown-button").dropdown()  
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.myWorkorderPage.onDestroyed ->
@@ -37,7 +37,7 @@ Template.myWorkorderPage.events
             if (!jQuery.isEmptyObject Collections.Workorders.Clock) && (Collections.Workorders.Clock.getTime().time>0)
               Collections.Workorders.Clock.reset()
               $('.flipClock').hide()
-              toastr.success 'Reset Work Order'
+              toast 'success', 'Reset Work Order'
           else
             return
     else

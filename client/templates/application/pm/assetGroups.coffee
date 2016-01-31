@@ -43,8 +43,8 @@ Template.assetGroupsPage.events
           if response.submit
             Meteor.call 'deleteAssetGroup', Collections.Assetgroups.Current._id, (error, result) ->
               if error
-                Materialize.toast("Error", 3000, "red")
+                toast 'error', error
               else
-                Materialize.toast("Deleted Asset Group", 3000, "green")
+                toast 'success', result
               return
         return

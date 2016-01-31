@@ -49,9 +49,9 @@ Template.viewPeoplePage.events
     temp = Collections.Users.Current
     Meteor.call 'deleteUser', temp._id, (error, result) ->
       if error
-        Materialize.toast("Error", 3000, "red")
+        toast 'error', error
       else
-        Materialize.toast("Deleted User", 3000, "green")
+        toast 'success', result
       return
     FlowRouter.go '/resources'
 
