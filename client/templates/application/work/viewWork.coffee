@@ -2,15 +2,16 @@ Template.viewWorkPage.onCreated ->
   this.quickSearch = new ReactiveVar true
 
 Template.viewWorkPage.onRendered ->
-  assetTree()
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
+  assetTree()
 
 Template.viewWorkPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.viewWorkPage.helpers
   quickSearch: -> Template.instance().quickSearch.get()
-  assetDetails: -> 
+  assetDetails: ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     Collections.Locations.Current
 
@@ -53,7 +54,12 @@ Template.viewWorkPage.events
           Collections.Workorders.workQuery.woApprovedDate = dateRange
         if $('#radioViewWorkDates2').prop('checked') # WO completed date
           Collections.Workorders.workQuery.woCompletedDate = dateRange
-    Meteor.call 'setWorkQuery', Collections.Workorders.workQuery
+    Meteor.call 'setWorkQuery', Collections.Workorders.workQuery, (error, result) ->
+      if error
+        Materialize.toast("Error", 3000, "red")
+      else
+        Materialize.toast("Querying server...", 3000, "green")
+      return
     FlowRouter.go '/work/query'
 
 Template.viewWorkAdvanced.onRendered ->

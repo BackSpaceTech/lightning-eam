@@ -4,6 +4,7 @@ Template.duplicateLocationPage.onCreated ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.duplicateLocationPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.duplicateLocationPage.onDestroyed ->

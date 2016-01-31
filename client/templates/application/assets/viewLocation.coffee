@@ -4,6 +4,7 @@ Template.viewLocationPage.onCreated ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.viewLocationPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewLocationPage.onDestroyed ->

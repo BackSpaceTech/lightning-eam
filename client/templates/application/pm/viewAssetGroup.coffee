@@ -4,6 +4,7 @@ Template.viewAssetGroupPage.onCreated ->
     self.subscribe 'singleAssetGroup', Session.get('currentDoc')._id.toString()
 
 Template.viewAssetGroupPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewAssetGroupPage.onDestroyed ->

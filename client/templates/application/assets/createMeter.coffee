@@ -3,6 +3,7 @@ Template.createMeterPage.onCreated ->
   self.autorun -> self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.createMeterPage.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.createMeterPage.onDestroyed ->
@@ -22,5 +23,10 @@ Template.createMeterPage.events
       id: $('#inpCreateMeterPageID').val()
       units: $('#inpCreateMeterPageUnits').val()
       reading: $('#inpCreateMeterPageReading').val()
-    Meteor.call 'createMeter', doc, meter
+    Meteor.call 'createMeter', doc, meter, (error, result) ->
+      if error
+        Materialize.toast("Error", 3000, "red")
+      else
+        Materialize.toast("Created Meter", 3000, "green")
+      return
     FlowRouter.go history.back()

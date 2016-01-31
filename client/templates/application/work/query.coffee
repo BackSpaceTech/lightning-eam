@@ -1,4 +1,5 @@
 Template.workQueryPage.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.workQueryPage.onDestroyed ->
@@ -37,13 +38,13 @@ Template.workQueryPage.helpers
     }
 
 Template.workQueryPage.events
-  'click .workQuery .btnView': (e) ->
+  'click .workQuery .btnView': (event) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/view-workorder'
-  'click .workQuery .btnEdit': (e) ->
+  'click .workQuery .btnEdit': (event) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/edit-workorder'
-  'click .workQuery .btnDelete': (e) ->
+  'click .workQuery .btnDelete': (event) ->
     Collections.Workorders.Current = this
     MaterializeModal.display
       bodyTemplate: 'workQueryDelete'
@@ -55,7 +56,12 @@ Template.workQueryPage.events
           console.error error
         else
           if response.submit
-            Meteor.call 'deleteWO', Collections.Workorders.Current._id
+            Meteor.call 'deleteWO', Collections.Workorders.Current._id, (error, result) ->
+              if error
+                Materialize.toast("Error", 3000, "red")
+              else
+                Materialize.toast("Deleted", 3000, "green")
+              return
         return
 
 Template.editWO.onRendered ->

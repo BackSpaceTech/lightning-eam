@@ -5,6 +5,7 @@ Template.createAssetPage.helpers
   customTemplate: -> Customisations.createAsset
 
 Template.createAssetPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.createAssetPage.onDestroyed ->

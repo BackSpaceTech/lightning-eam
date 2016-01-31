@@ -1,4 +1,5 @@
 Template.createSafetyTemplatePage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.createSafetyTemplatePage.onDestroyed ->

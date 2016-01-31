@@ -1,8 +1,9 @@
 Template.editWorkorderPage.onRendered ->
+  $(".dropdown-button").dropdown()
+  $('.tooltipped').tooltip {delay: 50}  
   if !Collections.Workorders.Current.workTeam
     Collections.Workorders.Current.workTeam = []
   Session.set 'currentDoc', Collections.Workorders.Current
-  $('.tooltipped').tooltip {delay: 50}
 
 Template.editWorkorderPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
@@ -15,7 +16,7 @@ Template.editWorkorderPage.helpers
   editWorkorderSchema: -> Schema.requestsApproved
 
 Template.editWorkorderPage.events
-  'click .editWorkorder .btnSubmit': (e) ->
+  'click .editWorkorder .btnSubmit': (event) ->
     Session.set 'currentDoc', Collections.Workorders.Current
     FlowRouter.go '/work/query'
 
@@ -48,17 +49,17 @@ Template.editWorkorderForm.helpers
   safetyText: -> Session.get 'temp1'
 
 Template.editWorkorderForm.events
-  'click .team .btnAdd': (e) ->
+  'click .team .btnAdd': (event) ->
     MaterializeModal.display {
       bodyTemplate: 'editWorkorderFormAddUser'
       title: 'Add Team Member'
     }
-  'click .safety .btnTemplate': (e) ->
+  'click .safety .btnTemplate': (event) ->
     MaterializeModal.display {
       bodyTemplate: 'editWorkorderFormSafetyTemplate'
       title: 'Create from Template'
     }
-  'click .work .btnTemplate': (e) ->
+  'click .work .btnTemplate': (event) ->
     MaterializeModal.display {
       bodyTemplate: 'editWorkorderFormWorkTemplate'
       title: 'Create from Template'
@@ -79,7 +80,7 @@ Template.editWorkorderFormAddUser.helpers
     }
 
 Template.editWorkorderFormAddUser.events
-  'click .editWorkorderForm .btnEach': (e) ->
+  'click .editWorkorderForm .btnEach': (event) ->
     temp = {
       userID: this._id
       firstName: this.profile.firstName
@@ -120,7 +121,7 @@ Template.editWorkorderFormSafetyTemplate.helpers
     }
 
 Template.editWorkorderFormSafetyTemplate.events
-  'click .editWorkorderForm .btnEach2': (e) ->
+  'click .editWorkorderForm .btnEach2': (event) ->
     temp = this._id
     Meteor.subscribe 'singleSafetymethod', this._id, {
       onReady: ->
@@ -148,7 +149,7 @@ Template.editWorkorderFormWorkTemplate.helpers
     }
 
 Template.editWorkorderFormWorkTemplate.events
-  'click .editWorkorderForm .btnEach3': (e) ->
+  'click .editWorkorderForm .btnEach3': (event) ->
     temp = this._id
     Meteor.subscribe 'singleWorkplan', this._id, {
       onReady: ->

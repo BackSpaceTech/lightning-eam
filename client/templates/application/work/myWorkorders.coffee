@@ -1,4 +1,5 @@
 Template.myWorkordersPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.myWorkordersPage.onDestroyed ->
@@ -34,13 +35,13 @@ Template.myWorkordersPage.helpers
     }
 
 Template.myWorkordersPage.events
-  'click .myWorkorders .btnStart': (e) ->
+  'click .myWorkorders .btnStart': (event) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/my-workorder'
-  'click .myWorkorders .btnView': (e) ->
+  'click .myWorkorders .btnView': (event) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/view-workorder'
-  'click .myWorkorders .btnEdit': (e) ->
+  'click .myWorkorders .btnEdit': (event) ->
     Collections.Workorders.Current = this
     FlowRouter.go '/work/edit-workorder'
 

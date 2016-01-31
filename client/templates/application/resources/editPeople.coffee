@@ -3,6 +3,7 @@ Template.editPeoplePage.onCreated ->
   self.autorun -> self.subscribe 'singleUser',Collections.Users.Current._id
 
 Template.editPeoplePage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.editPeoplePage.onDestroyed ->
@@ -15,5 +16,5 @@ Template.editPeoplePage.helpers
   customTemplate: -> Customisations.editPeople
 
 Template.editPeoplePage.events
-  'click .editPeople .btnSubmit': (e) ->
+  'click .editPeople .btnSubmit': (event) ->
     FlowRouter.go '/resources/view-people'

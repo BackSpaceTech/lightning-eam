@@ -1,4 +1,5 @@
 Template.viewPMsPage.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewPMsPage.onDestroyed ->
@@ -17,19 +18,20 @@ Template.viewPMsPage.helpers
       { key: 'assetGroupDetails.groupText', label: ' Asset Group' }
       { key: 'pmDescription', label: ' PM Description' }
       { key: '', label: 'View/Edit/Delete', tmpl: Template.rtViewEditDelete }
+      { key: '', label: 'Activate', tmpl: Template.viewPMsActivate }
     ]
   }
 
 Template.viewPMsPage.events
-  'click .viewPMs .btnView': (e) ->
+  'click .viewPMs .btnView': (event) ->
     Session.set 'currentDoc', PM.findOne {_id: this._id}
     FlowRouter.go '/pm/view-pm'
 
-  'click .viewPMs .btnEdit': (e) ->
+  'click .viewPMs .btnEdit': (event) ->
     Session.set 'currentDoc', PM.findOne {_id: this._id}
     FlowRouter.go '/pm/edit-pm'
 
-  'click .viewPMs .btnDelete': (e) ->
+  'click .viewPMs .btnDelete': (event) ->
     Collections.PM.CurrentID = this._id
     MaterializeModal.display
       bodyTemplate: 'viewPMsDelete'
@@ -41,5 +43,14 @@ Template.viewPMsPage.events
           console.error error
         else
           if response.submit
-            Meteor.call 'deletePM',  Collections.PM.CurrentID
+            Meteor.call 'deletePM',  Collections.PM.CurrentID, (error, result) ->
+              if error
+                Materialize.toast("Error", 3000, "red")
+              else
+                Materialize.toast("Deleted PM", 3000, "green")
+              return
         return
+
+  'click .viewPMs .btnStart': (event) ->
+    Session.set 'currentDoc', PM.findOne {_id: this._id}
+    FlowRouter.go '/pm/activate-pm'

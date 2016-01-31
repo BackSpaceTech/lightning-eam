@@ -1,12 +1,33 @@
 
 template(name='rtViewEditDelete')
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
-    i.fa.fa-eye
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
-    i.fa.fa-edit 
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
-    i.fa.fa-trash 
+  .rtViewEditDelete
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+      i.fa.fa-eye
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+      i.fa.fa-edit 
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+      i.fa.fa-trash 
 
 template(name='rtDelete')
-  button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
-    i.fa.fa-trash
+  .rtDelete
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+      i.fa.fa-trash
+      
+template(name='rtAdd')
+  .rtAdd
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnAdd.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Add')
+      i.fa.fa-plus     
+    
+template(name='rtEdit')
+  .rtEdit
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+      i.fa.fa-edit       
+
+template(name='rtBoolean')
+  .rtBoolean
+    if active 
+      i.green-text.fa.fa-check-circle
+    else if completed
+      i.green-text.fa.fa-check-circle
+    else
+      i.red-text.fa.fa-close

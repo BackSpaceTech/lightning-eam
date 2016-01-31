@@ -4,6 +4,7 @@ Template.viewMetersPage.onCreated ->
      self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.viewMetersPage.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewMetersPage.onDestroyed ->
@@ -16,15 +17,15 @@ Template.viewMetersPage.helpers
     return Collections.Locations.Current
 
 Template.viewMetersPage.events
-  'click .btnEach': (e) ->
+  'click .btnEach': (event) ->
     Collections.Locations.Current.meter = this
     $('#viewMetersPageModal1').openModal()
 
-  'click .btnEach2': (e) ->
+  'click .btnEach2': (event) ->
     Collections.Locations.Current.meter = this
     $('#viewMetersPageModal2').openModal()
 
-  'click #viewMetersPageModal1 button': (e) ->
+  'click #viewMetersPageModal1 button': (event) ->
     doc = Collections.Locations.Current
     temp = $('#viewMetersPageModal1 input').val()
     TempArray = []
@@ -35,9 +36,14 @@ Template.viewMetersPage.events
       if (doc.meters[a].id == Collections.Locations.Current.meter.id)
         tempArray[a] = Collections.Locations.Current.meter
         break
-    Meteor.call 'updateMeter', doc, tempArray
+    Meteor.call 'updateMeter', doc, tempArray, (error, result) ->
+      if error
+        Materialize.toast("Error", 3000, "red")
+      else
+        Materialize.toast("Updated Meter", 3000, "green")
+      return
 
-  'click #viewMetersPageModal2 button': (e) ->
+  'click #viewMetersPageModal2 button': (event) ->
     doc = Collections.Locations.Current
     TempArray = []
     tempArray = doc.meters;
@@ -46,4 +52,9 @@ Template.viewMetersPage.events
       if (doc.meters[a].id == Collections.Locations.Current.meter.id)
         tempArray.splice(a,1)
         break
-    Meteor.call 'updateMeter', doc, tempArray
+    Meteor.call 'updateMeter', doc, tempArray, (error, result) ->
+      if error
+        Materialize.toast("Error", 3000, "red")
+      else
+        Materialize.toast("Updated Meter", 3000, "green")
+      return

@@ -4,7 +4,7 @@ Template.editPMPage.onCreated ->
     self.subscribe 'singlePM', (Session.get 'currentID').toString()
 
 Template.editPMPage.onRendered ->
-  Session.set 'temp', true
+  $(".dropdown-button").dropdown()  
 
 Template.editPMPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
@@ -17,16 +17,9 @@ Template.editPMPage.helpers
   pmSchema: -> Schema.pm
   viewDoc: -> PM.findOne { _id: (Session.get 'currentID').toString() }
   createdID: -> Meteor.userId()
-  showIntervalUnits: -> Session.get 'temp'
 
 Template.editPMPage.events
-  'click #afIntervalType_0, click #afIntervalType_1': (e)  ->
-    Session.set 'temp', true
-
-  'click #afIntervalType_2': (e)  ->
-    Session.set 'temp', false
-
-  'click .editPM .btnAdd': (e)  ->
+  'click .editPM .btnAdd': (event)  ->
     MaterializeModal.display {
       bodyTemplate: 'createPMPageAddAssetGroup'
       title: 'Select Asset Group'
@@ -36,7 +29,7 @@ Template.editPMPage.events
         else
           $( 'input[name="assetGroup_ID"]' ).val(Collections.Assetgroups.CurrentID)
     }
-  'click .editPM .btnAdd2': (e) ->
+  'click .editPM .btnAdd2': (event) ->
     MaterializeModal.display {
       bodyTemplate: 'createPMPageAddSafetyMethod'
       title: 'Select Safety Method'
@@ -46,7 +39,7 @@ Template.editPMPage.events
         else
           $( 'input[name="safetyPlan_ID"]' ).val(Collections.Safetyplans.CurrentID)
     }
-  'click .editPM .btnAdd3': (e) ->
+  'click .editPM .btnAdd3': (event) ->
     MaterializeModal.display {
       bodyTemplate: 'createPMPageAddWorkPlan'
       title: 'Select Work Plan'
@@ -78,7 +71,7 @@ Template.editPMPageAddAssetGroup.helpers
   }
 
 Template.editPMPageAddAssetGroup.events
-  'click .rtable .btnAdd': (e) ->
+  'click .rtable .btnAdd': (event) ->
     Collections.Assetgroups.CurrentID = this._id
     MaterializeModal.close()
 
@@ -103,7 +96,7 @@ Template.editPMPageAddSafetyMethod.helpers
   }
 
 Template.editPMPageAddSafetyMethod.events
-  'click .rtable .btnAdd1': (e) ->
+  'click .rtable .btnAdd1': (event) ->
     Collections.Safetyplans.CurrentID = this._id
     MaterializeModal.close()
 
@@ -128,6 +121,6 @@ Template.editPMPageAddWorkPlan.helpers
   }
 
 Template.editPMPageAddWorkPlan.events
-  'click .rtable .btnAdd2': (e) ->
+  'click .rtable .btnAdd2': (event) ->
     Collections.Workplans.CurrentID = this._id
     MaterializeModal.close()

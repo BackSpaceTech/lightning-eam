@@ -4,6 +4,7 @@ Template.procurementPage.onCreated ->
   $('#header1DesktopUL li').eq(5).addClass 'active'
 
 Template.procurementPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.procurementPage.onDestroyed ->

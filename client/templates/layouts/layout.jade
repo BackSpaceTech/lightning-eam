@@ -1,4 +1,4 @@
-// **************************** Layout **************************
+// **************************** Layout *****************************************
 template(name='layout')
   #wrapper
     #main
@@ -6,45 +6,39 @@ template(name='layout')
       .flow-text.blue-grey-text.text-darken-3
         +Template.dynamic template=content
     +Template.dynamic(template=footer)   
-
-// **************************** Layout Assets **************************
+// **************************** Layout Assets **********************************
 template(name='layoutAssets')
   #wrapper
     #main
       +Template.dynamic(template=header)
       .flow-text.blue-grey-text.text-darken-3
         +Template.dynamic template=content
-    +Template.dynamic(template=footer)
-    
-// **************************** Layout PM **************************
+    +Template.dynamic(template=footer)    
+// **************************** Layout PM **************************************
 template(name='layoutPM')
   #wrapper
     #main
       +Template.dynamic(template=header)
       .flow-text.blue-grey-text.text-darken-3
         +Template.dynamic template=content
-    +Template.dynamic(template=footer)    
-    
-// **************************** Layout Resources **************************
+    +Template.dynamic(template=footer)      
+// **************************** Layout Resources *******************************
 template(name='layoutResources')
   #wrapper
     #main
       +Template.dynamic(template=header)
       .flow-text.blue-grey-text.text-darken-3
         +Template.dynamic template=content
-    +Template.dynamic(template=footer)  
-    
-// **************************** Layout Work **************************
+    +Template.dynamic(template=footer)    
+// **************************** Layout Work ************************************
 template(name='layoutWork')
   #wrapper
     #main
       +Template.dynamic(template=header)
       .flow-text.blue-grey-text.text-darken-3
         +Template.dynamic template=content
-    +Template.dynamic(template=footer)            
-             
-
-// **************************** Sign In Layout **************************
+    +Template.dynamic(template=footer)                        
+// **************************** Sign In Layout *********************************
 template(name='layoutSignIn')
   #wrapper
     #main
@@ -59,9 +53,33 @@ template(name='layoutSignIn')
                 +Template.dynamic(template=content)
         br
     +Template.dynamic(template=footer)
-
-// **************************** Header Content **************************
+// **************************** Header Content *********************************
 template(name='header1')
+  // Dropdown Structure
+  ul#dropdown1.dropdown-content
+    li
+      a(href="{{pathFor '/assets/view-locations'}}") Assets & Locations
+    li
+      a(href="{{pathFor '/assets/view-designations'}}") Asset Designation
+  ul#dropdown2.dropdown-content
+    li
+      a(href="{{pathFor '/work/create'}}") Create Request
+    li
+      a(href="{{pathFor '/work/view'}}") Work Mgt    
+    li
+      a(href="{{pathFor '/work/my-workorders'}}") My Work
+    li
+      a(href="{{pathFor '/work/work-template'}}") Work Template  
+    li
+      a(href="{{pathFor '/work/safety-template'}}") Safety Template 
+  ul#dropdown3.dropdown-content
+    li
+      a(href="{{pathFor '/pm/view-groups'}}") Asset Groups
+    li
+      a(href="{{pathFor '/pm/view-pms'}}") PM Plans    
+  ul#dropdown4.dropdown-content
+    li
+      a(href="{{pathFor '/resources/view-people'}}") People                      
   // Navigation
   .navbar-fixed
     nav.teal.darken-3
@@ -70,22 +88,26 @@ template(name='header1')
           if serverConnected
             i.fa.fa-flash.light-green-text.accent-3.navbar-icon
           else
-            i.fa.fa-flash.red-text.navbar-icon
+            i.fa.fa-flash.red-text.navbar-icon  
         ul#header1DesktopUL.left.hide-on-med-and-down
-          li.waves-effect.waves-light
-            a(href="{{pathFor '/assets/view-locations'}}") Assets
-          li.waves-effect.waves-light
-            a(href="{{pathFor '/work'}}") Work Mgt
-          li.waves-effect.waves-light
-            a(href="{{pathFor '/pm'}}") Planned Maint
-          li.waves-effect.waves-light
-            a(href="{{pathFor '/resources/view-people'}}") Resources
+          li
+            a.waves-effect.waves-light.dropdown-button(href="{{pathFor '/assets/view-locations'}}", data-activates='dropdown1')
+              | Assets   
+          li
+            a.waves-effect.waves-light.dropdown-button(href="{{pathFor '/work'}}", data-activates='dropdown2')
+              | Work Mgt
+          li
+            a.waves-effect.waves-light.dropdown-button(href="{{pathFor '/pm'}}", data-activates='dropdown3')
+              | Planned Maint
+          li
+            a.waves-effect.waves-light.dropdown-button(href="{{pathFor '/resources/view-people'}}", data-activates='dropdown4')
+              | Resources              
           li.waves-effect.waves-light
             a(href="{{pathFor '/inventory'}}") Inventory
           li.waves-effect.waves-light
             a(href="{{pathFor '/procurement'}}") Procurement
           li.waves-effect.waves-light
-            a(href="{{pathFor '/reports'}}") Reports
+            a(href="{{pathFor '/reports'}}") Reports      
           li.waves-effect.waves-light
             a(href="https://github.com/BackSpaceTech/lightning-eam/wiki" target='_blank') Help
           li.waves-effect.waves-light
@@ -124,7 +146,6 @@ template(name='header1')
               a(href="{{pathFor '/'}}") Login
         a.button-collapse(href='#', data-activates='slide-out')
           i.mdi-navigation-menu
-
 // **************************** Footer Content **************************
 template(name='footer1')
   footer.page-footer.teal.darken-3
@@ -148,7 +169,6 @@ template(name='footer1')
       .container
         | © 2014 Copyright Asia Pacific Robotics Corporation Pty Ltd
         a.grey-text.text-lighten-4.right(href='#!') More Links
-
 // **************************** Busy Spinner **************************
 template(name='spinner')
   br

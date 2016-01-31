@@ -1,4 +1,5 @@
 Template.assetGroupsPage.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.assetGroupsPage.onDestroyed ->
@@ -20,15 +21,15 @@ Template.assetGroupsPage.helpers
     }
 
 Template.assetGroupsPage.events
-  'click .assetGroups .btnView': (e) ->
+  'click .assetGroups .btnView': (event) ->
     Collections.Assetgroups.Current = this
     Session.set 'currentDoc', this
     FlowRouter.go '/pm/view-group'
-  'click .assetGroups .btnEdit': (e) ->
+  'click .assetGroups .btnEdit': (event) ->
     Collections.Assetgroups.Current = this
     Session.set 'currentDoc', this
     FlowRouter.go '/pm/edit-group'
-  'click .assetGroups .btnDelete': (e) ->
+  'click .assetGroups .btnDelete': (event) ->
     Collections.Assetgroups.Current = this
     MaterializeModal.display
       bodyTemplate: 'assetGroupsDelete'
@@ -40,5 +41,10 @@ Template.assetGroupsPage.events
           console.error error
         else
           if response.submit
-            Meteor.call 'deleteAssetGroup', Collections.Assetgroups.Current._id
+            Meteor.call 'deleteAssetGroup', Collections.Assetgroups.Current._id, (error, result) ->
+              if error
+                Materialize.toast("Error", 3000, "red")
+              else
+                Materialize.toast("Deleted Asset Group", 3000, "green")
+              return
         return

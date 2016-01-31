@@ -16,17 +16,10 @@ template(name='editPMPage')
                 +afQuickField name='pmPriority'
             .row
               +afQuickField name='pmDescription'
-            .row                         
+            .row
               .col.s12.m6.l3
                 h6 Interval Type
-                +afFieldInput name='pmIntervalType' id='afIntervalType' type='select-radio-inline'
-              .col.s12.m6.l3
-                +afQuickField name='pmInterval'  
-              if showIntervalUnits                  
-                .col.s12.m6.l3
-                  +afQuickField name='pmIntervalUnits' type='select-radio-inline' value=intervalUnits                                  
-              .col.s12.m6.l3
-                +afQuickField name='active'      
+                +afFieldInput name='pmIntervalType' id='afIntervalType' type='select-radio-inline'                             
             br                        
             .row
               .divider.teal

@@ -1,4 +1,5 @@
 Template.viewAssetPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewAssetPage.onDestroyed ->

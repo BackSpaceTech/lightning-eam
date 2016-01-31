@@ -1,4 +1,5 @@
 Template.editLocationPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.editLocationPage.onDestroyed ->

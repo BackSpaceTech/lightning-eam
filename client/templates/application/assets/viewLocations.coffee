@@ -4,6 +4,7 @@ Template.viewLocationsPage.onCreated ->
   $('#header1DesktopUL li').eq(0).addClass 'active'
 
 Template.viewLocationsPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
   assetTree()
 
@@ -17,11 +18,11 @@ Template.viewLocationsPage.helpers
   serverConnected: -> (Meteor.status().status == 'connected');
 
 Template.viewLocationsPage.events
-  'click .viewLocations .btnNewDB': (e) ->
+  'click .viewLocations .btnNewDB': (event) ->
     Session.set 'currentID', '#'
     FlowRouter.go '/assets/create-location'
 
-  'click .viewLocations .btnNewLoc': (e) ->
+  'click .viewLocations .btnNewLoc': (event) ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     temp = Collections.Locations.Current
     if (!temp) # No locations
@@ -31,10 +32,10 @@ Template.viewLocationsPage.events
     else
       FlowRouter.go '/assets/create-location'
 
-  'click .viewLocations .btnNewAss': (e) ->
+  'click .viewLocations .btnNewAss': (event) ->
     FlowRouter.go '/assets/create-asset'
 
-  'click .viewLocations .btnEdit': (e) ->
+  'click .viewLocations .btnEdit': (event) ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'
@@ -44,7 +45,7 @@ Template.viewLocationsPage.events
       else
         FlowRouter.go '/assets/edit-location'
 
-  'click .viewLocations .btnCopy': (e) ->
+  'click .viewLocations .btnCopy': (event) ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'
@@ -54,7 +55,7 @@ Template.viewLocationsPage.events
       else
         FlowRouter.go '/assets/duplicate-location'
 
-  'click .viewLocations .btnViewLoc': (e) ->
+  'click .viewLocations .btnViewLoc': (event) ->
     Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'
@@ -64,13 +65,13 @@ Template.viewLocationsPage.events
       else
         FlowRouter.go '/assets/view-location'
 
-  'click .viewLocations .btnDeleteLoc': (e) ->
+  'click .viewLocations .btnDeleteLoc': (event) ->
     if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'
     else
       FlowRouter.go '/assets/delete-location'
 
-  'click .viewLocations .btnCreateMeter': (e) ->
+  'click .viewLocations .btnCreateMeter': (event) ->
     if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'
     else

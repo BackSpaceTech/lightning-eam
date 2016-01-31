@@ -1,4 +1,5 @@
 Template.safetyTemplatesPage.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.safetyTemplatesPage.onDestroyed ->
@@ -19,13 +20,13 @@ Template.safetyTemplatesPage.helpers
     }
 
 Template.safetyTemplatesPage.events
-  'click .safetyTemplates .btnView': (e) ->
+  'click .safetyTemplates .btnView': (event) ->
     Collections.Safetyplans.Current = this
     FlowRouter.go '/work/view-safety'
-  'click .safetyTemplates .btnEdit': (e) ->
+  'click .safetyTemplates .btnEdit': (event) ->
     Collections.Safetyplans.Current = this
     FlowRouter.go '/work/edit-safety'
-  'click .safetyTemplates .btnDelete': (e) ->
+  'click .safetyTemplates .btnDelete': (event) ->
     Collections.Safetyplans.Current = this
     MaterializeModal.display
       bodyTemplate: 'safetyTemplatesDelete'
@@ -37,5 +38,10 @@ Template.safetyTemplatesPage.events
           console.error error
         else
           if response.submit
-            Meteor.call 'deleteSafety', Collections.Safetyplans.Current._id
+            Meteor.call 'deleteSafety', Collections.Safetyplans.Current._id, (error, result) ->
+              if error
+                Materialize.toast("Error", 3000, "red")
+              else
+                Materialize.toast("Deleted Safety Method", 3000, "green")
+              return
         return

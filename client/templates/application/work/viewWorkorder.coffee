@@ -1,4 +1,5 @@
 Template.viewWorkorderPage.onRendered ->
+  $(".dropdown-button").dropdown()   
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewWorkorderPage.onDestroyed ->

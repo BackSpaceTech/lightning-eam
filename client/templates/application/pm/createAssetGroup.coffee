@@ -2,8 +2,9 @@ Template.createAssetGroupPage.onCreated ->
   this.assetArray = new ReactiveVar []
 
 Template.createAssetGroupPage.onRendered ->
-  assetTree()
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
+  assetTree()  
 
 Template.createAssetGroupPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'

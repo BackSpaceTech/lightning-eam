@@ -4,6 +4,7 @@ Template.pmPage.onCreated ->
   $('#header1DesktopUL li').eq(2).addClass 'active'
 
 Template.pmPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.pmPage.onDestroyed ->

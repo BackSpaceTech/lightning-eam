@@ -50,3 +50,4 @@ meteorhacks:aggregate
 modweb:flipclock
 materialize:materialize
 percolate:synced-cron
+aldeed:tabular

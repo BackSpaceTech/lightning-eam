@@ -7,6 +7,7 @@ Template.viewPeoplePage.onCreated ->
     self.subscribe 'directory'
 
 Template.viewPeoplePage.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewPeoplePage.onDestroyed ->
@@ -33,20 +34,25 @@ Template.viewPeoplePage.helpers
     }
 
 Template.viewPeoplePage.events
-  'click .viewPeople .btnEach': (e) ->
+  'click .viewPeople .btnEach': (event) ->
     Collections.Users.Current = this
     FlowRouter.go '/resources/edit-people'
-  'click .viewPeople .btnEach2': (e)  ->
+  'click .viewPeople .btnEach2': (event)  ->
     Collections.Users.Current = this
     FlowRouter.go '/resources/credentials'
-  'click .viewPeople .btnEach3': (e) ->
+  'click .viewPeople .btnEach3': (event) ->
     deleteUser
-  'click .viewPeople .btnDelete': (e) ->
+  'click .viewPeople .btnDelete': (event) ->
     Collections.Users.Current = this
     $('#viewPeoplePageModal').openModal()
-  'click .viewPeople .btnConfirm': (e) ->
+  'click .viewPeople .btnConfirm': (event) ->
     temp = Collections.Users.Current
-    Meteor.call 'deleteUser', temp._id
+    Meteor.call 'deleteUser', temp._id, (error, result) ->
+      if error
+        Materialize.toast("Error", 3000, "red")
+      else
+        Materialize.toast("Deleted User", 3000, "green")
+      return
     FlowRouter.go '/resources'
 
 Template.editPerson.onRendered ->

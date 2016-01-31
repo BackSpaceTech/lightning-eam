@@ -4,6 +4,7 @@ Template.workPage.onCreated ->
   $('#header1DesktopUL li').eq(1).addClass 'active'
 
 Template.workPage.onRendered ->
+  $(".dropdown-button").dropdown()   
   $('.tooltipped').tooltip {delay: 50}
 
 Template.workPage.onDestroyed ->

@@ -4,6 +4,7 @@ Template.helpPage.onCreated ->
   $('#header1DesktopUL li').eq(7).addClass 'active'
 
 Template.helpPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.helpPage.onDestroyed ->

@@ -2,7 +2,7 @@
 @Locations = new Mongo.Collection 'locations'
 
 @Workorders = new Mongo.Collection 'workorders'
-if (Meteor.isServer)
+if Meteor.isServer
   Workorders._ensureIndex {status: 1}
   Workorders._ensureIndex {asset_ID: 1}
 
@@ -24,3 +24,6 @@ if (Meteor.isServer)
   doc.userDetails = Meteor.users.findOne {'_id': doc.createdBy_id }, fields:
     profile: true
   doc
+
+if Meteor.isServer
+  @Crontasks = new Mongo.Collection 'crontasks'

@@ -5,6 +5,7 @@ Template.editAssetGroupPage.onCreated ->
   this.assetArray = new ReactiveVar Assetgroups.findOne({_id: Session.get('currentDoc')._id.toString()}).asset_IDs
 
 Template.editAssetGroupPage.onRendered ->
+  $(".dropdown-button").dropdown()
   assetTree()
   $('.tooltipped').tooltip {delay: 50}
 

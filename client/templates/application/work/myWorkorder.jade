@@ -25,13 +25,13 @@ template(name='myWoForm')
     +smlField item=viewDoc.refID label='Reference ID'
     +smlField item=viewDoc.status label='WO Status'
     +smlField item=viewDoc.priority label='Priority'
-    div
+    .col.s12.m6.l3
       h6.grey-text Work Team
       each item in viewDoc.workTeam
         =item.firstName
         | 
         =item.lastName
-        |, 
+        br
   .row  
     +lgeField item=viewDoc.text label='Title'
     +lgeField item=viewDoc.description label='Description'    
@@ -67,17 +67,9 @@ template(name='myWorkorderSafety')
     i.fa.fa-search   
   button.btn-floating.waves-effect.waves-light.tooltipped.green.btnComplete(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
     i.fa.fa-check   
-    
-template(name='myWorkorderSafetyCompleted')
-  if completed
-    i.fa.fa-check
   
 template(name='myWorkorderWork')
   button.btn-floating.waves-effect.waves-light.tooltipped.btnView2(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
     i.fa.fa-search    
   button.btn-floating.waves-effect.waves-light.tooltipped.green.btnComplete2(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Completed')
     i.fa.fa-check  
-
-template(name='myWorkorderWorkCompleted')
-  if completed
-    i.fa.fa-check

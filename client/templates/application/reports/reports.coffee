@@ -4,6 +4,7 @@ Template.reportsPage.onCreated ->
   $('#header1DesktopUL li').eq(6).addClass 'active'
 
 Template.reportsPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.reportsPage.onDestroyed ->

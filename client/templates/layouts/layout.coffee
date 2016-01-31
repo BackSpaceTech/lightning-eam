@@ -1,5 +1,6 @@
 # Initialize collapse button
 Template.layout.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.button-collapse').sideNav { closeOnClick: true }
 
 Template.layoutAssets.onRendered ->

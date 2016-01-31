@@ -18,21 +18,27 @@ Assetgroups.allow
 #********************************* PM *******************************
 
 Schema.workorderPM = new SimpleSchema (
-  workorder_ID:
+  asset_ID:
     type: String
-    label: 'System ID'
-  completed:
+    label: 'Asset SysID'
+  assetName:
+    type: String
+    label: 'Asset SysID'
+  active:
     type: Boolean
-    label: 'PM WO Status'
-  DateRaised:
-    type: Date
-    label: 'Date Raised'
-  DateDue:
-    type: Date
-    label: 'Date Due'
-  DateCompleted:
-    type: Date
-    label: 'Date Completed'
+    label: 'Activated'
+  cronJob:
+    type: Boolean
+    label: 'Cron Expression type'
+  pmExpression:
+    type: String
+    label: 'Scheduling Expression'
+  meterInterval:
+    type: Number
+    label: 'Meter Interval'
+  workorder_ID:
+    type: [String]
+    label: 'System ID'
     optional: true
 )
 
@@ -52,9 +58,6 @@ Schema.pm = new SimpleSchema (
     type: String
     label: 'Reference ID'
     optional: true
-  active:
-    type: Boolean
-    label: 'Active'
   pmPriority:
     type: String
     label: 'PM Priority'
@@ -74,18 +77,6 @@ Schema.pm = new SimpleSchema (
   workPlan_ID:
     type: String
     label: 'Work Plan'
-  pmInterval:
-    type: Number
-    label: 'PM Interval'
-    min: 1
-  pmIntervalUnits:
-    type: String
-    label: 'Interval Units'
-    defaultValue: '0'
-    autoform:
-      type: 'select'
-      options: ->
-        Lists.PM.IntervalUnits
   pmIntervalType:
     type: Number
     label: 'Interval Type'
@@ -93,9 +84,9 @@ Schema.pm = new SimpleSchema (
       type: 'select'
       options: ->
         Lists.PM.IntervalTypes
-  workorder:
+  workorderPM:
     type: [Schema.workorderPM]
-    label: 'Work Order'
+    label: 'Work History'
     optional: true
   createdBy_id:
     type: String

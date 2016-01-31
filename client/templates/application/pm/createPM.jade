@@ -16,24 +16,20 @@ template(name='createPMPage')
                 +afQuickField name='pmPriority'
             .row
               +afQuickField name='pmDescription'
-            .row                         
+            .row
               .col.s12.m6.l3
                 h6 Interval Type
                 +afFieldInput name='pmIntervalType' id='afIntervalType' type='select-radio-inline'
-              .col.s12.m6.l3
-                +afQuickField name='pmInterval'  
-              if showIntervalUnits                  
-                .col.s12.m6.l3
-                  +afQuickField name='pmIntervalUnits' type='select-radio-inline' value=intervalUnits                                  
-              .col.s12.m6.l3
-                +afQuickField name='active'      
             br  
             .row
               .divider.teal
               .section
-                +afxSmlQuickFieldAdd title='Asset Group' field='workPlan' item='assetGroup_ID' tip='Add Asset Group'
-                +afxSmlQuickFieldAdd title='Safety Method' field='workPlan' item='safetyPlan_ID' tip='Add Safety Method'
-                +afxSmlQuickFieldAdd title='Work Plan' field='workPlan' item='workPlan_ID' tip='Add Work Plan'
+                span.asset
+                  +afxSmlQuickFieldAdd title='Asset Group' field='workPlan' item='assetGroup_ID' tip='Add Asset Group'
+                span.safety
+                  +afxSmlQuickFieldAdd title='Safety Method' field='workPlan2' item='safetyPlan_ID' tip='Add Safety Method'
+                span.work
+                  +afxSmlQuickFieldAdd title='Work Plan' field='workPlan3' item='workPlan_ID' tip='Add Work Plan'
           else
             +spinner 
           +fabBackResetSubmit                                                   

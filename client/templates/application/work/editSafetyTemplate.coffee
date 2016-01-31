@@ -4,6 +4,7 @@ Template.editSafetyTemplatePage.onCreated ->
     self.subscribe 'singleSafetymethod', Collections.Safetyplans.Current._id
 
 Template.editSafetyTemplatePage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.editSafetyTemplatePage.onDestroyed ->

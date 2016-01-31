@@ -5,7 +5,7 @@ template(name='viewPMsPage')
     .container2
       br
       fieldset.viewPMs
-        legend View PM
+        legend View PM Plans
           a(href='{{pathFor "create-pm"}}')
               button.btn-floating.waves-effect.waves-light.tooltipped(type='button', data-delay='50', data-position='bottom', data-tooltip='Create PM')
                 i.fa.fa-plus     
@@ -14,8 +14,12 @@ template(name='viewPMsPage')
             +reactiveTable collection=collectionPM settings=settings class='table striped'
           else
             +spinner
-        +fabBack     
-     
-template(name='viewPMsDelete') 
+        +fabBack  
+        
+template(name='viewPMsActivate')
+  button.btn-floating.waves-effect.waves-light.tooltipped.green.btnStart(type='button', data-delay='50', data-position='bottom', data-tooltip='Activate PM')
+    i.fa.fa-clock-o           
+
+template(name='viewPMsDelete')
   h5.red-text Warning this will permanently delete the PM and all work history!
   | This process cannot be undone. Please consider making PM inactive instead.

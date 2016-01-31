@@ -4,6 +4,7 @@ Template.viewSafetyTemplatePage.onCreated ->
     self.subscribe 'singleSafetymethod', Collections.Safetyplans.Current._id
 
 Template.viewSafetyTemplatePage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewSafetyTemplatePage.onDestroyed ->
@@ -27,5 +28,5 @@ Template.viewSafetyTemplatePage.helpers
   }
 
 Template.viewSafetyTemplatePage.events
-  'click .btnEdit': (e) ->
+  'click .btnEdit': (event) ->
     FlowRouter.go '/work/edit-safety'

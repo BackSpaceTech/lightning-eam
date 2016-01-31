@@ -1,4 +1,5 @@
 Template.createWorkTemplatePage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.createWorkTemplatePage.onDestroyed ->

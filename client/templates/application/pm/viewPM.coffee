@@ -7,13 +7,14 @@ Template.viewPMPage.onRendered ->
   Session.set 'temp', true
 
 Template.viewPMPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewPMPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.viewPMPage.helpers
-  customTemplate: -> Customisations.viewAsset
+  customTemplate: -> Customisations.viewPM
   pmSchema: -> Schema.pm
   viewDoc: ->
     Collections.PM.Current = PM.findOne ({ _id: Session.get('currentDoc')._id.toString() })

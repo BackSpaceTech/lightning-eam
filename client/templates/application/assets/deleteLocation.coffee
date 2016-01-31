@@ -4,6 +4,7 @@ Template.deleteLocationPage.onCreated ->
     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.deleteLocationPage.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.deleteLocationPage.onDestroyed ->
@@ -14,10 +15,15 @@ Template.deleteLocationPage.helpers
   textDoc: -> (Locations.findOne {'id':Session.get('currentID').toString()}).text
 
 Template.deleteLocationPage.events
-  'click .deleteLocation .btnDelete': (e) ->
+  'click .deleteLocation .btnDelete': (event) ->
     temp = Locations.findOne {'parent':Session.get('currentID').toString()}
     if temp
       alert 'You cannot delete an asset or location that has children!'
     else
-      Meteor.call 'deleteLoc', Session.get('currentID').toString()
+      Meteor.call 'deleteLoc', Session.get('currentID').toString(), (error, result) ->
+        if error
+          Materialize.toast("Error", 3000, "red")
+        else
+          Materialize.toast("Deleted Location", 3000, "green")
+        return
     FlowRouter.go '/assets'

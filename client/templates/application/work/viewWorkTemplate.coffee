@@ -4,6 +4,7 @@ Template.viewWorkTemplatePage.onCreated ->
     self.subscribe 'singleWorkplan', Collections.Workplans.Current._id
 
 Template.viewWorkTemplatePage.onRendered ->
+  $(".dropdown-button").dropdown()   
   $('.tooltipped').tooltip {delay: 50}
 
 Template.viewWorkTemplatePage.onDestroyed ->

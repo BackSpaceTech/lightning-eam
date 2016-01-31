@@ -1,6 +1,7 @@
 Template.createWorkPage.onRendered ->
-  assetTree()
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
+  assetTree()  
 
 Template.createWorkPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'

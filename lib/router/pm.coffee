@@ -70,3 +70,11 @@ pmRoutes.route '/edit-pm',
       content: 'editPMPage'
       header: 'header1'
       footer: 'footer1'
+
+pmRoutes.route '/activate-pm',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layoutPM',
+      content: 'activatePMPage'
+      header: 'header1'
+      footer: 'footer1'

@@ -4,6 +4,7 @@ Template.inventoryPage.onCreated ->
   $('#header1DesktopUL li').eq(4).addClass 'active'
 
 Template.inventoryPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.inventoryPage.onDestroyed ->

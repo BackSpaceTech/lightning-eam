@@ -1,4 +1,5 @@
 Template.workTemplatesPage.onRendered ->
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.workTemplatesPage.onDestroyed ->
@@ -19,13 +20,13 @@ Template.workTemplatesPage.helpers
     }
 
 Template.workTemplatesPage.events
-  'click .workTemplates .btnView': (e) ->
+  'click .workTemplates .btnView': (event) ->
     Collections.Workplans.Current = this
     FlowRouter.go '/work/view-work'
-  'click .workTemplates .btnEdit': (e) ->
+  'click .workTemplates .btnEdit': (event) ->
     Collections.Workplans.Current = this
     FlowRouter.go '/work/edit-work'
-  'click .workTemplates .btnDelete': (e) ->
+  'click .workTemplates .btnDelete': (event) ->
     Collections.Workplans.Current = this
     MaterializeModal.display
       bodyTemplate: 'workTemplatesDelete'
@@ -37,7 +38,12 @@ Template.workTemplatesPage.events
           console.error error
         else
           if response.submit
-            Meteor.call 'deleteWork', Collections.Workplans.Current._id
+            Meteor.call 'deleteWork', Collections.Workplans.Current._id, (error, result) ->
+              if error
+                Materialize.toast("Error", 3000, "red")
+              else
+                Materialize.toast("Deleted", 3000, "green")
+              return
         return
 
 Template.editWork.onRendered ->

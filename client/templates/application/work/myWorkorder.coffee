@@ -1,5 +1,6 @@
 Template.myWorkorderPage.onRendered ->
   Session.set 'currentDoc', Collections.Workorders.Current
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.myWorkorderPage.onDestroyed ->
@@ -12,7 +13,7 @@ Template.myWorkorderPage.helpers
   myWorkorderSchema: -> Schema.workorders
 
 Template.myWorkorderPage.events
-  'click .myWorkorder .btnStart': (e) ->
+  'click .myWorkorder .btnStart': (event) ->
     if Collections.Workorders.Current.startTime
       MaterializeModal.confirm
         title: 'Reset work Order?',
@@ -46,7 +47,7 @@ Template.myWorkorderPage.events
       Session.set 'currentDoc', Collections.Workorders.Current
       Collections.Workorders.Clock = $('.flipClock').FlipClock()
       $('.flipClock').show()
-  'click .myWorkorder .btnComplete': (e) ->
+  'click .myWorkorder .btnComplete': (event) ->
     if (!jQuery.isEmptyObject Collections.Workorders.Clock) && (Collections.Workorders.Clock.getTime().time>0)
       # Get the array index of the task
       for a in [0...Collections.Workorders.Current.safetyMethod.length]
@@ -61,7 +62,7 @@ Template.myWorkorderPage.events
       MaterializeModal.message
         title: 'Start Work Order',
         message: 'Please click on start work order at top of page.'
-  'click .myWorkorder .btnComplete2': (e) ->
+  'click .myWorkorder .btnComplete2': (event) ->
     if (!jQuery.isEmptyObject Collections.Workorders.Clock) && (Collections.Workorders.Clock.getTime().time>0)
       # Get the array index of the task
       for a in [0...Collections.Workorders.Current.workPlan.length]
@@ -76,13 +77,13 @@ Template.myWorkorderPage.events
       MaterializeModal.message
         title: 'Start Work Order',
         message: 'Please click on start work order at top of page.'
-  'click .myWorkorder .btnView': (e) ->
+  'click .myWorkorder .btnView': (event) ->
     modalBody = Spacebars.SafeString('Hazards: '+this.hazards+'<br>Controls: '+this.controls+'<br>Responsible: '+this.responsible)
     MaterializeModal.message
       title: this.activity
       message: modalBody
 
-  'click .myWorkorder .btnView2': (e) ->
+  'click .myWorkorder .btnView2': (event) ->
     modalBody = Spacebars.SafeString('Instructions: '+this.text+'<br>Est mins: '+this.estimatedTime)
     MaterializeModal.message
       title: this.activity
@@ -101,7 +102,7 @@ Template.myWoForm.helpers
         { key: 'hazards', label: ' Hazards' }
         { key: 'controls', label: ' Risk control measures' }
         { key: 'responsible', label: 'Responsible' }
-        { key: '', label: 'Completed', tmpl: Template.myWorkorderSafetyCompleted }
+        { key: '', label: 'Completed', tmpl: Template.rtBoolean }
         { key: '', label: 'View/Complete', tmpl: Template.myWorkorderSafety }
       ]
     }
@@ -114,7 +115,7 @@ Template.myWoForm.helpers
         { key: 'id', label: 'Sequence ID'}
         { key: 'text', label: 'Instructions' }
         { key: 'estimatedTime', label: 'Est mins' }
-        { key: '', label: 'Completed', tmpl: Template.myWorkorderWorkCompleted }
+        { key: '', label: 'Completed', tmpl: Template.rtBoolean }
         { key: '', label: 'View/Complete', tmpl: Template.myWorkorderWork }
       ]
     }

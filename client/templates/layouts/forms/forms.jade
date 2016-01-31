@@ -4,6 +4,27 @@ template(name='smlField')
       =label
     =item
 
+template(name='smlDateField')
+  .col.s12.m6.l3
+    h6.grey-text
+      =label
+    =dateItem
+
+template(name='smlCheckField')
+  .col.s12.m6.l3
+    h6.grey-text
+      =label    
+    if item 
+      i.green-text.fa.fa-check
+    else
+      i.red-text.fa.fa-close
+
+template(name='medField')
+  .col.s12.m9.l6
+    h6.grey-text
+      =label
+    =item
+
 template(name='lgeField')
   .row
   .row
@@ -18,6 +39,21 @@ template(name='frmSection')
     .section
       h6.teal-text 
         =label
+
+template(name='frmDelete')
+  .frmDelete
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+      i.fa.fa-trash
+      
+template(name='frmAdd')
+  .frmAdd
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnAdd.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Add')
+      i.fa.fa-plus     
+    
+template(name='frmEdit')
+  .frmEdit
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+      i.fa.fa-edit 
 
 // ************************ Fixed Action Button  *******************************
 

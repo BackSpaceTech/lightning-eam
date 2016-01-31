@@ -12,6 +12,7 @@
 @Customisations = {}
 
 @Collections = {}
+@DataTables = {}
 
 @Collections.Locations = {}
 @Collections.Locations.Current = {}
@@ -38,6 +39,7 @@
 @Collections.PM = {}
 @Collections.PM.Current = {}
 @Collections.PM.CurrentID = 0
+@DataTables.PM = {}
 
 @Collections.Assetgroups = {}
 @Collections.Assetgroups.Current = {}

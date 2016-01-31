@@ -4,6 +4,7 @@ Template.credentialsPage.onCreated ->
   Session.set 'currentDoc', Collections.Users.Current
 
 Template.credentialsPage.onRendered ->
+  $(".dropdown-button").dropdown()  
   $('.tooltipped').tooltip {delay: 50}
 
 Template.credentialsPage.onDestroyed ->
@@ -16,5 +17,5 @@ Template.credentialsPage.helpers
   customTemplate: -> Customisations.credentials
 
 Template.credentialsPage.events
-  'click .credentials .btnSubmit': (e) ->
+  'click .credentials .btnSubmit': (event) ->
     FlowRouter.go '/resources/view-people'
