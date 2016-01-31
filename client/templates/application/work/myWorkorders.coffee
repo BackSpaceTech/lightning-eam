@@ -15,7 +15,7 @@ Template.myWorkordersPage.helpers
     temp = Counts.get 'workorders-count'
     if temp > 1000
       FlowRouter.go '/work'
-      toast 'error', ('Your query exceeds 1000 docs. ('+temp+')', 3000, 'red')
+      toast 'error', ('Your query exceeds 1000 docs. ('+temp+')')
     else
       return temp
   customTemplate: -> Customisations.viewPeople

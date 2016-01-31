@@ -13,7 +13,7 @@ Meteor.startup ->
       if (formType == "method")
         toast 'error', error.details
       else
-        toast 'error' error
+        toast 'error', error
     }
   AutoForm.addHooks(null, hooksObject);
 
