@@ -53,6 +53,7 @@ Meteor.publish 'pm', ->
   PM.find {}, fields:
     active: true
     pmDescription: true
+    pmIntervalType: true
     createdBy_id: true
     assetGroup_ID: true
 

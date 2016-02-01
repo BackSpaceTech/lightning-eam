@@ -36,6 +36,9 @@ Schema.workorderPM = new SimpleSchema (
   meterInterval:
     type: Number
     label: 'Meter Interval'
+  meterID:
+    type: String
+    label: 'Meter ID'
   workorder_ID:
     type: [String]
     label: 'System ID'

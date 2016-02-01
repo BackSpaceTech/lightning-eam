@@ -17,6 +17,7 @@
 @Collections.Locations.Current = {}
 @Collections.Locations.CurrentID = 0
 @Collections.Locations.CurrentMeter = {}
+@Collections.Locations.CurrentMeterID = 0
 
 @Collections.Users = {}
 @Collections.Users.Current = {}

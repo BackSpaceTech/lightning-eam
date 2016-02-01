@@ -3,28 +3,31 @@ Template.activatePMPage.onCreated ->
   self.autorun ->
     self.subscribe 'singlePM', Session.get('currentDoc')._id.toString()
     self.subscribe 'assetsPM', Session.get('currentDoc')._id.toString()
-  this.activateAll = new ReactiveVar true
+  this.activateAll = new ReactiveVar false
   this.setPM = new ReactiveVar {
     activate: false
   }
 
 Template.activatePMPage.onRendered ->
-  $('.tooltipped').tooltip {delay: 50}
   $(".dropdown-button").dropdown()
+  Session.set 'temp', true
+
+Template.activatePMPage.onRendered ->
+  $('.tooltipped').tooltip {delay: 50}
 
 Template.activatePMPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.activatePMPage.helpers
   customTemplate: -> Customisations.activatePM
-  viewDoc: -> Collections.PM.Current
-  activateAll: -> Template.instance().activateAll.get()&&(Collections.PM.Current.pmIntervalType!=1)
-  timeBasedPM: -> Collections.PM.Current.pmIntervalType!=1
+  activateAll: -> Template.instance().activateAll.get()
+  viewDoc: ->
+    Collections.PM.Current = PM.findOne ({ _id: Session.get('currentDoc')._id.toString() })
+    Session.set 'currentDoc', Collections.PM.Current
+    Collections.PM.Current
   setPM: -> Template.instance().setPM.get()
-  workorderPMList: ->
-    if !Session.get('currentDoc').workorderPM
-      Session.set 'currentDoc', PM.findOne ({ _id: Session.get('currentDoc')._id.toString() })
-    Session.get('currentDoc').workorderPM
+  timeBasedPM: -> Collections.PM.Current.pmIntervalType!=1
+  workorderPMList: -> Session.get('currentDoc').workorderPM
   settings: ->
     temp = {
       rowsPerPage: 10
@@ -36,7 +39,6 @@ Template.activatePMPage.helpers
     }
     if Collections.PM.Current.pmIntervalType == 1 # Meter interval type
       temp.fields.push { key: 'meterInterval', label: ' Meter Interval' }
-      temp.fields.push { key: 'meterID', label: ' Meter ID' }
     else
       temp.fields.push { key: 'cronJob', label: ' Text/Cron Expression', sortable: false } # Time interval type
       temp.fields.push { key: 'pmExpression', label: ' Scheduling Expression', sortable: false }
@@ -49,9 +51,7 @@ Template.activatePMPage.events
   'click #swtActivatePM': (event, template) ->
     template.activateAll.set(!$('#swtActivatePM').prop('checked'))
   'click .frmEdit .btnEdit': (event, template) ->
-    if !Session.get('currentDoc').workorderPM
-      Session.set 'currentDoc', PM.findOne ({ _id: Session.get('currentDoc')._id.toString() })
-    temp = Session.get 'currentDoc'
+    temp = Collections.PM.Current.workorderPM
     tempObj = {}
     MaterializeModal.form
       title: "Edit Activation Data"
@@ -69,27 +69,26 @@ Template.activatePMPage.events
               if value # Add expression if it exists
                 tempObj.pmExpression = value
           # Update workorderPM
-          for a in [0...temp.workorderPM.length]
-            temp.workorderPM[a].active = tempObj.active
+          for a in [0...temp.length]
+            temp[a].active = tempObj.active
             if tempObj.cronJob # Add cronJob if it exists
-              temp.workorderPM[a].cronJob = tempObj.cronJob
-            if tempObj.pmExpression # Add expresion if it exists
-              temp.workorderPM[a].pmExpression = tempObj.pmExpression
+              temp[a].cronJob = tempObj.cronJob
+            if tempObj.pmExpression # Add Expression if it exists
+              temp[a].pmExpression = tempObj.pmExpression
           template.setPM.set(tempObj)
-          Session.set 'currentDoc', temp
+          Collections.PM.Current.workorderPM = temp
+          Session.set 'currentDoc', Collections.PM.Current
         else
-          toast 'error', 'Cancelled'
+          toast('error', 'Cancelled')
   'click .rtEdit .btnEdit': (event) ->
-    if !Session.get('currentDoc').workorderPM
-      Session.set 'currentDoc', PM.findOne ({ _id: Session.get('currentDoc')._id.toString() })
     if (Collections.PM.Current.pmIntervalType==1) && !(Locations.findOne('_id': this.asset_ID).meters)
       toast 'error', 'Asset has no meters'
       return
     else
       Collections.Locations.CurrentID = this.asset_ID
-      temp = Session.get 'currentDoc'
-      for a in [0...temp.workorderPM.length]
-        if temp.workorderPM[a].asset_ID == this.asset_ID
+      temp = Collections.PM.Current.workorderPM
+      for a in [0...temp.length]
+        if temp[a].asset_ID == this.asset_ID
           tempIndex = a
       MaterializeModal.form
         title: "Edit Activation Data"
@@ -99,42 +98,37 @@ Template.activatePMPage.events
             #Iterate over form results & display.
             for key, value of response.form
               if key == 'activate-pm'
-                temp.workorderPM[tempIndex].active = value
+                temp[tempIndex].active = value
               else if key == 'cron-expression'
                 if value # Add cron Job if it exists
-                  temp.workorderPM[tempIndex].cronJob = value
+                  temp[tempIndex].cronJob = value
               else if key == 'pm-expression'
                 if value # Add expression if it exists
-                  temp.workorderPM[tempIndex].pmExpression = value
+                  temp[tempIndex].pmExpression = value
               else if key == 'meter-interval'
-                if value # Add expression if it exists
-                  temp.workorderPM[tempIndex].meterInterval = value
-              if Collections.Locations.CurrentMeterID
-                temp.workorderPM[tempIndex].meterID = Collections.Locations.CurrentMeterID
-            Session.set 'currentDoc', temp
+                if value # Add meter interval if it exists
+                  temp[tempIndex].meterInterval = value
+              else if key == 'meter-id'
+                if value # Add meter id if it exists
+                  temp[tempIndex].meterID = value
+            Collections.PM.Current.workorderPM = temp
+            Session.set 'currentDoc', Collections.PM.Current
+            console.log 'currentDoc: ' + JSON.stringify Session.get('currentDoc').workorderPM
           else
-            toast 'error', 'Cancelled'
+            toast('error', 'Cancelled')
   'submit form': (event, template) ->
     event.preventDefault()
-    temp = Session.get 'currentDoc'
-    tempObj = {$set: {workorderPM: temp.workorderPM}}
-    Meteor.call 'updatePM', tempObj, temp._id, (error, result) ->
+    temp = {$set: {workorderPM: Collections.PM.Current.workorderPM}}
+    Meteor.call 'updatePM', temp, Collections.PM.Current._id, (error, result) ->
       if error
         toast 'error', error
       else
         toast 'success', result
       return
 
-# ----------------------- Modal ---------------------------
-Template.activatePMForm.onCreated ->
-  this.rtMeterID = new ReactiveVar ''
-  Collections.Locations.CurrentMeterID = ''
-
 Template.activatePMForm.helpers
-  meterBasedPM: -> Collections.PM.Current.pmIntervalType==1
-  timeBasedPM: -> Collections.PM.Current.pmIntervalType!=1
+  timeBasedPM: -> Collections.PM.Current.pmIntervalType==0
   meterList: -> Locations.findOne('_id': Collections.Locations.CurrentID).meters
-  rtMeterID: -> Template.instance().rtMeterID.get()
   aSettings: ->
     temp = {
       rowsPerPage: 10
@@ -147,9 +141,3 @@ Template.activatePMForm.helpers
         { label: 'Activate', tmpl: Template.rtAdd, sortable: false }
       ]
     }
-
-Template.activatePMForm.events
-  'click .meterList .btnAdd': (event, template) ->
-    temp = this.id
-    template.rtMeterID.set(temp)
-    Collections.Locations.CurrentMeterID = temp

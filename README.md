@@ -10,17 +10,25 @@ A project to create the World's fastest Enterprise Asset Management System capab
 
 
 The Lightning EAM project is a revolutionary approach to managing asset data. The core ideal is to break down the myths surrounding Enterprise Asset Management created by corporations with a vested interest in maintaining the status quo. This enables us to start with a clean slate and select the best performing technologies that can handle modern asset information requirements such as big data and mobile.
+Lightning EAM aims to provide all of the capabilities of commercial EAM software such as IBM Maximo, SAP EAM and Oracle EAM with the following advantages:
+
+
+- Open source and free for both commercial and private use
+- Modern database design for big data analysis and speed.
+- Ease of customization and integration with other systems.
+- Accessible from any operating and system and device.
 
 
 > **Core Technologies behind Lightning EAM:**
 
 > - Amazon Web Services (AWS), the Worlds largest Cloud.
 > - NoSQL MongoDB database capable of scaling to petabyte levels.
-> - Big data reporting through ElasticSearch.
+> - Big data reporting through ElasticSearch and Hadoop EMR.
+> - BI Analytics with AWS QuickSight.
 > - D3JS data visualisation.
-> - Data on the wire with Meteor
+> - Data on the wire with Meteor.
 > - Apache Cordova mobile integration for IOS and Android.
-> - Google Material Design
+> - Google Material Design.
 
 
 ##Features
@@ -37,7 +45,6 @@ Lightning has all features you expect from an Enterprise Asset Management System
 > - Web services integration through REST and SOAP.
 > - User customisations separated from core application.
 > - ISO 55000 process and document management
-> - Trello integration for electronic Kanban work execution
 > - Geolocation and linear assets.**
 > - Barcode reading of asset and inventory information.**
 
@@ -105,7 +112,6 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 |Android App  |  Complete  |    |
 |REST Web Services  |  Complete  |    |
 |SOAP Web Services  |  Complete  |    |
-|Trello Kanban  |  Complete  |  |
 |Linear Assets  |  Complete  |  |
 |Core Inventory  |  In Progress  |  Early 2016  |
 |Core Procurement  |  In Progress  |  Early 2016  |

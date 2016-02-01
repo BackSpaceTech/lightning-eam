@@ -14,7 +14,8 @@ if Meteor.isServer
     text: true
     assetID: true
     parent: true
-    treePath: true} ).fetch()
+    treePath: true
+    meters: true} ).fetch()
   doc
 
 @PM = new Mongo.Collection 'pm', transform: (doc) ->

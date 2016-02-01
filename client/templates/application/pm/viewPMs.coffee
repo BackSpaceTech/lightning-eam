@@ -52,5 +52,6 @@ Template.viewPMsPage.events
         return
 
   'click .viewPMs .btnStart': (event) ->
-    Session.set 'currentDoc', PM.findOne {_id: this._id}
+    Collections.PM.Current = PM.findOne {_id: this._id}
+    Session.set 'currentDoc', Collections.PM.Current
     FlowRouter.go '/pm/activate-pm'
