@@ -46,11 +46,14 @@ template(name='activatePMForm')
       .input-field.col.s6.m4.l3
           input#intActivatePM.validate(placeholder='Meter Interval', type='text', name='meter-interval', min='1')
           label(for='intActivatePM') Meter Interval
-      +medField item=rtMeterID label='Meter ID'
-  if meterBasedPM           
-    .row
-      .input-field.meterList
-        +reactiveTable collection=meterList settings=aSettings class='table striped'
+      +medField item=rtMeterID label='Meter'
+      .input-field.col.s12.m9.l6
+        select(name='meter-id')
+          each item in meterList
+            option(value=item.id)
+              =item.id
+              | - 
+              =item.text
   if timeBasedPM
     .row
       .input-field.col.s6

@@ -109,8 +109,9 @@ Template.activatePMPage.events
               else if key == 'meter-interval'
                 if value # Add expression if it exists
                   temp.workorderPM[tempIndex].meterInterval = value
-              if Collections.Locations.CurrentMeterID
-                temp.workorderPM[tempIndex].meterID = Collections.Locations.CurrentMeterID
+              else if key == 'meter-id'
+                if value # Add expression if it exists
+                  temp.workorderPM[tempIndex].meterID = value
             Session.set 'currentDoc', temp
           else
             toast 'error', 'Cancelled'
@@ -130,26 +131,10 @@ Template.activatePMForm.onCreated ->
   this.rtMeterID = new ReactiveVar ''
   Collections.Locations.CurrentMeterID = ''
 
+Template.activatePMForm.onRendered ->
+  $('select').material_select()
+
 Template.activatePMForm.helpers
   meterBasedPM: -> Collections.PM.Current.pmIntervalType==1
   timeBasedPM: -> Collections.PM.Current.pmIntervalType!=1
   meterList: -> Locations.findOne('_id': Collections.Locations.CurrentID).meters
-  rtMeterID: -> Template.instance().rtMeterID.get()
-  aSettings: ->
-    temp = {
-      rowsPerPage: 10
-      showFilter: false
-      showNavigation: 'auto'
-      fields:  [
-        { key: 'id', label: ' Meter ID' }
-        { key: 'text', label: ' Meter Name' }
-        { key: 'units', label: ' Meter Units', sortable: false }
-        { label: 'Activate', tmpl: Template.rtAdd, sortable: false }
-      ]
-    }
-
-Template.activatePMForm.events
-  'click .meterList .btnAdd': (event, template) ->
-    temp = this.id
-    template.rtMeterID.set(temp)
-    Collections.Locations.CurrentMeterID = temp
