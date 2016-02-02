@@ -109,3 +109,18 @@ Schema.pm = new SimpleSchema (
     type: Date
     optional: true
 )
+
+Schema.crontasks = new SimpleSchema (
+  pmID:
+    type: String
+    label: 'PM ID'
+  assetID:
+    type: String
+    label: 'Asset ID'
+  cronJob:
+    type: Boolean
+    label: 'Cron Expression type'
+  pmExpression:
+    type: String
+    label: 'Scheduling Expression'
+)

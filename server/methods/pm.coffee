@@ -1,11 +1,11 @@
 Meteor.methods
   createAssetGroup: (doc) ->
-    Assetgroups.insert doc
     this.unblock()
+    Assetgroups.insert doc
     return 'Created Asset Group'
   deleteAssetGroup: (docID) ->
-    Assetgroups.remove {'_id': docID}
     this.unblock()
+    Assetgroups.remove {'_id': docID}
     return 'Deleted Asset Group'
   createPM: (doc) ->
     # Add date stamp to request
@@ -21,16 +21,47 @@ Meteor.methods
       }
     # Insert a PM into the collection
     PM.insert doc
-    this.unblock()
     return 'Created PM'
   updatePM: (doc, ID) ->
+    this.unblock()
     PM.update {'_id': ID}, doc
     console.log "Udated PM: "+ID
-    this.unblock()
+    return 'Updated PM'
+  activatePM: (doc, ID) ->
+    PM.update {'_id': ID}, doc
+    console.log "Udated PM: "+ID
+    if timeBased
+      console.log 'Running PM Cron activation...'
+      tempPM = PM.findOne { '_id': ID }
+      if tempPM
+        for a in [0...tempPM.workorderPM.length]
+          tempCron = Crontasks.findOne {'pmID': ID, 'assetID': tempPM.workorderPM[a].asset_ID}
+          if tempCron
+            if (!tempPM.workorderPM[a].active) || (tempPM.workorderPM[a].pmExpression != tempCron.pmExpression)
+              SyncedCron.remove tempCron._id
+              Crontasks.remove { '_id' : tempCron._id }, 1
+          if (tempPM.workorderPM[a].active) && (tempPM.workorderPM[a].pmExpression != tempCron.pmExpression)
+            cronTaskID = Crontasks.insert { # Record cron job
+              pmID: ID
+              assetID: tempPM.workorderPM[a].asset_ID
+              cronJob: tempPM.workorderPM[a].cronJob
+              pmExpression: tempPM.workorderPM[a].pmExpression
+              }
+            SyncedCron.add # Create cron job
+              name: cronTaskID
+              schedule: (parser) ->
+                # parser is a later.parse object
+                if tempPM.workorderPM[a].cronJob
+                  return parser.cron tempPM.workorderPM[a].pmExpression
+                else
+                  return parser.text tempPM.workorderPM[a].pmExpression
+              job: ->
+                # Create PM work order
+                generateWorkOrder tempPM.workorderPM[a].asset_ID, ID
     return 'Updated PM'
   deletePM: (docID) ->
-    PM.remove {'_id': docID}
     this.unblock()
+    PM.remove {'_id': docID}
     return 'Deleted PM'
 
 #------------------------ Global Functions -------------------------------------
@@ -61,7 +92,6 @@ Meteor.methods
   console.log 'PM activation completed'
 
 @generateWorkOrder = (assetID, PM) ->
-  console.log 'Generating PM Work Order (PM id: '+PM._id+') for asset '+ assetID
   tempAsset = Locations.findOne {'id': assetID}
   workOrder =  {
     type: 'pm'
@@ -86,4 +116,4 @@ Meteor.methods
   }
   # Insert work order into the collection
   Workorders.insert workOrder
-  this.unblock()
+  console.log 'Generated PM Work Order (PM id: '+PM._id+') for asset '+ assetID

@@ -24,7 +24,6 @@ aldeed:autoform
 aldeed:collection2
 sujith3g:jstree
 fortawesome:fontawesome
-chrismbeckett:toastr
 reactive-var
 email
 aslagle:reactive-table
@@ -42,12 +41,9 @@ hitchcott:qr-scanner
 ground:db
 tmeasday:publish-counts
 momentjs:moment
-mrt:moment-timezone
 gildaspk:autoform-materialize
 tap:i18n
 msavin:mongol
-meteorhacks:aggregate
 modweb:flipclock
 materialize:materialize
 percolate:synced-cron
-aldeed:tabular

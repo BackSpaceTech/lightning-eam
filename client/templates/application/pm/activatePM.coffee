@@ -119,7 +119,8 @@ Template.activatePMPage.events
     event.preventDefault()
     temp = Session.get 'currentDoc'
     tempObj = {$set: {workorderPM: temp.workorderPM}}
-    Meteor.call 'updatePM', tempObj, temp._id, (error, result) ->
+    timeBased = Collections.PM.Current.pmIntervalType!=1
+    Meteor.call 'activatePM', tempObj, temp._id, timeBased, (error, result) ->
       if error
         toast 'error', error
       else
