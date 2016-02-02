@@ -25,6 +25,8 @@ if Meteor.isServer
   doc.userDetails = Meteor.users.findOne {'_id': doc.createdBy_id }, fields:
     profile: true
   doc
+if Meteor.isServer
+  PM._ensureIndex {workorderPM: 1}
 
 if Meteor.isServer
   @Crontasks = new Mongo.Collection 'crontasks'

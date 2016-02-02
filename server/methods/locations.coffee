@@ -37,7 +37,16 @@ Meteor.methods
       Locations.update(doc._id, { $set: { meters: [meter]} })
     this.unblock()
     return 'Created Meter'
-  updateMeter: (doc, meter) ->
-    Locations.update(doc._id, { $set: { meters: meter} })
+  updateMeter: (docID, meterIndex, reading) ->
+    meters = Locations.findOne({'_id': docID}).meters
+    meters[meterIndex].reading = reading
+    Locations.update(docID, { $set: { meters: meters} })
+    activateMeterPM docID, meters[meterIndex].id, reading
     this.unblock()
     return 'Updated Meter'
+  deleteMeter: (docID, meterIndex) ->
+    meters = Locations.findOne({'_id': docID}).meters
+    meters.splice(meterIndex,1)
+    Locations.update(docID, { $set: { meters: meters} })
+    this.unblock()
+    return 'Deleted Meter'

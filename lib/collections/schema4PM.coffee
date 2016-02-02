@@ -21,6 +21,9 @@ Schema.workorderPM = new SimpleSchema (
   asset_ID:
     type: String
     label: 'Asset SysID'
+  assetTree:
+    type: [String]
+    label: 'Asset SysID'
   assetName:
     type: String
     label: 'Asset SysID'
@@ -39,6 +42,9 @@ Schema.workorderPM = new SimpleSchema (
   meterID:
     type: String
     label: 'Meter ID'
+  meterReading:
+    type: Number
+    label: 'Last Meter Reading'
   workorder_ID:
     type: [String]
     label: 'System ID'

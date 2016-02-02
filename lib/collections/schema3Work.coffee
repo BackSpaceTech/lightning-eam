@@ -332,6 +332,9 @@ schemaWorkorders ={
   remedy:
     type: String
     label: 'Remedy'
+  pmID:
+    type: String
+    optional: true     
 }
 
 schemaWorkorders = Object.assign schemaWorkorders, schemaRequestsApproved

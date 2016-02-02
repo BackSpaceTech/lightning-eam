@@ -34,9 +34,9 @@ Template.viewMetersPage.events
     # find index of meter in array
     for a in [0...doc.meters.length]
       if (doc.meters[a].id == Collections.Locations.Current.meter.id)
-        tempArray[a] = Collections.Locations.Current.meter
+        meterIndex = a
         break
-    Meteor.call 'updateMeter', doc, tempArray, (error, result) ->
+    Meteor.call 'updateMeter', doc._id, meterIndex, temp, (error, result) ->
       if error
         toast 'error', error
       else
@@ -45,14 +45,12 @@ Template.viewMetersPage.events
 
   'click #viewMetersPageModal2 button': (event) ->
     doc = Collections.Locations.Current
-    TempArray = []
-    tempArray = doc.meters;
     # find index of meter in array
     for a in [0...doc.meters.length]
       if (doc.meters[a].id == Collections.Locations.Current.meter.id)
-        tempArray.splice(a,1)
+        meterIndex = a
         break
-    Meteor.call 'updateMeter', doc, tempArray, (error, result) ->
+    Meteor.call 'deleteMeter', doc._id, meterIndex, (error, result) ->
       if error
         toast 'error', error
       else
