@@ -129,7 +129,7 @@ Template.activatePMPage.events
 
 # ----------------------- Modal ---------------------------
 Template.activatePMForm.onCreated ->
-  this.rtMeterID = new ReactiveVar ''
+  this.recurGUI = new ReactiveVar true
   Collections.Locations.CurrentMeterID = ''
 
 Template.activatePMForm.onRendered ->
@@ -138,4 +138,20 @@ Template.activatePMForm.onRendered ->
 Template.activatePMForm.helpers
   meterBasedPM: -> Collections.PM.Current.pmIntervalType==1
   timeBasedPM: -> Collections.PM.Current.pmIntervalType!=1
+  cronList: ->
+    tempArray = []
+    for prop of Lists.PM.CronType
+      tempArray.push {
+        id: prop
+        text: Lists.PM.CronType[prop]
+      }
+    console.log 'tempArray: ' + JSON.stringify tempArray
+    tempArray
   meterList: -> Locations.findOne('_id': Collections.Locations.CurrentID).meters
+  recurGUI: -> Template.instance().recurGUI.get()
+
+Template.activatePMForm.events
+  'change .timeBased select': (event, template) ->
+    temp = $( "select[name='cron-expression']" ).val()
+    template.recurGUI.set(temp=='0')
+    console.log 'temp: '+ (temp=='0')

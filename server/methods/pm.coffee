@@ -27,7 +27,7 @@ Meteor.methods
     PM.update {'_id': ID}, doc
     console.log "Udated PM: "+ID
     return 'Updated PM'
-  activatePM: (doc, ID) ->
+  activatePM: (doc, ID, timeBased) ->
     PM.update {'_id': ID}, doc
     console.log "Udated PM: "+ID
     if timeBased
@@ -35,29 +35,17 @@ Meteor.methods
       tempPM = PM.findOne { '_id': ID }
       if tempPM
         for a in [0...tempPM.workorderPM.length]
+          console.log 'tempPM.workorderPM[a]: '+JSON.stringify tempPM.workorderPM[a]
           tempCron = Crontasks.findOne {'pmID': ID, 'assetID': tempPM.workorderPM[a].asset_ID}
           if tempCron
             if (!tempPM.workorderPM[a].active) || (tempPM.workorderPM[a].pmExpression != tempCron.pmExpression)
               SyncedCron.remove tempCron._id
               Crontasks.remove { '_id' : tempCron._id }, 1
-          if (tempPM.workorderPM[a].active) && (tempPM.workorderPM[a].pmExpression != tempCron.pmExpression)
-            cronTaskID = Crontasks.insert { # Record cron job
-              pmID: ID
-              assetID: tempPM.workorderPM[a].asset_ID
-              cronJob: tempPM.workorderPM[a].cronJob
-              pmExpression: tempPM.workorderPM[a].pmExpression
-              }
-            SyncedCron.add # Create cron job
-              name: cronTaskID
-              schedule: (parser) ->
-                # parser is a later.parse object
-                if tempPM.workorderPM[a].cronJob
-                  return parser.cron tempPM.workorderPM[a].pmExpression
-                else
-                  return parser.text tempPM.workorderPM[a].pmExpression
-              job: ->
-                # Create PM work order
-                generateWorkOrder tempPM.workorderPM[a].asset_ID, ID
+            if (tempPM.workorderPM[a].active) && (tempPM.workorderPM[a].pmExpression != tempCron.pmExpression)
+              activateTimePM ID, tempPM.workorderPM[a]
+          else
+            if (tempPM.workorderPM[a].active)
+              activateTimePM ID, tempPM.workorderPM[a]
     return 'Updated PM'
   deletePM: (docID) ->
     this.unblock()
@@ -65,6 +53,25 @@ Meteor.methods
     return 'Deleted PM'
 
 #------------------------ Global Functions -------------------------------------
+
+@activateTimePM = (pmID, workorderPM) ->
+  cronTaskID = Crontasks.insert { # Record cron job
+    pmID: pmID
+    assetID: workorderPM.asset_ID
+    cronJob: workorderPM.cronJob
+    pmExpression: workorderPM.pmExpression
+    }
+  SyncedCron.add # Create cron job
+    name: cronTaskID
+    schedule: (parser) ->
+      # parser is a later.parse object
+      if workorderPM.cronJob == '0'
+        return parser.text workorderPM.pmExpression
+      else if workorderPM.cronJob == '1'
+        return parser.cron workorderPM.pmExpression
+    job: ->
+      # Create PM work order
+      generateWorkOrder workorderPM.asset_ID, pmID
 
 @activateMeterPM = (assetID, meterID, newReading) ->
   # Find PMs for asset

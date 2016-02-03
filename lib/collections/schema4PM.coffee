@@ -118,8 +118,12 @@ Schema.crontasks = new SimpleSchema (
     type: String
     label: 'Asset ID'
   cronJob:
-    type: Boolean
+    type: Number
     label: 'Cron Expression type'
+    autoform:
+      type: 'select'
+      options: ->
+        Lists.PM.CronType
   pmExpression:
     type: String
     label: 'Scheduling Expression'

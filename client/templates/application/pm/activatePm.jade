@@ -46,7 +46,6 @@ template(name='activatePMForm')
       .input-field.col.s6.m4.l3
           input#intActivatePM.validate(placeholder='Meter Interval', type='text', name='meter-interval', min='1')
           label(for='intActivatePM') Meter Interval
-      +medField item=rtMeterID label='Meter'
       .input-field.col.s12.m9.l6
         select(name='meter-id')
           each item in meterList
@@ -55,14 +54,33 @@ template(name='activatePMForm')
               | -
               =item.text
   if timeBasedPM
-    .row
-      .input-field.col.s6
-        .switch
-          label
-            | Text Expression
-            input#swtActivatePM(type='checkbox', name='cron-expression')
-            span.lever
-            | Cron Expression
+    .row.timeBased
+      .input-field.col.s6.m4.l3        
+        select(name='cron-expression')
+          each item in cronList
+            option(value=item.id)
+              =item.text
+        label Expression type
+  if recurGUI
+    .row.recurGUI
+      .input-field.col.s6.m4.l3
+        select(name='recur-every')
+          each item in recurEveryList
+            option(value=item.id)
+              =item.text    
+        label Recur Every
+      .input-field.col.s6.m4.l3
+        select(name='recur-every-units')
+          each item in recurEveryUnitsList
+            option(value=item.id)
+              =item.text
+        label Recur Every
+  else 
       .input-field.col.s6
         input#expActivatePM.validate(placeholder='Expression', type='text', name='pm-expression')
-        label(for='expActivatePM') Expression
+        label.active(for='expActivatePM') Expression
+      .input-field.col.s6.m4.l3
+        a(href='')
+          button
+          Text Expression Simulator        
+      

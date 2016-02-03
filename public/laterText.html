@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LaterJS example</title>
+    <script src="/application/html/js/bunkat/later/later.min.js"></script>
+</head>
+<body>
+  <h1>LaterJS Text Expression Simulator</h1>
+  <h3>Enter text expression:</h3>
+  	<input type="text" id="expression" value="every 14 days starting on the 4">
+  <button onClick="updateExp()">Update</button>
+    <p>next 10 executes</p>
+    <ol id="results"></ol>
+    <script>
+      	updateExp()
+      	function updateExp(){
+          var r = document.getElementById('results');
+          var x = document.getElementById('expression').value;
+          var sched = later.parse.text(x);
+          occurrences = later.schedule(sched).next(10);
+          r.innerHTML =''
+          for(var i=0;i<10;i++){
+              r.innerHTML += '<li>' + occurrences[i] + '</li>';
+          }
+        }
+    </script>
+</body>
+</html>

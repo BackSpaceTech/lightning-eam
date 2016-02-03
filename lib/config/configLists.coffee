@@ -39,3 +39,9 @@ Lists.PM.IntervalTypes = {
   0: 'Calendar'
   1: 'Meter Reading'
 }
+
+Lists.PM.CronType = {
+  0: 'Recur'
+  1: 'Text'
+  2: 'Cron'
+}
