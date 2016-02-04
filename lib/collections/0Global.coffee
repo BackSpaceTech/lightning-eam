@@ -43,3 +43,7 @@
 @Collections.Assetgroups = {}
 @Collections.Assetgroups.Current = {}
 @Collections.Assetgroups.CurrentID = 0
+
+@Collections.Crontasks = {}
+@Collections.Crontasks.Current = {}
+@Collections.Crontasks.CurrentID = 0

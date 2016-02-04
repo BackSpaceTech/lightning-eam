@@ -41,7 +41,86 @@ Lists.PM.IntervalTypes = {
 }
 
 Lists.PM.CronType = {
-  0: 'Recur'
-  1: 'Text'
-  2: 'Cron'
+  0: 'GUI'
+  1: 'Cron'
+}
+
+Lists.PM.CronGUI = {
+  0: {
+    text: 'Daily'
+    startTime: true
+    startDay: false
+    periodDay: false
+    startMonth: false
+    periodMonth: false
+    weekday: false
+    startYear: false
+    periodYear: false
+    }
+  1: {
+    text: 'Monthly'
+    startTime: true
+    startDay: true
+    periodDay: false
+    startMonth: false
+    periodMonth: false
+    weekday: false
+    startYear: false
+    periodYear: false
+    }
+  2: {
+    text: 'Yearly'
+    startTime: true
+    startDay: true
+    periodDay: false
+    startMonth: true
+    periodMonth: false
+    weekday: false
+    startYear: false
+    periodYear: false
+    }
+  3: {
+    text: 'Weekdays'
+    startTime: true
+    startDay: false
+    periodDay: false
+    startMonth: false
+    periodMonth: false
+    weekday: true
+    startYear: false
+    periodYear: false
+    }
+  4: {
+    text: 'Period Days'
+    startTime: true
+    startDay: true
+    periodDay: true
+    startMonth: false
+    periodMonth: false
+    weekday: false
+    startYear: false
+    periodYear: false
+    }
+  5: {
+    text: 'Period Months'
+    startTime: true
+    startDay: true
+    periodDay: false
+    startMonth: true
+    periodMonth: true
+    weekday: false
+    startYear: false
+    periodYear: false
+    }
+  6: {
+    text: 'Period Years'
+    startTime: true
+    startDay: true
+    periodDay: false
+    startMonth: true
+    periodMonth: false
+    weekday: false
+    startYear: true
+    periodYear: true
+    }
 }

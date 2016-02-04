@@ -127,4 +127,8 @@ Schema.crontasks = new SimpleSchema (
   pmExpression:
     type: String
     label: 'Scheduling Expression'
+  recurPeriod:
+    type: Number
+  recurStart:
+    type: Number
 )

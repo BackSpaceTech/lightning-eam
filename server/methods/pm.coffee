@@ -28,24 +28,36 @@ Meteor.methods
     console.log "Udated PM: "+ID
     return 'Updated PM'
   activatePM: (doc, ID, timeBased) ->
+    console.log 'Doc: '+JSON.stringify doc
+    console.log 'ID: '+JSON.stringify ID
+    console.log 'timeBased: '+JSON.stringify timeBased
     PM.update {'_id': ID}, doc
-    console.log "Udated PM: "+ID
     if timeBased
-      console.log 'Running PM Cron activation...'
       tempPM = PM.findOne { '_id': ID }
       if tempPM
+        console.log 'Found PM'
+        console.log 'tempPM.workorderPM.length: '+JSON.stringify tempPM.workorderPM.length
         for a in [0...tempPM.workorderPM.length]
-          console.log 'tempPM.workorderPM[a]: '+JSON.stringify tempPM.workorderPM[a]
+          console.log 'a= '+a
+          console.log 'tempPM.workorderPM[a].asset_ID: '+tempPM.workorderPM[a].asset_ID
           tempCron = Crontasks.findOne {'pmID': ID, 'assetID': tempPM.workorderPM[a].asset_ID}
-          if tempCron
-            if (!tempPM.workorderPM[a].active) || (tempPM.workorderPM[a].pmExpression != tempCron.pmExpression)
-              SyncedCron.remove tempCron._id
-              Crontasks.remove { '_id' : tempCron._id }, 1
-            if (tempPM.workorderPM[a].active) && (tempPM.workorderPM[a].pmExpression != tempCron.pmExpression)
-              activateTimePM ID, tempPM.workorderPM[a]
-          else
+          if !tempCron
+            console.log 'Cron Task not found'
             if (tempPM.workorderPM[a].active)
               activateTimePM ID, tempPM.workorderPM[a]
+          else
+            console.log 'Cron Task found'
+            console.log 'tempPM.workorderPM[a].active: '+JSON.stringify tempPM.workorderPM[a].active
+            console.log 'tempPM.workorderPM[a].pmExpression: '+JSON.stringify tempPM.workorderPM[a].pmExpression
+            console.log 'tempCron.pmExpression: '+JSON.stringify tempCron.pmExpression
+            if (!tempPM.workorderPM[a].active) || (tempPM.workorderPM[a].pmExpression != tempCron.pmExpression)
+              console.log 'Removed Cron Task'
+              SyncedCron.remove tempCron._id # Remove cron task
+              Crontasks.remove { '_id' : tempCron._id }
+            if (tempPM.workorderPM[a].active) && (tempPM.workorderPM[a].pmExpression != tempCron.pmExpression)
+              console.log 'Created Cron Task'
+              activateTimePM ID, tempPM.workorderPM[a] #
+    console.log 'Updated PM'
     return 'Updated PM'
   deletePM: (docID) ->
     this.unblock()
@@ -55,23 +67,18 @@ Meteor.methods
 #------------------------ Global Functions -------------------------------------
 
 @activateTimePM = (pmID, workorderPM) ->
-  cronTaskID = Crontasks.insert { # Record cron job
+  doc = { # Record cron job
     pmID: pmID
     assetID: workorderPM.asset_ID
     cronJob: workorderPM.cronJob
     pmExpression: workorderPM.pmExpression
     }
-  SyncedCron.add # Create cron job
-    name: cronTaskID
-    schedule: (parser) ->
-      # parser is a later.parse object
-      if workorderPM.cronJob == '0'
-        return parser.text workorderPM.pmExpression
-      else if workorderPM.cronJob == '1'
-        return parser.cron workorderPM.pmExpression
-    job: ->
-      # Create PM work order
-      generateWorkOrder workorderPM.asset_ID, pmID
+  console.log 'Activating time based PM: '+JSON.stringify doc
+  console.log 'Current server time is: '+ new Date()
+  cronTaskID = Crontasks.insert doc
+  # Create event for AWS CloudWatch
+  # AWS CloudWatch code goes here
+
 
 @activateMeterPM = (assetID, meterID, newReading) ->
   # Find PMs for asset
@@ -98,13 +105,29 @@ Meteor.methods
             PM.update {'_id': tempPM[a]._id}, {$set: {workorderPM: tempPM[a].workorderPM}}
   console.log 'PM activation completed'
 
-@generateWorkOrder = (assetID, PM) ->
-  tempAsset = Locations.findOne {'id': assetID}
+@generateWorkOrder = (assetID, pmID) ->
+  console.log 'Cron: Generating PM Work Order (PM id: '+pmID+') for Asset '+ assetID+'...'
+  tempAsset = Locations.findOne {'_id': assetID}
+  if !tempAsset
+    console.log 'Cron: Could not find Asset'
+    return
+  tempPM = PM.findOne {'_id': pmID}
+  if !tempPM
+    console.log 'Cron: Could not find PM'
+    return
+  sPlan = Safetyplans.findOne {'_id': tempPM.safetyPlan_ID}
+  if !sPlan
+    console.log 'Cron: Could not find safety plan for PM'
+    return
+  wPlan = Workplans.findOne {'_id': tempPM.workPlan_ID}
+  if !wPlan
+    console.log 'Cron: Could not find work plan for PM'
+    return
   workOrder =  {
     type: 'pm'
     status: '5'
-    reqPriority: PM.pmPriority
-    reqDescription: PM.pmDescription
+    reqPriority: tempPM.pmPriority
+    reqDescription: tempPM.pmDescription
     asset_ID: assetID
     asset_treePath: tempAsset.treePath
     assetID: tempAsset.assetID
@@ -114,13 +137,13 @@ Meteor.methods
     reqByFirstName: 'System generated PM'
     reqByLastName: 'System generated PM'
     reqDate: new Date()
-    text: PM.pmDescription
-    priority: PM.pmPriority
-    description: PM.pmDescription
-    safetyMethod: Safetyplans.findOne({'_id': PM.safetyPlan_ID}).safetyMethod
-    workPlan: Workplans.findOne({'_id': PM.workPlan_ID}).workPlan
+    text: tempPM.pmDescription
+    priority: tempPM.pmPriority
+    description: tempPM.pmDescription
+    safetyMethod: sPlan.safetyMethod
+    workPlan: wPlan.workPlan
     woCreatedDate: new Date()
   }
   # Insert work order into the collection
   Workorders.insert workOrder
-  console.log 'Generated PM Work Order (PM id: '+PM._id+') for asset '+ assetID
+  console.log 'Cron Generated PM Work Order (PM id: '+pmID+') for Asset '+ assetID

@@ -55,32 +55,70 @@ template(name='activatePMForm')
               =item.text
   if timeBasedPM
     .row.timeBased
-      .input-field.col.s6.m4.l3        
+      .input-field.col.s6.m4.l3
         select(name='cron-expression')
           each item in cronList
             option(value=item.id)
               =item.text
         label Expression type
-  if recurGUI
-    .row.recurGUI
-      .input-field.col.s6.m4.l3
-        select(name='recur-every')
-          each item in recurEveryList
-            option(value=item.id)
-              =item.text    
-        label Recur Every
-      .input-field.col.s6.m4.l3
-        select(name='recur-every-units')
-          each item in recurEveryUnitsList
+      .input-field.col.s6.m4.l3.cronGUI
+        select(name='gui-type')
+          each item in guiList
             option(value=item.id)
               =item.text
-        label Recur Every
-  else 
-      .input-field.col.s6
-        input#expActivatePM.validate(placeholder='Expression', type='text', name='pm-expression')
-        label.active(for='expActivatePM') Expression
-      .input-field.col.s6.m4.l3
-        a(href='')
-          button
-          Text Expression Simulator        
-      
+        label Schedule Type 
+    .row.cronGUI
+      .input-field.col.s6.m4.l3.gui-start-time
+        select(name='gui-start-time')
+          each item in guiStartTime
+            option(value=item.id)
+              =item.text
+        label Start Time
+      .input-field.col.s6.m4.l3.gui-start-day
+        select(name='gui-start-day')
+          each item in guiStartDay
+            option(value=item)
+              =item
+        label Start Day of Month
+      .input-field.col.s6.m4.l3.gui-num-days
+        select(name='gui-num-days')
+          each item in guiNumDays
+            option(value=item)
+              =item
+        label Period in Days
+      .input-field.col.s6.m4.l3.gui-start-month
+        select(name='gui-start-month')
+          each item in guiStartMonth
+            option(value=item)
+              =item
+        label Start Month of Year
+      .input-field.col.s6.m4.l3.gui-num-months
+        select(name='gui-num-months')
+          each item in guiNumMonths
+            option(value=item)
+              =item
+        label Period in Months 
+      .input-field.col.s6.m4.l3.gui-weekdays
+        select(name='gui-weekdays')
+          each item in guiWeekdays
+            option(value=item.id)
+              =item.text
+        label Weekdays 
+      .input-field.col.s6.m4.l3.gui-start-year
+          input#txtStartYearPM.validate(placeholder='Start Year', type='number', name='gui-start-year' min='1')
+          label.active(for='txtStartYearPM') Start Year number
+      .input-field.col.s6.m4.l3.gui-num-years
+          input#txtnumYearsPM.validate(placeholder='Years', type='number', name='gui-num-years' min='1')
+          label.active(for='txtnumYearsPM') Period in Years
+    .row.cronExpression
+      .divider.teal
+      .section.pmExpression
+        h5 Enter Cron Expression
+        .input-field.col.s6
+          input#expActivatePM.validate(placeholder='Expression', type='text', name='pm-expression')
+          label.active(for='expActivatePM') Expression
+        .input-field.col.s6        
+          a.waves-effect.waves-light.btn
+            i.material-icons.left playlist_add
+            | Check Schedule
+          
