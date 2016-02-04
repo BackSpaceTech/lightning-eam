@@ -26,9 +26,13 @@ template(name='activatePMPage')
                 h6.teal-text Activate All Assets
                 .row
                   +smlCheckField item=setPM.active label='Activate'
-                  +medField item=setPM.pmExpression label='Text/Cron Expression'
+                  +smlField item=setPM.pmExpression label='Cron Expression'
                   .col.s6.m4.l3
-                    +frmEdit
+                    +frmEdit                  
+                  .col.s6.m4.l3.btnCheck
+                    a.waves-effect.waves-light.btn
+                      i.material-icons.left playlist_add
+                      | Check Schedule
               else
                 h6.teal-text Activate PM Assets   
                 +lgeField item=viewDoc.assetGroupDetails.groupText label='Asset Group'

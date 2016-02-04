@@ -6,6 +6,7 @@ Template.activatePMPage.onCreated ->
   this.activateAll = new ReactiveVar true
   this.setPM = new ReactiveVar {
     activate: false
+    pmExpression: ''
   }
 
 Template.activatePMPage.onRendered ->
@@ -48,11 +49,23 @@ Template.activatePMPage.helpers
 Template.activatePMPage.events
   'click #swtActivatePM': (event, template) ->
     template.activateAll.set(!$('#swtActivatePM').prop('checked'))
+  'click .btnCheck a': (event, template) ->
+    temp = template.setPM.get().pmExpression
+    s = later.parse.cron temp
+    occurrences = later.schedule(s).next(10)
+    msg = 'Next ten occurrences for: '+temp+'\n'
+    if occurrences
+      for a in [0...occurrences.length]
+        msg += occurrences[a] + '\n'
+    else
+      msg = 'Invalid Cron Expression!'
+    alert msg
   'click .frmEdit .btnEdit': (event, template) ->
     if !Session.get('currentDoc').workorderPM
       Session.set 'currentDoc', PM.findOne ({ _id: Session.get('currentDoc')._id.toString() })
     temp = Session.get 'currentDoc'
     tempObj = {}
+    tempObj2 = {}
     MaterializeModal.form
       title: "Edit Activation Data"
       bodyTemplate: "activatePMForm"
@@ -71,14 +84,35 @@ Template.activatePMPage.events
             else if key == 'pm-expression'
               if value # Add expression if it exists
                 tempObj.pmExpression = value
-            else if key == 'recur-every'
+            else if key == 'gui-type'
               if value # Add expression if it exists
-                tempObj.recurPeriod = value
-            else if key == 'recur-starting'
+                tempObj2.guiList = value
+            else if key == 'gui-start-time'
               if value # Add expression if it exists
-                tempObj.recurStart = value
-          if tempObj.cronJob == '0' # Convert recur to text expression
-            tempObj = convertGUItoCron tempObj
+                tempObj2.guiStartTime = value
+            else if key == 'gui-start-day'
+              if value # Add expression if it exists
+                tempObj2.guiStartDay = value
+            else if key == 'gui-num-days'
+              if value # Add expression if it exists
+                tempObj2.guiNumDays = value
+            else if key == 'gui-start-month'
+              if value # Add expression if it exists
+                tempObj2.guiStartMonth = value
+            else if key == 'gui-num-months'
+              if value # Add expression if it exists
+                tempObj2.guiNumMonths = value
+            else if key == 'gui-weekdays'
+              if value # Add expression if it exists
+                tempObj2.guiWeekdays = value
+            else if key == 'gui-start-year'
+              if value # Add expression if it exists
+                tempObj2.txtStartYearPM = value
+            else if key == 'gui-num-years'
+              if value # Add expression if it exists
+                tempObj2.txtnumYearsPM = value
+          if tempObj.cronJob == '0' # Convert GUI to Cron expression
+            tempObj.pmExpression = convertGUItoCron tempObj2
           # Update workorderPM
           for a in [0...temp.workorderPM.length]
             temp.workorderPM[a].active = tempObj.active
@@ -126,14 +160,35 @@ Template.activatePMPage.events
               else if key == 'meter-id'
                 if value # Add expression if it exists
                   temp.workorderPM[tempIndex].meterID = value
-              else if key == 'recur-every'
+              else if key == 'gui-type'
                 if value # Add expression if it exists
-                  temp.workorderPM[tempIndex].recurPeriod = value
-              else if key == 'recur-starting'
+                  tempObj2.guiList = value
+              else if key == 'gui-start-time'
                 if value # Add expression if it exists
-                  temp.workorderPM[tempIndex].recurStart = value
-            if temp.workorderPM[tempIndex].tempObj.cronJob ==0 # Convert recur to text expression
-              temp.workorderPM[tempIndex] = convertGUItoCron temp.workorderPM[tempIndex]
+                  tempObj2.guiStartTime = value
+              else if key == 'gui-start-day'
+                if value # Add expression if it exists
+                  tempObj2.guiStartDay = value
+              else if key == 'gui-num-days'
+                if value # Add expression if it exists
+                  tempObj2.guiNumDays = value
+              else if key == 'gui-start-month'
+                if value # Add expression if it exists
+                  tempObj2.guiStartMonth = value
+              else if key == 'gui-num-months'
+                if value # Add expression if it exists
+                  tempObj2.guiNumMonths = value
+              else if key == 'gui-weekdays'
+                if value # Add expression if it exists
+                  tempObj2.guiWeekdays = value
+              else if key == 'gui-start-year'
+                if value # Add expression if it exists
+                  tempObj2.txtStartYearPM = value
+              else if key == 'gui-num-years'
+                if value # Add expression if it exists
+                  tempObj2.txtnumYearsPM = value
+            if temp.workorderPM[tempIndex].tempObj.cronJob ==0 # Convert to Cron expression
+              temp.workorderPM[tempIndex].pmExpression = convertGUItoCron tempObj2
             Session.set 'currentDoc', temp
           else
             toast 'error', 'Cancelled'
@@ -152,18 +207,39 @@ Template.activatePMPage.events
       return
 
 @convertGUItoCron = (tempObj) ->
-  tempObj.cronJob = '1' # change to text expression type
-  if !tempObj.recurStart
-    tempObj.recurStart = ''
-  switch tempObj.recurPeriod
-    when '0' then tempObj.pmExpression = 'every '+Lists.PM.Recur[0].period # Daily
-    when '1' then tempObj.pmExpression = 'every '+Lists.PM.Recur[1].period+' starting on the '+tempObj.recurStart # Weekly
-    when '2' then tempObj.pmExpression = 'every '+Lists.PM.Recur[2].period+' starting on the '+tempObj.recurStart # Monthly
-    when '3' then tempObj.pmExpression = 'every '+Lists.PM.Recur[3].period+' starting on the '+tempObj.recurStart # Yearly
-    when '4' then tempObj.pmExpression = 'every '+Lists.PM.Recur[4].period # Weekdays
-    when '5' then tempObj.pmExpression = 'every '+Lists.PM.Recur[5].period # Weekends
   console.log 'tempObj: '+JSON.stringify tempObj
-  return tempObj
+  tempObj.cronJob = '1' # change to Cron expression type
+  strCron = ''
+  guiList = tempObj.guiList
+  tempList = Lists.PM.CronGUI
+  if tempList[guiList].startTime
+    strCron += '0 '+tempObj.guiStartTime
+  else
+    strCron += '* *'
+  if tempList[guiList].startDay
+    strCron += ' '+ tempObj.guiStartDay
+  else
+    strCron += ' *'
+  if tempList[guiList].periodDay
+    strCron += '/'+ tempObj.guiNumDays
+  if tempList[guiList].startMonth
+    strCron += ' '+ tempObj.guiStartMonth
+  else
+    strCron += ' *'
+  if tempList[guiList].periodMonth
+    strCron += '/'+ tempObj.guiNumMonths
+  if tempList[guiList].weekday
+    strCron += ' '+ tempObj.guiWeekdays
+  else
+    strCron += ' *'
+  if tempList[guiList].startYear
+    strCron += ' '+ tempObj.txtStartYearPM
+  else
+    strCron += ' *'
+  if tempList[guiList].periodYear
+    strCron += '/'+ tempObj.txtnumYearsPM
+  console.log 'strCron: '+strCron
+  return strCron
 
 # ----------------------- Modal ---------------------------
 Template.activatePMForm.onCreated ->
