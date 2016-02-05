@@ -1,0 +1,24 @@
+template(name='editAssetClassPage')
+  if customTemplate
+    +editAssetClassPageCustom  
+  else
+    .container2 
+      br
+      fieldset
+        legend Edit Class 
+        +autoForm schema=classFormSchema id="editAssetClassPage" type="update" collection="Class" doc=currentDoc
+          if Template.subscriptionsReady
+            .row
+              +afQuickField name="parent" type="hidden"
+              +afQuickField name="treePath" type="hidden"
+              +afQuickField name="type" type="hidden"               
+              .col.s12.m6.l3
+                +afQuickField name="classID"
+              div
+                +afQuickField name="text"
+              div
+                +afQuickField name="description"
+              div
+          else
+            +spinner
+          +fabBackResetSubmit 

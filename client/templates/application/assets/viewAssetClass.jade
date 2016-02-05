@@ -1,0 +1,23 @@
+template(name='viewAssetClassPage')
+  if customTemplate
+    +viewAssetClassPageCustom  
+  else  
+    .flow-text.container2.viewAssetClass
+      +fabBackCopyEdit
+      br
+      fieldset
+        legend View Asset 
+        +autoForm schema=assetClassFormSchema id="viewAssetClassPage" type="readonly" collection="Class" doc=viewDoc
+          if Template.subscriptionsReady
+            .row
+              h6.teal-text Class Details 
+              .col.s12.m6.l3
+                +afQuickField name="id"
+              .col.s12.m6.l3
+                +afQuickField name="classID"
+              div
+                +afQuickField name="text"
+              div
+                +afQuickField name="description"
+          else
+            +spinner

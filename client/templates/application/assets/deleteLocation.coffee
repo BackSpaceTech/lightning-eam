@@ -26,4 +26,4 @@ Template.deleteLocationPage.events
         else
           toast 'success', result
         return
-    FlowRouter.go '/assets'
+    FlowRouter.go history.back()

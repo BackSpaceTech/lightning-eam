@@ -105,10 +105,50 @@ assetsRoutes.route '/view-meters',
       header: 'header1'
       footer: 'footer1'
 
+assetsRoutes.route '/view-classes',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'viewAssetClassesPage'
+      header: 'header1'
+      footer: 'footer1'
+
 assetsRoutes.route '/create-class',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
     BlazeLayout.render 'layout',
       content: 'createAssetClassPage'
+      header: 'header1'
+      footer: 'footer1'
+
+assetsRoutes.route '/edit-class',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'editAssetClassPage'
+      header: 'header1'
+      footer: 'footer1'
+
+assetsRoutes.route '/duplicate-class',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'duplicateAssetClassPage'
+      header: 'header1'
+      footer: 'footer1'
+
+assetsRoutes.route '/delete-class',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'deleteAssetClassPage'
+      header: 'header1'
+      footer: 'footer1'
+
+assetsRoutes.route '/view-class',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'viewAssetClassPage'
       header: 'header1'
       footer: 'footer1'
