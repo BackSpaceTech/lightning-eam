@@ -105,50 +105,50 @@ assetsRoutes.route '/view-meters',
       header: 'header1'
       footer: 'footer1'
 
-assetsRoutes.route '/view-classes',
+assetsRoutes.route '/view-classifications',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
     BlazeLayout.render 'layout',
-      content: 'viewAssetClassesPage'
+      content: 'viewAssetClassificationsPage'
       header: 'header1'
       footer: 'footer1'
 
-assetsRoutes.route '/create-class',
+assetsRoutes.route '/create-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
     BlazeLayout.render 'layout',
-      content: 'createAssetClassPage'
+      content: 'createAssetClassificationPage'
       header: 'header1'
       footer: 'footer1'
 
-assetsRoutes.route '/edit-class',
+assetsRoutes.route '/edit-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
     BlazeLayout.render 'layout',
-      content: 'editAssetClassPage'
+      content: 'editAssetClassificationPage'
       header: 'header1'
       footer: 'footer1'
 
-assetsRoutes.route '/duplicate-class',
+assetsRoutes.route '/duplicate-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
     BlazeLayout.render 'layout',
-      content: 'duplicateAssetClassPage'
+      content: 'duplicateAssetClassificationPage'
       header: 'header1'
       footer: 'footer1'
 
-assetsRoutes.route '/delete-class',
+assetsRoutes.route '/delete-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
     BlazeLayout.render 'layout',
-      content: 'deleteAssetClassPage'
+      content: 'deleteAssetClassificationPage'
       header: 'header1'
       footer: 'footer1'
 
-assetsRoutes.route '/view-class',
+assetsRoutes.route '/view-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
     BlazeLayout.render 'layout',
-      content: 'viewAssetClassPage'
+      content: 'viewAssetClassificationPage'
       header: 'header1'
       footer: 'footer1'

@@ -1,13 +1,13 @@
-Template.editAssetClassPage.onRendered ->
+Template.editAssetClassificationPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
-Template.editAssetClassPage.onDestroyed ->
+Template.editAssetClassificationPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.editAssetClassPage.helpers
-  customTemplate: -> Customisations.editAssetClass # user customised template if applicable
+Template.editAssetClassificationPage.helpers
+  customTemplate: -> Customisations.editAssetClassification # user customised template if applicable
   currentDoc: ->
-    Collections.Class.Current = Class.findOne {'_id':Session.get('currentID').toString()}
-    return Collections.Class.Current
-  classFormSchema: -> Schema.class
+    Collections.Classification.Current = Classification.findOne {'_id':Session.get('currentID').toString()}
+    return Collections.Classification.Current
+  classificationFormSchema: -> Schema.classification

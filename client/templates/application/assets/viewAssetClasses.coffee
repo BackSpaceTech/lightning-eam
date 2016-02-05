@@ -1,51 +1,51 @@
-Template.viewAssetClassesPage.onCreated ->
+Template.viewAssetClassificationsPage.onCreated ->
   # Set Navbar so Resources highlighted
   $('#header1DesktopUL li').removeClass 'active'
   $('#header1DesktopUL li').eq(0).addClass 'active'
 
-Template.viewAssetClassesPage.onRendered ->
+Template.viewAssetClassificationsPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
-  Session.set 'treeviewData', 'Class'
+  Session.set 'treeviewData', 'Classification'
   assetTree()
 
-Template.viewAssetClassesPage.onDestroyed ->
+Template.viewAssetClassificationsPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.viewAssetClassesPage.helpers
-  customTemplate: -> Customisations.viewAssetClasses
-  classDetails: -> Class.findOne {'id':Session.get('currentID').toString()}
+Template.viewAssetClassificationsPage.helpers
+  customTemplate: -> Customisations.viewAssetClassifications
+  classificationDetails: -> Classification.findOne {'id':Session.get('currentID').toString()}
   # Disable create/edit if not connected
   serverConnected: -> (Meteor.status().status == 'connected');
 
-Template.viewAssetClassesPage.events
-  'click .viewAssetClasses .btnNewDB': (event) ->
+Template.viewAssetClassificationsPage.events
+  'click .viewAssetClassifications .btnNewDB': (event) ->
     Session.set 'currentID', '#'
-    FlowRouter.go '/assets/create-class'
-  'click .viewAssetClasses .btnNewAss': (event) ->
-    FlowRouter.go '/assets/create-class'
-  'click .viewAssetClasses .btnEdit': (event) ->
-    Collections.Class.Current = Class.findOne {'id':Session.get('currentID').toString()}
+    FlowRouter.go '/assets/create-classification'
+  'click .viewAssetClassifications .btnNewAss': (event) ->
+    FlowRouter.go '/assets/create-classification'
+  'click .viewAssetClassifications .btnEdit': (event) ->
+    Collections.Classification.Current = Classification.findOne {'id':Session.get('currentID').toString()}
     if (Session.get('currentID').toString() == '#')
-      alert 'No class selected!'
+      alert 'No classification selected!'
     else
-      FlowRouter.go '/assets/edit-class'
-  'click .viewAssetClasses .btnCopy': (event) ->
-    Collections.Class.Current = Class.findOne {'id':Session.get('currentID').toString()}
+      FlowRouter.go '/assets/edit-classification'
+  'click .viewAssetClassifications .btnCopy': (event) ->
+    Collections.Classification.Current = Classification.findOne {'id':Session.get('currentID').toString()}
     if (Session.get('currentID').toString() == '#')
-      alert 'No class selected!'
+      alert 'No classification selected!'
     else
-      FlowRouter.go '/assets/duplicate-class'
+      FlowRouter.go '/assets/duplicate-classification'
 
-  'click .viewAssetClasses .btnViewLoc': (event) ->
-    Collections.Class.Current = Class.findOne {'id':Session.get('currentID').toString()}
+  'click .viewAssetClassifications .btnViewLoc': (event) ->
+    Collections.Classification.Current = Classification.findOne {'id':Session.get('currentID').toString()}
     if (Session.get('currentID').toString() == '#')
-      alert 'No class selected!'
+      alert 'No classification selected!'
     else
-      FlowRouter.go '/assets/view-class'
+      FlowRouter.go '/assets/view-classification'
 
-  'click .viewAssetClasses .btnDeleteLoc': (event) ->
+  'click .viewAssetClassifications .btnDeleteLoc': (event) ->
     if (Session.get('currentID').toString() == '#')
-      alert 'No class selected!'
+      alert 'No classification selected!'
     else
-      FlowRouter.go '/assets/delete-class'
+      FlowRouter.go '/assets/delete-classification'

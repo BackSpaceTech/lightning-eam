@@ -1,15 +1,15 @@
-template(name='viewAssetClassesPage')
+template(name='viewAssetClassificationsPage')
   if customTemplate
-    +viewAssetClassesPageCustom  
+    +viewAssetClassificationsPageCustom  
   else  
     .container
       .row
         div
           h5
-            | Assets Classes
+            | Assets Classifications
             br
           .row
-            .col.s12.m9.l10.viewAssetClasses
+            .col.s12.m9.l10.viewAssetClassifications
               if serverConnected
                 .hide-on-large-only
                   .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
@@ -20,33 +20,33 @@ template(name='viewAssetClassesPage')
                         button.btn-floating.teal.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-delay='50' , data-tooltip='Go Back')
                           i.material-icons skip_previous
                       li
-                        a.btnCopy.btn-floating.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Copy Class')
+                        a.btnCopy.btn-floating.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Copy Classification')
                           i.fa.fa-copy   
                       li                     
-                        a.btnEdit.btn-floating.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Edit Class')
+                        a.btnEdit.btn-floating.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Edit Classification')
                           i.fa.fa-edit
                       li
-                        a.btnNewAss.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Create new Class')
+                        a.btnNewAss.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Create new Classification')
                           i.fa.fa-sitemap
                       li
                         a.btnNewDB.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50', data-tooltip='Create new database')
                           i.fa.fa-database                            
                       li
-                        a.btnViewLoc.btn-floating.teal.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='View Class')
+                        a.btnViewLoc.btn-floating.teal.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='View Classification')
                           i.fa.fa-search
                 .hide-on-med-and-down
                   button.btnNewDB.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new database') 
                     i.fa.fa-database 
-                  button.btnNewAss.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Create new Class')
+                  button.btnNewAss.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Create new Classification')
                     i.fa.fa-sitemap
-                  button.btnEdit.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Edit class')
+                  button.btnEdit.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Edit classification')
                     i.fa.fa-edit
-                  button.btnCopy.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Copy class')
+                  button.btnCopy.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Copy classification')
                     i.fa.fa-copy
-                  button.btnViewLoc.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='View class')
+                  button.btnViewLoc.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='View classification')
                     i.fa.fa-search
                   |                   |
-                  button.btnDeleteLoc.btn-floating.btn-large.waves-effect.waves-light.red.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Delete class')
+                  button.btnDeleteLoc.btn-floating.btn-large.waves-effect.waves-light.red.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Delete classification')
                     i.fa.fa-trash-o 
-          +treeView treeData = classDetails
+          +treeView treeData = classificationDetails
   

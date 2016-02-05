@@ -1,22 +1,22 @@
-template(name='createAssetClassPage')
+template(name='createAssetClassificationPage')
   if customTemplate
-    +createAssetClassPageCustom
+    +createAssetClassificationPageCustom
   else
     .container2
       br
-      +createClassPage classType='asset-class' afSchema=assetClassFormSchema
+      +createClassificationPage classificationType='asset-classification' afSchema=assetClassificationFormSchema
       br
 
-template(name='createClassPage')
-  +autoForm schema=afSchema id='createClassPage' type='method' meteormethod='createClass'
+template(name='createClassificationPage')
+  +autoForm schema=afSchema id='createClassificationPage' type='method' meteormethod='createClassification'
     fieldset
-      legend New Asset Class
+      legend New Asset Classification
       .row
         +afQuickField name='id' type='hidden'
-        +afQuickField name='type' value=classType type='hidden'
+        +afQuickField name='type' value=classificationType type='hidden'
         +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
         .col.s12.m6.l3
-          +afQuickField name='classID'
+          +afQuickField name='classificationID'
         div
           +afQuickField name='text'
         div

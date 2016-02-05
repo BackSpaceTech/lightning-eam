@@ -1,19 +1,19 @@
-template(name='editAssetClassPage')
+template(name='editAssetClassificationPage')
   if customTemplate
-    +editAssetClassPageCustom  
+    +editAssetClassificationPageCustom  
   else
     .container2 
       br
       fieldset
-        legend Edit Class 
-        +autoForm schema=classFormSchema id="editAssetClassPage" type="update" collection="Class" doc=currentDoc
+        legend Edit Classification 
+        +autoForm schema=classificationFormSchema id="editAssetClassificationPage" type="update" collection="Classification" doc=currentDoc
           if Template.subscriptionsReady
             .row
               +afQuickField name="parent" type="hidden"
               +afQuickField name="treePath" type="hidden"
               +afQuickField name="type" type="hidden"               
               .col.s12.m6.l3
-                +afQuickField name="classID"
+                +afQuickField name="classificationID"
               div
                 +afQuickField name="text"
               div

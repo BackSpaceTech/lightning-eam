@@ -1,5 +1,5 @@
-###************************* Class *****************************************###
-Class.allow
+###************************* Classification *********************************###
+Classification.allow
   insert: ->
     true
   update: ->
@@ -7,7 +7,7 @@ Class.allow
   remove: ->
     true
 
-Schema.class = new SimpleSchema(
+Schema.classification = new SimpleSchema(
   id: #Copy of _id used by treeView
     type: String
     label: 'Sys ID'
@@ -16,7 +16,7 @@ Schema.class = new SimpleSchema(
     type: Date
     label: 'Created Date'
     optional: true
-  classID:
+  classificationID:
     type: String
     label: 'ID'
     optional: true
@@ -39,12 +39,12 @@ Schema.class = new SimpleSchema(
       options: ->
         [
           {
-            label: 'Asset Class'
-            value: 'asset-class'
+            label: 'Asset Classification'
+            value: 'asset-classification'
           }
           {
-            label: 'Company Class'
-            value: 'company-class'
+            label: 'Company Classification'
+            value: 'company-classification'
           }
         ]
   description:

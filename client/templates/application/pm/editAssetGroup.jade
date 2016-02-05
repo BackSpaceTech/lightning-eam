@@ -20,5 +20,5 @@ template(name='editAssetGroupPage')
                   +reactiveTable collection=assetArrayDetails settings=settings class='table striped'
           else
             +spinner
-          +treeAssetsAdd assets=assetDetails
+          +treeViewAdd treeData=assetDetails
           +fabBackResetSubmit

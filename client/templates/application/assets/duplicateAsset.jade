@@ -8,13 +8,16 @@ template(name='duplicateAssetPage')
         legend Duplicate Asset
         +autoForm schema=locationFormSchema id='duplicateAssetPage' type='method' meteormethod='createLoc' 
           if Template.subscriptionsReady                       
-            .row
+            .row.firstRow
               +afQuickField name='type' value=duplicateDoc.type type='hidden'
               +afQuickField name='parent' value=duplicateDoc.parent type='hidden'              
               .col.s12.m6.l3
                 +afQuickField name='assetID' label='*ID'
               .col.s12.m6.l3
                 +afQuickField name='criticality' value=duplicateDoc.criticality
+              +smlField item=txtClassificationID label='Asset Classification'
+              +afQuickField name='assetClassificationID' value=classificationID type='hidden'
+              +frmAdd                
               div
                 +afQuickField name='text' value=duplicateDoc.text
               div
@@ -22,7 +25,7 @@ template(name='duplicateAssetPage')
               div
                 +afQuickField name='safety' value=duplicateDoc.safety
               .col.s12.m6.l3
-                +afQuickField name='class' value=duplicateDoc.class
+                +afQuickField name='classification' value=duplicateDoc.classification
               .col.s12.m6.l3
                 +afQuickField name='status' value=duplicateDoc.status
               .col.s12.m6.l3
@@ -81,3 +84,5 @@ template(name='duplicateAssetPage')
             +spinner 
           +fabBackResetSubmit
                                                       
+template(name='duplicateAssetAddAssetClass')
+  +treeViewAdd treeData = classificationDetails

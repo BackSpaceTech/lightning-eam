@@ -1,6 +1,6 @@
 # Subscribe to a subset of the data on the client
 Meteor.subscribe 'locations'
-Meteor.subscribe 'class'
+Meteor.subscribe 'classification'
 # Subscribe to subset persisted in GroundDB
 Ground.Collection Workorders
 

@@ -12,8 +12,8 @@ Meteor.publish 'locations', ->
 Meteor.publish 'singleLocation', (locationId) ->
   Locations.find _id: locationId
 
-Meteor.publish 'class', ->
-  Class.find {}
+Meteor.publish 'classification', ->
+  Classification.find {}
 
 #************************ Resources *****************************#
 Meteor.publish 'directory', ->

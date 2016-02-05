@@ -1,18 +1,18 @@
-template(name='duplicateAssetClassPage')
+template(name='duplicateAssetClassificationPage')
   if customTemplate
-    +duplicateAssetClassPageCustom  
+    +duplicateAssetClassificationPageCustom  
   else
     .container2
       br
       fieldset
-        legend Duplicate Asset Class  
-        +autoForm schema=classFormSchema id='duplicateAssetClassPage' type='method' meteormethod='createClass'
+        legend Duplicate Asset Classification  
+        +autoForm schema=classificationFormSchema id='duplicateAssetClassificationPage' type='method' meteormethod='createClassification'
           if Template.subscriptionsReady
             .row
               +afQuickField name='type' value=duplicateDoc.type type='hidden'
               +afQuickField name='parent' value=duplicateDoc.parent type='hidden'
               .col.s12.m6.l3
-                +afQuickField name='classID' label='*ID'
+                +afQuickField name='classificationID' label='*ID'
               div
                 +afQuickField name='text' value=duplicateDoc.text
               div

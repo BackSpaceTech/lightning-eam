@@ -8,7 +8,7 @@ template(name='editAssetPage')
         legend Edit Asset 
         +autoForm schema=locationFormSchema id="editAssetPage" type="update" collection="Locations" doc=currentDoc
           if Template.subscriptionsReady
-            .row
+            .row.firstRow
               +afQuickField name="parent" type="hidden"
               +afQuickField name="treePath" type="hidden"               
               .col.s12.m6.l3
@@ -17,6 +17,9 @@ template(name='editAssetPage')
                 +afQuickField name="type"               
               .col.s12.m6.l3
                 +afQuickField name="criticality"
+              +smlField item=txtClassificationID label='Asset Classification'
+              +afQuickField name='assetClassificationID' value=classificationID type='hidden'
+              +frmAdd                
               div
                 +afQuickField name="text"
               div
@@ -24,7 +27,7 @@ template(name='editAssetPage')
               div
                 +afQuickField name="safety"
               .col.s12.m6.l3
-                +afQuickField name="class"
+                +afQuickField name="classification"
               .col.s12.m6.l3
                 +afQuickField name="status"
               .col.s12.m6.l3
@@ -82,3 +85,6 @@ template(name='editAssetPage')
           else
             +spinner
           +fabBackResetSubmit 
+
+template(name='editAssetAddAssetClass')
+  +treeViewAdd treeData = classificationDetails

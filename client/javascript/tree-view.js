@@ -24,8 +24,8 @@ if(Meteor.isClient){
         case 'Locations':
             tempData = Locations.find().fetch();
             break;
-        case 'Class':
-            tempData = Class.find().fetch();
+        case 'Classification':
+            tempData = Classification.find().fetch();
             break;
         default:
             console.log('No data source defined for treeview');
@@ -60,11 +60,11 @@ if(Meteor.isClient){
                'icon' : 'fa fa-industry teal lighten-4',
                'valid_children': -1
           },
-          'asset-class' : {
+          'asset-classification' : {
                'icon' : 'fa fa-sitemap teal lighten-4',
                'valid_children': -1
           },
-          'company-class' : {
+          'company-classification' : {
                'icon' : 'fa fa-sitemap teal lighten-4',
                'valid_children': -1
           },

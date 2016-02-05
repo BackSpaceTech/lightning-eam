@@ -4,7 +4,7 @@
 
 @Lists = {}
 
-@Lists.Class = {}
+@Lists.Classification = {}
 @Lists.Locations = {}
 @Lists.Resources = {}
 @Lists.Workorders = {}
@@ -14,9 +14,9 @@
 
 @Collections = {}
 
-@Collections.Class = {}
-@Collections.Class.Current = {}
-@Collections.Class.CurrentID = 0
+@Collections.Classification = {}
+@Collections.Classification.Current = {}
+@Collections.Classification.CurrentID = 0
 
 @Collections.Locations = {}
 @Collections.Locations.Current = {}

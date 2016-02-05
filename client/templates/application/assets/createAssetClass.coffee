@@ -1,24 +1,24 @@
-Template.createAssetClassPage.onRendered ->
+Template.createAssetClassificationPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
-Template.createAssetClassPage.onDestroyed ->
+Template.createAssetClassificationPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.createAssetClassPage.helpers
-  assetClassFormSchema: -> Schema.class
-  customTemplate: -> Customisations.createAssetClass
+Template.createAssetClassificationPage.helpers
+  assetClassificationFormSchema: -> Schema.classification
+  customTemplate: -> Customisations.createAssetClassification
 
-#--------------------------- Class Template -----------------------------------#
+#--------------------------- Classification Template --------------------------#
 
-Template.createClassPage.onRendered ->
+Template.createClassificationPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
-Template.createClassPage.onDestroyed ->
+Template.createClassificationPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.createClassPage.helpers
+Template.createClassificationPage.helpers
   parentID: -> Session.get('currentID').toString()
   children: -> []
-  assetClassFormSchema: -> Schema.class
+  assetClassificationFormSchema: -> Schema.classification

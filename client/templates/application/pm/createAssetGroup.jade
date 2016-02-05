@@ -17,5 +17,5 @@ template(name='createAssetGroupPage')
                 +afQuickField name='asset_IDs' value=assetArray type='hidden'
                 +afQuickField name='groupCreatedBy' value=assetGroupCreatedBy type='hidden'
                 +reactiveTable collection=assetArrayDetails settings=settings class='table striped'
-          +treeAssetsAdd assets=assetDetails
+          +treeViewAdd treeData=assetDetails
           +fabBackResetSubmit         

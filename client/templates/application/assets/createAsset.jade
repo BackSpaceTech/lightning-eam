@@ -7,16 +7,18 @@ template(name='createAssetPage')
       +autoForm schema=locationFormSchema id='createAssetPage' type='method' meteormethod='createLoc'
         fieldset
           legend New Asset
-          .row
+          .row.firstRow
             +afQuickField name='id' type='hidden'
             +afQuickField name='type' value='asset' type='hidden'
             +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
             .col.s12.m6.l3
-              +afQuickField name='assetID'              
+              +afQuickField name='assetID'
             .col.s12.m6.l3
               +afQuickField name='criticality'
-            .col.s12.m6.l3
-              +afQuickField name='class'
+            +smlField item=txtClassificationID label='Asset Classification'
+            +afQuickField name='assetClassificationID' value=classificationID type='hidden'
+            +frmAdd
+          .row
             .col.s12.m6.l3
               +afQuickField name='status'
             .col.s12.m6.l3
@@ -80,4 +82,6 @@ template(name='createAssetPage')
           +fabBackResetSubmit
                                       
       br
-    
+
+template(name='createAssetAddAssetClass')
+  +treeViewAdd treeData = classificationDetails

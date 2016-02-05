@@ -90,14 +90,9 @@ Schema.locations = new SimpleSchema(
       type: 'select'
       options: ->
         Lists.Locations.Criticality
-  class
+  assetClassificationID:
     type: String
-    label: 'Class'
-    optional: true
-    autoform:
-      type: 'select'
-      options: ->
-        Lists.Locations.Class
+    label: 'Classification ID'
   status:
     type: String
     label: 'Status'

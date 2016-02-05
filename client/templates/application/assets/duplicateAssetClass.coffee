@@ -1,13 +1,13 @@
-Template.duplicateAssetClassPage.onRendered ->
+Template.duplicateAssetClassificationPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
-Template.duplicateAssetClassPage.onDestroyed ->
+Template.duplicateAssetClassificationPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
-  
-Template.duplicateAssetClassPage.helpers
-  customTemplate: -> Customisations.duplicateAssetClass
+
+Template.duplicateAssetClassificationPage.helpers
+  customTemplate: -> Customisations.duplicateAssetClassification
   duplicateDoc: ->
-    Collections.Class.Current = Class.findOne {'_id':Session.get('currentID').toString()}
-    return Collections.Class.Current
-  classFormSchema: -> Schema.class
+    Collections.Classification.Current = Classification.findOne {'_id':Session.get('currentID').toString()}
+    return Collections.Classification.Current
+  classificationFormSchema: -> Schema.classification

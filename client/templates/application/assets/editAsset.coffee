@@ -1,5 +1,5 @@
 Template.editAssetPage.onRendered ->
-  $(".dropdown-button").dropdown()  
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.editAssetPage.onDestroyed ->
@@ -17,3 +17,23 @@ Template.editAssetPage.helpers
     return Collections.Locations.Current
   asset: -> (Collections.Locations.Current.type == 'asset')
   locationFormSchema: -> Schema.locations
+  classificationID: -> Session.get 'currentID'
+  txtClassificationID: -> Classification.findOne(Session.get('currentID').toString()).text
+
+Template.editAssetPage.events
+  'click .firstRow .btnAdd': (event) ->
+    MaterializeModal.display({
+      bodyTemplate: "editAssetAddAssetClass"
+    })
+
+
+Template.editAssetAddAssetClass.onRendered ->
+  Session.set 'treeviewData', 'Classification'
+  assetTree()
+
+Template.editAssetAddAssetClass.helpers
+  classificationDetails: -> Classification.find().fetch()
+
+Template.editAssetAddAssetClass.events
+  'click .btnAdd': (event) ->
+    MaterializeModal.close()
