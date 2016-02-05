@@ -1,10 +1,10 @@
 Template.editPMPage.onCreated ->
   self = this
   self.autorun ->
-    self.subscribe 'singlePM', (Session.get 'currentID').toString()
+    self.subscribe 'singlePM', Session.get('currentDoc')._id.toString()
 
 Template.editPMPage.onRendered ->
-  $(".dropdown-button").dropdown()  
+  $(".dropdown-button").dropdown()
 
 Template.editPMPage.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
@@ -15,7 +15,7 @@ Template.editPMPage.onDestroyed ->
 Template.editPMPage.helpers
   customTemplate: -> Customisations.viewAsset
   pmSchema: -> Schema.pm
-  viewDoc: -> PM.findOne { _id: (Session.get 'currentID').toString() }
+  viewDoc: -> PM.findOne { _id: Session.get('currentDoc')._id.toString() }
   createdID: -> Meteor.userId()
 
 Template.editPMPage.events

@@ -1,6 +1,8 @@
 #************************** Collections ********************************
 @Locations = new Mongo.Collection 'locations'
 
+@Class = new Mongo.Collection 'class'
+
 @Workorders = new Mongo.Collection 'workorders'
 if Meteor.isServer
   Workorders._ensureIndex {status: 1}

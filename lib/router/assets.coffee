@@ -104,3 +104,11 @@ assetsRoutes.route '/view-meters',
       content: 'viewMetersPage'
       header: 'header1'
       footer: 'footer1'
+
+assetsRoutes.route '/create-class',
+  triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+  action: ->
+    BlazeLayout.render 'layout',
+      content: 'createAssetClassPage'
+      header: 'header1'
+      footer: 'footer1'

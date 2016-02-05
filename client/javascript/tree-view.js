@@ -19,6 +19,17 @@ if(Meteor.isClient){
         Session.set('currentID', '#')
       }
     });
+    var tempData = []
+    switch(Session.get('treeviewData')) {
+        case 'Locations':
+            tempData = Locations.find().fetch();
+            break;
+        case 'Class':
+            tempData = Class.find().fetch();
+            break;
+        default:
+            console.log('No data source defined for treeview');
+    }
     $('.tree_view').jstree({
       'core': {
           'animation': 0,
@@ -29,7 +40,7 @@ if(Meteor.isClient){
               'responsive': true,
               'variant' : 'large'
           },
-          'data' : Locations.find().fetch()
+          'data' : tempData
       },
       'types': {
           '#': {
@@ -48,8 +59,15 @@ if(Meteor.isClient){
           'asset' : {
                'icon' : 'fa fa-industry teal lighten-4',
                'valid_children': -1
-          }
-          ,
+          },
+          'asset-class' : {
+               'icon' : 'fa fa-sitemap teal lighten-4',
+               'valid_children': -1
+          },
+          'company-class' : {
+               'icon' : 'fa fa-sitemap teal lighten-4',
+               'valid_children': -1
+          },
           'database' : {
                'icon' : 'fa fa-database teal lighten-4',
                'valid_children': -1

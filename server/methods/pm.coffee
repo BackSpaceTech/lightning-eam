@@ -106,22 +106,22 @@ Meteor.methods
   console.log 'PM activation completed'
 
 @generateWorkOrder = (assetID, pmID) ->
-  console.log 'Cron: Generating PM Work Order (PM id: '+pmID+') for Asset '+ assetID+'...'
+  console.log 'System: CloudWatch triggered PM Work Order (PM id: '+pmID+') for Asset '+ assetID+'...'
   tempAsset = Locations.findOne {'_id': assetID}
   if !tempAsset
-    console.log 'Cron: Could not find Asset'
+    console.log 'System: Could not find Asset'
     return
   tempPM = PM.findOne {'_id': pmID}
   if !tempPM
-    console.log 'Cron: Could not find PM'
+    console.log 'System: Could not find PM'
     return
   sPlan = Safetyplans.findOne {'_id': tempPM.safetyPlan_ID}
   if !sPlan
-    console.log 'Cron: Could not find safety plan for PM'
+    console.log 'System: Could not find safety plan for PM'
     return
   wPlan = Workplans.findOne {'_id': tempPM.workPlan_ID}
   if !wPlan
-    console.log 'Cron: Could not find work plan for PM'
+    console.log 'System: Could not find work plan for PM'
     return
   workOrder =  {
     type: 'pm'
@@ -146,4 +146,4 @@ Meteor.methods
   }
   # Insert work order into the collection
   Workorders.insert workOrder
-  console.log 'Cron Generated PM Work Order (PM id: '+pmID+') for Asset '+ assetID
+  console.log 'CloudWatch Triggered PM Work Order (PM id: '+pmID+') for Asset '+ assetID

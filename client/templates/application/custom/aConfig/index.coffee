@@ -1,5 +1,6 @@
 Customisations = {
   welcome: false
+  createClass: false
   # Assets
   createAsset: false
   createLocation: false

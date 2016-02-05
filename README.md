@@ -91,7 +91,7 @@ One of the aims of Lightning is to make EAM accessible to all organisations and 
 
 #### Lists
 
-Within the application there are selection lists such as trade types, asset classifications etc. If you industry has something missing from the lists or you can provide input to the lists then you can help us. Contact us info@backspace.technology if you would like to help with pull requests.
+Within the application there are selection lists such as trade types etc. If you industry has something missing from the lists or you can provide input to the lists then you can help us. Contact us info@backspace.technology if you would like to help with pull requests.
 
 
 ##Roadmap

@@ -6,7 +6,7 @@ Lists.Locations.Criticality = {
   2: '2 - Important'
   1: '1 - Not Important'
 }
-Lists.Locations.Classification = {
+Lists.Locations.Class = {
   'pump': 'Pump'
   'emotor': 'Electric Motor'
   'gearbox': 'Gearbox'

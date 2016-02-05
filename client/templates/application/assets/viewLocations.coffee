@@ -4,8 +4,9 @@ Template.viewLocationsPage.onCreated ->
   $('#header1DesktopUL li').eq(0).addClass 'active'
 
 Template.viewLocationsPage.onRendered ->
-  $(".dropdown-button").dropdown()  
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
+  Session.set 'treeviewData', 'Locations'
   assetTree()
 
 Template.viewLocationsPage.onDestroyed ->

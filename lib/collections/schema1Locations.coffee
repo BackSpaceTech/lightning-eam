@@ -1,4 +1,4 @@
-###************************* Locations & Assets *******************************###
+###************************* Locations & Assets *****************************###
 Locations.allow
   insert: ->
     true
@@ -90,14 +90,14 @@ Schema.locations = new SimpleSchema(
       type: 'select'
       options: ->
         Lists.Locations.Criticality
-  classification:
+  class
     type: String
-    label: 'Classification'
+    label: 'Class'
     optional: true
     autoform:
       type: 'select'
       options: ->
-        Lists.Locations.Classification
+        Lists.Locations.Class
   status:
     type: String
     label: 'Status'
