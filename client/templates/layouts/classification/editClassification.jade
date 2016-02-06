@@ -1,0 +1,21 @@
+template(name='editClassificationPage')
+  .container2 
+    br
+    fieldset
+      legend Edit Classification 
+      +autoForm schema=classificationFormSchema id="editClassificationPage" type="update" collection="Classification" doc=classDoc
+        if Template.subscriptionsReady
+          .row
+            +afQuickField name="parent" type="hidden"
+            +afQuickField name="treePath" type="hidden"
+            +afQuickField name="type" type="hidden"               
+            .col.s12.m6.l3
+              +afQuickField name="classificationID"
+            div
+              +afQuickField name="text"
+            div
+              +afQuickField name="description"
+            div
+        else
+          +spinner
+        +fabBackResetSubmit   

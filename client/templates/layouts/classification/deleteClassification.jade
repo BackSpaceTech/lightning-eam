@@ -1,0 +1,23 @@
+template(name='deleteClassificationPage')
+  .flow-text.deleteClassification
+    if Template.subscriptionsReady
+      .row
+        br
+        h1.red-text 
+          |Delete 
+          = doc
+          |?
+        h2
+          | Warning this will permanently delete 
+          = doc 
+          |!
+          | This will also affect any other documents that refer to 
+          = doc
+          |.
+        br
+        div
+          button.btn.waves-effect.waves-light.red.btnDelete Delete permanently
+          a
+            button.btn.waves-effect.waves-light(type='button' onclick="history.back(-1)")
+              i.material-icons skip_previous
+              |  Back to safety  

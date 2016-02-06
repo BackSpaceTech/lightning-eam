@@ -15,6 +15,10 @@ Template.layoutResources.onRendered ->
 Template.layoutWork.onRendered ->
   $('.button-collapse').sideNav { closeOnClick: true }
 
+# Set relevant classification type
+Template.layoutAssets.onCreated ->
+  Session.set 'currentClassification', 'asset-classification'
+
 # Subscriptions
 Template.layoutPM.onCreated ->
   self = this

@@ -1,0 +1,19 @@
+template(name='createClassificationPage')
+  .container2
+    br  
+    +autoForm schema=ClassificationFormSchema id='createClassificationPage' type='method' meteormethod='createClassification'
+      fieldset
+        legend New Classification
+        .row
+          +afQuickField name='id' type='hidden'
+          +afQuickField name='type' value=classificationType type='hidden'
+          +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
+          .col.s12.m6.l3
+            +afQuickField name='classificationID'
+          +smlField label='Classification Type' item=classificationType
+          div
+            +afQuickField name='text'
+          div
+            +afQuickField name='description'
+        +fabBackResetSubmit
+    br

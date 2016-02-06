@@ -4,9 +4,9 @@ template(name='treeViewAdd')
       input.view_q(type='text', value='', placeholder='Search')
   .row.treeview
     .row.teal.lighten-1.white-text.z-depth-1   
-      = treeData.assetID
-      | - 
-      = treeData.text
+      = nodeID
+      | -
+      = nodeText
       button.autoform-add-item.btn-floating.waves-effect.waves-light.green.tooltipped.btnAdd(type='button', data-autoform-field='workPlan', data-position='bottom', data-tooltip='Add Asset')
         i.fa.fa-plus
     .tree_view.row.treeview.z-depth-1
@@ -16,9 +16,15 @@ template(name='treeView')
     .col.s12.m3.l2.z-depth-1(style='text-align:right;')
       input.view_q(type='text', value='', placeholder='Search')
   .row.treeview
-    .row.teal.lighten-1.white-text.z-depth-1
-        = treeData.assetID
-        = treeData.classificationID
-        | -
-        = treeData.text
+    .row.teal.lighten-1.white-text.z-depth-1     
+      = nodeID
+      | -
+      = nodeText
+    .tree_view.row.treeview.z-depth-1
+
+template(name='treeViewSimple')
+  .row
+    .col.s12.m3.l2.z-depth-1(style='text-align:right;')
+      input.view_q(type='text', value='', placeholder='Search')
+  .row.treeview
     .tree_view.row.treeview.z-depth-1

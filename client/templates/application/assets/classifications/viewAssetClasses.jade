@@ -1,0 +1,10 @@
+template(name='viewAssetClassificationsPage')
+  if customTemplate
+    +viewAssetClassificationsPageCustom  
+  else  
+    .container
+      .row
+        div.viewClassifications
+          // template located in layouts folder
+          +viewClassificationsPage type='assets'
+          +treeView treeData = classificationDetails

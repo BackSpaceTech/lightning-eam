@@ -1,0 +1,20 @@
+template(name='viewClassificationPage')
+  .flow-text.container2.viewClassification
+    +fabBackCopyEdit
+    br
+    fieldset
+      legend View Asset 
+      +autoForm schema=ClassificationFormSchema id="viewClassificationPage" type="readonly" collection="Classification" doc=classDoc
+        if Template.subscriptionsReady
+          .row
+            h6.teal-text Classification Details 
+            .col.s12.m6.l3
+              +afQuickField name="id"
+            .col.s12.m6.l3
+              +afQuickField name="classificationID"
+            div
+              +afQuickField name="text"
+            div
+              +afQuickField name="description"
+        else
+          +spinner

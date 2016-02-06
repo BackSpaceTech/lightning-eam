@@ -1,0 +1,6 @@
+template(name='createAssetClassificationPage')
+  if customTemplate
+    +createAssetClassificationCustom
+  else
+    // template located in layouts folder
+    +createClassificationPage classificationType='asset-classification'

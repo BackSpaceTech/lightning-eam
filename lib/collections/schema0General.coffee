@@ -43,8 +43,8 @@ Schema.classification = new SimpleSchema(
             value: 'asset-classification'
           }
           {
-            label: 'Company Classification'
-            value: 'company-classification'
+            label: 'Item Classification'
+            value: 'item-classification'
           }
         ]
   description:

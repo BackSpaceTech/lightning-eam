@@ -1,0 +1,6 @@
+template(name='duplicateAssetClassificationPage')
+  if customTemplate
+    +duplicateAssetClassificationCustom  
+  else
+    // template located in layouts folder
+    +duplicateClassificationPage  duplicateDoc=currentDoc

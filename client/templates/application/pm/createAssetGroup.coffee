@@ -20,7 +20,7 @@ Template.createAssetGroupPage.helpers
     for a in [0...temp.length]
       tempArray[a] = Locations.findOne {'id':temp[a]}
     return tempArray
-  assetDetails: -> Locations.findOne {'id':Session.get('currentID').toString()}
+  assetDetails: -> Locations.findOne {'id':Session.get('currentID')[0]}
   settings: ->
         return {
           rowsPerPage: 10
@@ -35,8 +35,8 @@ Template.createAssetGroupPage.helpers
 Template.createAssetGroupPage.events
   'click .createAssetGroup .btnAdd': (event, template) ->
     temp = template.assetArray.get()
-    if temp.indexOf(Session.get('currentID').toString()) == -1
-      temp.push Session.get('currentID').toString()
+    if temp.indexOf(Session.get('currentID')[0]) == -1
+      temp.push Session.get('currentID')[0]
       template.assetArray.set temp
       toast 'success', 'Asset added'
     else

@@ -1,8 +1,8 @@
 #************************** Collections ********************************
 @Locations = new Mongo.Collection 'locations', transform: (doc) ->
   if doc.assetClassificationID
-    doc.assetClassification = Classification.findOne( {'_id': doc.assetClassificationID }, { fields:
-      text: true} ).fetch()
+    doc.assetClassification = Classification.findOne {'_id': doc.assetClassificationID }, { fields:
+      text: true}
   doc
 
 @Classification = new Mongo.Collection 'classification'

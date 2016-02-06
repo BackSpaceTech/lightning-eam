@@ -1,0 +1,8 @@
+template(name='createItemClassificationPage')
+  if customTemplate
+    +createItemClassificationPageCustom
+  else
+    .container2
+      br
+      +createClassificationPage classificationType='item-classification' afSchema=ItemClassificationFormSchema
+      br

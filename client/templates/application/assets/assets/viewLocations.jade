@@ -1,0 +1,71 @@
+template(name='viewLocationsPage')
+  if customTemplate
+    +viewLocationsPageCustom  
+  else  
+    .container
+      .row
+        div
+          h5
+            | Assets and Locations
+            br
+          .row
+            .col.s12.m9.l10.viewLocations
+              if serverConnected
+                .hide-on-large-only.viewLocations
+                  .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+                    a.btn-floating.btn-large.purple
+                      i.large.mdi-navigation-menu
+                    ul
+                      li
+                        button.btn-floating.teal.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-delay='50' , data-tooltip='Go Back')
+                          i.material-icons skip_previous
+                      li
+                        a(href="{{pathFor '../assets/view-meters'}}")
+                          .btn-floating.blue.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='View meters')
+                            i.fa.fa-search                                                    
+                      li
+                        a.btnCreateMeter.btn-floating.blue.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Create meter')
+                          i.fa.fa-tachometer
+                      li
+                        a.btnCopy.btn-floating.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Copy asset or location')
+                          i.fa.fa-copy   
+                      li                     
+                        a.btnEdit.btn-floating.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Edit asset or location')
+                          i.fa.fa-edit
+                      li
+                        a.btnNewAss.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Create new asset')
+                          i.fa.fa-industry
+                      li
+                        a.btnNewLoc.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Create new location')
+                          i.fa.fa-map-marker
+                      li
+                        a.btnNewDB.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50', data-tooltip='Create new database')
+                          i.fa.fa-database
+                      li
+                        a.btnViewLoc.btn-floating.teal.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='View location or asset')
+                          i.fa.fa-search
+                .hide-on-med-and-down
+                  button.btnNewDB.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new database')
+                    i.fa.fa-database
+                  button.btnNewLoc.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Create new location')
+                    i.fa.fa-map-marker
+                  button.btnNewAss.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Create new asset')
+                    i.fa.fa-industry
+                  button.btnEdit.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Edit asset or location')
+                    i.fa.fa-edit
+                  button.btnCopy.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Copy asset or location')
+                    i.fa.fa-copy
+                  button.btnViewLoc.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='View location or asset')
+                    i.fa.fa-search
+                  |                   |
+                  button.btnDeleteLoc.btn-floating.btn-large.waves-effect.waves-light.red.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Delete location or asset')
+                    i.fa.fa-trash-o
+                  |                   |
+                  button.btnCreateMeter.btn-floating.btn-large.waves-effect.waves-light.blue.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Create new meter')
+                    i.fa.fa-tachometer
+                  a(href="{{pathFor '../assets/view-meters'}}")
+                    button.btn-floating.btn-large.waves-effect.waves-light.blue.tooltipped(type='button', id='', data-position='bottom', data-delay='50' , data-tooltip='View meters for asset')
+                      i.fa.fa-search           
+            
+          +treeView nodeID=assetDetails.assetID nodeText=assetDetails.text
+    

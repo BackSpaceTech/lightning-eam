@@ -1,0 +1,81 @@
+template(name='viewAssetPage')
+  if customTemplate
+    +viewAssetPageCustom  
+  else  
+    .flow-text.container2.viewAsset
+      +fabBackCopyEdit
+      br
+      fieldset
+        legend View Asset 
+        +autoForm schema=locationsFormSchema id="viewAssetPage" type="readonly" collection="Locations" doc=viewDoc
+          if Template.subscriptionsReady
+            .row
+              h6.teal-text Asset Details 
+              .col.s12.m6.l3
+                +afQuickField name="id"
+              .col.s12.m6.l3
+                +afQuickField name="assetID"
+              .col.s12.m6.l3
+                +afQuickField name="referenceID"
+              .col.s12.m6.l3
+                +afQuickField name="criticality"
+              +smlField label='Classification' item=assetClassification
+              .col.s12.m6.l3
+                +afQuickField name="rotable" 
+              .col.s12.m6.l3
+                +afQuickField name="status"  
+              div
+                +afQuickField name="text"
+              div
+                +afQuickField name="description"
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Geolocation Information 
+                .col.s12.m6.l3
+                  +afQuickField name="linear"
+                .col.s12.m6.l3
+                  +afQuickField name="lat1"
+                .col.s12.m6.l3
+                  +afQuickField name="long1"  
+                .col.s12.m6.l3
+                  +afQuickField name="lat2"
+                .col.s12.m6.l3
+                  +afQuickField name="long2"
+            // Other info
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Manufacture Information
+                .col.s12.m6.l3
+                  +afQuickField name="serialNumber"
+                .col.s12.m6.l3
+                  +afQuickField name="modelNumber"
+                .col.s12.m6.l3
+                  +afQuickField name="manufacturer"  
+                .col.s12.m6.l3
+                  +afQuickField name="manufPhone"
+                .col.s12.m6.l3
+                  +afQuickField name="manufAddress"
+                .col.s12.m6.l3
+                  +afQuickField name="manufState"
+                .col.s12.m6.l3
+                  +afQuickField name="manufZip"
+            .row
+              .divider.teal
+              .section
+                h6.teal-text Additional Information
+                .col.s12.m6.l3
+                  +afQuickField name="urlTechData"
+                .col.s12.m6.l3
+                  +afQuickField name="urlOpData"
+                .col.s12.m6.l3
+                  +afQuickField name="urlPhoto"  
+                .col.s12.m6.l3
+                  +afQuickField name="referenceID"
+                .col.s12.m6.l3
+                  +afQuickField name="manufDate"
+                .col.s12.m6.l3
+                  +afQuickField name="installDate"
+          else
+            +spinner

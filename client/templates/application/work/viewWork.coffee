@@ -12,7 +12,7 @@ Template.viewWorkPage.onDestroyed ->
 Template.viewWorkPage.helpers
   quickSearch: -> Template.instance().quickSearch.get()
   assetDetails: ->
-    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
+    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID')[0]}
     Collections.Locations.Current
 
 Template.viewWorkPage.events
