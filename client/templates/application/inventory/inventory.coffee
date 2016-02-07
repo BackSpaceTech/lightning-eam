@@ -17,3 +17,9 @@ Template.inventoryPage.events
   'click .btnViewItemsClassifications': (event) ->
     Session.set 'treeviewData', 'item-classification'
     FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/item/view-classifications'
+  'click .btnViewEquipmentClassifications': (event) ->
+    Session.set 'treeviewData', 'item-classification'
+    FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/equipment/view-classifications'
+  'click .btnViewLocationClassifications': (event) ->
+    Session.set 'treeviewData', 'item-classification'
+    FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/locations/view-classifications'

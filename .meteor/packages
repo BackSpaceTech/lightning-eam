@@ -47,3 +47,6 @@ msavin:mongol
 modweb:flipclock
 materialize:materialize
 voidale:later-js-tz
+sanjo:jasmine
+velocity:html-reporter
+velocity:console-reporter

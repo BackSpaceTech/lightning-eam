@@ -11,11 +11,12 @@ Template.viewClassificationsPage.onDestroyed ->
 Template.viewClassificationsPage.helpers
   serverConnected: -> (Meteor.status().status == 'connected');
   getClassificationType: ->
-    temp =   Session.get('treeviewData')[0]
-    if temp == 'asset-classification'
-      return 'Asset'
-    else if temp == 'item-classification'
-      return 'Item'
+    switch Session.get('treeviewData')
+      when 'asset-classification' then return 'Asset'
+      when 'item-classification' then return 'Item'
+      when 'equipment-classification' then return 'Equipment'
+      when 'invloc-classification' then return 'Inventory Location'
+
 
 Template.viewClassificationsPage.events
   'click .btnNewDB': (event) ->

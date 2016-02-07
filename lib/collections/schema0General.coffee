@@ -46,6 +46,14 @@ Schema.classification = new SimpleSchema(
             label: 'Item Classification'
             value: 'item-classification'
           }
+          {
+            label: 'Equipment Classification'
+            value: 'equipment-classification'
+          }
+          {
+            label: 'Inventory Location Classification'
+            value: 'invloc-classification'
+          }
         ]
   description:
     type: String

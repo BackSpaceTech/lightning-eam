@@ -1,0 +1,6 @@
+template(name='createEquipmentClassificationPage')
+  if customTemplate
+    +createEquipmentClassificationCustom
+  else
+    // template located in layouts folder
+    +createClassificationPage classificationType='equipment-classification'

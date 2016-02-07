@@ -1,0 +1,10 @@
+template(name='viewInvLocClassificationsPage')
+  if customTemplate
+    +viewInvLocClassificationsPageCustom  
+  else  
+    .container
+      .row
+        div.viewClassifications        
+          // template located in layouts folder
+          +viewClassificationsPage type='inventory/locations'
+          +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text

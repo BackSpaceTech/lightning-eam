@@ -1,0 +1,6 @@
+template(name='createInvLocClassificationPage')
+  if customTemplate
+    +createInvLocClassificationCustom
+  else
+    // template located in layouts folder
+    +createClassificationPage classificationType='invloc-classification'
