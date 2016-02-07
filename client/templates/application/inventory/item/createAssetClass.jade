@@ -1,0 +1,6 @@
+template(name='createItemClassificationPage')
+  if customTemplate
+    +createItemClassificationCustom
+  else
+    // template located in layouts folder
+    +createClassificationPage classificationType='item-classification'

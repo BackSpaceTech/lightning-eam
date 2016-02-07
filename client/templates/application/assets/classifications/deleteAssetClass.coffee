@@ -7,4 +7,4 @@ Template.deleteAssetClassificationPage.onDestroyed ->
 
 Template.deleteAssetClassificationPage.helpers
   customTemplate: -> Customisations.deleteAssetClassification
-  textDoc: -> (Classification.findOne {'id':Session.get('currentID')[0]}).text
+  textDoc: -> Classification.findOne({'id':Session.get('currentClassID').toString()}).text

@@ -1,7 +1,7 @@
 Template.deleteLocationPage.onCreated ->
   self = this
   self.autorun ->
-    self.subscribe 'singleLocation', (Session.get('currentID')[0])
+    self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.deleteLocationPage.onRendered ->
   $(".dropdown-button").dropdown()
@@ -12,15 +12,15 @@ Template.deleteLocationPage.onDestroyed ->
 
 Template.deleteLocationPage.helpers
   customTemplate: -> Customisations.deleteLocation
-  textDoc: -> (Locations.findOne {'id':Session.get('currentID')[0]}).text
+  textDoc: -> (Locations.findOne {'id':Session.get('currentID').toString()}).text
 
 Template.deleteLocationPage.events
   'click .deleteLocation .btnDelete': (event) ->
-    temp = Locations.findOne {'parent':Session.get('currentID')[0]}
+    temp = Locations.findOne {'parent':Session.get('currentID').toString()}
     if temp
       alert 'You cannot delete an asset or location that has children!'
     else
-      Meteor.call 'deleteLoc', Session.get('currentID')[0], (error, result) ->
+      Meteor.call 'deleteLoc', Session.get('currentID').toString(), (error, result) ->
         if error
           toast 'error', error
         else

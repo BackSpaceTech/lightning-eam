@@ -5,55 +5,55 @@ inventoryRoutes = FlowRouter.group(
   name: 'inventory')
 
 inventoryRoutes.route '/', action: ->
-  BlazeLayout.render 'layout',
+  BlazeLayout.render 'layoutInventory',
     content: 'inventoryPage'
     header: 'header1'
     footer: 'footer1'
 
-inventoryRoutes.route '/view-item-classifications',
+inventoryRoutes.route '/item/view-classifications',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
-    BlazeLayout.render 'layout',
+    BlazeLayout.render 'layoutInventory',
       content: 'viewItemClassificationsPage'
       header: 'header1'
       footer: 'footer1'
 
-inventoryRoutes.route '/view-item-classification',
+inventoryRoutes.route '/item/view-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
-    BlazeLayout.render 'layout',
+    BlazeLayout.render 'layoutInventory',
       content: 'viewItemClassificationPage'
       header: 'header1'
       footer: 'footer1'
 
-inventoryRoutes.route '/create-item-classification',
+inventoryRoutes.route '/item/create-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
-    BlazeLayout.render 'layout',
+    BlazeLayout.render 'layoutInventory',
       content: 'createItemClassificationPage'
       header: 'header1'
       footer: 'footer1'
 
-inventoryRoutes.route '/edit-item-classification',
+inventoryRoutes.route '/item/edit-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
-    BlazeLayout.render 'layout',
+    BlazeLayout.render 'layoutInventory',
       content: 'editItemClassificationPage'
       header: 'header1'
       footer: 'footer1'
 
-inventoryRoutes.route '/duplicate-item-classification',
+inventoryRoutes.route '/item/duplicate-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
-    BlazeLayout.render 'layout',
+    BlazeLayout.render 'layoutInventory',
       content: 'duplicateItemClassificationPage'
       header: 'header1'
       footer: 'footer1'
 
-inventoryRoutes.route '/delete-item-classification',
+inventoryRoutes.route '/item/delete-classification',
   triggersEnter: [ AccountsTemplates.ensureSignedIn ]
   action: ->
-    BlazeLayout.render 'layout',
+    BlazeLayout.render 'layoutInventory',
       content: 'deleteItemClassificationPage'
       header: 'header1'
       footer: 'footer1'

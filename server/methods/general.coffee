@@ -26,6 +26,6 @@ Meteor.methods
       if (temp)
         Classification.update(temp._id, { $pull: { children: doc.id }})
     # Delete a Classification from the collection
-    Classification.remove doc
+    Classification.remove doc._id
     this.unblock()
     return 'Deleted'

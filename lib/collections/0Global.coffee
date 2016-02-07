@@ -17,6 +17,7 @@
 @Collections.Classification = {}
 @Collections.Classification.Current = {}
 @Collections.Classification.CurrentID = 0
+@Collections.Classification.Folder = ''
 
 @Collections.Locations = {}
 @Collections.Locations.Current = {}

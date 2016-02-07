@@ -1,6 +1,7 @@
 template(name='viewClassificationsPage')  
           h5
-            | Assets Classifications
+            =getClassificationType
+            | Classifications
             br
           .row
             .col.s12.m9.l10
@@ -12,31 +13,26 @@ template(name='viewClassificationsPage')
                     ul
                       li
                         button.btn-floating.teal.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-delay='50' , data-tooltip='Go Back')
-                          i.material-icons skip_previous
-                      li
-                        a.btnCopy.btn-floating.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Copy Classification')
-                          i.fa.fa-copy   
+                          i.material-icons skip_previous   
                       li                     
                         a.btnEdit.btn-floating.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Edit Classification')
                           i.fa.fa-edit
                       li
                         a.btnNewAss.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Create new Classification')
-                          i.fa.fa-sitemap
+                          i.fa.fa-plus-square
                       li
-                        a.btnNewDB.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50', data-tooltip='Create new database')
-                          i.fa.fa-database                            
+                        a.btnNewDB.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50', data-tooltip='Create new Classification Tree')
+                          i.fa.fa-sitemap                            
                       li
                         a.btnViewLoc.btn-floating.teal.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='View Classification')
                           i.fa.fa-search
                 .hide-on-med-and-down
-                  button.btnNewDB.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new database') 
-                    i.fa.fa-database 
+                  button.btnNewDB.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new Classification Tree') 
+                    i.fa.fa-sitemap 
                   button.btnNewAss.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Create new Classification')
-                    i.fa.fa-sitemap
+                    i.fa.fa-plus-square
                   button.btnEdit.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Edit classification')
                     i.fa.fa-edit
-                  button.btnCopy.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Copy classification')
-                    i.fa.fa-copy
                   button.btnViewLoc.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='View classification')
                     i.fa.fa-search
                   |                   |

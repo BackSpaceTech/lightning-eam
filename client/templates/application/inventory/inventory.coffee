@@ -4,7 +4,7 @@ Template.inventoryPage.onCreated ->
   $('#header1DesktopUL li').eq(4).addClass 'active'
 
 Template.inventoryPage.onRendered ->
-  $(".dropdown-button").dropdown()  
+  $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.inventoryPage.onDestroyed ->
@@ -12,3 +12,8 @@ Template.inventoryPage.onDestroyed ->
 
 Template.inventoryPage.helpers
   customTemplate: -> Customisations.inventory
+
+Template.inventoryPage.events
+  'click .btnViewItemsClassifications': (event) ->
+    Session.set 'treeviewData', 'item-classification'
+    FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/item/view-classifications'

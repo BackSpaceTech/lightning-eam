@@ -11,17 +11,17 @@ Template.editAssetPage.onDestroyed ->
 Template.editAssetPage.onCreated ->
   self = this
   self.autorun ->
-    self.subscribe 'singleLocation', Session.get('currentID')[0]
+    self.subscribe 'singleLocation', Session.get('currentID').toString()
 
 Template.editAssetPage.helpers
   customTemplate: -> Customisations.editAsset # user customised template if applicable
   currentDoc: ->
-    Collections.Locations.Current = Locations.findOne {'_id':Session.get('currentID')[0]}
+    Collections.Locations.Current = Locations.findOne {'_id':Session.get('currentID').toString()}
     return Collections.Locations.Current
   asset: -> (Collections.Locations.Current.type == 'asset')
   locationFormSchema: -> Schema.locations
-  assetClassID: -> Session.get 'currentClass'
-  txtClassificationID: -> Classification.findOne({_id: Session.get('currentClass')[0]}).text
+  assetClassID: -> Session.get 'currentClassID'
+  txtClassificationID: -> Classification.findOne({_id: Session.get('currentClassID').toString()}).text
 
 Template.editAssetPage.events
   'click .firstRow .btnAdd': (event, template) ->
@@ -37,4 +37,4 @@ Template.modalEditAssetPage.onRendered ->
   assetTree(temp , 'classification')
 
 Template.modalEditAssetPage.helpers
-  classificationDetails: -> Classification.findOne {_id:Session.get 'currentClass'}
+  classificationDetails: -> Classification.findOne {_id:Session.get 'currentClassID'}

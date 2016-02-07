@@ -7,11 +7,12 @@ Template.deleteClassificationPage.onDestroyed ->
 
 Template.deleteClassificationPage.events
   'click .deleteClassification .btnDelete': (event) ->
-    temp = Classification.findOne {'parent':Session.get('currentID')[0]}
+    temp = Classification.findOne {parent:Session.get('currentClassID').toString()}
     if temp
       alert 'You cannot delete a classification that has children!'
     else
-      Meteor.call 'deleteClassification', Session.get('currentID')[0], (error, result) ->
+      docDelete = Classification.findOne {_id:Session.get('currentClassID').toString()}
+      Meteor.call 'deleteClassification', docDelete, (error, result) ->
         if error
           toast 'error', error
         else

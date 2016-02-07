@@ -7,4 +7,3 @@ Template.editAssetClassificationPage.onDestroyed ->
 
 Template.editAssetClassificationPage.helpers
   customTemplate: -> Customisations.editAssetClassification # user customised template if applicable
-  currentDoc: -> Collections.Classification.Current

@@ -1,7 +1,7 @@
 Template.viewMetersPage.onCreated ->
   self = this;
   self.autorun ->
-     self.subscribe 'singleLocation', (Session.get('currentID')[0])
+     self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.viewMetersPage.onRendered ->
   $(".dropdown-button").dropdown()
@@ -13,7 +13,7 @@ Template.viewMetersPage.onDestroyed ->
 Template.viewMetersPage.helpers
   customTemplate: -> Customisations.viewMeters
   currentDoc: ->
-    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID')[0]}
+    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     return Collections.Locations.Current
 
 Template.viewMetersPage.events

@@ -8,17 +8,17 @@ Template.viewAssetClassificationPage.onDestroyed ->
 Template.viewAssetClassificationPage.helpers
   customTemplate: -> Customisations.viewAssetClassification
   viewDoc: ->
-    Collections.Classification.Current = Classification.findOne {'id':Session.get('currentID')[0]}
+    Collections.Classification.Current = Classification.findOne {'id':Session.get('currentClassID').toString()}
     return Collections.Classification.Current
 
 Template.viewAssetClassificationPage.events
   'click .viewAssetClassification .btnEdit': ->
-    if (Session.get('currentID')[0] == '#')
+    if (Session.get('currentClassID').toString() == '#')
       alert 'No classification selected!'
     else
       FlowRouter.go '/assets/edit-classification'
   'click .viewAssetClassification .btnCopy': ->
-    if (Session.get('currentID')[0] == '#')
+    if (Session.get('currentClassID').toString() == '#')
       alert 'No classification selected!'
     else
       FlowRouter.go '/assets/duplicate-classification'

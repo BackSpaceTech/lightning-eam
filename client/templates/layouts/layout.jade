@@ -37,7 +37,15 @@ template(name='layoutWork')
       +Template.dynamic(template=header)
       .flow-text.blue-grey-text.text-darken-3
         +Template.dynamic template=content
-    +Template.dynamic(template=footer)                        
+    +Template.dynamic(template=footer)
+// **************************** Layout Inventory ************************************
+template(name='layoutInventory')
+  #wrapper
+    #main
+      +Template.dynamic(template=header)
+      .flow-text.blue-grey-text.text-darken-3
+        +Template.dynamic template=content
+    +Template.dynamic(template=footer)         
 // **************************** Sign In Layout *********************************
 template(name='layoutSignIn')
   #wrapper

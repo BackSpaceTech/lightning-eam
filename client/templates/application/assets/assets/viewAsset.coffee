@@ -8,13 +8,13 @@ Template.viewAssetPage.onDestroyed ->
 Template.viewAssetPage.onCreated ->
   self = this
   self.autorun ->
-    self.subscribe 'singleLocation', (Session.get('currentID')[0])
+    self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.viewAssetPage.helpers
   customTemplate: -> Customisations.viewAsset
   viewDoc: ->
     console.log 'currentID: '+Session.get('currentID')
-    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID')[0]}
+    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     console.log 'Collections.Locations.Current: '+ JSON.stringify Collections.Locations.Current
     Collections.Locations.Current
   locationsFormSchema: -> Schema.locations
@@ -22,7 +22,7 @@ Template.viewAssetPage.helpers
 
 Template.viewAssetPage.events
   'click .viewAsset .btnEdit': ->
-    if (Session.get('currentID')[0] == '#')
+    if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'
     else
       if (Collections.Locations.Current.type == 'asset')
@@ -30,7 +30,7 @@ Template.viewAssetPage.events
       else
         FlowRouter.go '/assets/edit-location'
   'click .viewAsset .btnCopy': ->
-    if (Session.get('currentID')[0] == '#')
+    if (Session.get('currentID').toString() == '#')
       alert 'No location or asset selected!'
     else
       if (Collections.Locations.Current.type == 'asset')

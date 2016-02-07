@@ -1,6 +1,6 @@
 Template.createMeterPage.onCreated ->
   self = this
-  self.autorun -> self.subscribe 'singleLocation', (Session.get('currentID')[0])
+  self.autorun -> self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.createMeterPage.onRendered ->
   $(".dropdown-button").dropdown()
@@ -12,7 +12,7 @@ Template.createMeterPage.onDestroyed ->
 Template.createMeterPage.helpers
   customTemplate: -> Customisations.createMeter
   currentDoc: ->
-    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID')[0]}
+    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     return Collections.Locations.Current
 
 Template.createMeterPage.events

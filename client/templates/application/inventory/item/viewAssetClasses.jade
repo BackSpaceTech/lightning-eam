@@ -1,10 +1,10 @@
-template(name='viewAssetClassificationsPage')
+template(name='viewItemClassificationsPage')
   if customTemplate
-    +viewAssetClassificationsPageCustom  
+    +viewItemClassificationsPageCustom  
   else  
     .container
       .row
         div.viewClassifications        
           // template located in layouts folder
-          +viewClassificationsPage type='assets'
+          +viewClassificationsPage type='inventory/item'
           +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text

@@ -7,3 +7,4 @@ Template.editClassificationPage.onDestroyed ->
 
 Template.editClassificationPage.helpers
   classificationFormSchema: -> Schema.classification
+  classDoc: -> Collections.Classification.Current

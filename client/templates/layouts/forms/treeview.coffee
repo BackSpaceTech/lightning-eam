@@ -15,12 +15,12 @@
       if treeType == 'general'
         Session.set 'currentID', data.selected
       else
-        Session.set 'currentClass', data.selected
+        Session.set 'currentClassID', data.selected
     else
       if treeType == 'general'
         Session.set 'currentID', '#'
       else
-        Session.set 'currentClass', '#'
+        Session.set 'currentClassID', '#'
     return
   if !treeData
     console.log 'No data source defined for treeview'

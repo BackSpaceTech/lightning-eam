@@ -1,7 +1,7 @@
 Template.viewLocationPage.onCreated ->
   self = this
   self.autorun ->
-    self.subscribe 'singleLocation', (Session.get('currentID')[0])
+    self.subscribe 'singleLocation', (Session.get('currentID').toString())
 
 Template.viewLocationPage.onRendered ->
   $(".dropdown-button").dropdown()  
@@ -14,12 +14,12 @@ Template.viewLocationPage.helpers
   customTemplate: -> Customisations.viewLocation
   locationsFormSchema: -> Schema.locations
   viewDoc: ->
-    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID')[0]}
+    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
     return Collections.Locations.Current
 
 Template.viewLocationPage.events
   'click .viewLocation .btnEdit': ->
-    if (Session.get('currentID')[0]== '#')
+    if (Session.get('currentID').toString()== '#')
       alert 'No location or asset selected!'
     else
       if (Collections.Locations.Current.type == 'asset')
@@ -27,7 +27,7 @@ Template.viewLocationPage.events
       else
         FlowRouter.go '/assets/edit-location'
   'click .viewLocation .btnCopy': ->
-    if (Session.get('currentID')[0]== '#')
+    if (Session.get('currentID').toString()== '#')
       alert 'No location or asset selected!'
     else
       if (Collections.Locations.Current.type == 'asset')

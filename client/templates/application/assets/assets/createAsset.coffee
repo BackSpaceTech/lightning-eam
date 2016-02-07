@@ -9,7 +9,7 @@ Template.createAssetPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.createAssetPage.helpers
-  parentID: -> Session.get('currentID')[0]
+  parentID: -> Session.get('currentID').toString()
   children: -> []
   locationFormSchema: -> Schema.locations
   customTemplate: -> Customisations.createAsset
