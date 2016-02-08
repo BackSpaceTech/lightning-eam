@@ -12,7 +12,7 @@ Template.editItemPage.helpers
   parentID: -> Collections.Items.Current.parent
   itemFormSchema: -> Schema.items
   customTemplate: -> Customisations.editItem
-  currentDoc: -> Items.findOne(Session.get('currentID').toString())
+  currentDoc: -> Session.get 'currentDoc'
   itemClassID: -> Session.get 'currentClassID'
   txtClassificationID: -> Classification.findOne(Session.get('currentClassID').toString()).text
 

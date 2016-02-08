@@ -1,49 +1,55 @@
-Template.viewItemsPage.onCreated ->
-  # Set Navbar so Resources highlighted
-  $('#header1DesktopUL li').removeClass 'active'
-  $('#header1DesktopUL li').eq(0).addClass 'active'
-
 Template.viewItemsPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
-  temp = Items.find().fetch()
-  dataTree(temp , 'general')
 
 Template.viewItemsPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.viewItemsPage.helpers
   customTemplate: -> Customisations.viewItems
-  itemDetails: -> Items.findOne {'_id':Session.get('currentID').toString()}
-  # Disable create/edit if not connected
-  serverConnected: -> (Meteor.status().status == 'connected')
+  rtCollection: -> Items
+  settings: -> {
+    rowsPerPage: 10
+    showFilter: true
+    fields:  [
+      { key: '_id', label: ' System ID' }
+      { key: 'supplier_id', label: ' Supplier ID' }
+      { key: 'itemID', label: ' Item ID' }
+      { key: 'type', label: ' Type' }
+      { key: 'referenceID', label: ' Reference ID' }
+      { key: 'text', label: ' Title' }
+      { key: 'description', label: ' Description' }
+      { key: '', label: 'View/Edit/Delete', tmpl: Template.rtViewEditDelete }
+    ]
+  }
 
 Template.viewItemsPage.events
-  'click .viewItems .btnNewDB': (event) ->
-    Session.set 'currentID', '#'
+  'click .viewItems .btnView': (event) ->
+    Session.set 'currentDoc', Items.findOne {_id: this._id}
     Session.set 'currentClassID', ''
-    FlowRouter.go '/inventory/items/create-item'
-
-  'click .viewItems .btnNew': (event) ->
-    Session.set 'currentClassID', ''
-    FlowRouter.go '/inventory/items/create-item'
+    FlowRouter.go '/inventory/items/view-item'
 
   'click .viewItems .btnEdit': (event) ->
-    Collections.Items.Current = Items.findOne {'id':Session.get('currentID').toString()}
-    if (Session.get('currentID').toString() == '#')
-      alert 'No item selected!'
-    else
-      FlowRouter.go '/inventory/items/edit-item'
-
-  'click .viewItems .btnView': (event) ->
-    Collections.Items.Current = Items.findOne {'id':Session.get('currentID').toString()}
-    if (Session.get('currentID').toString() == '#')
-      alert 'No item selected!'
-    else
-      FlowRouter.go '/inventory/items/view-item'
+    Session.set 'currentDoc', Items.findOne {_id: this._id}
+    Session.set 'currentClassID', ''
+    FlowRouter.go '/inventory/items/edit-item'
 
   'click .viewItems .btnDelete': (event) ->
-    if (Session.get('currentID').toString() == '#')
-      alert 'No item or item selected!'
-    else
-      FlowRouter.go '/inventory/items/delete-item'
+    Collections.Items.CurrentID = this._id
+    MaterializeModal.display
+      bodyTemplate: 'viewItemsDelete'
+      title: 'Delete Item!'
+      submitLabel: 'Delete'
+      closeLabel: 'Cancel'
+      callback: (error, response) ->
+        if error
+          console.error error
+        else
+          if response.submit
+            Meteor.call 'deleteItem',  Collections.Items.CurrentID, (error, result) ->
+              if error
+                toast 'error', error
+              else
+                toast 'success', result
+              return
+        return

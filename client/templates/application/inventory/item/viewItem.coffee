@@ -7,8 +7,8 @@ Template.viewItemPage.onDestroyed ->
 
 Template.viewItemPage.helpers
   customTemplate: -> Customisations.viewItem
-  currentDoc: -> Items.findOne(Session.get('currentID').toString())
-  txtClassificationID: -> Classification.findOne(Session.get('currentClassID').toString()).text
+  currentDoc: -> Session.get 'currentDoc'
+  txtClassificationID: -> Classification.findOne(_id: Session.get('currentDoc').classificationID ).text
 
 Template.viewItemPage.events
   'click .viewItem .btnEdit': ->
