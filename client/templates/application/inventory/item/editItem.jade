@@ -1,0 +1,31 @@
+template(name='editItemPage')
+  if customTemplate
+    +editItemPageCustom  
+  else
+    .container2 
+      br
+      fieldset
+        legend Edit Asset 
+        +autoForm schema=itemFormSchema id="editItemPage" type="update" collection="Items" doc=currentDoc
+          if Template.subscriptionsReady
+            .row.firstRow
+              .col.s12.m6.l3
+                +afQuickField name='referenceID'
+              .col.s12.m6.l3
+                +afQuickField name='stockUnits'              
+              +smlField item=txtClassificationID label='Item Classification'
+              +afQuickField name='classificationID' value=itemClassID type='hidden'
+              +frmAdd
+              .col.s12.m6.l3
+                +afQuickField name='status'
+              .row
+                div
+                  +afQuickField name='text'
+                div
+                  +afQuickField name='description'
+          else
+            +spinner
+          +fabBackResetSubmit 
+
+template(name='modaleditItemPage')
+  +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text

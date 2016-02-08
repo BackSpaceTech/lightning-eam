@@ -7,6 +7,22 @@ Bins.allow
   remove: ->
     true
 
+Items.allow
+  insert: ->
+    true
+  update: ->
+    true
+  remove: ->
+    true
+
+Equipment.allow
+  insert: ->
+    true
+  update: ->
+    true
+  remove: ->
+    true
+
 Schema.items = new SimpleSchema(
   id: #Copy of _id used by treeView
     type: String
@@ -24,6 +40,14 @@ Schema.items = new SimpleSchema(
     type: String
     label: 'ID'
     optional: true
+  classificationID:
+    type: String
+    label: 'ID'
+    optional: true
+  type:
+    type: String
+    label: 'ID'
+    optional: true
   referenceID:
     type: String
     label: 'Reference ID'
@@ -31,6 +55,9 @@ Schema.items = new SimpleSchema(
   text:
     type: String
     label: 'Title'
+  description:
+    type: String
+    label: 'Description'
   parent:
     type: String
     label: 'Parent Sys ID'

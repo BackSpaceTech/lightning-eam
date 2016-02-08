@@ -1,0 +1,20 @@
+template(name='viewItemPage')
+  if customTemplate
+    +viewItemPageCustom  
+  else  
+    .flow-text.container2.viewItem
+      +fabBackCopyEdit
+      br
+      fieldset
+        legend View Item 
+        if Template.subscriptionsReady
+          .row
+            +smlField item=currentDoc._id label='System ID'
+            +smlField item=currentDoc.referenceID label='Reference ID'
+            +smlField item=currentDoc.stockUnits label='Units'
+            +smlField item=currentDoc.status label='Status'
+            +smlField item=txtClassificationID label='Item Classification'
+            +lgeField item=currentDoc.text label='Title'
+            +lgeField item=currentDoc.description label='Description'            
+        else
+          +spinner

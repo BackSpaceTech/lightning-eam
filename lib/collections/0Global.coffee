@@ -54,3 +54,7 @@
 @Collections.Crontasks = {}
 @Collections.Crontasks.Current = {}
 @Collections.Crontasks.CurrentID = 0
+
+@Collections.Items = {}
+@Collections.Items.Current = {}
+@Collections.Items.CurrentID = 0

@@ -21,27 +21,27 @@ Template.viewItemsPage.helpers
 Template.viewItemsPage.events
   'click .viewItems .btnNewDB': (event) ->
     Session.set 'currentID', '#'
-    FlowRouter.go '/items/create-item'
+    FlowRouter.go '/inventory/items/create-item'
 
   'click .viewItems .btnNew': (event) ->
-    FlowRouter.go '/items/create-item'
+    FlowRouter.go '/inventory/items/create-item'
 
   'click .viewItems .btnEdit': (event) ->
     Collections.Items.Current = Items.findOne {'id':Session.get('currentID').toString()}
     if (Session.get('currentID').toString() == '#')
       alert 'No item selected!'
     else
-      FlowRouter.go '/items/edit-item'
+      FlowRouter.go '/inventory/items/edit-item'
 
   'click .viewItems .btnView': (event) ->
     Collections.Items.Current = Items.findOne {'id':Session.get('currentID').toString()}
     if (Session.get('currentID').toString() == '#')
       alert 'No item selected!'
     else
-      FlowRouter.go '/items/view-item'
+      FlowRouter.go '/inventory/items/view-item'
 
   'click .viewItems .btnDelete': (event) ->
     if (Session.get('currentID').toString() == '#')
       alert 'No item or item selected!'
     else
-      FlowRouter.go '/items/delete-item'
+      FlowRouter.go '/inventory/items/delete-item'

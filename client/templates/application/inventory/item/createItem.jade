@@ -4,83 +4,29 @@ template(name='createItemPage')
   else
     .container2
       br
-      +autoForm schema=locationFormSchema id='createItemPage' type='method' meteormethod='createLoc'
+      +autoForm schema=itemFormSchema id='createItemPage' type='method' meteormethod='createItem'
         fieldset
           legend New Item
           .row.firstRow
             +afQuickField name='id' type='hidden'
-            +afQuickField name='type' value='item' type='hidden'
             +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
             .col.s12.m6.l3
-              +afQuickField name='itemID'
+              +afQuickField name='referenceID'
             .col.s12.m6.l3
-              +afQuickField name='criticality'
+              +afQuickField name='stockUnits'              
             +smlField item=txtClassificationID label='Item Classification'
-            +afQuickField name='itemClassificationID' value=itemClassID type='hidden'
+            +afQuickField name='classificationID' value=itemClassID type='hidden'
             +frmAdd
-          .row
             .col.s12.m6.l3
               +afQuickField name='status'
-            .col.s12.m6.l3
-              +afQuickField name='rotable'
-            div
-              +afQuickField name='text'
-            div
-              +afQuickField name='description'
-            div
-              +afQuickField name='safety'
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Geolocation Information
-              .col.s12.m6.l3
-                +afQuickField name='linear'
-              .col.s12.m6.l3
-                +afQuickField name='lat1'
-              .col.s12.m6.l3
-                +afQuickField name='long1'
-              .col.s12.m6.l3
-                +afQuickField name='lat2'
-              .col.s12.m6.l3
-                +afQuickField name='long2'  
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Manufacture Information
-              .col.s12.m6.l3
-                +afQuickField name='serialNumber'
-              .col.s12.m6.l3
-                +afQuickField name='modelNumber'
-              .col.s12.m6.l3
-                +afQuickField name='manufacturer'
-              .col.s12.m6.l3
-                +afQuickField name='manufPhone'
+            .row
               div
-                +afQuickField name='manufAddress'
-              .col.s12.m6.l3
-                +afQuickField name='manufState'
-              .col.s12.m6.l3
-                +afQuickField name='manufZip'
-          .row
-            .divider.teal
-            .section
-              h6.teal-text Additional Information
-              .col.s12.m6.l3
-                +afQuickField name='urlTechData'
-              .col.s12.m6.l3
-                +afQuickField name='urlOpData'
-              .col.s12.m6.l3
-                +afQuickField name='urlPhoto'
-              .col.s12.m6.l3
-                +afQuickField name='referenceID'
-              .col.s12.m6.l3
-                h6.grey-text.text-lighten-1 Manufacture Date
-                +afQuickField name='manufDate'
-              .col.s12.m6.l3
-                h6.grey-text.text-lighten-1 Install Date
-                +afQuickField name='installDate'
+                +afQuickField name='text'
+              div
+                +afQuickField name='description'
           +fabBackResetSubmit
       br
 
 template(name='createItemAddItemClass')
-  +treeView treeData=itemDetails
+  +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text
+  

@@ -41,6 +41,7 @@ Template.layoutWork.onCreated ->
 Template.layoutInventory.onCreated ->
   self = this
   self.autorun ->
+    self.subscribe 'classification'
     self.subscribe 'bins'
     self.subscribe 'items'
     self.subscribe 'equipment'

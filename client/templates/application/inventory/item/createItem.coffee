@@ -1,6 +1,3 @@
-Template.createItemPage.onCreated ->
-  this.itemClassID = new ReactiveVar
-
 Template.createItemPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
@@ -11,33 +8,20 @@ Template.createItemPage.onDestroyed ->
 Template.createItemPage.helpers
   parentID: -> Session.get('currentID').toString()
   children: -> []
-  locationFormSchema: -> Schema.locations
+  itemFormSchema: -> Schema.items
   customTemplate: -> Customisations.createItem
-  itemClassID: -> Template.instance().itemClassID.get()
-  txtClassificationID: ->
-    temp = Classification.findOne(Template.instance().itemClassID.get().toString())
-    if temp
-      return temp.text
+  itemClassID: -> Session.get 'currentClassID'
+  txtClassificationID: -> Classification.findOne(Session.get('currentClassID').toString()).text
 
 Template.createItemPage.events
   'click .firstRow .btnAdd': (event, template) ->
-    Collections.Locations.CurrentID = Session.get 'currentID' # Save parent item ID
     MaterializeModal.confirm
       title: 'Select Item Classification'
       bodyTemplate: "createItemAddItemClass"
-      callback: (error, response) ->
-        if response.submit
-          console.log "Session.get 'currentID': "+Session.get 'currentID'
-          template.itemClassID.set(Session.get 'currentID') # Save selected classification ID
-          Session.set 'currentID', Collections.Locations.CurrentID
-          console.log "Session.get 'currentID': "+Session.get 'currentID'
-        else
-          Session.set 'currentID', Collections.Locations.CurrentID
-        return
 
 Template.createItemAddItemClass.onRendered ->
-  Session.set 'treeviewData', 'item-classification'
-  dataTree()
+  tempData = Classification.find(type: 'item-classification').fetch()
+  dataTree(tempData, 'classification')
 
 Template.createItemAddItemClass.helpers
-  itemDetails: -> Items.find().fetch()
+  classificationDetails: -> Classification.findOne(_id: Session.get('currentClassID').toString())
