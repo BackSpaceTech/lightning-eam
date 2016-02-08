@@ -201,3 +201,51 @@ action: ->
     content: 'deleteItemPage'
     header: 'header1'
     footer: 'footer1'
+    
+inventoryRoutes.route '/equipment/view-equipments',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'viewEquipmentsPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/equipment/view-equipment',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'viewEquipmentPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/equipment/create-equipment',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'createEquipmentPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/equipment/edit-equipment',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'editEquipmentPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/equipment/duplicate-equipment',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'duplicateEquipmentPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/equipment/delete-equipment',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'deleteEquipmentPage'
+    header: 'header1'
+    footer: 'footer1'

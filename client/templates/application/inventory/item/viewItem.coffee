@@ -6,7 +6,7 @@ Template.viewItemPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.viewItemPage.helpers
-  customTemplate: -> Customisations.createItem
+  customTemplate: -> Customisations.viewItem
   currentDoc: -> Items.findOne(Session.get('currentID').toString())
   txtClassificationID: -> Classification.findOne(Session.get('currentClassID').toString()).text
 

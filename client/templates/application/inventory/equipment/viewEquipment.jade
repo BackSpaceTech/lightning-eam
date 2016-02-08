@@ -1,0 +1,20 @@
+template(name='viewEquipmentPage')
+  if customTemplate
+    +viewEquipmentPageCustom  
+  else  
+    .flow-text.container2.viewEquipment
+      +fabBackCopyEdit
+      br
+      fieldset
+        legend View Item 
+        if Template.subscriptionsReady
+          .row
+            +smlField item=currentDoc._id label='System ID'
+            +smlField item=currentDoc.referenceID label='Reference ID'
+            +smlField item=currentDoc.stockUnits label='Units'
+            +smlField item=currentDoc.status label='Status'
+            +smlField item=txtClassificationID label='Equipment Classification'
+            +lgeField item=currentDoc.text label='Title'
+            +lgeField item=currentDoc.description label='Description'            
+        else
+          +spinner

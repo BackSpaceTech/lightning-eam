@@ -14,16 +14,18 @@ Template.viewItemsPage.onDestroyed ->
 
 Template.viewItemsPage.helpers
   customTemplate: -> Customisations.viewItems
-  itemDetails: -> Items.findOne {'id':Session.get('currentID').toString()}
+  itemDetails: -> Items.findOne {'_id':Session.get('currentID').toString()}
   # Disable create/edit if not connected
   serverConnected: -> (Meteor.status().status == 'connected')
 
 Template.viewItemsPage.events
   'click .viewItems .btnNewDB': (event) ->
     Session.set 'currentID', '#'
+    Session.set 'currentClassID', ''
     FlowRouter.go '/inventory/items/create-item'
 
   'click .viewItems .btnNew': (event) ->
+    Session.set 'currentClassID', ''
     FlowRouter.go '/inventory/items/create-item'
 
   'click .viewItems .btnEdit': (event) ->

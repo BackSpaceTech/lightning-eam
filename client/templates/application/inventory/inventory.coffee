@@ -22,3 +22,5 @@ Template.inventoryPage.events
     FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/locations/view-classifications'
   'click .btnViewItems': (event) ->
     FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/items/view-items'
+  'click .btnViewEquipment': (event) ->
+    FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/equipment/view-equipments'

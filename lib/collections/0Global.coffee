@@ -58,3 +58,7 @@
 @Collections.Items = {}
 @Collections.Items.Current = {}
 @Collections.Items.CurrentID = 0
+
+@Collections.Equipment = {}
+@Collections.Equipment.Current = {}
+@Collections.Equipment.CurrentID = 0

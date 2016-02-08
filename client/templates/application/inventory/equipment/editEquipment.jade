@@ -1,20 +1,20 @@
-template(name='editItemPage')
+template(name='editEquipmentPage')
   if customTemplate
-    +editItemPageCustom  
+    +editEquipmentPageCustom  
   else
     .container2 
       br
       fieldset
-        legend Edit Item 
-        +autoForm schema=itemFormSchema id="editItemPage" type="update" collection="Items" doc=currentDoc
+        legend Edit Equipment 
+        +autoForm schema=equipmentFormSchema id="editEquipmentPage" type="update" collection="Equipment" doc=currentDoc
           if Template.subscriptionsReady
             .row.firstRow
               .col.s12.m6.l3
                 +afQuickField name='referenceID'
               .col.s12.m6.l3
                 +afQuickField name='stockUnits'              
-              +smlField item=txtClassificationID label='Item Classification'
-              +afQuickField name='classificationID' value=itemClassID type='hidden'
+              +smlField item=txtClassificationID label='Equipment Classification'
+              +afQuickField name='classificationID' value=equipmentClassID type='hidden'
               +frmAdd
               .col.s12.m6.l3
                 +afQuickField name='status'
@@ -27,5 +27,5 @@ template(name='editItemPage')
             +spinner
           +fabBackResetSubmit 
 
-template(name='modaleditItemPage')
+template(name='modaleditEquipmentPage')
   +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text

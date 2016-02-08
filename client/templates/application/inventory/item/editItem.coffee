@@ -11,7 +11,7 @@ Template.editItemPage.onDestroyed ->
 Template.editItemPage.helpers
   parentID: -> Collections.Items.Current.parent
   itemFormSchema: -> Schema.items
-  customTemplate: -> Customisations.createItem
+  customTemplate: -> Customisations.editItem
   currentDoc: -> Items.findOne(Session.get('currentID').toString())
   itemClassID: -> Session.get 'currentClassID'
   txtClassificationID: -> Classification.findOne(Session.get('currentClassID').toString()).text

@@ -1,0 +1,32 @@
+template(name='createEquipmentPage')
+  if customTemplate
+    +createEquipmentPageCustom
+  else
+    .container2
+      br
+      +autoForm schema=equipmentFormSchema id='createEquipmentPage' type='method' meteormethod='createEquipment'
+        fieldset
+          legend New Equipment
+          .row.firstRow
+            +afQuickField name='id' type='hidden'
+            +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
+            .col.s12.m6.l3
+              +afQuickField name='referenceID'
+            .col.s12.m6.l3
+              +afQuickField name='stockUnits'              
+            +smlField item=txtClassificationID label='Equipment Classification'
+            +afQuickField name='classificationID' value=equipmentClassID type='hidden'
+            +frmAdd
+            .col.s12.m6.l3
+              +afQuickField name='status'
+            .row
+              div
+                +afQuickField name='text'
+              div
+                +afQuickField name='description'
+          +fabBackResetSubmit
+      br
+
+template(name='createEquipmentAddEquipmentClass')
+  +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text
+  
