@@ -153,3 +153,51 @@ action: ->
     content: 'deleteInvLocClassificationPage'
     header: 'header1'
     footer: 'footer1'
+
+inventoryRoutes.route '/items/view-items',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'viewItemsPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/items/view-item',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'viewItemPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/items/create-item',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'createItemPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/items/edit-item',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'editItemPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/items/duplicate-item',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'duplicateItemPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/items/delete-item',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'deleteItemPage'
+    header: 'header1'
+    footer: 'footer1'

@@ -41,3 +41,7 @@ if Meteor.isServer
 
 if Meteor.isServer
   @Crontasks = new Mongo.Collection 'crontasks'
+
+@Bins = new Mongo.Collection 'bins'
+@Items = new Mongo.Collection 'items'
+@Equipment = new Mongo.Collection 'equipment'

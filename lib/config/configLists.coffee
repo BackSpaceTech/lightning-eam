@@ -124,3 +124,10 @@ Lists.PM.CronGUI = {
     periodYear: true
     }
 }
+
+Lists.Inventory.Status = {
+  'active': 'Active'
+  'obsolete': 'Obsolete'
+  'pending': 'Pending'
+  'unsafe': 'Unsafe'
+}

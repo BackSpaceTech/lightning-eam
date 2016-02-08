@@ -6,7 +6,7 @@ Template.editAssetGroupPage.onCreated ->
 
 Template.editAssetGroupPage.onRendered ->
   $(".dropdown-button").dropdown()
-  assetTree()
+  dataTree()
   $('.tooltipped').tooltip {delay: 50}
 
 Template.editAssetGroupPage.onDestroyed ->

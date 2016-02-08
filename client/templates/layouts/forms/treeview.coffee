@@ -1,4 +1,4 @@
-@assetTree = (treeData, treeType) ->
+@dataTree = (treeData, treeType) ->
   # Initialize Treeview
   to = false
   $('.view_q').keyup ->

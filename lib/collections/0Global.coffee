@@ -8,6 +8,7 @@
 @Lists.Locations = {}
 @Lists.Resources = {}
 @Lists.Workorders = {}
+@Lists.Inventory = {}
 @Lists.PM = {}
 
 @Customisations = {}

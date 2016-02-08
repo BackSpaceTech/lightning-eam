@@ -1,6 +1,3 @@
-Template.createAssetPage.onCreated ->
-  this.assetClassID = new ReactiveVar
-
 Template.createAssetPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
@@ -13,31 +10,18 @@ Template.createAssetPage.helpers
   children: -> []
   locationFormSchema: -> Schema.locations
   customTemplate: -> Customisations.createAsset
-  assetClassID: -> Template.instance().assetClassID.get()
-  txtClassificationID: ->
-    temp = Classification.findOne(Template.instance().assetClassID.get().toString())
-    if temp
-      return temp.text
+  assetClassID: -> Session.get 'currentClassID'
+  txtClassificationID: -> Classification.findOne(Session.get('currentClassID').toString()).text
 
 Template.createAssetPage.events
   'click .firstRow .btnAdd': (event, template) ->
-    Collections.Locations.CurrentID = Session.get 'currentID' # Save parent asset ID
     MaterializeModal.confirm
       title: 'Select Asset Classification'
       bodyTemplate: "createAssetAddAssetClass"
-      callback: (error, response) ->
-        if response.submit
-          console.log "Session.get 'currentID': "+Session.get 'currentID'
-          template.assetClassID.set(Session.get 'currentID') # Save selected classification ID
-          Session.set 'currentID', Collections.Locations.CurrentID
-          console.log "Session.get 'currentID': "+Session.get 'currentID'
-        else
-          Session.set 'currentID', Collections.Locations.CurrentID
-        return
 
 Template.createAssetAddAssetClass.onRendered ->
-  Session.set 'treeviewData', 'asset-classification'
-  assetTree()
+  tempData = Classification.find(type: 'asset-classification').fetch()
+  dataTree(tempData, 'classification')
 
 Template.createAssetAddAssetClass.helpers
-  classificationDetails: -> Classification.find().fetch()
+  classificationDetails: -> Classification.findOne(_id: Session.get('currentClassID').toString())

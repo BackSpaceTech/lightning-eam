@@ -22,7 +22,6 @@ Template.layoutInventory.onRendered ->
 Template.layoutAssets.onCreated ->
   Session.set 'currentClass', 'asset-classification'
 
-
 # Subscriptions
 Template.layoutPM.onCreated ->
   self = this
@@ -38,6 +37,13 @@ Template.layoutWork.onCreated ->
     self.subscribe 'my-work', Meteor.userId()
     self.subscribe 'safetyplans'
     self.subscribe 'workplans'
+
+Template.layoutInventory.onCreated ->
+  self = this
+  self.autorun ->
+    self.subscribe 'bins'
+    self.subscribe 'items'
+    self.subscribe 'equipment'
 
 #Helpers
 Template.header1.helpers

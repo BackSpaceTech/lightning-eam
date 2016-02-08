@@ -1,22 +1,22 @@
-template(name='createAssetPage')
+template(name='createItemPage')
   if customTemplate
-    +createAssetPageCustom
+    +createItemPageCustom
   else
     .container2
       br
-      +autoForm schema=locationFormSchema id='createAssetPage' type='method' meteormethod='createLoc'
+      +autoForm schema=locationFormSchema id='createItemPage' type='method' meteormethod='createLoc'
         fieldset
-          legend New Asset
+          legend New Item
           .row.firstRow
             +afQuickField name='id' type='hidden'
-            +afQuickField name='type' value='asset' type='hidden'
+            +afQuickField name='type' value='item' type='hidden'
             +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
             .col.s12.m6.l3
-              +afQuickField name='assetID'
+              +afQuickField name='itemID'
             .col.s12.m6.l3
               +afQuickField name='criticality'
-            +smlField item=txtClassificationID label='Asset Classification'
-            +afQuickField name='assetClassificationID' value=assetClassID type='hidden'
+            +smlField item=txtClassificationID label='Item Classification'
+            +afQuickField name='itemClassificationID' value=itemClassID type='hidden'
             +frmAdd
           .row
             .col.s12.m6.l3
@@ -82,5 +82,5 @@ template(name='createAssetPage')
           +fabBackResetSubmit
       br
 
-template(name='createAssetAddAssetClass')
-  +treeView nodeID=classificationDetails.assetID nodeText=classificationDetails.text
+template(name='createItemAddItemClass')
+  +treeView treeData=itemDetails

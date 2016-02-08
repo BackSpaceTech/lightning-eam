@@ -32,9 +32,8 @@ Template.editAssetPage.events
 #------------------- Modal -------------------------------------
 
 Template.modalEditAssetPage.onRendered ->
-  temp = Classification.find().fetch()
-  console.log 'Tree data sent: '+JSON.stringify temp
-  assetTree(temp , 'classification')
+  tempData = Classification.find(type: 'asset-classification').fetch()
+  dataTree(tempData, 'classification')
 
 Template.modalEditAssetPage.helpers
   classificationDetails: -> Classification.findOne {_id:Session.get 'currentClassID'}

@@ -4,7 +4,7 @@ Template.viewWorkPage.onCreated ->
 Template.viewWorkPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
-  assetTree()
+  dataTree()
 
 Template.viewWorkPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
@@ -63,7 +63,7 @@ Template.viewWorkPage.events
     FlowRouter.go '/work/query'
 
 Template.viewWorkAdvanced.onRendered ->
-  assetTree()
+  dataTree()
   $('.tooltipped').tooltip {delay: 50}
   $('.datepicker').pickadate {
     selectMonths: true

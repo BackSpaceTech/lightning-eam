@@ -3,7 +3,7 @@ Template.viewClassificationsPage.onRendered ->
   temp = Session.get 'treeviewData'
   if temp
     tempData = Classification.find( { type:temp } ).fetch()
-  assetTree(tempData , 'classification')
+  dataTree(tempData , 'classification')
 
 Template.viewClassificationsPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'

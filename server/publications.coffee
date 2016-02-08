@@ -29,7 +29,7 @@ Meteor.publish 'singleUser', (userId) ->
 
 ReactiveTable.publish "resources-data", Meteor.users, {}, {fields: {password: 0}}
 
-#********************** Work Orders *****************************#
+#***************************** Work Orders ***********************************#
 Meteor.publish 'workorders', ->
   Workorders.find {}
 
@@ -51,7 +51,7 @@ Meteor.publish 'safetyplans', ->
 Meteor.publish 'singleSafetymethod', (safetymethodId) ->
   Safetyplans.find {_id: safetymethodId}
 
-#********************** Work Orders *****************************#
+#***************************** PM ********************************************#
 Meteor.publish 'pm', ->
   PM.find {}, fields:
     active: true
@@ -68,3 +68,13 @@ Meteor.publish 'assetGroups', ->
 
 Meteor.publish 'singleAssetGroup', (groupId) ->
   Assetgroups.find {_id: groupId}
+
+#***************************** Inventory *************************************#
+Meteor.publish 'bins', ->
+  Bins.find {}
+
+Meteor.publish 'items', ->
+  Items.find {}
+
+Meteor.publish 'equipment', ->
+  Equipment.find {}
