@@ -7,7 +7,7 @@ template(name='procurementPage')
       .row.flow-text.center-align
         .col.s12.m6.l3
           a.waves-effect.waves-dark.icon-page(href='#')
-            i.fa-5x.fa.fa-file-o
+            i.fa-5x.fa.fa-comment-o
             br
             br
             |  Purchase Requisitions
@@ -23,14 +23,6 @@ template(name='procurementPage')
             br
         .col.s12.m6.l3
           a.waves-effect.waves-dark.icon-page(href='#')
-            i.fa-5x.fa.fa-money
-            br
-            br
-            |  Invoices
-            br
-            br
-        .col.s12.m6.l3
-          a.waves-effect.waves-dark.icon-page(href='#')
             i.fa-5x.fa.fa-cube
             br
             br
@@ -38,10 +30,26 @@ template(name='procurementPage')
             br
             br
         .col.s12.m6.l3
-          a.waves-effect.waves-dark.icon-page(href='#')
-            i.fa-5x.fa.f.fa-building-o
+          a.waves-effect.waves-dark.icon-page(href='{{pathFor "procurement/company/view-companies"}}')
+            i.fa-5x.fa.fa-building-o
             br
             br
             |  Companies
+            br
+            br
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='{{pathFor "procurement/company/view-classifications"}}')
+            i.fa-5x.fa.fa-file-o
+            br
+            br
+            |  Company Classification
+            br
+            br              
+        .col.s12.m6.l3
+          a.waves-effect.waves-dark.icon-page(href='#')
+            i.fa-5x.fa.fa-money
+            br
+            br
+            |  Rates
             br
             br

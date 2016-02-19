@@ -1,0 +1,21 @@
+template(name='viewCompaniesPage')
+  if customTemplate
+    +viewCompaniesPageCustom  
+  else 
+    .container2
+      br
+      fieldset.viewCompanies
+        legend View Companies
+          a(href='{{pathFor "create-company"}}')
+              button.btn-floating.waves-effect.waves-light.tooltipped(type='button', data-delay='50', data-position='bottom', data-tooltip='Create Company')
+                i.fa.fa-plus     
+        .row
+          if Template.subscriptionsReady            
+            +reactiveTable collection=rtCollection settings=settings class='table striped'
+          else
+            +spinner
+        +fabBack  
+        
+template(name='viewCompaniesDelete')
+  h5.red-text Warning this will permanently delete the company!
+  | This process cannot be undone.

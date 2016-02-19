@@ -1,19 +1,19 @@
-template(name='viewEquipmentPage')
+template(name='viewCompanyPage')
   if customTemplate
-    +viewEquipmentPageCustom  
+    +viewCompanyPageCustom  
   else  
-    .flow-text.container2.viewEquipment
+    .flow-text.container2.viewCompany
       +fabBackCopyEdit
       br
       fieldset
-        legend View Equipment 
+        legend View Item 
         if Template.subscriptionsReady
           .row
             +smlField item=currentDoc._id label='System ID'
             +smlField item=currentDoc.referenceID label='Reference ID'
             +smlField item=currentDoc.stockUnits label='Units'
             +smlField item=currentDoc.status label='Status'
-            +smlField item=txtClassificationID label='Equipment Classification'
+            +smlField item=txtClassificationID label='Item Classification'
             +lgeField item=currentDoc.text label='Title'
             +lgeField item=currentDoc.description label='Description'            
         else

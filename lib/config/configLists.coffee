@@ -131,3 +131,16 @@ Lists.Inventory.Status = {
   'pending': 'Pending'
   'unsafe': 'Unsafe'
 }
+
+Lists.Companies.Status = {
+  'active': 'Active'
+  'obsolete': 'Obsolete'
+  'pending': 'Pending'
+  'banned': 'Banned'
+}
+
+Lists.Companies.Type = {
+  'supplier': 'Supplier'
+  'customer': 'Customer'
+  'both': 'Supplier and Customer'
+}

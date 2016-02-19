@@ -1,49 +1,55 @@
-Template.viewEquipmentsPage.onCreated ->
-  # Set Navbar so Resources highlighted
-  $('#header1DesktopUL li').removeClass 'active'
-  $('#header1DesktopUL li').eq(0).addClass 'active'
-
 Template.viewEquipmentsPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
-  temp = Equipment.find().fetch()
-  dataTree(temp , 'general')
 
 Template.viewEquipmentsPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.viewEquipmentsPage.helpers
   customTemplate: -> Customisations.viewEquipments
-  equipmentDetails: -> Equipment.findOne {id: Session.get('currentID').toString()}
-  # Disable create/edit if not connected
-  serverConnected: -> (Meteor.status().status == 'connected')
+  rtCollection: -> Equipment
+  settings: -> {
+    rowsPerPage: 10
+    showFilter: true
+    fields:  [
+      { key: '_id', label: ' System ID' }
+      { key: 'supplier_id', label: ' Supplier ID' }
+      { key: 'equipmentID', label: ' Equipment ID' }
+      { key: 'type', label: ' Type' }
+      { key: 'referenceID', label: ' Reference ID' }
+      { key: 'text', label: ' Title' }
+      { key: 'description', label: ' Description' }
+      { key: '', label: 'View/Edit/Delete', tmpl: Template.rtViewEditDelete }
+    ]
+  }
 
 Template.viewEquipmentsPage.events
-  'click .viewEquipments .btnNewDB': (event) ->
-    Session.set 'currentID', '#'
+  'click .viewEquipments .btnView': (event) ->
+    Session.set 'currentDoc', Equipment.findOne {_id: this._id}
     Session.set 'currentClassID', ''
-    FlowRouter.go '/inventory/equipment/create-equipment'
-
-  'click .viewEquipments .btnNew': (event) ->
-    Session.set 'currentClassID', ''
-    FlowRouter.go '/inventory/equipment/create-equipment'
+    FlowRouter.go '/inventory/Equipment/view-equipment'
 
   'click .viewEquipments .btnEdit': (event) ->
-    Collections.Equipment.Current = Equipment.findOne {'id':Session.get('currentID').toString()}
-    if (Session.get('currentID').toString() == '#')
-      alert 'No equipment selected!'
-    else
-      FlowRouter.go '/inventory/equipment/edit-equipment'
-
-  'click .viewEquipments .btnView': (event) ->
-    Collections.Equipment.Current = Equipment.findOne {'id':Session.get('currentID').toString()}
-    if (Session.get('currentID').toString() == '#')
-      alert 'No equipment selected!'
-    else
-      FlowRouter.go '/inventory/equipment/view-equipment'
+    Session.set 'currentDoc', Equipment.findOne {_id: this._id}
+    Session.set 'currentClassID', ''
+    FlowRouter.go '/inventory/equipment/edit-equipment'
 
   'click .viewEquipments .btnDelete': (event) ->
-    if (Session.get('currentID').toString() == '#')
-      alert 'No equipment selected!'
-    else
-      FlowRouter.go '/inventory/equipment/delete-equipment'
+    Collections.Equipment.CurrentID = this._id
+    MaterializeModal.display
+      bodyTemplate: 'viewEquipmentsDelete'
+      title: 'Delete equipment!'
+      submitLabel: 'Delete'
+      closeLabel: 'Cancel'
+      callback: (error, response) ->
+        if error
+          console.error error
+        else
+          if response.submit
+            Meteor.call 'deleteEquipment',  Collections.Equipment.CurrentID, (error, result) ->
+              if error
+                toast 'error', error
+              else
+                toast 'success', result
+              return
+        return

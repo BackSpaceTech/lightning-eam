@@ -1,0 +1,31 @@
+template(name='editInvLocPage')
+  if customTemplate
+    +editInvLocPageCustom  
+  else
+    .container2 
+      br
+      fieldset
+        legend Edit Inventory Location 
+        +autoForm schema=formSchema id="editInvLocPage" type="update" collection="Bins" doc=currentDoc
+          if Template.subscriptionsReady
+            .row.firstRow
+              .col.s12.m6.l3
+                +afQuickField name='referenceID'
+              .col.s12.m6.l3
+                +afQuickField name='status'
+              .col.s12.m6.l3
+                +afQuickField name='type'                
+              +smlField item=txtClassificationID label='Inventory Location Classification'
+              +afQuickField name='classificationID' value=classID type='hidden'
+              +frmAdd              
+              .row
+                div
+                  +afQuickField name='text'
+                div
+                  +afQuickField name='description'
+          else
+            +spinner
+          +fabBackResetSubmit 
+
+template(name='modaleditInvLocPage')
+  +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text

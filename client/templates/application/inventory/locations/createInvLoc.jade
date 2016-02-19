@@ -1,0 +1,32 @@
+template(name='createInvLocPage')
+  if customTemplate
+    +createInvLocPageCustom
+  else
+    .container2
+      br
+      +autoForm schema=formSchema id='createInvLocPage' type='method' meteormethod='createInvLoc'
+        fieldset
+          legend New Inventory Location
+          .row.firstRow
+            +afQuickField name='id' type='hidden'
+            +afQuickField name='parent' value=parentID defaultValue='#' type='hidden'
+            .col.s12.m6.l3
+              +afQuickField name='referenceID'
+            .col.s12.m6.l3
+              +afQuickField name='type'
+            .col.s12.m6.l3
+              +afQuickField name='status'              
+            +afQuickField name='classificationID' value=classID type='hidden'              
+            +smlField item=txtClassificationID label='Inventory Location Classification'
+            +frmAdd
+            .row
+              div
+                +afQuickField name='text'
+              div
+                +afQuickField name='description'
+          +fabBackResetSubmit
+      br
+
+template(name='createInvLocModal')
+  +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text
+  

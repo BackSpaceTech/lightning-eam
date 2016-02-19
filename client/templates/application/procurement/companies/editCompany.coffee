@@ -1,32 +1,32 @@
-Template.editEquipmentPage.onCreated ->
+Template.editCompanyPage.onCreated ->
   this.assetClassID = new ReactiveVar
 
-Template.editEquipmentPage.onRendered ->
+Template.editCompanyPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
 
-Template.editEquipmentPage.onDestroyed ->
+Template.editCompanyPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.editEquipmentPage.helpers
-  parentID: -> Collections.Equipment.Current.parent
-  equipmentFormSchema: -> Schema.equipment
-  customTemplate: -> Customisations.editEquipment
+Template.editCompanyPage.helpers
+  parentID: -> Collections.Items.Current.parent
+  itemFormSchema: -> Schema.items
+  customTemplate: -> Customisations.editCompany
   currentDoc: -> Session.get 'currentDoc'
-  equipmentClassID: -> Session.get 'currentClassID'
+  itemClassID: -> Session.get 'currentClassID'
   txtClassificationID: -> Classification.findOne(Session.get('currentClassID').toString()).text
 
-Template.editEquipmentPage.events
+Template.editCompanyPage.events
   'click .firstRow .btnAdd': (event, template) ->
     MaterializeModal.confirm
       title: 'Select Asset Classification'
-      bodyTemplate: "modaleditEquipmentPage"
+      bodyTemplate: "modaleditCompanyPage"
 
 #------------------- Modal -------------------------------------
 
-Template.modaleditEquipmentPage.onRendered ->
-  tempData = Classification.find(type: 'equipment-classification').fetch()
+Template.modaleditCompanyPage.onRendered ->
+  tempData = Classification.find(type: 'company-classification').fetch()
   dataTree(tempData, 'classification')
 
-Template.modaleditEquipmentPage.helpers
+Template.modaleditCompanyPage.helpers
   classificationDetails: -> Classification.findOne {_id:Session.get 'currentClassID'}

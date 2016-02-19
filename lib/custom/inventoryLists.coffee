@@ -7,3 +7,12 @@ Lists.Inventory.Units = {
   'mm': 'Millimeters'
   'm': 'Meters'
 }
+Lists.Inventory.LocationTypes = {
+  'site': 'Site'
+  'warehouse': 'Warehouse'
+  'store': 'Store'
+  'aisle': 'Aisle'
+  'bay': 'Bay'
+  'shelf': 'Shelf'
+  'bin': 'Bin'
+}

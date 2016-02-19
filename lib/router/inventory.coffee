@@ -1,4 +1,4 @@
-###************************* Assets routes ***********************************###
+###************************* Inventory routes ***********************************###
 
 inventoryRoutes = FlowRouter.group(
   prefix: '/inventory'
@@ -201,7 +201,7 @@ action: ->
     content: 'deleteItemPage'
     header: 'header1'
     footer: 'footer1'
-    
+
 inventoryRoutes.route '/equipment/view-equipments',
 triggersEnter: [ AccountsTemplates.ensureSignedIn ]
 action: ->
@@ -247,5 +247,53 @@ triggersEnter: [ AccountsTemplates.ensureSignedIn ]
 action: ->
   BlazeLayout.render 'layoutInventory',
     content: 'deleteEquipmentPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/locations/view-locations',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'viewInvLocsPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/locations/view-location',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'viewInvLocPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/locations/create-location',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'createInvLocPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/locations/edit-location',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'editInvLocPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/locations/duplicate-location',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'duplicateInvLocPage'
+    header: 'header1'
+    footer: 'footer1'
+
+inventoryRoutes.route '/locations/delete-location',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'deleteInvLocPage'
     header: 'header1'
     footer: 'footer1'

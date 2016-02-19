@@ -45,3 +45,7 @@ if Meteor.isServer
 @Bins = new Mongo.Collection 'bins'
 @Items = new Mongo.Collection 'items'
 @Equipment = new Mongo.Collection 'equipment'
+@BOM = new Mongo.Collection 'bom'
+
+@Companies = new Mongo.Collection 'companies'
+@Purchases = new Mongo.Collection 'purchases'

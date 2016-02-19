@@ -78,3 +78,13 @@ Meteor.publish 'items', ->
 
 Meteor.publish 'equipment', ->
   Equipment.find {}
+
+Meteor.publish 'bom', ->
+  BOM.find {}
+
+#***************************** Procurement ***********************************#
+Meteor.publish 'companies', ->
+  Companies.find {}
+
+Meteor.publish 'purchases', ->
+  Purchases.find {}

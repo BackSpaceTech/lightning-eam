@@ -1,0 +1,31 @@
+template(name='createCompanyPage')
+  if customTemplate
+    +createCompanyPageCustom
+  else
+    .container2
+      br
+      +autoForm schema=formSchema id='createCompanyPage' type='method' meteormethod='createCompany'
+        fieldset
+          legend New Company
+          .row.firstRow
+            +afQuickField name='id' type='hidden'
+            .col.s12.m6.l3
+              +afQuickField name='company_id'
+            .col.s12.m6.l3
+              +afQuickField name='stockUnits'              
+            +smlField item=txtClassificationID label='Company Classification'
+            +afQuickField name='classificationID' value=classID type='hidden'
+            +frmAdd
+            .col.s12.m6.l3
+              +afQuickField name='status'
+            .row
+              div
+                +afQuickField name='text'
+              div
+                +afQuickField name='description'
+          +fabBackResetSubmit
+      br
+
+template(name='createCompanyModal')
+  +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text
+  

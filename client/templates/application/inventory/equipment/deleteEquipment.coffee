@@ -7,7 +7,7 @@ Template.deleteEquipmentPage.onDestroyed ->
 
 Template.deleteEquipmentPage.helpers
   customTemplate: -> Customisations.deleteEquipment
-  textDoc: -> (Equipment.findOne {'id':Session.get('currentID').toString()}).text
+  textDoc: -> Session.get('currentDoc').text
 
 Template.deleteEquipmentPage.events
   'click .deleteEquipment .btnDelete': (event) ->

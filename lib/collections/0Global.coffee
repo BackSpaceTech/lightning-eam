@@ -10,6 +10,7 @@
 @Lists.Workorders = {}
 @Lists.Inventory = {}
 @Lists.PM = {}
+@Lists.Companies = {}
 
 @Customisations = {}
 
@@ -62,3 +63,12 @@
 @Collections.Equipment = {}
 @Collections.Equipment.Current = {}
 @Collections.Equipment.CurrentID = 0
+
+@Collections.Bins = {}
+@Collections.Bins.Current = {}
+@Collections.Bins.CurrentID = 0
+
+
+@Collections.BOM = {}
+@Collections.BOM.Current = {}
+@Collections.BOM.CurrentID = 0

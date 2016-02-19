@@ -25,12 +25,6 @@ FlowRouter.route '/about', action: ->
     header: 'header1'
     footer: 'footer1'
 
-FlowRouter.route '/procurement', action: ->
-  BlazeLayout.render 'layout',
-    content: 'procurementPage'
-    header: 'header1'
-    footer: 'footer1'
-
 FlowRouter.route '/reports', action: ->
   BlazeLayout.render 'layout',
     content: 'reportsPage'

@@ -1,0 +1,6 @@
+template(name='deleteCompanyClassificationPage')
+  if customTemplate
+    +deleteCompanyClassificationCustom  
+  else
+    // template located in layouts folder
+    +deleteClassificationPage doc=textDoc

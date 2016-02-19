@@ -58,14 +58,6 @@ Schema.items = new SimpleSchema(
   description:
     type: String
     label: 'Description'
-  parent:
-    type: String
-    label: 'Parent Sys ID'
-    defaultValue: '#'
-  treePath:
-    type: [String]
-    label: 'Tree Path'
-    optional: true
   stockUnits:
     type: String
     label: 'Units of Measure'
@@ -118,9 +110,31 @@ Schema.bins = new SimpleSchema(
     type: String
     label: 'Reference ID'
     optional: true
+  classificationID:
+    type: String
+    label: 'ID'
+    optional: true    
+  type:
+    type: String
+    label: 'Location Type'
+    autoform:
+      type: 'select'
+      options: ->
+        Lists.Inventory.LocationTypes
+  status:
+    type: String
+    label: 'Status'
+    defaultValue: 'active'
+    autoform:
+      type: 'select'
+      options: ->
+        Lists.Inventory.Status
   text:
     type: String
     label: 'Title'
+  description:
+    type: String
+    label: 'Description'
   parent:
     type: String
     label: 'Parent Sys ID'
@@ -170,14 +184,6 @@ Schema.equipment = new SimpleSchema(
   description:
     type: String
     label: 'Description'
-  parent:
-    type: String
-    label: 'Parent Sys ID'
-    defaultValue: '#'
-  treePath:
-    type: [String]
-    label: 'Tree Path'
-    optional: true
   stockUnits:
     type: String
     label: 'Units of Measure'

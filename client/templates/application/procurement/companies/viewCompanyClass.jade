@@ -1,0 +1,6 @@
+template(name='viewCompanyClassificationPage')
+  if customTemplate
+    +viewCompanyClassificationCustom  
+  else  
+    // template located in layouts folder
+    +viewClassificationPage classDoc=viewDoc    

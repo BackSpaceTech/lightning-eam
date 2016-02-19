@@ -1,0 +1,47 @@
+template(name='viewInvLocsPage')
+  if customTemplate
+    +viewInvLocsPageCustom  
+  else  
+    .container
+      .row
+        div
+          h5
+            | Inventory Locations
+            br
+          .row
+            .col.s12.m9.l10.viewInvLocs
+              if serverConnected
+                .hide-on-large-only.viewInvLocs
+                  .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
+                    a.btn-floating.btn-large.purple
+                      i.large.mdi-navigation-menu
+                    ul
+                      li
+                        button.btn-floating.teal.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-delay='50' , data-tooltip='Go Back')
+                          i.material-icons skip_previous
+                      li                     
+                        a.btnEdit.btn-floating.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Edit inventory location')
+                          i.fa.fa-edit
+                      li
+                        a.btnNew.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Create new inventory location')
+                          i.fa.fa-map-marker
+                      li
+                        a.btnNewDB.btn-floating.green.tooltipped(type='button', data-position='left', data-delay='50', data-tooltip='Create new database')
+                          i.fa.fa-database
+                      li
+                        a.btnViewLoc.btn-floating.teal.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='View inventory location')
+                          i.fa.fa-search
+                .hide-on-med-and-down
+                  button.btnNewDB.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new database')
+                    i.fa.fa-database
+                  button.btnNew.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Create new inventory location')
+                    i.fa.fa-map-marker
+                  button.btnEdit.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Edit inventory location')
+                    i.fa.fa-edit
+                  button.btnViewLoc.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='View inventory location')
+                    i.fa.fa-search
+                  |                   |
+                  button.btnDeleteLoc.btn-floating.btn-large.waves-effect.waves-light.red.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Delete inventory location')
+                    i.fa.fa-trash-o
+            
+          +treeView nodeID=invLocDetails.invLocID nodeText=invLocDetails.text

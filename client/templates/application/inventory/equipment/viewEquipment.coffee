@@ -7,7 +7,7 @@ Template.viewEquipmentPage.onDestroyed ->
 
 Template.viewEquipmentPage.helpers
   customTemplate: -> Customisations.viewEquipment
-  currentDoc: -> Equipment.findOne(Session.get('currentID').toString())
+  currentDoc: -> Session.get 'currentDoc'
   txtClassificationID: -> Classification.findOne(Session.get('currentClassID').toString()).text
 
 Template.viewEquipmentPage.events

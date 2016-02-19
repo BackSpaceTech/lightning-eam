@@ -15,12 +15,14 @@ Template.inventoryPage.helpers
 
 Template.inventoryPage.events
   'click .btnViewItemsClassifications': (event) ->
-    FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/item/view-classifications'
+    FlowRouter.go '/inventory/item/view-classifications'
   'click .btnViewEquipmentClassifications': (event) ->
-    FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/equipment/view-classifications'
+    FlowRouter.go '/inventory/equipment/view-classifications'
   'click .btnViewLocationClassifications': (event) ->
-    FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/locations/view-classifications'
+    FlowRouter.go '/inventory/locations/view-classifications'
   'click .btnViewItems': (event) ->
-    FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/items/view-items'
+    FlowRouter.go '/inventory/items/view-items'
   'click .btnViewEquipment': (event) ->
-    FlowRouter.go '/'+Collections.Classification.Folder+'/inventory/equipment/view-equipments'
+    FlowRouter.go '/inventory/equipment/view-equipments'
+  'click .btnViewLocations': (event) ->
+    FlowRouter.go '/inventory/locations/view-locations'

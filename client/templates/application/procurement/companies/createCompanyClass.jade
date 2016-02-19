@@ -1,0 +1,6 @@
+template(name='createCompanyClassificationPage')
+  if customTemplate
+    +createCompanyClassificationCustom
+  else
+    // template located in layouts folder
+    +createClassificationPage classificationType='company-classification'
