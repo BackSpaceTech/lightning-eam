@@ -72,3 +72,7 @@
 @Collections.BOM = {}
 @Collections.BOM.Current = {}
 @Collections.BOM.CurrentID = 0
+
+@Collections.Companies = {}
+@Collections.Companies.Current = {}
+@Collections.Companies.CurrentID = 0

@@ -30,7 +30,7 @@ Schema.companies = new SimpleSchema(
     optional: true
   type:
     type: String
-    label: 'ID'
+    label: 'Type'
     defaultValue: 'supplier'
     autoform:
       type: 'select'
@@ -65,6 +65,11 @@ Schema.companies = new SimpleSchema(
   companyNumber:
     type: String
     label: 'Company registration number'
+    optional: true
+  taxNumber:
+    type: String
+    label: 'Tax registration number'
+    optional: true    
   email:
     type: String
     label: 'Email Address'
@@ -101,7 +106,7 @@ Schema.companies = new SimpleSchema(
     optional: true
   streetCountry:
     type: String
-    label: 'State'
+    label: 'Country'
     optional: true
   streetZip:
     type: String
@@ -121,7 +126,7 @@ Schema.companies = new SimpleSchema(
     optional: true
   postalCountry:
     type: String
-    label: 'State'
+    label: 'Country'
     optional: true
   postalZip:
     type: String

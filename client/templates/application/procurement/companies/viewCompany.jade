@@ -3,18 +3,52 @@ template(name='viewCompanyPage')
     +viewCompanyPageCustom  
   else  
     .flow-text.container2.viewCompany
-      +fabBackCopyEdit
+      +fabBack
       br
       fieldset
         legend View Item 
         if Template.subscriptionsReady
           .row
             +smlField item=currentDoc._id label='System ID'
-            +smlField item=currentDoc.referenceID label='Reference ID'
-            +smlField item=currentDoc.stockUnits label='Units'
-            +smlField item=currentDoc.status label='Status'
+            +smlField item=currentDoc.company_id label='Company ID'
+            +smlField item=currentDoc.createdDate label='Created Date'
             +smlField item=txtClassificationID label='Item Classification'
+            +smlField item=currentDoc.type label='Type'
+            +smlField item=currentDoc.referenceID label='Reference ID'
+            +smlField item=currentDoc.status label='Status'
+            +smlField item=currentDoc.name label='Company Name'
+            +smlField item=currentDoc.tradingName label='Trading Name'
+            +smlField item=currentDoc.companyNumber label='Company registration number'
+            +smlField item=currentDoc.taxNumber label='Tax registration number'
+          .row
             +lgeField item=currentDoc.text label='Title'
-            +lgeField item=currentDoc.description label='Description'            
+            +lgeField item=currentDoc.description label='Description'  
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Contact
+              +smlField item=currentDoc.email label='Email Address'
+              +smlField item=currentDoc.website label='Website'
+              +smlField item=currentDoc.phone label='Phone Number'
+              +smlField item=currentDoc.fax label='Fax Number'
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Street Address            
+              +lgeField item=currentDoc.streetAddress label='Address'
+              +smlField item=currentDoc.streetCity label='City'
+              +smlField item=currentDoc.streetState label='State'
+              +smlField item=currentDoc.streetCountry label='Country'
+              +smlField item=currentDoc.streetZip label='Zip Post Code'
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Postal Address
+              +lgeField item=currentDoc.postalAddress label='Postal Address'
+              +smlField item=currentDoc.postalCity label='City'
+              +smlField item=currentDoc.postalState label='State'
+              +smlField item=currentDoc.postalCountry label='Country'
+              +smlField item=currentDoc.postalZip label='Zip Post Code'
+
         else
           +spinner

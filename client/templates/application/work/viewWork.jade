@@ -24,7 +24,7 @@ template(name='viewWorkPage')
             .divider.teal
             .section
               h6.teal-text Asset
-              +treeAssets assets=assetDetails
+              +treeView nodeID=assetDetails.assetID nodeText=assetDetails.text
           // FAB button  
           +fabBackSearch                                                  
         else

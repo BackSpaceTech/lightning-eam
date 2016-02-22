@@ -13,6 +13,6 @@ Template.viewCompanyPage.helpers
 Template.viewCompanyPage.events
   'click .viewCompany .btnEdit': ->
     if (Session.get('currentID').toString() == '#')
-      alert 'No item selected!'
+      alert 'No company selected!'
     else
-      FlowRouter.go '/items/edit-item'
+      FlowRouter.go '/company/edit-company'

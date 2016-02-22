@@ -6,8 +6,6 @@ Template.createCompanyPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.createCompanyPage.helpers
-  parentID: -> Session.get('currentID').toString()
-  children: -> []
   formSchema: -> Schema.companies
   customTemplate: -> Customisations.createCompany
   classID: -> Session.get 'currentClassID'

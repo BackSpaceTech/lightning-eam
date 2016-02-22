@@ -1,7 +1,8 @@
 Template.createWorkPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
-  dataTree()  
+  temp = Locations.find().fetch()
+  dataTree(temp , 'general')
 
 Template.createWorkPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
@@ -18,5 +19,5 @@ Template.createWorkPage.helpers
     }
   reqDate: -> (new Date()).toISOString()
   assetDetails: ->
-    temp = Session.get 'currentID'
-    Locations.findOne {id:String(temp)}
+    Collections.Locations.Current = Locations.findOne {'id':Session.get('currentID').toString()}
+    Collections.Locations.Current

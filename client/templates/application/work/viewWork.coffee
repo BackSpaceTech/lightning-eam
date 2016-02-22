@@ -4,7 +4,8 @@ Template.viewWorkPage.onCreated ->
 Template.viewWorkPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
-  dataTree()
+  temp = Locations.find().fetch()
+  dataTree(temp , 'general')
 
 Template.viewWorkPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'

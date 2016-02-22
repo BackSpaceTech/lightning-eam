@@ -6,5 +6,5 @@ template(name='viewCompanyClassificationsPage')
       .row
         div.viewClassifications        
           // template located in layouts folder
-          +viewClassificationsPage type='inventory/item'
+          +viewClassificationsPage type='procurement/company'
           +treeView nodeID=classificationDetails.classificationID nodeText=classificationDetails.text

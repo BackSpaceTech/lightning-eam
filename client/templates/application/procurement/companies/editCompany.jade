@@ -5,24 +5,72 @@ template(name='editCompanyPage')
     .container2 
       br
       fieldset
-        legend Edit Item 
-        +autoForm schema=itemFormSchema id="editCompanyPage" type="update" collection="Items" doc=currentDoc
+        legend Edit Company 
+        +autoForm schema=formSchema id="editCompanyPage" type="update" collection="Companies" doc=currentDoc
           if Template.subscriptionsReady
             .row.firstRow
               .col.s12.m6.l3
-                +afQuickField name='referenceID'
+                +afQuickField name='company_id'
               .col.s12.m6.l3
-                +afQuickField name='stockUnits'              
-              +smlField item=txtClassificationID label='Item Classification'
-              +afQuickField name='classificationID' value=itemClassID type='hidden'
-              +frmAdd
+                +afQuickField name='type'
+              .col.s12.m6.l3
+                +afQuickField name='name'
+              .col.s12.m6.l3
+                +afQuickField name='referenceID'
+              .col.s12.m6.l3              
+                +afQuickField name='tradingName'
+              .col.s12.m6.l3
+                +afQuickField name='companyNumber'
+              .col.s12.m6.l3
+                +afQuickField name='taxNumber'
               .col.s12.m6.l3
                 +afQuickField name='status'
+              +smlField item=txtClassificationID label='Company Classification'
+              +afQuickField name='classificationID' value=classID type='hidden'
+              +frmAdd
               .row
                 div
                   +afQuickField name='text'
                 div
                   +afQuickField name='description'
+              .row
+                .divider.teal
+                .section
+                  h6.teal-text Contact
+                  .col.s12.m6.l3
+                    +afQuickField name='email'
+                  .col.s12.m6.l3
+                    +afQuickField name='phone'
+                  .col.s12.m6.l3
+                    +afQuickField name='fax'
+                  .col.s12.m6.l3
+                    +afQuickField name='website'
+              .row
+                .divider.teal
+                .section
+                  h6.teal-text Street Address
+                  +afQuickField name='streetAddress'
+                  .col.s12.m6.l3
+                    +afQuickField name='streetCity'
+                  .col.s12.m6.l3
+                    +afQuickField name='streetState'
+                  .col.s12.m6.l3
+                    +afQuickField name='streetCountry'
+                  .col.s12.m6.l3
+                    +afQuickField name='streetZip'
+              .row
+                .divider.teal
+                .section
+                  h6.teal-text Postal Address
+                  +afQuickField name='postalAddress'
+                  .col.s12.m6.l3
+                    +afQuickField name='postalCity'
+                  .col.s12.m6.l3
+                    +afQuickField name='postalState'
+                  .col.s12.m6.l3
+                    +afQuickField name='postalCountry'
+                  .col.s12.m6.l3
+                    +afQuickField name='postalZip'
           else
             +spinner
           +fabBackResetSubmit 

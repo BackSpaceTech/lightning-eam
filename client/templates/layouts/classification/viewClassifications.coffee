@@ -26,8 +26,6 @@ Template.viewClassificationsPage.events
     FlowRouter.go '/'+this.type+'/create-classification'
   'click .btnEdit': (event) ->
     Collections.Classification.Current = Classification.findOne {'_id':Session.get('currentClassID').toString()}
-    console.log 'currentClassID: '+Session.get 'currentClassID'
-    console.log 'Collections.Classification.Current: '+JSON.stringify Collections.Classification.Current
     if (Session.get('currentClassID') == '#')
       alert 'No classification selected!'
     else

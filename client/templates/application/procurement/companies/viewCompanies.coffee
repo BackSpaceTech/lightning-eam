@@ -28,12 +28,12 @@ Template.viewCompaniesPage.events
   'click .viewCompanies .btnView': (event) ->
     Session.set 'currentDoc', Companies.findOne {_id: this._id}
     Session.set 'currentClassID', ''
-    FlowRouter.go '/procurement/companies/view-company'
+    FlowRouter.go '/procurement/company/view-company'
 
   'click .viewCompanies .btnEdit': (event) ->
     Session.set 'currentDoc', Companies.findOne {_id: this._id}
     Session.set 'currentClassID', ''
-    FlowRouter.go '/procurement/companies/edit-company'
+    FlowRouter.go '/procurement/company/edit-company'
 
   'click .viewCompanies .btnDelete': (event) ->
     Collections.Companies.CurrentID = this._id

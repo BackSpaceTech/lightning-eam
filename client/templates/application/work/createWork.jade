@@ -27,5 +27,5 @@ template(name='createWorkPage')
             .divider.teal
             .section
               h6.teal-text Asset   
-            +treeAssets assets=assetDetails
+            +treeView nodeID=assetDetails.assetID nodeText=assetDetails.text
           +fabBackResetSubmit   

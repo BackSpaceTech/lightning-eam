@@ -9,11 +9,10 @@ Template.editCompanyPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
 Template.editCompanyPage.helpers
-  parentID: -> Collections.Items.Current.parent
-  itemFormSchema: -> Schema.items
+  formSchema: -> Schema.companies
   customTemplate: -> Customisations.editCompany
   currentDoc: -> Session.get 'currentDoc'
-  itemClassID: -> Session.get 'currentClassID'
+  classID: -> Session.get 'currentClassID'
   txtClassificationID: -> Classification.findOne(Session.get('currentClassID').toString()).text
 
 Template.editCompanyPage.events
