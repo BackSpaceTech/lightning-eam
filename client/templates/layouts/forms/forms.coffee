@@ -3,6 +3,6 @@ Template.smlDateField.helpers
     if this.item
       dateObj = this.item
       day = dateObj.getDate()
-      month = dateObj.getMonth() + 1
+      month = Lists.Months[dateObj.getMonth()]
       year = dateObj.getFullYear()
-      day + '/' + month + '/' + year
+      day + ' ' + month + ' ' + year

@@ -9,7 +9,7 @@ Template.createPurchasePage.onDestroyed ->
 
 Template.createPurchasePage.helpers
   customTemplate: -> Customisations.createPurchase
-  formSchema: -> Schema.requests
+  formSchema: -> Schema.purchaseReqs
   requestor: ->
     temp=Meteor.user()
     return {

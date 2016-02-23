@@ -105,3 +105,51 @@ action: ->
     content: 'deleteCompanyPage'
     header: 'header1'
     footer: 'footer1'
+
+procurementRoutes.route '/purchase/view-purchases',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutProcurement',
+    content: 'viewPurchasesPage'
+    header: 'header1'
+    footer: 'footer1'
+
+procurementRoutes.route '/purchase/view-purchase',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutProcurement',
+    content: 'viewPurchasePage'
+    header: 'header1'
+    footer: 'footer1'
+
+procurementRoutes.route '/purchase/create-purchase',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutProcurement',
+    content: 'createPurchasePage'
+    header: 'header1'
+    footer: 'footer1'
+
+procurementRoutes.route '/purchase/edit-purchase',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutProcurement',
+    content: 'editPurchasePage'
+    header: 'header1'
+    footer: 'footer1'
+
+procurementRoutes.route '/purchase/duplicate-purchase',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutProcurement',
+    content: 'duplicatePurchasePage'
+    header: 'header1'
+    footer: 'footer1'
+
+procurementRoutes.route '/purchase/delete-purchase',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutProcurement',
+    content: 'deletePurchasePage'
+    header: 'header1'
+    footer: 'footer1'

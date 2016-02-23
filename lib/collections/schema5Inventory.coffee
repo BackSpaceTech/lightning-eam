@@ -29,7 +29,7 @@ Schema.items = new SimpleSchema(
     label: 'Sys ID'
     optional: true
   supplier_id:
-    type: String
+    type: [String]
     label: 'Supplier Sys ID'
     optional: true
   createdDate:
@@ -113,7 +113,7 @@ Schema.bins = new SimpleSchema(
   classificationID:
     type: String
     label: 'ID'
-    optional: true    
+    optional: true
   type:
     type: String
     label: 'Location Type'

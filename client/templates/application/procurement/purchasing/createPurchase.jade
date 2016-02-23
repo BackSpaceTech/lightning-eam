@@ -1,0 +1,37 @@
+template(name='createPurchasePage')
+  if customTemplate
+    +createPurchasePageCustom  
+  else 
+    .container2
+      br
+      +autoForm schema=formSchema id='createPurchasePage' type='method' meteormethod='createPurchase'
+        fieldset
+          legend New Purchase Requisition
+          .row
+            +afQuickField name='status' value='1' type='hidden'
+            +afQuickField name='reqBy_id' value=requestor.reqBy_id type='hidden'
+            +afQuickField name='reqByFirstName' value=requestor.reqByFirstName type='hidden'
+            +afQuickField name='reqByLastName' value=requestor.reqByLastName type='hidden'
+            +afQuickField name='asset_ID' value=assetDetails._id type='hidden'
+            +afQuickField name='asset_treePath' value=assetDetails.treePath type='hidden'
+            +afQuickField name='assetID' value=assetDetails.assetID type='hidden'
+            +afQuickField name='assetText' value=assetDetails.text type='hidden'
+            .col.s12.m6.l3            
+              +afQuickField name='type'                        
+            .col.s12.m6.l3
+              +afQuickField name='refID'
+            .col.s12.m6.l3
+              +afQuickField name='reqPriority'
+            div
+              +afQuickField name='reqDescription'
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Work Order
+              
+          .row
+            .divider.teal
+            .section
+              h6.teal-text Asset   
+            +treeView nodeID=assetDetails.assetID nodeText=assetDetails.text
+          +fabBackResetSubmit   

@@ -11,7 +11,7 @@ template(name='viewCompanyPage')
           .row
             +smlField item=currentDoc._id label='System ID'
             +smlField item=currentDoc.company_id label='Company ID'
-            +smlField item=currentDoc.createdDate label='Created Date'
+            +smlDateField item=currentDoc.createdDate label='Created Date'
             +smlField item=txtClassificationID label='Item Classification'
             +smlField item=currentDoc.type label='Type'
             +smlField item=currentDoc.referenceID label='Reference ID'

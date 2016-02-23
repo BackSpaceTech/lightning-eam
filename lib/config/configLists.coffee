@@ -144,3 +144,26 @@ Lists.Companies.Type = {
   'customer': 'Customer'
   'both': 'Supplier and Customer'
 }
+
+Lists.Months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+
+Lists.Purchases.Status = {
+  0: 'Req Cancelled'
+  1: 'Req Started'
+  2: 'Req Returned'
+  3: 'Req Accepted'
+  4: 'Purchase Order Created'
+  5: 'Purchase Order Approved'
+  6: 'Goods Received'
+  7: 'Financially Closed'
+  8: 'Purchase Order Closed'
+}
+
+Lists.Purchases.Types = {
+  'workorder': 'For Work Order'
+  'spare': 'Spare Replacement'
+  'consumable': 'Consumable Replenishment'
+  'capital': 'For Capital Work Order'
+  'rd': 'Research and Development'
+  'sample': 'Sample'
+}

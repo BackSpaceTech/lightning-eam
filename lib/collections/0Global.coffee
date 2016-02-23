@@ -11,6 +11,7 @@
 @Lists.Inventory = {}
 @Lists.PM = {}
 @Lists.Companies = {}
+@Lists.Purchases = {}
 
 @Customisations = {}
 

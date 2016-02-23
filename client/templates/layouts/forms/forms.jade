@@ -3,12 +3,14 @@ template(name='smlField')
     h6.grey-text
       =label
     =item
+    | &nbsp;
 
 template(name='smlDateField')
   .col.s12.m6.l3
     h6.grey-text
       =label
     =dateItem
+    | &nbsp;
 
 template(name='smlCheckField')
   .col.s12.m6.l3
@@ -24,7 +26,8 @@ template(name='medField')
     h6.grey-text
       =label
     =item
-
+    | &nbsp;
+    
 template(name='lgeField')
   .row
   .row
@@ -40,15 +43,20 @@ template(name='frmSection')
       h6.teal-text 
         =label
 
+template(name='frmNew')
+  .frmNew
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnNew.green(type='button', data-delay='50', data-position='bottom', data-tooltip=label)
+      i.fa.fa-file-o
+        
 template(name='frmDelete')
   .frmDelete
     button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
       i.fa.fa-trash
-      
+        
 template(name='frmAdd')
   .frmAdd
     button.btn-floating.waves-effect.waves-light.tooltipped.btnAdd.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Add')
-      i.fa.fa-plus     
+      i.fa.fa-plus
     
 template(name='frmEdit')
   .frmEdit
