@@ -87,7 +87,6 @@ Schema.companies = new SimpleSchema(
   phone:
     type: String
     label: 'Phone Number'
-    optional: true
   fax:
     type: String
     label: 'Fax Number'
@@ -95,43 +94,33 @@ Schema.companies = new SimpleSchema(
   streetAddress:
     type: String
     label: 'Address'
-    optional: true
   streetCity:
     type: String
     label: 'City'
-    optional: true
   streetState:
     type: String
     label: 'State'
-    optional: true
   streetCountry:
     type: String
     label: 'Country'
-    optional: true
   streetZip:
     type: String
     label: 'Zip Post Code'
-    optional: true
   postalAddress:
     type: String
     label: 'Postal Address'
-    optional: true
   postalCity:
     type: String
     label: 'City'
-    optional: true
   postalState:
     type: String
     label: 'State'
-    optional: true
   postalCountry:
     type: String
     label: 'Country'
-    optional: true
   postalZip:
     type: String
     label: 'Zip Post Code'
-    optional: true
 )
 
 Schema.reqItems = new SimpleSchema(
@@ -153,18 +142,103 @@ Schema.reqItems = new SimpleSchema(
     label: 'Comments'
 )
 
-schemaPurchaseReqs = {
+Schema.purchaseReqs = new SimpleSchema(
   refID:
     type: String
     label: 'Reference ID'
     optional: true
+  billing_ID:
+    type: String
+    label: 'Billing ID'
+  deliveryComments:
+    type: String
+    label: 'Delivery Comments'
+  deliveryContact:
+    type: String
+    label: 'Contact Name'
+  deliveryName:
+    type: String
+    label: 'Delivery Name'
+  deliveryPhone:
+    type: String
+    label: 'Phone'
+  deliveryAddress:
+    type: String
+    label: 'Delivery Address'
+  deliveryCity:
+    type: String
+    label: 'City'
+  deliveryState:
+    type: String
+    label: 'State'
+  deliveryCountry:
+    type: String
+    label: 'Country'
+    optional: true
+  deliveryZip:
+    type: String
+    label: 'Zip Post Code'
+    optional: true
+  supplierID:
+    type: String
+    label: 'Supplier ID'
+  supplierName:
+    type: String
+    label: 'Supplier Name'
+  supplierTradingName:
+    type: String
+    label: 'Supplier Trading Name'
+  supplierCompanyNumber:
+    type: String
+    label: 'Company registration number'
+    optional: true
+  supplierTaxNumber:
+    type: String
+    label: 'Tax registration number'
+    optional: true
+  supplierPhone:
+    type: String
+    label: 'Phone Number'
+    optional: true
+  supplierFax:
+    type: String
+    label: 'Fax Number'
+    optional: true
+  supplierPostalAddress:
+    type: String
+    label: 'Postal Address'
+    optional: true
+  supplierPostalCity:
+    type: String
+    label: 'City'
+    optional: true
+  supplierPostalState:
+    type: String
+    label: 'State'
+    optional: true
+  supplierPostalCountry:
+    type: String
+    label: 'Country'
+    optional: true
+  supplierPostalZip:
+    type: String
+    label: 'Zip Post Code'
+    optional: true
   workID:
     type: String
-    label: 'Work Request/Order ID'
+    label: 'Work Order ID'
+    optional: true
+  workDesc:
+    type: String
+    label: 'Work Order Description'
     optional: true
   assetID:
     type: String
     label: 'Asset ID'
+    optional: true
+  assetText:
+    type: String
+    label: 'Asset Name'
     optional: true
   createdDate:
     type: Date
@@ -241,4 +315,4 @@ schemaPurchaseReqs = {
   reqReceivedDate:
     type: Date
     optional: true
-}
+)

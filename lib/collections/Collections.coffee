@@ -1,12 +1,14 @@
-#************************** Collections ********************************
+#************************** Assets / Locations ********************************
 @Locations = new Mongo.Collection 'locations', transform: (doc) ->
   if doc.assetClassificationID
     doc.assetClassification = Classification.findOne {'_id': doc.assetClassificationID }, { fields:
       text: true}
   doc
 
+#************************** Classifications ***********************************
 @Classification = new Mongo.Collection 'classification'
 
+#************************** Work **********************************************
 @Workorders = new Mongo.Collection 'workorders'
 if Meteor.isServer
   Workorders._ensureIndex {status: 1}
@@ -15,6 +17,7 @@ if Meteor.isServer
 @Workplans = new Mongo.Collection 'workplans'
 @Safetyplans = new Mongo.Collection 'safetyplans'
 
+#************************** PM ************************************************
 @Assetgroups = new Mongo.Collection 'assetgroups', transform: (doc) ->
   if doc.asset_IDs
     doc.assetList = Locations.find( {'_id': {'$in': doc.asset_IDs} }, { fields:
@@ -42,10 +45,17 @@ if Meteor.isServer
 if Meteor.isServer
   @Crontasks = new Mongo.Collection 'crontasks'
 
+#************************** Inventory ****************************************
 @Bins = new Mongo.Collection 'bins'
 @Items = new Mongo.Collection 'items'
 @Equipment = new Mongo.Collection 'equipment'
 @BOM = new Mongo.Collection 'bom'
 
+#************************** Procurement ***************************************
 @Companies = new Mongo.Collection 'companies'
-@Purchases = new Mongo.Collection 'purchases'
+@Purchases = new Mongo.Collection 'purchases', transform: (doc) ->
+  if doc.billing_ID
+    doc.billingDetails = Companies.findOne {'_id': doc.billing_ID}
+  if doc.supplier_ID
+    doc.supplierDetails = Companies.findOne {'_id': doc.supplier_ID}
+  doc

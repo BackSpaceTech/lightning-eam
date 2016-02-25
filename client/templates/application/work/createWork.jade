@@ -4,7 +4,7 @@ template(name='createWorkPage')
   else 
     .container2
       br
-      +autoForm schema=createWorkFormSchema id='createWorkPage' type='method' meteormethod='createWO'
+      +autoForm schema=formSchema id='createWorkPage' type='method' meteormethod='createWO'
         fieldset
           legend New Work Request
           .row
@@ -22,10 +22,10 @@ template(name='createWorkPage')
             .col.s12.m6.l3
               +afQuickField name='reqPriority'
             div
-              +afQuickField name='reqDescription'               
+              +afQuickField name='reqDescription'
           .row
             .divider.teal
             .section
-              h6.teal-text Asset   
+              h6.teal-text Asset
             +treeView nodeID=assetDetails.assetID nodeText=assetDetails.text
-          +fabBackResetSubmit   
+          +fabBackResetSubmit

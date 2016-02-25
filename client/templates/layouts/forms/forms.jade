@@ -43,25 +43,35 @@ template(name='frmSection')
       h6.teal-text 
         =label
 
-template(name='frmNew')
-  .frmNew
+template(name='frmBtnNew')
+  .frmBtnNew
     button.btn-floating.waves-effect.waves-light.tooltipped.btnNew.green(type='button', data-delay='50', data-position='bottom', data-tooltip=label)
       i.fa.fa-file-o
         
-template(name='frmDelete')
-  .frmDelete
+template(name='frmBtnDelete')
+  .frmBtnDelete
     button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
       i.fa.fa-trash
         
-template(name='frmAdd')
-  .frmAdd
-    button.btn-floating.waves-effect.waves-light.tooltipped.btnAdd.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Add')
+template(name='frmBtnAdd')
+  .frmBtnAdd
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnAdd.green(type='button', data-delay='50', data-position='bottom', data-tooltip=label)
       i.fa.fa-plus
     
-template(name='frmEdit')
-  .frmEdit
+template(name='frmBtnEdit')
+  .frmBtnEdit
     button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
       i.fa.fa-edit 
+
+template(name='frmBtnMail')
+  .frmBtnMail
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnIcon.green(type='button', data-delay='50', data-position='bottom', data-tooltip=label)
+      i.fa.fa-envelope
+        
+template(name='frmBtnDeliver')
+  .frmBtnDeliver
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnIcon.green(type='button', data-delay='50', data-position='bottom', data-tooltip=label)
+      i.fa.fa-truck
 
 // ************************ Fixed Action Button  *******************************
 

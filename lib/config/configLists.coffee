@@ -140,6 +140,7 @@ Lists.Companies.Status = {
 }
 
 Lists.Companies.Type = {
+  'internal': 'Internal Business'
   'supplier': 'Supplier'
   'customer': 'Customer'
   'both': 'Supplier and Customer'

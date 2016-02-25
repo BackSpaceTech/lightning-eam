@@ -60,7 +60,7 @@ Template.activatePMPage.events
     else
       msg = 'Invalid Cron Expression!'
     alert msg
-  'click .frmEdit .btnEdit': (event, template) ->
+  'click .frmBtnEdit .btnEdit': (event, template) ->
     if !Session.get('currentDoc').workorderPM
       Session.set 'currentDoc', PM.findOne ({ _id: Session.get('currentDoc')._id.toString() })
     temp = Session.get 'currentDoc'

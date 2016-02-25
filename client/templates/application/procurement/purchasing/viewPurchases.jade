@@ -7,6 +7,6 @@ template(name='viewPurchasesPage')
       fieldset.viewPurchases
         legend Purchase Requisitions
           a(href='{{pathFor "create-purchase"}}')
-            +frmNew label='New Purchase Requisition'
+            +frmBtnNew label='New Purchase Requisition'
         +reactiveTable collection=purchases settings=settings class='table striped'
     +fabBack

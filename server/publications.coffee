@@ -39,6 +39,13 @@ ReactiveTable.publish 'workorder-data', Workorders, ->
 Meteor.publish 'my-work', (userId) ->
   Workorders.find {'workTeam.userID': userId}, {limit: 100, sort: {priority: 1}}
 
+ReactiveTable.publish "workorders-list", Workorders, {'status': { $in: ['5','6','7','8'] }}, {fields: {
+  assetID: true
+  assetText: true
+  text: true
+  priority: true
+  }}
+
 Meteor.publish 'workplans', ->
   Workplans.find {}
 
@@ -88,3 +95,6 @@ Meteor.publish 'companies', ->
 
 Meteor.publish 'purchases', ->
   Purchases.find {}
+
+ReactiveTable.publish 'suppliers-list', Companies, {'type': 'supplier'}
+ReactiveTable.publish 'internal-companies', Companies, {'type': 'internal'}

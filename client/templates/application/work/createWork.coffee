@@ -1,14 +1,14 @@
-Template.createPurchasePage.onRendered ->
+Template.createWorkPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
   temp = Locations.find().fetch()
   dataTree(temp , 'general')
 
-Template.createPurchasePage.onDestroyed ->
+Template.createWorkPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.createPurchasePage.helpers
-  customTemplate: -> Customisations.createPurchase
+Template.createWorkPage.helpers
+  customTemplate: -> Customisations.createWork
   formSchema: -> Schema.requests
   requestor: ->
     temp=Meteor.user()

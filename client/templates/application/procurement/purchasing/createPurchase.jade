@@ -12,10 +12,6 @@ template(name='createPurchasePage')
             +afQuickField name='reqBy_id' value=requestor.reqBy_id type='hidden'
             +afQuickField name='reqByFirstName' value=requestor.reqByFirstName type='hidden'
             +afQuickField name='reqByLastName' value=requestor.reqByLastName type='hidden'
-            +afQuickField name='asset_ID' value=assetDetails._id type='hidden'
-            +afQuickField name='asset_treePath' value=assetDetails.treePath type='hidden'
-            +afQuickField name='assetID' value=assetDetails.assetID type='hidden'
-            +afQuickField name='assetText' value=assetDetails.text type='hidden'
             .col.s12.m6.l3            
               +afQuickField name='type'                        
             .col.s12.m6.l3
@@ -26,12 +22,69 @@ template(name='createPurchasePage')
               +afQuickField name='reqDescription'
           .row
             .divider.teal
-            .section
-              h6.teal-text Work Order
-              
+            .section.billing
+              h6.teal-text Billing Details
+                +frmBtnAdd label='Add Billing Details'
+              .col.s12.m4.l3 
+                +afQuickField name='billing_ID' value=billingDetails._id
+              +smlField item=billingDetails.name label='Name'
           .row
             .divider.teal
-            .section
-              h6.teal-text Asset   
-            +treeView nodeID=assetDetails.assetID nodeText=assetDetails.text
-          +fabBackResetSubmit   
+            .section.delivery
+              h6.teal-text Delivery Details
+              .col.s4.m3.l2
+                +frmBtnDeliver label='Use Billing Street Address'
+                h6.grey-text Use Billing Street Address
+              .col.s4.m3.l2
+                +frmBtnMail label='Use Billing Postal Address'
+                h6.grey-text Use Billing Postal Address
+              .row
+                +afQuickField name='deliveryComments'
+              .col.s12.m4.l3
+                +afQuickField name='deliveryContact'
+              .col.s12.m4.l3
+                +afQuickField name='deliveryName' 
+              .col.s12.m4.l3
+                +afQuickField name='deliveryPhone' 
+              .col.s12.m8.l9 
+                +afQuickField name='deliveryAddress' 
+              .col.s12.m4.l3
+                +afQuickField name='deliveryCity' 
+              .col.s12.m4.l3
+                +afQuickField name='deliveryState' 
+              .col.s12.m4.l3
+                +afQuickField name='deliveryCountry'
+              .col.s12.m4.l3
+                +afQuickField name='deliveryZip' 
+          .row
+            .divider.teal
+            .section.supplier
+              h6.teal-text Supplier Details
+                +frmBtnAdd label='Add Supplier Details'
+              .col.s12.m4.l3 
+                +afQuickField name='supplier_ID' value=supplierDetails._id
+              +smlField item=supplierDetails.name label='Name'
+          .row
+            .divider.teal
+            .section.wo
+              h6.teal-text Work Order
+                +frmBtnAdd label='Add Work Order Details'
+              .col.s12.m4.l3 
+                +afQuickField name='workID' value=workDetails._id
+              .col.s12.m8.l9 
+                +afQuickField name='workDesc' value=workDetails.text
+              .col.s12.m4.l3 
+                +afQuickField name='assetID' value=workDetails.assetID
+              .col.s12.m8.l9 
+                +afQuickField name='assetText' value=workDetails.assetText
+                
+          +fabBackResetSubmit
+
+template(name='createPurchaseFormAddWO')
+  +reactiveTable collection='workorders-list' settings=settings class='table striped'
+  
+template(name='createPurchaseFormBilling')
+  +reactiveTable collection='internal-companies' settings=settings class='table striped'
+
+template(name='createPurchaseFormSupplier')
+  +reactiveTable collection='suppliers-list' settings=settings class='table striped'
