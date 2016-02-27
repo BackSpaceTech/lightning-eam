@@ -1,6 +1,3 @@
-Template.editAssetPage.onCreated ->
-  this.assetClassID = new ReactiveVar
-
 Template.editAssetPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}

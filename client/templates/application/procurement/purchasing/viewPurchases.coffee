@@ -24,26 +24,39 @@ Template.viewPurchasesPage.helpers
       rowsPerPage: 10
       showFilter: true
       fields:  [
-        { key: '_id', label: 'System ID' }
-        { key: 'refID', label: 'Reference ID' }
-        { key: 'assetID', label: 'Asset ID' }
-        { key: 'assetText', label: 'Asset' }
-        { key: 'text', label: 'Title' }
-        { key: '', label: 'View/Edit', tmpl: Template.rtViewEditDelete }
-        { key: 'status', label: 'Status' }
+        { key: '_id', hidden: true }
+        { key: 'createdDate', label: ' Date Raised' }
+        { key: 'status', label: ' Status' }
+        { key: 'refID', label: ' Reference ID' }
+        { key: 'billingDetails.text', label: ' Bill to' }
+        { key: 'supplierDetails.text', label: ' Supplier' }
+        { key: 'assetID', label: ' Asset ID' }
+        { key: 'assetText', label: ' Asset' }
+        { key: 'workID', label: ' Work Order ID' }
+        { key: '', label: 'View/Edit/Delete', tmpl: Template.rtViewEditDelete }
       ]
     }
 
 Template.viewPurchasesPage.events
   'click .viewPurchases .btnView': (event) ->
-    Collections.Workorders.Current = this
+    Collections.Purchases.Current = this
     FlowRouter.go '/procurement/purchase/view-purchase'
   'click .viewPurchases .btnEdit': (event) ->
-    Collections.Workorders.Current = this
+    Collections.Purchases.Current = this
     FlowRouter.go '/procurement/purchase/edit-purchase'
   'click .viewPurchases .btnDelete': (event) ->
-    Collections.Workorders.Current = this
-    FlowRouter.go '/procurement/purchase/delete-purchase'
+    temp = this._id
+    MaterializeModal.confirm
+      title: 'Delete Document'
+      label: 'Warning - Permanent Delete'
+      message: 'You are about permanently delete a document. This cannot be reversed and may affect other documents that reference it.'
+      callback: (error, response) ->
+        if (response.submit)
+          Meteor.call 'deletePurchase', temp, (error, result) ->
+            if error
+              toast 'error', error
+            else
+              toast 'success', result
 
 Template.startWO.onRendered ->
   $('.tooltipped').tooltip {delay: 50}

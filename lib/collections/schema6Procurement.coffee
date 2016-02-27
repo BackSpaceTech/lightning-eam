@@ -124,7 +124,7 @@ Schema.companies = new SimpleSchema(
 )
 
 Schema.reqItems = new SimpleSchema(
-  itemID:
+  _id:
     type: String
     label: 'Item Sys ID'
   referenceID:
@@ -134,12 +134,27 @@ Schema.reqItems = new SimpleSchema(
   text:
     type: String
     label: 'Title'
-  qty:
+  orderQty:
     type: Number
     label: 'Quantity'
+  itemPrice:
+    type: Number
+    label: 'Price'
+    decimal: true
+  excludesTax:
+    type: Boolean
+    label: 'Excludes Tax'
+  stockUnits:
+    type: String
+    label: 'Units of Measure'
+    autoform:
+      type: 'select'
+      options: ->
+        Lists.Inventory.Units
   comments:
     type: String
     label: 'Comments'
+    optional: true
 )
 
 Schema.purchaseReqs = new SimpleSchema(
@@ -153,6 +168,11 @@ Schema.purchaseReqs = new SimpleSchema(
   deliveryComments:
     type: String
     label: 'Delivery Comments'
+    optional: true
+  deliveryBy:
+    type: Date
+    label: 'Deliver By Date'
+    optional: true
   deliveryContact:
     type: String
     label: 'Contact Name'
@@ -174,56 +194,13 @@ Schema.purchaseReqs = new SimpleSchema(
   deliveryCountry:
     type: String
     label: 'Country'
-    optional: true
   deliveryZip:
     type: String
     label: 'Zip Post Code'
     optional: true
-  supplierID:
+  supplier_ID:
     type: String
     label: 'Supplier ID'
-  supplierName:
-    type: String
-    label: 'Supplier Name'
-  supplierTradingName:
-    type: String
-    label: 'Supplier Trading Name'
-  supplierCompanyNumber:
-    type: String
-    label: 'Company registration number'
-    optional: true
-  supplierTaxNumber:
-    type: String
-    label: 'Tax registration number'
-    optional: true
-  supplierPhone:
-    type: String
-    label: 'Phone Number'
-    optional: true
-  supplierFax:
-    type: String
-    label: 'Fax Number'
-    optional: true
-  supplierPostalAddress:
-    type: String
-    label: 'Postal Address'
-    optional: true
-  supplierPostalCity:
-    type: String
-    label: 'City'
-    optional: true
-  supplierPostalState:
-    type: String
-    label: 'State'
-    optional: true
-  supplierPostalCountry:
-    type: String
-    label: 'Country'
-    optional: true
-  supplierPostalZip:
-    type: String
-    label: 'Zip Post Code'
-    optional: true
   workID:
     type: String
     label: 'Work Order ID'
@@ -242,16 +219,24 @@ Schema.purchaseReqs = new SimpleSchema(
     optional: true
   createdDate:
     type: Date
+    optional: true
   requiredDate:
     type: Date
     optional: true
   reqItems:
     type: [Schema.reqItems]
     label: 'Items'
-    optional: true
-  freightCost:
+  freight:
     type: Number
     label: 'Freight Cost'
+    decimal: true
+  freightType:
+    type: String
+    label: 'Freight Method'
+    autoform:
+      type: 'select'
+      options: ->
+        Lists.Purchases.Freight
   type:
     type: String
     label: 'Type'

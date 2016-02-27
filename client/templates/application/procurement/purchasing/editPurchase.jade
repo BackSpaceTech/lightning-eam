@@ -1,0 +1,126 @@
+template(name='editPurchasePage')
+  if customTemplate
+    +editPurchasePageCustom  
+  else 
+    .container2
+      br
+      +autoForm schema=formSchema id='editPurchasePage' type='update' collection='Purchases' doc=editDoc
+        fieldset
+          legend
+            =frmTitle
+          if Template.subscriptionsReady
+            .row
+              +afQuickField name='status' value='1' type='hidden'
+              +afQuickField name='reqBy_id' value=requestor.reqBy_id type='hidden'
+              +afQuickField name='reqByFirstName' value=requestor.reqByFirstName type='hidden'
+              +afQuickField name='reqByLastName' value=requestor.reqByLastName type='hidden'
+              .col.s12.m6.l3
+                +afQuickField name='type'
+              .col.s12.m6.l3
+                +afQuickField name='refID'
+              .col.s12.m6.l3
+                +afQuickField name='reqPriority'
+              div
+                +afQuickField name='reqDescription'
+            .row
+              .divider.teal
+              .section.billing
+                h6.teal-text Billing Details
+                  +frmBtnAdd label='Add Billing Details'
+                .col.s12.m4.l3 
+                  +afQuickField name='billing_ID'
+                +smlField item=billingDetails.name label='Name'
+            .row
+              .divider.teal
+              .section.delivery
+                h6.teal-text Delivery Details
+                .col.s4.m3.l2
+                  +frmBtnDeliver label='Use Billing Street Address'
+                  h6.grey-text Use Billing Street Address
+                .col.s4.m3.l2
+                  +frmBtnMail label='Use Billing Postal Address'
+                  h6.grey-text Use Billing Postal Address
+                .row
+                  +afQuickField name='deliveryComments'
+                .col.s12.m4.l3
+                  +afQuickField name='deliveryContact'
+                .col.s12.m4.l3
+                  +afQuickField name='deliveryName' 
+                .col.s12.m4.l3
+                  +afQuickField name='deliveryPhone' 
+                .col.s12.m8.l9 
+                  +afQuickField name='deliveryAddress' 
+                .col.s12.m4.l3
+                  +afQuickField name='deliveryCity' 
+                .col.s12.m4.l3
+                  +afQuickField name='deliveryState' 
+                .col.s12.m4.l3
+                  +afQuickField name='deliveryCountry'
+                .col.s12.m4.l3
+                  +afQuickField name='deliveryZip' 
+            .row
+              .divider.teal
+              .section.supplier
+                h6.teal-text Supplier Details
+                  +frmBtnAdd label='Add Supplier Details'
+                .col.s12.m4.l3 
+                  +afQuickField name='supplier_ID' value=supplierDetails._id
+                +smlField item=supplierDetails.name label='Name'
+            .row
+              .divider.teal
+              .section.wo
+                h6.teal-text Work Order
+                  +frmBtnAdd label='Add Work Order Details'
+                .col.s12.m4.l3 
+                  +afQuickField name='workID'
+                .col.s12.m8.l9 
+                  +afQuickField name='workDesc'
+                .col.s12.m4.l3 
+                  +afQuickField name='assetID'
+                .col.s12.m4.l3 
+                  +afQuickField name='assetText'
+            .row
+              .divider.teal
+              .section.items
+                h6.teal-text Items
+                  +frmBtnAdd label='Add Item'
+                .col.s12.m4.l3 
+                  +afQuickField name='freight'
+                .col.s12.m4.l3 
+                  +afQuickField name='freightType'
+                span(style='display: none')
+                  +afArrayField name='reqItems' type='hidden'
+                +reactiveTable collection=purchaseItems settings=settings class='table striped' 
+          else
+            +spinner  
+          +fabBackResetSubmit
+
+template(name='editPurchaseFormAddWO')
+  +reactiveTable collection='workorders-list' settings=settings class='table striped'
+  
+template(name='editPurchaseFormBilling')
+  +reactiveTable collection='internal-companies' settings=settings class='table striped'
+
+template(name='editPurchaseFormSupplier')
+  +reactiveTable collection='suppliers-list' settings=settings class='table striped'
+  
+template(name='editPurchaseFormItems')
+  +lgeField item=itemText label='Purchase Item'
+  .row
+    .divider.teal  
+    .section
+      .input-field.col.s12.m4.l3
+        input#editPurchaseFormItemsOrderQty.validate(value='0', type='number', min='0')
+        label.active(for='editPurchaseFormItemsOrderQty') Order Qty 
+      .input-field.col.s12.m4.l3
+        input#editPurchaseFormItemsPrice.validate(value='0', type='number', min='0')
+        label.active(for='editPurchaseFormItemsPrice') Item Price
+      .input-field.col.s12.m4.l3
+        input#editPurchaseFormItemsTax(type='checkbox')
+        label(for='editPurchaseFormItemsTax') Price Not Inc Tax
+    .row
+    .row
+      .input-field
+        input#editPurchaseFormItemsComments.validate(type='text')
+        label(for='editPurchaseFormItemsComments') Comments
+  +reactiveTable collection='items-list' settings=settings class='table striped'

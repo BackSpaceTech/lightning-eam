@@ -1,6 +1,6 @@
 Template.editWorkorderPage.onRendered ->
   $(".dropdown-button").dropdown()
-  $('.tooltipped').tooltip {delay: 50}  
+  $('.tooltipped').tooltip {delay: 50}
   if !Collections.Workorders.Current.workTeam
     Collections.Workorders.Current.workTeam = []
   Session.set 'currentDoc', Collections.Workorders.Current
@@ -45,25 +45,21 @@ Template.editWorkorderForm.helpers
   faultOptions: -> Lists.Workorders.Fault
   causeOptions: -> Lists.Workorders.Cause
   remedyOptions: -> Lists.Workorders.Remedy
-  teamMembers: -> (Session.get 'currentDoc').workTeam
   safetyText: -> Session.get 'temp1'
 
 Template.editWorkorderForm.events
   'click .team .btnAdd': (event) ->
-    MaterializeModal.display {
+    MaterializeModal.display
       bodyTemplate: 'editWorkorderFormAddUser'
       title: 'Add Team Member'
-    }
   'click .safety .btnTemplate': (event) ->
-    MaterializeModal.display {
+    MaterializeModal.display
       bodyTemplate: 'editWorkorderFormSafetyTemplate'
       title: 'Create from Template'
-    }
   'click .work .btnTemplate': (event) ->
-    MaterializeModal.display {
+    MaterializeModal.display
       bodyTemplate: 'editWorkorderFormWorkTemplate'
       title: 'Create from Template'
-    }
 
 Template.editWorkorderFormAddUser.helpers
   settings: ->

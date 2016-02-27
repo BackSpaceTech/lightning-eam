@@ -63,17 +63,17 @@ template(name='editWorkorderForm')
       .col.s12.m6.l3
         +afQuickField name='assetText'
       .col.s12.m6.l3
-        +afQuickField name='refID'                            
+        +afQuickField name='refID'
       div
         +afQuickField name='reqDescription'
     .row
       .divider.teal
       .section
-        h6.teal-text Work Order Details                                                    
+        h6.teal-text Work Order Details
         .col.s12.m6.l3
-          +afQuickField name='status' options=workOptions          
+          +afQuickField name='status' options=workOptions
         .col.s12.m6.l3
-          +afQuickField name='priority'                
+          +afQuickField name='priority'
         div
           +afQuickField name='text'
         div
@@ -81,13 +81,13 @@ template(name='editWorkorderForm')
     .row
       .divider.teal
       .section.team
-        h6.teal-text Work Team   
+        h6.teal-text Work Team
           button.btn-floating.teal.tooltipped.btnAdd(type='button', data-position='bottom', data-tooltip='Quick Add Person')
-            i.fa.fa-plus                 
+            i.fa.fa-plus
         +afEachArrayItem name='workTeam'
           .col.s12.m6.l3
             button.autoform-remove-item.btn-floating.waves-effect.waves-light.red.btnDelete(type="button", data-position='bottom', data-tooltip='Remove Person')
-              i.fa.fa-trash          
+              i.fa.fa-trash
             +afQuickField name=this.name label=false
     .row
       .divider.teal

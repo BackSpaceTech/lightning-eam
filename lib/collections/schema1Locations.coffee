@@ -93,6 +93,7 @@ Schema.locations = new SimpleSchema(
   assetClassificationID:
     type: String
     label: 'Classification ID'
+    optional: true    
   status:
     type: String
     label: 'Status'

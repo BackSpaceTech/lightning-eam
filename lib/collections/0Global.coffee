@@ -77,3 +77,7 @@
 @Collections.Companies = {}
 @Collections.Companies.Current = {}
 @Collections.Companies.CurrentID = 0
+
+@Collections.Purchases = {}
+@Collections.Purchases.Current = {}
+@Collections.Purchases.CurrentID = 0

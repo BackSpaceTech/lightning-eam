@@ -98,3 +98,4 @@ Meteor.publish 'purchases', ->
 
 ReactiveTable.publish 'suppliers-list', Companies, {'type': 'supplier'}
 ReactiveTable.publish 'internal-companies', Companies, {'type': 'internal'}
+ReactiveTable.publish 'items-list', Items, {'status': 'active'}

@@ -6,8 +6,7 @@ Template.viewLocationsPage.onCreated ->
 Template.viewLocationsPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
-  temp = Locations.find().fetch()
-  dataTree(temp , 'general')
+  dataTree(Locations.find().fetch() , 'general')
 
 Template.viewLocationsPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'

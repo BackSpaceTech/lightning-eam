@@ -1,18 +1,27 @@
-Template.createPurchasePage.onRendered ->
+Template.editPurchasePage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
-  Session.set 'currentDoc', { reqItems: [] } # Requisition doc
+  Session.set 'currentDoc', {}  # Requisition doc
   Session.set 'currentDoc2', {} # Billing Details
   Session.set 'currentDoc3', {} # Supplier Details
   Collections.Items.Current = {}
 
-Template.createPurchasePage.onDestroyed ->
+Template.editPurchasePage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
 
-Template.createPurchasePage.helpers
-  customTemplate: -> Customisations.createPurchase
+Template.editPurchasePage.helpers
+  customTemplate: -> Customisations.editPurchase
+  frmTitle: ->
+    if Collections.Purchases.Current.status == '1'
+      return 'Edit Purchase Requisition'
+    else
+      return 'Edit Purchase Order'
   formSchema: -> Schema.purchaseReqs
-  insertDoc: -> Session.get 'currentDoc'
+  editDoc: ->
+    temp = Session.get 'currentDoc'
+    if jQuery.isEmptyObject(temp)
+      Session.set 'currentDoc', Purchases.findOne {_id: Collections.Purchases.Current._id }
+    temp
   requestor: ->
     temp = Meteor.user()
     return {
@@ -43,22 +52,22 @@ Template.createPurchasePage.helpers
       ]
     }
 
-Template.createPurchasePage.events
+Template.editPurchasePage.events
   'click .wo .btnAdd': (event) ->
     MaterializeModal.message
-      bodyTemplate: 'createPurchaseFormAddWO'
+      bodyTemplate: 'editPurchaseFormAddWO'
       title: 'Add Work Order Details'
   'click .billing .btnAdd': (event) ->
     MaterializeModal.message
-      bodyTemplate: 'createPurchaseFormBilling'
+      bodyTemplate: 'editPurchaseFormBilling'
       title: 'Add Billing Details'
   'click .supplier .btnAdd': (event) ->
     MaterializeModal.message
-      bodyTemplate: 'createPurchaseFormSupplier'
+      bodyTemplate: 'editPurchaseFormSupplier'
       title: 'Add Supplier Details'
   'click .items .btnAdd': (event) ->
     MaterializeModal.message
-      bodyTemplate: 'createPurchaseFormItems'
+      bodyTemplate: 'editPurchaseFormItems'
       title: 'Add Items'
       callback: (error, response) ->
         if (error)
@@ -73,23 +82,23 @@ Template.createPurchasePage.events
           delete Collections.Items.Current["reactive-table-id"]
           delete Collections.Items.Current["reactive-table-sort"]
           # Read qty
-          tempInput = $('#createPurchaseFormItemsOrderQty').val()
+          tempInput = $('#editPurchaseFormItemsOrderQty').val()
           if tempInput == '0'
             toast 'error', 'No order quantity entered!'
             return
           else
             Collections.Items.Current.orderQty = tempInput
           # Read price
-          tempInput = $('#createPurchaseFormItemsPrice').val()
+          tempInput = $('#editPurchaseFormItemsPrice').val()
           if tempInput == '0'
             toast 'error', 'No item price entered!'
             return
           else
             Collections.Items.Current.itemPrice = tempInput
           # Read tax
-          Collections.Items.Current.excludesTax = $('#createPurchaseFormItemsTax').is(':checked')
+          Collections.Items.Current.excludesTax = $('#editPurchaseFormItemsTax').is(':checked')
           # Read comments
-          Collections.Items.Current.comments = $('#createPurchaseFormItemsComments').val()
+          Collections.Items.Current.comments = $('#editPurchaseFormItemsComments').val()
           # Update doc
           temp.reqItems.push Collections.Items.Current
           Session.set 'currentDoc', temp
@@ -119,7 +128,7 @@ Template.createPurchasePage.events
     $( 'input[name="deliveryCountry"]' ).val(temp.postalCountry)
     $( 'input[name="deliveryZip"]' ).val(temp.postalZip)
 
-Template.createPurchaseFormAddWO.helpers
+Template.editPurchaseFormAddWO.helpers
   settings: ->
     return {
       rowsPerPage: 10
@@ -133,7 +142,7 @@ Template.createPurchaseFormAddWO.helpers
       ]
     }
 
-Template.createPurchaseFormAddWO.events
+Template.editPurchaseFormAddWO.events
   'click .rtAdd .btnAdd': (event) ->
     temp = Session.get 'currentDoc'
     temp.workID = this._id
@@ -142,7 +151,7 @@ Template.createPurchaseFormAddWO.events
     temp.assetText = this.assetText
     Session.set 'currentDoc', temp
 
-Template.createPurchaseFormBilling.helpers
+Template.editPurchaseFormBilling.helpers
   settings: ->
     return {
       rowsPerPage: 10
@@ -167,14 +176,14 @@ Template.createPurchaseFormBilling.helpers
       ]
     }
 
-Template.createPurchaseFormBilling.events
+Template.editPurchaseFormBilling.events
   'click .rtAdd .btnAdd': (event) ->
     Session.set 'currentDoc2', this
     temp = Session.get 'currentDoc'
     temp.billing_ID = this._id
     Session.set 'currentDoc', temp
 
-Template.createPurchaseFormSupplier.helpers
+Template.editPurchaseFormSupplier.helpers
   settings: ->
     return {
       rowsPerPage: 10
@@ -199,15 +208,15 @@ Template.createPurchaseFormSupplier.helpers
       ]
     }
 
-Template.createPurchaseFormSupplier.events
+Template.editPurchaseFormSupplier.events
   'click .rtAdd .btnAdd': (event) ->
     Session.set 'currentDoc3', this
 
-Template.createPurchaseFormItems.onCreated ->
+Template.editPurchaseFormItems.onCreated ->
   this.itemText = new ReactiveVar
   Collections.Items.Current = {}
 
-Template.createPurchaseFormItems.helpers
+Template.editPurchaseFormItems.helpers
   itemText: -> Template.instance().itemText.get()
   settings: -> ## Modal Items List
     return {
@@ -224,7 +233,7 @@ Template.createPurchaseFormItems.helpers
       ]
     }
 
-Template.createPurchaseFormItems.events
+Template.editPurchaseFormItems.events
   'click .rtAdd .btnAdd': (event, template) ->
     Collections.Items.Current = this
     template.itemText.set this.text

@@ -8,6 +8,13 @@ template(name='rtViewEditDelete')
     button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
       i.fa.fa-trash 
 
+template(name='rtEditDelete')
+  .rtEditDelete
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+      i.fa.fa-edit 
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+      i.fa.fa-trash 
+
 template(name='rtDelete')
   .rtDelete
     button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
@@ -26,8 +33,10 @@ template(name='rtEdit')
 template(name='rtBoolean')
   .rtBoolean
     if active
-      i.green-text.fa.fa-check-circle
+      i.green-text.fa.fa-check
     else if completed
-      i.green-text.fa.fa-check-circle
+      i.green-text.fa.fa-check
+    else if excludesTax
+      i.green-text.fa.fa-check
     else
-      i.red-text.fa.fa-close
+      i.red-text.fa.fa-close  

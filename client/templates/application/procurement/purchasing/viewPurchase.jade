@@ -1,29 +1,26 @@
-template(name='createPurchasePage')
+template(name='viewPurchasePage')
   if customTemplate
-    +createPurchasePageCustom  
+    +viewPurchasePageCustom  
   else 
     .container2
       br
-      +autoForm schema=formSchema id='createPurchasePage' type='method' meteormethod='createPurchase' doc=insertDoc
-        fieldset
-          legend New Purchase Requisition
+      fieldset
+        legend 
+          =frmTitle
+        if Template.subscriptionsReady
           .row
-            +afQuickField name='status' value='1' type='hidden'
-            +afQuickField name='reqBy_id' value=requestor.reqBy_id type='hidden'
-            +afQuickField name='reqByFirstName' value=requestor.reqByFirstName type='hidden'
-            +afQuickField name='reqByLastName' value=requestor.reqByLastName type='hidden'
-            .col.s12.m6.l3
-              +afQuickField name='type'
-            .col.s12.m6.l3
-              +afQuickField name='refID'
-            .col.s12.m6.l3
-              +afQuickField name='reqPriority'
-            div
-              +afQuickField name='reqDescription'
+            +smlField item=editDoc.status label='Status'
+            +smlField item=editDoc.reqByFirstName label='Requested by First Name'
+            +smlField item=editDoc.reqByLastName label='Requested by Last Name'
+            +smlField item=editDoc.type label='Type'
+            +smlField item=editDoc.refID label='Reference ID'
+            +smlField item=editDoc.reqPriority label='Request Priority'
+            +lgeField item=editDoc.reqDescription label='Request Description'
           .row
             .divider.teal
             .section.billing
               h6.teal-text Billing Details
+              
                 +frmBtnAdd label='Add Billing Details'
               .col.s12.m4.l3 
                 +afQuickField name='billing_ID'
@@ -89,35 +86,6 @@ template(name='createPurchasePage')
               span(style='display: none')
                 +afArrayField name='reqItems' type='hidden'
               +reactiveTable collection=purchaseItems settings=settings class='table striped' 
-              
-          +fabBackResetSubmit
-
-template(name='createPurchaseFormAddWO')
-  +reactiveTable collection='workorders-list' settings=settings class='table striped'
-  
-template(name='createPurchaseFormBilling')
-  +reactiveTable collection='internal-companies' settings=settings class='table striped'
-
-template(name='createPurchaseFormSupplier')
-  +reactiveTable collection='suppliers-list' settings=settings class='table striped'
-  
-template(name='createPurchaseFormItems')
-  +lgeField item=itemText label='Purchase Item'
-  .row
-    .divider.teal  
-    .section
-      .input-field.col.s12.m4.l3
-        input#createPurchaseFormItemsOrderQty.validate(value='0', type='number', min='0')
-        label.active(for='createPurchaseFormItemsOrderQty') Order Qty 
-      .input-field.col.s12.m4.l3
-        input#createPurchaseFormItemsPrice.validate(value='0', type='number', min='0')
-        label.active(for='createPurchaseFormItemsPrice') Item Price
-      .input-field.col.s12.m4.l3
-        input#createPurchaseFormItemsTax(type='checkbox')
-        label(for='createPurchaseFormItemsTax') Price Not Inc Tax
-    .row
-    .row
-      .input-field
-        input#createPurchaseFormItemsComments.validate(type='text')
-        label(for='createPurchaseFormItemsComments') Comments
-  +reactiveTable collection='items-list' settings=settings class='table striped'
+        else
+          +spinner 
+        +fabBack

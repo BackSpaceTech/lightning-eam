@@ -20,7 +20,7 @@ Template.editPMPage.helpers
 
 Template.editPMPage.events
   'click .editPM .btnAdd': (event)  ->
-    MaterializeModal.display {
+    MaterializeModal.display
       bodyTemplate: 'createPMPageAddAssetGroup'
       title: 'Select Asset Group'
       callback: (error, response) ->
@@ -28,9 +28,8 @@ Template.editPMPage.events
           console.error(error)
         else
           $( 'input[name="assetGroup_ID"]' ).val(Collections.Assetgroups.CurrentID)
-    }
   'click .editPM .btnAdd2': (event) ->
-    MaterializeModal.display {
+    MaterializeModal.display
       bodyTemplate: 'createPMPageAddSafetyMethod'
       title: 'Select Safety Method'
       callback: (error, response) ->
@@ -38,9 +37,8 @@ Template.editPMPage.events
           console.error(error)
         else
           $( 'input[name="safetyPlan_ID"]' ).val(Collections.Safetyplans.CurrentID)
-    }
   'click .editPM .btnAdd3': (event) ->
-    MaterializeModal.display {
+    MaterializeModal.display
       bodyTemplate: 'createPMPageAddWorkPlan'
       title: 'Select Work Plan'
       callback: (error, response) ->
@@ -48,7 +46,6 @@ Template.editPMPage.events
           console.error(error)
         else
           $( 'input[name="workPlan_ID"]' ).val(Collections.Workplans.CurrentID)
-    }
 
 #---------- Asset Group Modal -------------
 
