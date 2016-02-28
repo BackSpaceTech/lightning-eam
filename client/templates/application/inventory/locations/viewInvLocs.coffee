@@ -42,8 +42,21 @@ Template.viewInvLocsPage.events
       FlowRouter.go '/inventory/locations/view-location'
 
   'click .viewInvLocs .btnDeleteLoc': (event) ->
-    if (Session.get('currentID').toString() == '#')
-      alert 'No location selected!'
-      return
+    temp = Session.get('currentID').toString()
+    if (temp == '#')
+      alert 'No location or asset selected!'
     else
-      FlowRouter.go '/inventory/locations/delete-location'
+      MaterializeModal.confirm
+        title: 'Delete Location'
+        label: 'Warning - Permanent Delete'
+        message: 'Warning this will permanently delete the document. This will also affect any other documents that refer to it.'
+        callback: (error, response) ->
+          if (response.submit)
+            Meteor.call 'deleteLoc', temp, (error, result) ->
+              if error
+                toast 'error', error
+              else
+                $('.tree_view').jstree(true).destroy()
+                temp = Bins.find().fetch()
+                dataTree(temp , 'general')
+                toast 'success', result

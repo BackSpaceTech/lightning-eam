@@ -39,7 +39,24 @@ Template.viewClassificationsPage.events
       FlowRouter.go '/'+this.type+'/view-classification'
 
   'click .btnDeleteLoc': (event, template) ->
-    if (Session.get('currentClassID').toString() == '#')
+    temp = Session.get('currentClassID').toString()
+    if (temp == '#')
       alert 'No classification selected!'
     else
-      FlowRouter.go '/'+this.type+'/delete-classification'
+      MaterializeModal.confirm
+        title: 'Delete Classification'
+        label: 'Warning - Permanent Delete'
+        message: 'Warning this will permanently delete the document. This will also affect any other documents that refer to it.'
+        callback: (error, response) ->
+          if (response.submit)
+            docDelete = Classification.findOne {_id:temp}
+            Meteor.call 'deleteClassification', docDelete, (error, result) ->
+              if error
+                toast 'error', error
+              else
+                $('.tree_view').jstree(true).destroy()
+                temp2 = Session.get 'treeviewData'
+                if temp2
+                  tempData = Classification.find( { type:temp2 } ).fetch()
+                dataTree(tempData , 'classification')
+                toast 'success', result

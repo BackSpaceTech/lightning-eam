@@ -24,9 +24,6 @@ Template.viewPurchasePage.helpers
       rowsPerPage: 10
       showFilter: true
       fields:  [
-        { key: '_id', hidden: true  }
-        { key: 'itemID', hidden: true  }
-        { key: 'type', hidden: true  }
         { key: 'referenceID', label: ' Reference ID' }
         { key: 'text', label: ' Title' }
         { key: 'orderQty', label: ' Qty' }
@@ -34,6 +31,5 @@ Template.viewPurchasePage.helpers
         { key: 'itemPrice', label: ' Price' }
         { key: 'excludesTax', label: ' Ex Tax', tmpl: Template.rtBoolean }
         { key: 'comments', label: ' Comments' }
-        { key: '', label: 'Delete', tmpl: Template.rtDelete }
       ]
     }

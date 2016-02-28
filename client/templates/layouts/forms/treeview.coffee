@@ -33,6 +33,7 @@
         'stripes': true
         'responsive': true
         'variant': 'large'
+      'check_callback' : true
       'data': treeData
     'types':
       '#':

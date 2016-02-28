@@ -20,71 +20,55 @@ template(name='viewPurchasePage')
             .divider.teal
             .section.billing
               h6.teal-text Billing Details
-              
-                +frmBtnAdd label='Add Billing Details'
-              .col.s12.m4.l3 
-                +afQuickField name='billing_ID'
-              +smlField item=billingDetails.name label='Name'
+              +smlField item=editDoc.billingDetails.name label='Company Name'
+              +smlField item=editDoc.billingDetails.tradingName label='Trading Name'
+              +smlField item=editDoc.billingDetails.companyNumber label='Company registration number'
+              +smlField item=editDoc.billingDetails.taxNumber label='Tax registration number'
+              +smlField item=editDoc.billingDetails.phone label='Phone'
+              +lgeField item=editDoc.billingDetails.postalAddress label='Postal Address'
+              +smlField item=editDoc.billingDetails.postalState label='State'
+              +smlField item=editDoc.billingDetails.postalZip label='Zip Post Code'
+              +smlField item=editDoc.billingDetails.postalCountry label='Country'
           .row
             .divider.teal
             .section.delivery
               h6.teal-text Delivery Details
-              .col.s4.m3.l2
-                +frmBtnDeliver label='Use Billing Street Address'
-                h6.grey-text Use Billing Street Address
-              .col.s4.m3.l2
-                +frmBtnMail label='Use Billing Postal Address'
-                h6.grey-text Use Billing Postal Address
-              .row
-                +afQuickField name='deliveryComments'
-              .col.s12.m4.l3
-                +afQuickField name='deliveryContact'
-              .col.s12.m4.l3
-                +afQuickField name='deliveryName' 
-              .col.s12.m4.l3
-                +afQuickField name='deliveryPhone' 
-              .col.s12.m8.l9 
-                +afQuickField name='deliveryAddress' 
-              .col.s12.m4.l3
-                +afQuickField name='deliveryCity' 
-              .col.s12.m4.l3
-                +afQuickField name='deliveryState' 
-              .col.s12.m4.l3
-                +afQuickField name='deliveryCountry'
-              .col.s12.m4.l3
-                +afQuickField name='deliveryZip' 
+              +smlField item=editDoc.deliveryComments label='Comments'
+              +smlField item=editDoc.deliveryContact label='Contact'
+              +smlField item=editDoc.deliveryName label='Name'
+              +smlField item=editDoc.deliveryPhone label='Phone'
+              +lgeField item=editDoc.deliveryAddress label='Address'
+              +smlField item=editDoc.deliveryCity label='City'
+              +smlField item=editDoc.deliveryState label='State'
+              +smlField item=editDoc.deliveryZip label='Zip Post Code'
+              +smlField item=editDoc.deliveryCountry label='Country'
           .row
             .divider.teal
             .section.supplier
               h6.teal-text Supplier Details
-                +frmBtnAdd label='Add Supplier Details'
-              .col.s12.m4.l3 
-                +afQuickField name='supplier_ID' value=supplierDetails._id
-              +smlField item=supplierDetails.name label='Name'
+              +smlField item=editDoc.supplierDetails.name label='Company Name'
+              +smlField item=editDoc.supplierDetails.tradingName label='Trading Name'
+              +smlField item=editDoc.supplierDetails.companyNumber label='Company registration number'
+              +smlField item=editDoc.supplierDetails.taxNumber label='Tax registration number'
+              +smlField item=editDoc.supplierDetails.phone label='Phone'
+              +lgeField item=editDoc.supplierDetails.postalAddress label='Postal Address'
+              +smlField item=editDoc.supplierDetails.postalState label='State'
+              +smlField item=editDoc.supplierDetails.postalZip label='Zip Post Code'
+              +smlField item=editDoc.supplierDetails.postalCountry label='Country'
           .row
             .divider.teal
             .section.wo
               h6.teal-text Work Order
-                +frmBtnAdd label='Add Work Order Details'
-              .col.s12.m4.l3 
-                +afQuickField name='workID'
-              .col.s12.m8.l9 
-                +afQuickField name='workDesc'
-              .col.s12.m4.l3 
-                +afQuickField name='assetID'
-              .col.s12.m4.l3 
-                +afQuickField name='assetText'
+              +smlField item=editDoc.workID label='Work Order ID'
+              +medField item=editDoc.workDesc label='Description'
+              +smlField item=editDoc.assetID label='Asset ID'
+              +medField item=editDoc.assetText label='Description'
           .row
             .divider.teal
             .section.items
               h6.teal-text Items
-                +frmBtnAdd label='Add Item'
-              .col.s12.m4.l3 
-                +afQuickField name='freight'
-              .col.s12.m4.l3 
-                +afQuickField name='freightType'
-              span(style='display: none')
-                +afArrayField name='reqItems' type='hidden'
+              +smlField item=editDoc.freight label='Freight Cost'
+              +smlField item=editDoc.freightType label='Type'
               +reactiveTable collection=purchaseItems settings=settings class='table striped' 
         else
           +spinner 
