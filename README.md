@@ -114,8 +114,8 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 |REST Web Services  |  Complete  |    |
 |SOAP Web Services  |  Complete  |    |
 |Linear Assets  |  Complete  |  |
-|Core Inventory  |  In Progress  |  Complete  |
-|Core Procurement  |  In Progress  |  Complete  |
+|Core Inventory  |  Complete  |  |
+|Core Procurement  |  Complete  |  |
 |Geolocation  |  In Progress  |  Early 2016  |
 |Barcoding  |  In Progress  |  Early 2016  |
 |ReactJS  |  In Progress  |  Mid 2016  |
