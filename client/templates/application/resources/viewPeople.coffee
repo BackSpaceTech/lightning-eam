@@ -40,8 +40,6 @@ Template.viewPeoplePage.events
   'click .viewPeople .btnEach2': (event)  ->
     Collections.Users.Current = this
     FlowRouter.go '/resources/credentials'
-  'click .viewPeople .btnEach3': (event) ->
-    deleteUser
   'click .viewPeople .btnDelete': (event) ->
     Collections.Users.Current = this
     $('#viewPeoplePageModal').openModal()

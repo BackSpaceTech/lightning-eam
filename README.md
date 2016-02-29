@@ -29,6 +29,7 @@ Lightning EAM aims to provide all of the capabilities of commercial EAM software
 > - Data on the wire with Meteor.
 > - Apache Cordova mobile integration for IOS and Android.
 > - Google Material Design.
+> - GraphQL by Facebook.
 
 
 ##Features
@@ -113,11 +114,12 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 |REST Web Services  |  Complete  |    |
 |SOAP Web Services  |  Complete  |    |
 |Linear Assets  |  Complete  |  |
-|Core Inventory  |  In Progress  |  Early 2016  |
-|Core Procurement  |  In Progress  |  Early 2016  |
+|Core Inventory  |  In Progress  |  Complete  |
+|Core Procurement  |  In Progress  |  Complete  |
 |Geolocation  |  In Progress  |  Early 2016  |
-|ISO 55000  |  In Progress  |  Early 2016  |
-|BIRT Support  |  TBA |  Mid 2016  |
+|Barcoding  |  In Progress  |  Early 2016  |
+|ReactJS  |  In Progress  |  Mid 2016  |
+|GraphQL  |  In Progress  |  Mid 2016  |
 |Reliability Centered Maintenance  |  TBA  |  Late 2016  |
 |Energy Isolations  |  TBA  |  Late 2016  |
 |Safety Management System  |  TBA  |  Late 2016  |

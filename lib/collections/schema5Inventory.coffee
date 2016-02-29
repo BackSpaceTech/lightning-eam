@@ -75,7 +75,7 @@ Schema.items = new SimpleSchema(
         Lists.Inventory.Status
 )
 
-Schema.stockHolding = new SimpleSchema(
+Schema.stock = new SimpleSchema(
   item_id:
     type: String
     label: 'Item Sys ID'
@@ -144,7 +144,7 @@ Schema.bins = new SimpleSchema(
     label: 'Tree Path'
     optional: true
   stock:
-    type: [Schema.stockHolding]
+    type: [Schema.stock]
     label: 'Stock Holding'
     optional: true
 )
