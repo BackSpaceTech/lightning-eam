@@ -85,6 +85,9 @@ Meteor.publish 'bins-list', ->
     text: true
     id: true
 
+Meteor.publish 'singleBin', (binId) ->
+  Bins.find {_id: binId}
+
 Meteor.publish 'items', ->
   Items.find {}
 

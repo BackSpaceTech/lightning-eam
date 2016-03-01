@@ -1,0 +1,36 @@
+template(name='stockLevelsPage')
+  if customTemplate
+    +stockLevelsPageCustom  
+  else 
+    .container2
+      br
+      fieldset
+        legend Inventory Levels
+        .row
+          .section.items
+            if Template.subscriptionsReady
+              +reactiveTable collection=inventoryItems settings=settings class='table striped'
+            else
+              +spinner  
+            +fabBackResetSubmit
+
+template(name='stockLevelsModal')
+  .row
+    .input-field.col.s12.m6.l3
+      input#stockLevelsQty.validate(placeholder='Enter level', type='number' value=stockDetails.stockLevel)
+      label.active(for='stockLevelsQty') New Stock Level
+    .input-field.col.s12.m6.l3
+      input#reorderLevelsQty.validate(placeholder='Enter level', type='number'  value=stockDetails.reorderLevel)
+      label.active(for='reorderLevelsQty') New Reorder Level
+    .input-field.col.s12.m6.l3
+      input#newOrderQty.validate(placeholder='Enter quantity', type='number'  value=stockDetails.orderQuantity)
+      label.active(for='newOrderQty') New Order Quantity
+
+template(name='stockMoveModal')
+  .row
+    .input-field.col.s12.m6.l3
+      input#moveStockQty.validate(placeholder='Enter quantity to move', type='number' max=stockDetails.stockLevel min='0')
+      label.active(for='moveStockQty') Qty Stock Moved
+    .col.s12.m6.l9
+      = invLocDetails.text
+  +treeView nodeID=invLocDetails.invLocID nodeText=invLocDetails.text

@@ -297,3 +297,11 @@ action: ->
     content: 'deleteInvLocPage'
     header: 'header1'
     footer: 'footer1'
+
+inventoryRoutes.route '/locations/stock-levels',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutInventory',
+    content: 'stockLevelsPage'
+    header: 'header1'
+    footer: 'footer1'

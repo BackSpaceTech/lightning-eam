@@ -14,7 +14,7 @@ Template.viewInvLocsPage.onDestroyed ->
 
 Template.viewInvLocsPage.helpers
   customTemplate: -> Customisations.viewInvLocs
-  invLocDetails: -> Bins.findOne {'id':Session.get('currentID').toString()}
+  invLocDetails: -> Bins.findOne {'id': Session.get('currentID').toString()}
   # Disable create/edit if not connected
   serverConnected: -> (Meteor.status().status == 'connected')
 
@@ -22,6 +22,7 @@ Template.viewInvLocsPage.events
   'click .viewInvLocs .btnNewDB': (event) ->
     Session.set 'currentID', '#'
     FlowRouter.go '/inventory/locations/create-location'
+
   'click .viewInvLocs .btnNew': (event) ->
     Collections.Bins.Current = Bins.findOne {'id':Session.get('currentID').toString()}
     FlowRouter.go '/inventory/locations/create-location'
@@ -40,6 +41,14 @@ Template.viewInvLocsPage.events
       return
     else
       FlowRouter.go '/inventory/locations/view-location'
+
+  'click .viewInvLocs .btnViewLevel': (event) ->
+    Collections.Bins.Current = Bins.findOne {'id':Session.get('currentID').toString()}
+    if (Session.get('currentID').toString() == '#')
+      alert 'No location selected!'
+      return
+    else
+      FlowRouter.go '/inventory/locations/stock-levels'
 
   'click .viewInvLocs .btnDeleteLoc': (event) ->
     temp = Session.get('currentID').toString()

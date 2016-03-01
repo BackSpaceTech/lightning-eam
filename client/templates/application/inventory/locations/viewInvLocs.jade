@@ -31,6 +31,9 @@ template(name='viewInvLocsPage')
                       li
                         a.btnViewLoc.btn-floating.teal.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='View inventory location')
                           i.fa.fa-search
+                      li
+                        a.btnViewLevel.btn-floating.blue.tooltipped(type='button', data-position='left', data-delay='50' , data-tooltip='Inventory levels')
+                          i.fa.fa-cubes
                 .hide-on-med-and-down
                   button.btnNewDB.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50', data-tooltip='Create new database')
                     i.fa.fa-database
@@ -40,6 +43,9 @@ template(name='viewInvLocsPage')
                     i.fa.fa-edit
                   button.btnViewLoc.btn-floating.btn-large.waves-effect.waves-light.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='View inventory location')
                     i.fa.fa-search
+                  |                   |
+                  button.btnViewLevel.btn-floating.btn-large.waves-effect.waves-light.blue.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Inventory levels')
+                    i.fa.fa-cubes
                   |                   |
                   button.btnDeleteLoc.btn-floating.btn-large.waves-effect.waves-light.red.tooltipped(type='button', data-position='bottom', data-delay='50' , data-tooltip='Delete inventory location')
                     i.fa.fa-trash-o

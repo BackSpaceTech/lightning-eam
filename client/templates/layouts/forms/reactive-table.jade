@@ -28,8 +28,16 @@ template(name='rtAdd')
 template(name='rtEdit')
   .rtEdit
     button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
-      i.fa.fa-edit       
+      i.fa.fa-edit
 
+template(name='rtEditMoveIssue')
+  .rtEdit
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+      i.fa.fa-edit
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnMove.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Transfer')
+      i.fa.fa-exchange
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnIssue.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Issue')
+      i.fa.fa-wrench
 
 template(name='rtViewEditReceivedDelete')
   .rtViewEditDelete

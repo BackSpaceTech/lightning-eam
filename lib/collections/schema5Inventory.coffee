@@ -84,13 +84,13 @@ Schema.stock = new SimpleSchema(
     label: 'Item Decsription'
   stockLevel:
     type: Number
-    label: 'Item Sys ID'
+    label: 'Stock Level'
   reorderLevel:
     type: Number
-    label: 'Item Sys ID'
+    label: 'Reorder Level'
   orderQuantity:
     type: Number
-    label: 'Item Sys ID'
+    label: 'Order Quantity'
 )
 
 Schema.bins = new SimpleSchema(

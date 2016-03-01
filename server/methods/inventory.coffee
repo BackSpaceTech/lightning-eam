@@ -68,3 +68,45 @@ Meteor.methods
     this.unblock()
     Bins.remove doc
     return 'Deleted'
+  updateInvLocation: (invLoc, itemID, qty, reorder, orderQty) ->
+    # Update inventory bin location
+    stockQty = {
+      item_id: itemID
+      itemText: Items.findOne({_id: itemID }).text
+      stockLevel: qty
+    }
+    if reorder
+      stockQty.reorderLevel = Number(reorder)
+    if orderQty
+      stockQty.orderQuantity = Number(orderQty)
+    Bins.update { _id: invLoc, 'stock.item_id': itemID }, { $set: { 'stock.$' : stockQty } }, (error,result) ->
+      if(result)
+        return 'Goods received'
+      else
+        console.log(error)
+        return error
+  moveStock: (itemID, invLoc, newLoc, qty) ->
+    # Add stock to new bin location
+    # Check if items already in location
+    temp = Bins.findOne { _id: newLoc, 'stock.item_id': itemID }
+    if temp
+      Bins.update { _id: newLoc, 'stock.item_id': itemID }, { $inc: { 'stock.$.stockLevel' : qty } }
+    else
+      stockQty = {
+        item_id: itemID
+        itemText: Items.findOne({_id: itemID }).text
+        stockLevel: qty
+      }
+      temp2 = Bins.findOne { _id: newLoc }
+      # Check if any items in new bin location
+      if !temp2.stock
+        Bins.update { _id: newLoc }, { $set: { 'stock' : [stockQty] } }
+      else
+        Bins.update { _id: newLoc }, { $push: { 'stock' : stockQty } }
+    # Decrease previous bin location
+    Bins.update { _id: invLoc, 'stock.item_id': itemID }, { $inc: { 'stock.$.stockLevel' : -qty } }, (error,result) ->
+      if(result)
+        return 'Stock Moved'
+      else
+        console.log(error)
+        return error
