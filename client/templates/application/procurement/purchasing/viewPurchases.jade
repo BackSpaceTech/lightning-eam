@@ -5,8 +5,8 @@ template(name='viewPurchasesPage')
     .flow-text.container2
       br
       fieldset.viewPurchases
-        legend Purchase Requisitions
+        legend Purchases
           a(href='{{pathFor "create-purchase"}}')
             +frmBtnNew label='New Purchase Requisition'
-        +reactiveTable collection=purchases settings=settings class='table striped'
+        +reactiveTable collection='purchases-list' settings=settings class='table striped'
     +fabBack

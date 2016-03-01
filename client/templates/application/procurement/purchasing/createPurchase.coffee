@@ -90,6 +90,8 @@ Template.createPurchasePage.events
           Collections.Items.Current.excludesTax = $('#createPurchaseFormItemsTax').is(':checked')
           # Read comments
           Collections.Items.Current.comments = $('#createPurchaseFormItemsComments').val()
+          # Set goods received
+          Collections.Items.Current.goodsReceived = 0
           # Update doc
           temp.reqItems.push Collections.Items.Current
           Session.set 'currentDoc', temp
@@ -100,7 +102,7 @@ Template.createPurchasePage.events
         temp.reqItems.splice(a, 1)
         Session.set 'currentDoc', temp
         return
-  'click .delivery .frmBtnDeliver .btnIcon': (event) ->
+  'click .delivery .frmBtnDeliver .btnDeliver': (event) ->
     temp = Session.get 'currentDoc2'
     $( 'input[name="deliveryName"]' ).val(temp.tradingName)
     $( 'input[name="deliveryPhone"]' ).val(temp.phone)
@@ -109,7 +111,7 @@ Template.createPurchasePage.events
     $( 'input[name="deliveryState"]' ).val(temp.streetState)
     $( 'input[name="deliveryCountry"]' ).val(temp.streetCountry)
     $( 'input[name="deliveryZip"]' ).val(temp.streetZip)
-  'click .delivery .frmBtnMail .btnIcon': (event) ->
+  'click .delivery .frmBtnMail .btnMail': (event) ->
     temp = Session.get 'currentDoc2'
     $( 'input[name="deliveryName"]' ).val(temp.tradingName)
     $( 'input[name="deliveryPhone"]' ).val(temp.phone)

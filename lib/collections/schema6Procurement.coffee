@@ -151,6 +151,11 @@ Schema.reqItems = new SimpleSchema(
       type: 'select'
       options: ->
         Lists.Inventory.Units
+  goodsReceived:
+    type: Number
+    label: 'Goods Received'
+    defaultValue: 0
+    optional: true
   comments:
     type: String
     label: 'Comments'
@@ -261,10 +266,6 @@ Schema.purchaseReqs = new SimpleSchema(
   reqDescription:
     type: String
     label: 'Request Description'
-  reqComments:
-    type: String
-    label: 'Request Comments'
-    optional: true
   cancelledReason:
     type: String
     label: 'Cancellation Reason'

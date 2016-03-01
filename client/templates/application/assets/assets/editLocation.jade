@@ -5,7 +5,7 @@ template(name='editLocationPage')
     .container2 
       br 
       +autoForm schema=locationFormSchema id='editLocationPage' type='update' collection='Locations' doc=currentDoc
-        fieldset
+        fieldset.active
           legend Edit Location    
           if Template.subscriptionsReady
             br

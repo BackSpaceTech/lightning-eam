@@ -153,3 +153,11 @@ action: ->
     content: 'deletePurchasePage'
     header: 'header1'
     footer: 'footer1'
+
+procurementRoutes.route '/purchase/receive-goods',
+triggersEnter: [ AccountsTemplates.ensureSignedIn ]
+action: ->
+  BlazeLayout.render 'layoutProcurement',
+    content: 'receiveGoodsPage'
+    header: 'header1'
+    footer: 'footer1'

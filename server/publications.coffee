@@ -80,6 +80,11 @@ Meteor.publish 'singleAssetGroup', (groupId) ->
 Meteor.publish 'bins', ->
   Bins.find {}
 
+Meteor.publish 'bins-list', ->
+  Bins.find {}, fields:
+    text: true
+    id: true
+
 Meteor.publish 'items', ->
   Items.find {}
 
@@ -96,6 +101,10 @@ Meteor.publish 'companies', ->
 Meteor.publish 'purchases', ->
   Purchases.find {}
 
+Meteor.publish 'singlePurchase', (purchaseId) ->
+  Purchases.find {_id: purchaseId}
+
 ReactiveTable.publish 'suppliers-list', Companies, {'type': 'supplier'}
 ReactiveTable.publish 'internal-companies', Companies, {'type': 'internal'}
 ReactiveTable.publish 'items-list', Items, {'status': 'active'}
+ReactiveTable.publish 'purchases-list', Purchases, {'status': { $in: ['0','1','2','3','4','5','6'] }}

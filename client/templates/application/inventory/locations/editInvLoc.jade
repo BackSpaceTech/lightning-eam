@@ -4,7 +4,7 @@ template(name='editInvLocPage')
   else
     .container2 
       br
-      fieldset
+      fieldset.active
         legend Edit Inventory Location 
         +autoForm schema=formSchema id="editInvLocPage" type="update" collection="Bins" doc=currentDoc
           if Template.subscriptionsReady

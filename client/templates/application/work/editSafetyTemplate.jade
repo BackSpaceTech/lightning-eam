@@ -4,7 +4,7 @@ template(name='editSafetyTemplatePage')
   else  
     .flow-text.container2
       br
-      fieldset
+      fieldset.active
         legend Safety Method Template
         if Template.subscriptionsReady
           +autoForm schema=schemaSafetyplans id='editSafetyTemplatePage' type='update' collection='Safetyplans' doc=viewDoc

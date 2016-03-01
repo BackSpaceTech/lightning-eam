@@ -50,7 +50,6 @@ Template.layoutProcurement.onCreated ->
   self = this
   self.autorun ->
     self.subscribe 'companies'
-    self.subscribe 'purchases'
 
 #Helpers
 Template.header1.helpers

@@ -30,6 +30,18 @@ template(name='rtEdit')
     button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit.green(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
       i.fa.fa-edit       
 
+
+template(name='rtViewEditReceivedDelete')
+  .rtViewEditDelete
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnView(type='button', data-delay='50', data-position='bottom', data-tooltip='View')
+      i.fa.fa-eye
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnEdit(type='button', data-delay='50', data-position='bottom', data-tooltip='Edit')
+      i.fa.fa-edit 
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnReceived(type='button', data-delay='50', data-position='bottom', data-tooltip='Mark Goods Received')
+      i.fa.fa-truck
+    button.btn-floating.waves-effect.waves-light.tooltipped.btnDelete.red(type='button', data-delay='50', data-position='bottom', data-tooltip='Delete')
+      i.fa.fa-trash 
+      
 template(name='rtBoolean')
   .rtBoolean
     if active

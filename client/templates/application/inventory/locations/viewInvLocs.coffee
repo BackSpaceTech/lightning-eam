@@ -16,7 +16,7 @@ Template.viewInvLocsPage.helpers
   customTemplate: -> Customisations.viewInvLocs
   invLocDetails: -> Bins.findOne {'id':Session.get('currentID').toString()}
   # Disable create/edit if not connected
-  serverConnected: -> (Meteor.status().status == 'connected');
+  serverConnected: -> (Meteor.status().status == 'connected')
 
 Template.viewInvLocsPage.events
   'click .viewInvLocs .btnNewDB': (event) ->

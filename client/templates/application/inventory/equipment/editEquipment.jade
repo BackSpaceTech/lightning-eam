@@ -4,7 +4,7 @@ template(name='editEquipmentPage')
   else
     .container2 
       br
-      fieldset
+      fieldset.active
         legend Edit Equipment 
         +autoForm schema=equipmentFormSchema id="editEquipmentPage" type="update" collection="Equipment" doc=currentDoc
           if Template.subscriptionsReady

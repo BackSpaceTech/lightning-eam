@@ -4,7 +4,7 @@ template(name='editWorkTemplatePage')
   else  
     .flow-text.container2
       br
-      fieldset
+      fieldset.active
         legend Work Plan Template
         if Template.subscriptionsReady
           +autoForm id='editWorkTemplatePage' type='update' collection='Workplans' doc=viewDoc

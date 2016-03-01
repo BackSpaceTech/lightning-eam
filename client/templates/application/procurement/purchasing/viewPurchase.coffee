@@ -1,4 +1,9 @@
 Template.viewPurchasePage.onRendered ->
+  self = this
+  self.autorun ->
+    self.subscribe 'singlePurchase', Collections.Purchases.Current._id
+
+Template.viewPurchasePage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
   Session.set 'currentDoc', {}  # Requisition doc

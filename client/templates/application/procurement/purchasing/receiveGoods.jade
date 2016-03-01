@@ -1,0 +1,24 @@
+template(name='receiveGoodsPage')
+  if customTemplate
+    +receiveGoodsPageCustom  
+  else 
+    .container2
+      br
+      fieldset
+        legend Goods Received
+        .row
+          .section.items
+            if Template.subscriptionsReady
+              +reactiveTable collection=purchaseItems settings=settings class='table striped'
+            else
+              +spinner  
+            +fabBackResetSubmit
+
+template(name='receiveGoodsModal')
+  .row
+    .input-field.col.s12.m6.l3
+      input#receiveGoodsQty.validate(placeholder='Enter quantity received', type='number')
+      label.active(for='receiveGoodsQty') Qty Goods Received
+    .col.s12.m6.l9
+      = invLocText
+  +treeView nodeID=invLocDetails.invLocID nodeText=invLocDetails.text

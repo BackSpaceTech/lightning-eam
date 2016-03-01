@@ -5,15 +5,16 @@ template(name='editPurchasePage')
     .container2
       br
       +autoForm schema=formSchema id='editPurchasePage' type='update' collection='Purchases' doc=editDoc
-        fieldset
+        fieldset.active
           legend
             =frmTitle
           if Template.subscriptionsReady
-            .row
-              +afQuickField name='status' value='1' type='hidden'
+            .row.mainDetails
               +afQuickField name='reqBy_id' value=requestor.reqBy_id type='hidden'
               +afQuickField name='reqByFirstName' value=requestor.reqByFirstName type='hidden'
               +afQuickField name='reqByLastName' value=requestor.reqByLastName type='hidden'
+              .col.s12.m6.l3
+                +afQuickField name='status'
               .col.s12.m6.l3
                 +afQuickField name='type'
               .col.s12.m6.l3
@@ -22,6 +23,8 @@ template(name='editPurchasePage')
                 +afQuickField name='reqPriority'
               div
                 +afQuickField name='reqDescription'
+              div
+                +afQuickField name='reqComments'
             .row
               .divider.teal
               .section.billing

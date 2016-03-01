@@ -4,7 +4,7 @@ template(name='editPMPage')
   else  
     .flow-text.container2
       br              
-      fieldset.editPM 
+      fieldset.editPM.active
         +autoForm schema=pmSchema id='editPMPage' type='method-update' meteormethod='updatePM' doc=viewDoc
           legend Edit PM
           if Template.subscriptionsReady

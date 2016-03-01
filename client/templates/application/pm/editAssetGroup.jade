@@ -5,7 +5,7 @@ template(name='editAssetGroupPage')
     .container2
       br
       +autoForm schema=assetGroupSchema collection='Assetgroups' id='editAssetGroupPage' type='update' doc=viewDoc
-        fieldset.editAssetGroup
+        fieldset.editAssetGroup.active
           legend Edit Asset Group  
           if Template.subscriptionsReady 
             .row.active

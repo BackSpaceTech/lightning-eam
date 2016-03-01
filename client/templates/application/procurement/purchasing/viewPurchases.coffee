@@ -33,11 +33,20 @@ Template.viewPurchasesPage.helpers
         { key: 'assetID', label: ' Asset ID' }
         { key: 'assetText', label: ' Asset' }
         { key: 'workID', label: ' Work Order ID' }
-        { key: '', label: 'View/Edit/Delete', tmpl: Template.rtViewEditDelete }
+        { key: '', label: 'View/Edit/Receive/Delete', tmpl: Template.rtViewEditReceivedDelete }
       ]
     }
 
 Template.viewPurchasesPage.events
+  'click .btnReceived': (event) ->
+    if this.status < 5
+      MaterializeModal.error
+        title: "Error"
+        label: "Not a purchase order!"
+        message: "Can only receive goods against an approved purchase order (status = 5)"
+    else
+      Collections.Purchases.Current = this
+      FlowRouter.go '/procurement/purchase/receive-goods'
   'click .viewPurchases .btnView': (event) ->
     Collections.Purchases.Current = this
     FlowRouter.go '/procurement/purchase/view-purchase'
@@ -57,9 +66,3 @@ Template.viewPurchasesPage.events
               toast 'error', error
             else
               toast 'success', result
-
-Template.startWO.onRendered ->
-  $('.tooltipped').tooltip {delay: 50}
-
-Template.startWO.onDestroyed ->
-  $('.tooltipped').tooltip 'remove'

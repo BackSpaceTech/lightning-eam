@@ -4,7 +4,7 @@ template(name='editWorkorderPage')
   else  
     .flow-text.container2
       br              
-      fieldset.editWorkorder
+      fieldset.editWorkorder.active
         +autoForm schema=editWorkorderSchema id='editWorkorderPage' type='method-update' meteormethod='updateWO' doc=viewDoc
           if workorder
             +editWorkorderForm

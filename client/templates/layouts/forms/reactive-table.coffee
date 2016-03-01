@@ -27,3 +27,8 @@ Template.rtBoolean.onRendered ->
   $('.tooltipped').tooltip {delay: 50}
 Template.rtBoolean.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
+
+Template.rtViewEditReceivedDelete.onRendered ->
+  $('.tooltipped').tooltip {delay: 50}
+Template.rtViewEditReceivedDelete.onDestroyed ->
+  $('.tooltipped').tooltip 'remove'
