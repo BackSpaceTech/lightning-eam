@@ -106,6 +106,8 @@ Meteor.methods
     # Decrease previous bin location
     Bins.update { _id: invLoc, 'stock.item_id': itemID }, { $inc: { 'stock.$.stockLevel' : -qty } }, (error,result) ->
       if(result)
+        # Remove if no stock left
+        Bins.update { _id: invLoc }, { $pull: { stock: { stockLevel: 0 }}}
         return 'Stock Moved'
       else
         console.log(error)
