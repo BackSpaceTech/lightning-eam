@@ -3,12 +3,14 @@ Template.stockLevelsPage.onCreated ->
   self.autorun ->
     self.subscribe 'singleBin', Collections.Bins.Current._id
     self.subscribe 'bins-list'
+    self.subscribe 'wo-list'
 
 Template.stockLevelsPage.onRendered ->
   $(".dropdown-button").dropdown()
   $('.tooltipped').tooltip {delay: 50}
   Session.set 'currentDoc', {} # Bin location
   Session.set 'currentDoc2', {} # Stock levels
+  Session.set 'currentDoc3', {} # Work order
 
 Template.stockLevelsPage.onDestroyed ->
   $('.tooltipped').tooltip 'remove'
@@ -72,7 +74,25 @@ Template.stockLevelsPage.events
               toast 'success', 'Stock Moved'
             return
 
-#------------------- Modal -------------------------------------
+  'click .btnIssue': (event) ->
+    Session.set 'currentDoc2', this
+    temp = this.item_id
+    MaterializeModal.confirm
+      bodyTemplate: 'woIssueModal'
+      title: 'Issue to Work Order'
+      callback: (error, response) ->
+        if (response.submit)
+          issueStockQty = Number($('#issueStockQty').val())
+          woID = Session.get('currentDoc3')._id
+          Meteor.call 'issueStock', temp, Collections.Bins.Current._id, woID, issueStockQty, (error, result) ->
+            if error
+              toast 'error', error
+            else
+              Session.set 'currentDoc', Bins.findOne { _id: Collections.Bins.Current._id }
+              toast 'success', 'Stock Issued'
+            return
+
+#------------------- Modals -------------------------------------
 
 Template.stockLevelsModal.helpers
   stockDetails: -> Session.get 'currentDoc2'
@@ -84,3 +104,24 @@ Template.stockMoveModal.onRendered ->
 Template.stockMoveModal.helpers
   stockDetails: -> Session.get 'currentDoc2'
   invLocDetails: -> Bins.findOne {'id': Session.get('currentID').toString()}
+
+Template.woIssueModal.helpers
+  stockDetails: -> Session.get 'currentDoc2'
+  woDetails: -> Session.get 'currentDoc3'
+  settings: -> ## Work Order
+    return {
+      rowsPerPage: 10
+      showFilter: true
+      fields:  [
+        { key: '_id', label: ' Sys ID'  }
+        { key: 'text', label: ' Title' }
+        { key: 'assetID', label: ' Asset ID' }
+        { key: 'assetText', label: ' Asset' }
+        { key: 'priority', label: ' Priority' }
+        { key: '', label: 'Issue', tmpl: Template.rtAdd }
+      ]
+    }
+
+Template.woIssueModal.events
+  'click .btnAdd': (event) ->
+    Session.set 'currentDoc3', this

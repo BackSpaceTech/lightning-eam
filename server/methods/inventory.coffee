@@ -87,7 +87,7 @@ Meteor.methods
         return error
   moveStock: (itemID, invLoc, newLoc, qty) ->
     # Add stock to new bin location
-    # Check if items already in location
+    # Check if any items already in location
     temp = Bins.findOne { _id: newLoc, 'stock.item_id': itemID }
     if temp
       Bins.update { _id: newLoc, 'stock.item_id': itemID }, { $inc: { 'stock.$.stockLevel' : qty } }
@@ -98,7 +98,7 @@ Meteor.methods
         stockLevel: qty
       }
       temp2 = Bins.findOne { _id: newLoc }
-      # Check if any items in new bin location
+      # Check if items in new bin location
       if !temp2.stock
         Bins.update { _id: newLoc }, { $set: { 'stock' : [stockQty] } }
       else
@@ -109,6 +109,33 @@ Meteor.methods
         # Remove if no stock left
         Bins.update { _id: invLoc }, { $pull: { stock: { stockLevel: 0 }}}
         return 'Stock Moved'
+      else
+        console.log(error)
+        return error
+
+  issueStock: (itemID, invLoc, woID, qty) ->
+    # Check if any items already on work order
+    temp = Workorders.findOne { _id: woID, 'itemsUsed.item_id': itemID }
+    if temp # Update qty
+      Workorders.update { _id: woID, 'itemsUsed.item_id': itemID }, { $inc: { 'itemsUsed.$.spareQty' : qty } }
+    else # Set qty
+      stockQty = {
+        item_id: itemID
+        itemText: Items.findOne({_id: itemID }).text
+        spareQty: qty
+      }
+      temp2 = Workorders.findOne { _id: woID }
+      # Check if items on workorder
+      if !temp2.itemsUsed
+        Workorders.update { _id: woID }, { $set: { 'itemsUsed' : [stockQty] } }
+      else
+        Workorders.update { _id: woID }, { $push: { 'itemsUsed' : stockQty } }
+    # Decrease bin location level
+    Bins.update { _id: invLoc, 'stock.item_id': itemID }, { $inc: { 'stock.$.stockLevel' : -qty } }, (error,result) ->
+      if(result)
+        # Remove if no stock left
+        Bins.update { _id: invLoc }, { $pull: { stock: { stockLevel: 0 }}}
+        return 'Stock Issued'
       else
         console.log(error)
         return error

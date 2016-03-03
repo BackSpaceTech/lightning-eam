@@ -312,6 +312,18 @@ schemaRequestsApproved = {
 schemaRequestsApproved = Object.assign schemaRequestsApproved, schemaRequests
 Schema.requestsApproved = new SimpleSchema schemaRequestsApproved
 
+Schema.spareParts = new SimpleSchema(
+  item_id:
+    type: String
+    label: 'Item Sys ID'
+  itemText:
+    type: String
+    label: 'Item Decsription'
+  spareQty:
+    type: Number
+    label: 'Qty'
+)
+
 schemaWorkorders ={
   startTime:
     type: Date
@@ -321,6 +333,14 @@ schemaWorkorders ={
   workPlan:
     type: [Schema.workPlan]
     label: 'Work Plan'
+  itemsPlanned:
+    type: [Schema.spareParts]
+    label: 'Spare Parts Used'
+    optional: true
+  itemsUsed:
+    type: [Schema.spareParts]
+    label: 'Spare Parts Used'
+    optional: true
   feedback:
     type: String
   fault:
@@ -334,7 +354,7 @@ schemaWorkorders ={
     label: 'Remedy'
   pmID:
     type: String
-    optional: true     
+    optional: true
 }
 
 schemaWorkorders = Object.assign schemaWorkorders, schemaRequestsApproved

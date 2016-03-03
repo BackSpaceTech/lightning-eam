@@ -34,3 +34,13 @@ template(name='stockMoveModal')
     .col.s12.m6.l9
       = invLocDetails.text
   +treeView nodeID=invLocDetails.invLocID nodeText=invLocDetails.text
+
+template(name='woIssueModal')
+  .row
+    .input-field.col.s12.m6.l3
+      input#issueStockQty.validate(placeholder='Enter quantity to issue', type='number' max=stockDetails.stockLevel min='0')
+      label.active(for='issueStockQty') Qty Stock Issued
+    .col.s12.m6.l9
+      = woDetails.text
+  +reactiveTable collection='workorders-list' settings=settings class='table striped'
+  
