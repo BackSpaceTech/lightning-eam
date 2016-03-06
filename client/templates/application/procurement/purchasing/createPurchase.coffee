@@ -143,6 +143,7 @@ Template.createPurchaseFormAddWO.events
     temp.assetID = this.assetID
     temp.assetText = this.assetText
     Session.set 'currentDoc', temp
+    MaterializeModal.close()
 
 Template.createPurchaseFormBilling.helpers
   settings: ->
@@ -175,6 +176,7 @@ Template.createPurchaseFormBilling.events
     temp = Session.get 'currentDoc'
     temp.billing_ID = this._id
     Session.set 'currentDoc', temp
+    MaterializeModal.close()
 
 Template.createPurchaseFormSupplier.helpers
   settings: ->
@@ -204,6 +206,7 @@ Template.createPurchaseFormSupplier.helpers
 Template.createPurchaseFormSupplier.events
   'click .rtAdd .btnAdd': (event) ->
     Session.set 'currentDoc3', this
+    MaterializeModal.close()
 
 Template.createPurchaseFormItems.onCreated ->
   this.itemText = new ReactiveVar

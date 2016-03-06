@@ -67,18 +67,25 @@ Meteor.methods
 #------------------------ Global Functions -------------------------------------
 
 @activateTimePM = (pmID, workorderPM) ->
-  doc = { # Record cron job
-    pmID: pmID
-    assetID: workorderPM.asset_ID
-    cronJob: workorderPM.cronJob
-    pmExpression: workorderPM.pmExpression
-    }
+  cronTaskID = Crontasks.insert { # Record cron job
+   pmID: pmID
+   assetID: workorderPM.asset_ID
+   cronJob: workorderPM.cronJob
+   pmExpression: workorderPM.pmExpression
+  }
+  SyncedCron.add # Create cron job
+    name: cronTaskID
+    schedule: (parser) ->
+      # parser is a later.parse object
+      if workorderPM.cronJob == '0'
+        return parser.text workorderPM.pmExpression
+      else if workorderPM.cronJob == '1'
+        return parser.cron workorderPM.pmExpression
+    job: ->
+      # Create PM work order
+      generateWorkOrder workorderPM.asset_ID, pmID
   console.log 'Activating time based PM: '+JSON.stringify doc
   console.log 'Current server time is: '+ new Date()
-  cronTaskID = Crontasks.insert doc
-  # Create event for AWS CloudWatch
-  # AWS CloudWatch code goes here
-
 
 @activateMeterPM = (assetID, meterID, newReading) ->
   # Find PMs for asset
@@ -106,7 +113,7 @@ Meteor.methods
   console.log 'PM activation completed'
 
 @generateWorkOrder = (assetID, pmID) ->
-  console.log 'System: CloudWatch triggered PM Work Order (PM id: '+pmID+') for Asset '+ assetID+'...'
+  console.log 'System: triggered PM Work Order (PM id: '+pmID+') for Asset '+ assetID+'...'
   tempAsset = Locations.findOne {'_id': assetID}
   if !tempAsset
     console.log 'System: Could not find Asset'
@@ -146,4 +153,4 @@ Meteor.methods
   }
   # Insert work order into the collection
   Workorders.insert workOrder
-  console.log 'CloudWatch Triggered PM Work Order (PM id: '+pmID+') for Asset '+ assetID
+  console.log 'Triggered PM Work Order (PM id: '+pmID+') for Asset '+ assetID

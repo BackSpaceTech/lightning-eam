@@ -82,7 +82,7 @@ template(name='fabBackResetSubmit')
         i.large.mdi-navigation-menu
       ul
         li
-          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+          button.btn-floating.yellow.darken-1.tooltipped.btnBack(type='button', data-position='left', data-tooltip='Go Back')
             i.material-icons skip_previous
         li
           button.btn-floating.red.tooltipped(type='reset', data-position='left', data-tooltip='Reset Form')
@@ -94,7 +94,7 @@ template(name='fabBackResetSubmit')
 template(name='fabBack')
   .form-group
     .fixed-action-btn.click-to-toggle(style='bottom: 45px; right: 24px;')
-      a.btn-floating.btn-large.purple.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+      a.btn-floating.btn-large.purple.tooltipped.btnBack(type='button', data-position='left', data-tooltip='Go Back')
         i.material-icons skip_previous 
         
 template(name='fabBackSubmit')
@@ -104,7 +104,7 @@ template(name='fabBackSubmit')
         i.large.mdi-navigation-menu
       ul
         li
-          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+          button.btn-floating.yellow.darken-1.tooltipped.btnBack(type='button', data-position='left', data-tooltip='Go Back')
             i.material-icons skip_previous
         li
           button.btn-floating.green.tooltipped.btnSubmit(type='submit', data-position='left', data-tooltip='Submit Form')
@@ -117,7 +117,7 @@ template(name='fabBackCopyEdit')
         i.large.mdi-navigation-menu
       ul
         li
-          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+          button.btn-floating.yellow.darken-1.tooltipped.btnBack(type='button', data-position='left', data-tooltip='Go Back')
             i.material-icons skip_previous
         li
           a.btn-floating.green.tooltipped.btnCopy(data-position='left', data-tooltip='Copy')
@@ -133,7 +133,7 @@ template(name='fabBackEdit')
         i.large.mdi-navigation-menu
       ul
         li
-          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+          button.btn-floating.yellow.darken-1.tooltipped.btnBack(type='button', data-position='left', data-tooltip='Go Back')
             i.material-icons skip_previous
         li
           a.btn-floating.blue.tooltipped.btnEdit(data-position='left', data-tooltip='Edit')
@@ -146,7 +146,7 @@ template(name='fabBackSearch')
         i.large.mdi-navigation-menu
       ul
         li
-          button.btn-floating.yellow.darken-1.tooltipped(type='button', onclick='history.back(-1)', data-position='left', data-tooltip='Go Back')
+          button.btn-floating.yellow.darken-1.tooltipped.btnBack(type='button', data-position='left', data-tooltip='Go Back')
             i.material-icons skip_previous
         li
           button.btn-floating.green.tooltipped.btnSearch(type='button', data-position='left', data-tooltip='Search')

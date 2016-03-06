@@ -7,7 +7,6 @@ aldeed:delete-button@2.0.0
 aldeed:schema-deny@1.0.1
 aldeed:schema-index@1.0.1
 aldeed:simple-schema@1.5.3
-amplify@1.0.0
 anti:i18n@0.4.3
 arillo:flow-router-helpers@0.4.7
 aslagle:reactive-table@0.8.22
@@ -90,9 +89,7 @@ npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
-package-version-parser@3.0.4
-practicalmeteor:chai@2.1.0_1
-practicalmeteor:loglevel@1.2.0_2
+percolate:synced-cron@1.3.0
 promise@0.5.1
 raix:eventemitter@0.1.3
 raix:onetimeout@1.0.4
@@ -104,11 +101,6 @@ reactive-var@1.0.6
 reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
-sanjo:jasmine@0.21.0
-sanjo:karma@3.1.1
-sanjo:long-running-child-process@1.1.5
-sanjo:meteor-files-helpers@1.2.0_1
-sanjo:meteor-version@1.0.0
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
@@ -130,13 +122,6 @@ url@1.0.5
 useraccounts:core@1.13.1
 useraccounts:flow-routing@1.13.1
 useraccounts:materialize@1.13.1
-velocity:chokidar@1.2.0_1
-velocity:console-reporter@0.1.4
-velocity:core@0.10.10
-velocity:html-reporter@0.9.1
-velocity:meteor-internals@1.1.0_7
-velocity:meteor-stubs@1.1.1
-velocity:shim@0.1.0
 voidale:later-js-tz@1.1.9
 webapp@1.2.3
 webapp-hashing@1.0.5

@@ -1,4 +1,4 @@
-#The Lightning EAM Project
+# The Lightning EAM Project
 
 
 
@@ -6,7 +6,7 @@
 A project to create the World's fastest Enterprise Asset Management System capable of handling big data while at the same time using a modern user interface accessible from mobile devices.
 
 
-##About
+## About
 
 
 The Lightning EAM project is a revolutionary approach to managing asset data. The core ideal is to break down the myths surrounding Enterprise Asset Management created by corporations with a vested interest in maintaining the status quo. This enables us to start with a clean slate and select the best performing technologies that can handle modern asset information requirements such as big data and mobile.
@@ -14,7 +14,7 @@ Lightning EAM aims to provide all of the capabilities of commercial EAM software
 
 
 - Open source and free for both commercial and private use
-- Modern database design for big data analysis and speed.
+- Modern database design for big data analytics and speed.
 - Ease of customization and integration with other systems.
 - Accessible from any operating and system and device.
 
@@ -23,6 +23,8 @@ Lightning EAM aims to provide all of the capabilities of commercial EAM software
 
 > - Amazon Web Services (AWS), the Worlds largest Cloud.
 > - NoSQL MongoDB database capable of scaling to petabyte levels.
+> - Support for Oracle and SQL Server through AWS RDS.
+> - Data Warehousing with AWS Redshift.
 > - Big data reporting through ElasticSearch and Hadoop EMR.
 > - BI Analytics with AWS QuickSight.
 > - D3JS data visualisation.
@@ -32,7 +34,7 @@ Lightning EAM aims to provide all of the capabilities of commercial EAM software
 > - GraphQL by Facebook.
 
 
-##Features
+## Features
 
 
 Lightning has all features you expect from an Enterprise Asset Management System and is free for both commercial and private use.
@@ -52,10 +54,10 @@ Lightning has all features you expect from an Enterprise Asset Management System
 <kbd> ** Under development</kbd>
 
 
-##Help
+## Help
 
 
-Check out the [GitHub wiki][8fe9c783] for full documentation for the project.
+Check out the [GitHub wiki][8fe9c783] for documentation on the project.
 
   [8fe9c783]: https://github.com/BackSpaceTech/lightning-eam/wiki "Lightning EAM Wiki"
 
@@ -66,7 +68,7 @@ If you would like to install Lightning EAM at you organisation and would like ex
 > **Tip:** Check out the [Getting Started](https://github.com/BackSpaceTech/lightning-eam/wiki/Getting-Started) section to get up and running with a local installation of Lightning EAM.
 
 
-##How you can help
+## How you can help
 
 
 #### Social Media
@@ -95,7 +97,7 @@ One of the aims of Lightning is to make EAM accessible to all organisations and 
 Within the application there are selection lists such as trade types etc. If you industry has something missing from the lists or you can provide input to the lists then you can help us. Contact us info@backspace.technology if you would like to help with pull requests.
 
 
-##Roadmap
+## Roadmap
 
 
 Lightning is a living ecosystem that will expand over time to create a broader set of enterprise capabilities. The current roadmap is:
@@ -118,7 +120,6 @@ Lightning is a living ecosystem that will expand over time to create a broader s
 |Core Procurement  |  Complete  |  |
 |Geolocation  |  In Progress  |  Early 2016  |
 |Barcoding  |  In Progress  |  Early 2016  |
-|ReactJS  |  In Progress  |  Mid 2016  |
 |GraphQL  |  In Progress  |  Mid 2016  |
 |Reliability Centered Maintenance  |  TBA  |  Late 2016  |
 |Energy Isolations  |  TBA  |  Late 2016  |
@@ -145,7 +146,7 @@ Lightning EAM is produced as free and open source software for private and comme
 [![BackSpace Technology](https://avatars3.githubusercontent.com/u/16330741?v=3&s=460)](http://backspace.technology)
 
 
-###Lightning uses the following technology
+### Lightning uses the following technology
 
 ![Amazon Web Services](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/AmazonWebservices_Logo.svg/2000px-AmazonWebservices_Logo.svg.png)
 
