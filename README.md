@@ -71,6 +71,10 @@ If you would like to install Lightning EAM at you organisation and would like ex
 ## How you can help
 
 
+#### Corporate Sponsorship
+
+If your corporation would like to use Lightning EAM and would like to get it dveloped quicker with the features you require, please consider sponsoring the development or purchasing consulting services from BackSpace Technology for implementations at your company. Corporation that sponsor the software development will receive recognition on all our websites.
+
 #### Social Media
 
 Marketing is expensive, especially when your product is free! The best way you can help is by spreading the word through social media:
@@ -90,11 +94,36 @@ Testing will be welcomed. If you encounter any issues with the software please l
 
 #### Translations
 
-One of the aims of Lightning is to make EAM accessible to all organisations and countries. To this end we have set up a spreadsheet to translate all phrases used in the application. We currently have translations for Spanish and Brazilian Portuguese. Contact us info@backspace.technology if you would like to help with pull requests.
+One of the aims of Lightning is to make EAM accessible to all organisations and countries. To this end we have set up a spreadsheet to translate all phrases used in the application. Contact us info@backspace.technology if you would like to help with pull requests for translations.
+
+#### Documentation
+
+The Github wiki for the project is generally lagging behind the development of the software. Minumum information will be provided. Contact us info@backspace.technology if you have experience in using EAM software would like to help with pull requests for the wiki.
 
 #### Lists
 
 Within the application there are selection lists such as trade types etc. If you industry has something missing from the lists or you can provide input to the lists then you can help us. Contact us info@backspace.technology if you would like to help with pull requests.
+
+
+#### Contributors List
+
+
+Anyone who helps the project in a significant way will be recognised as a project contributer. This is great to not only show your support but also your expertise in this area.
+
+
+## Contributors
+
+
+#### Software Development
+Paul Coady
+
+#### Documentation
+
+Help!!
+
+#### Translations
+
+Erika Ichida - Brazilian Portuguese
 
 
 ## Roadmap
