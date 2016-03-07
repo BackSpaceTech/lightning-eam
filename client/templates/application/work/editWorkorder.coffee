@@ -77,7 +77,6 @@ Template.editWorkorderFormAddUser.helpers
 
 Template.editWorkorderModalAddUser.events
   'click .btnEach': (event) ->
-    alert 'ok'
     temp = {
       userID: this._id
       firstName: this.profile.firstName
