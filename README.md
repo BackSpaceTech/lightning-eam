@@ -73,7 +73,7 @@ If you would like to install Lightning EAM at you organisation and would like ex
 
 #### Corporate Sponsorship
 
-If your corporation would like to use Lightning EAM and would like to get it dveloped quicker with the features you require, please consider sponsoring the development or purchasing consulting services from BackSpace Technology for implementations at your company. Corporation that sponsor the software development will receive recognition on all our websites.
+If your corporation would like to use Lightning EAM and would like to get it developed quicker with the features you require, please consider sponsoring the development or purchasing consulting services from BackSpace Technology for implementation at your company. Corporations that sponsor the software development will receive recognition on all our websites.
 
 #### Social Media
 
