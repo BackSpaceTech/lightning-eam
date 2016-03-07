@@ -75,8 +75,9 @@ Template.editWorkorderFormAddUser.helpers
       ]
     }
 
-Template.editWorkorderFormAddUser.events
-  'click .editWorkorderForm .btnEach': (event) ->
+Template.editWorkorderModalAddUser.events
+  'click .btnEach': (event) ->
+    alert 'ok'
     temp = {
       userID: this._id
       firstName: this.profile.firstName
@@ -116,7 +117,7 @@ Template.editWorkorderFormSafetyTemplate.helpers
       ]
     }
 
-Template.editWorkorderFormSafetyTemplate.events
+Template.editWorkorderModalSafetyTemplate.events
   'click .editWorkorderForm .btnEach2': (event) ->
     temp = this._id
     Meteor.subscribe 'singleSafetymethod', this._id, {
@@ -144,7 +145,7 @@ Template.editWorkorderFormWorkTemplate.helpers
       ]
     }
 
-Template.editWorkorderFormWorkTemplate.events
+Template.editWorkorderModalWorkTemplate.events
   'click .editWorkorderForm .btnEach3': (event) ->
     temp = this._id
     Meteor.subscribe 'singleWorkplan', this._id, {
