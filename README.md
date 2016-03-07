@@ -16,7 +16,7 @@ Lightning EAM aims to provide all of the capabilities of commercial EAM software
 - Open source and free for both commercial and private use
 - Modern database design for big data analytics and speed.
 - Ease of customization and integration with other systems.
-- Accessible from any operating and system and device.
+- Accessible from any operating system and device.
 
 
 > **Core Technologies behind Lightning EAM:**
@@ -104,6 +104,12 @@ The Github wiki for the project is generally lagging behind the development of t
 
 Within the application there are selection lists such as trade types etc. If you industry has something missing from the lists or you can provide input to the lists then you can help us. Contact us info@backspace.technology if you would like to help with pull requests.
 
+
+#### Corporate Sponsors
+
+[![BackSpace Technology](http://backspace.technology/img/logo.svg)][074bc4f5]
+
+  [074bc4f5]: http://backspace.technology/ "BackSpace Technology"
 
 #### Contributors List
 
