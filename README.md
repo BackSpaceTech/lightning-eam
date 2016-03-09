@@ -4,7 +4,10 @@
 A project to create the World's fastest Enterprise Asset Management System capable of handling big data while at the same time using a modern user interface accessible from mobile devices.
 
 
-<a href="#" target="_blank">
+<a href="https://player.vimeo.com/video/158332419" target="_blank">
+<img src="video.png"></a>
+
+
 <img src="public/front.jpg"></a>
 
 
