@@ -68,6 +68,12 @@ If you would like to install Lightning EAM at you organisation and would like ex
 > **Tip:** Check out the [Getting Started](https://github.com/BackSpaceTech/lightning-eam/wiki/Getting-Started) section to get up and running with a local installation of Lightning EAM.
 
 
+### Lightning EAM Forum
+
+We have created a  <a href="https://groups.google.com/forum/#!forum/lightning-eam-forum" target="_blank">Google Groups forum</a>
+to discuss issues, recomendations and strategy for the project and also for general discussion.
+
+
 ## How you can help
 
 
@@ -110,6 +116,7 @@ Within the application there are selection lists such as trade types etc. If you
 [![BackSpace Technology](http://backspace.technology/img/logo.svg)][074bc4f5]
 
   [074bc4f5]: http://backspace.technology/ "BackSpace Technology"
+
 
 #### Contributors List
 

@@ -31,6 +31,3 @@ Template.editAssetPage.events
 Template.modalEditAssetPage.onRendered ->
   tempData = Classification.find(type: 'asset-classification').fetch()
   dataTree(tempData, 'classification')
-
-Template.modalEditAssetPage.helpers
-  classificationDetails: -> Classification.findOne {_id:Session.get 'currentClassID'}
