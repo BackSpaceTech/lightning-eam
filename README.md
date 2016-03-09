@@ -197,7 +197,6 @@ Lightning EAM is produced as free and open source software for private and comme
 
 ![Amazon Web Services](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/AmazonWebservices_Logo.svg/2000px-AmazonWebservices_Logo.svg.png)
 
-![MongoDB](https://www.mongodb.com/assets/MongoDB_Brand_Resources/MongoDB-Logo-7db53b4037f9953e9df4f694c758141fcfa022cee1d2ff50749d133d0b70b692.jpg)
 
 ![ElasticSearch](http://assets.wildbit.com/postmark/blog/images/logo-elastic.png)
 
