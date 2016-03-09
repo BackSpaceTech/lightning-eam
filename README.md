@@ -5,7 +5,7 @@ A project to create the World's fastest Enterprise Asset Management System capab
 
 
 <a href="#" target="_blank">
-<img src="video.png"></a>
+<img src="public/front.jpg"></a>
 
 
 ## About
