@@ -24,6 +24,9 @@ Lightning EAM aims to provide all of the capabilities of commercial EAM software
 - Accessible from any operating system and device.
 
 
+<img src="public/flowchart.png"></a>
+
+
 > **Core Technologies behind Lightning EAM:**
 
 > - Amazon Web Services (AWS), the Worlds largest Cloud.
