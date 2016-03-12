@@ -5,10 +5,10 @@ A project to create the World's fastest Enterprise Asset Management System capab
 
 
 <a href="https://player.vimeo.com/video/158332419" target="_blank">
-<img src="video.png"></a>
+<img src="video.png" width="100%"></a>
 
 
-<img src="public/front.jpg"></a>
+<img src="public/front.jpg" width="100%"></a>
 
 
 ## About
